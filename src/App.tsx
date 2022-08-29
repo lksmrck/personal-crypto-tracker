@@ -1,12 +1,15 @@
+/* import Navbar from './pages/Navbar'; */
 
-import './App.css';
+import MainPage from './pages/MainPage';
 
 function App() {
   return (
     <div className="App">
-     Hey
+  {/*   <Navbar /> */}
+    <MainPage />
     </div>
   );
 }
 
 export default App;
+
