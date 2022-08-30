@@ -1,5 +1,7 @@
 import { TextField } from "@mui/material";
 
+
+
 type InputProps = {
     label: string;
     input: {
@@ -18,16 +20,18 @@ type InputProps = {
 const Input: React.FC<InputProps> = (props: InputProps) => {
   return (
     <div>
+    
       <TextField
-        sx={{ width: 400}}
+        sx={{ width: 200}}
         className="inputs"
         label={props.input.id}
-        variant="filled"
+        variant="standard"
         size="small"
         inputProps={{ ...props.input }}
         color="primary"
         required={true}
         InputLabelProps={props.inputLabelProps}
+        margin="dense"
       />
     </div>
   );

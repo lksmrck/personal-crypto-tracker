@@ -2,31 +2,43 @@ import React, {useState} from 'react'
 import Input from '../../material UI/Input'
 import { StyledForm } from './styled'
 import { Button } from '@mui/material'
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
 
 export default function Form() {
 
     const [inputText, setInputText] = useState("")
+    const [buySell, setBuySell] = useState("buy")
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log("hey")
     }
 
+const handleBuySellChange = (e: React.MouseEvent<HTMLElement>, newBuySell: string) => {
+  setBuySell (newBuySell)
+}
 
 
 
 
-
-
-
-
-
-    
   return (
     <StyledForm>
-    <div className="form">   
+    <div className="form">  
+    <ToggleButtonGroup
+        value={buySell}
+        exclusive
+        onChange={handleBuySellChange}
+>
+        <ToggleButton sx={{ color: "green", borderRadius: 2}}  value="buy">Buy</ToggleButton>
+        <ToggleButton sx={{ color: "red", borderRadius: 2}}   value="sell">Sell</ToggleButton>
+      
+      </ToggleButtonGroup>
+
+
      <Input 
         label="" 
-        input = {{id: "test id",
+        input = {{id: "Price per item",
             type: "text",
             value: inputText,
         onChange: handleInputChange,
@@ -34,15 +46,15 @@ export default function Form() {
         />   
           <Input 
         label="" 
-        input = {{id: "test id",
+        input = {{id: "Amount",
             type: "text",
             value: inputText,
-        onChange: handleInputChange,
+            onChange: handleInputChange,
         }}
         />   
           <Input 
         label="" 
-        input = {{id: "test id",
+        input = {{id: "Date",
             type: "text",
             value: inputText,
         onChange: handleInputChange,
