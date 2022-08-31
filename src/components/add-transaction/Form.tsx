@@ -9,7 +9,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 export default function Form() {
 
     const [inputText, setInputText] = useState("")
-    const [buySell, setBuySell] = useState("buy")
+    const [buySell, setBuySell] = useState("")
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log("hey")
@@ -25,12 +25,12 @@ const handleBuySellChange = (e: React.MouseEvent<HTMLElement>, newBuySell: strin
   return (
     <StyledForm>
     <div className="form">  
+    <div>
     <ToggleButtonGroup
         value={buySell}
         exclusive
-        onChange={handleBuySellChange}
->
-        <ToggleButton sx={{ color: "green", borderRadius: 2}}  value="buy">Buy</ToggleButton>
+        onChange={handleBuySellChange}>
+        <ToggleButton sx={{ color:  "green", borderRadius: 2}}  value="buy">Buy</ToggleButton>
         <ToggleButton sx={{ color: "red", borderRadius: 2}}   value="sell">Sell</ToggleButton>
       
       </ToggleButtonGroup>
@@ -63,6 +63,7 @@ const handleBuySellChange = (e: React.MouseEvent<HTMLElement>, newBuySell: strin
         <div className="buttons-container">
         <Button>Add</Button>
         <Button>Back</Button>
+        </div>
         </div>
      </div>
      </StyledForm>
