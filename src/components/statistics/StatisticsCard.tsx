@@ -5,12 +5,20 @@ import { StyledStatisticsCard } from "./styled";
 export default function StatisticsCard() {
   return (
     <StyledStatisticsCard>
-      <img src={btc_icon} alt="icon" />
+      <img src={btc_icon} alt="icon" width="50px" height="50px" />
       <div className="text-container">
-        <p>Market price</p>
-        <p>Average purchase price</p>
-        <p>Holding amount</p>
-        <p>P/L USD</p>
+        <p>
+          <span>Market price per unit:</span> 25$
+        </p>
+        <p>
+          <span>Average purchase price</span> 14$
+        </p>
+        <p>
+          <span>Holding amount</span> 50$
+        </p>
+        <p>
+          <span>P/L USD</span> 24$
+        </p>
         <p>P/L %</p>
         <Button>Add transaction</Button> {/* Dát spíš ikonu s pluskem */}
       </div>
