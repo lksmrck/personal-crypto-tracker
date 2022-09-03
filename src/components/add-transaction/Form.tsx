@@ -5,10 +5,21 @@ import { Button } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CryptoSelect from "./CryptoSelect";
+import { useSelector, useDispatch } from "react-redux";
+import { historyActions } from "../../store/history-slice";
 
 export default function Form() {
   const [inputText, setInputText] = useState("");
   const [buySell, setBuySell] = useState("");
+
+  const dispatch = useDispatch();
+
+  const historyState = useSelector((state: any) => state.history.TBD);
+
+  const onClickHandler = () => {
+    dispatch(historyActions.increment());
+    console.log(historyState);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("hey");
@@ -66,7 +77,7 @@ export default function Form() {
             }}
           />
           <div className="buttons-container">
-            <Button>Add</Button>
+            <Button onClick={onClickHandler}>Add</Button>
             <Button>Back</Button>
           </div>
         </div>
