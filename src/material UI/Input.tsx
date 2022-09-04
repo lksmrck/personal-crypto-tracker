@@ -5,10 +5,10 @@ type InputProps = {
   input: {
     id: string;
     type: string;
-    value: string | number;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value?: string | number;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     inputPlaceholder?: string | number;
-    ref?: React.Ref<HTMLInputElement | undefined>;
+    ref?: React.Ref<HTMLInputElement | null>;
   };
   inputLabelProps?: {
     shrink: boolean;

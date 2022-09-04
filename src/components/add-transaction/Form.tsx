@@ -9,43 +9,40 @@ import { useSelector, useDispatch } from "react-redux";
 import { historyActions } from "../../store/history-slice";
 
 export default function Form() {
-  const nameInputRef = useRef<HTMLInputElement>();
-  const priceInputRef = useRef<HTMLInputElement>();
-  const amountInputRef = useRef<HTMLInputElement>();
-  const dateInputRef = useRef<HTMLInputElement>();
-
-  //Inputs state data
-  const [inputCrypto, setInputCrypto] = useState("");
-  const [inputPrice, setInputPrice] = useState("");
-  const [inputAmount, setInputAmount] = useState("");
-  const [inputDate, setInputDate] = useState("");
-
-  const [inputData, setInputData] = useState({
-    name: "",
-    price: "",
-    amount: "",
-    date: "",
-  });
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [inputName, setInputName] = useState<string>("");
+  const priceInputRef = useRef<HTMLInputElement | null>(null);
+  const amountInputRef = useRef<HTMLInputElement | null>(null);
+  const dateInputRef = useRef<HTMLInputElement | null>(null);
 
   const [buySell, setBuySell] = useState("");
 
   const dispatch = useDispatch();
 
-  const historyState = useSelector((state: any) => state.history.TBD);
+  const onSelectCryptoChange = () => {};
 
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
+    const formItem = {
+      name: inputName,
+      price: priceInputRef.current?.value,
+      amount: amountInputRef.current?.value,
+      date: dateInputRef.current?.value,
+    };
+    console.log(formItem);
+
+    //Clearing inputs
+    if (formRef.current !== null) {
+      formRef.current.reset();
+    }
+    setInputName("");
 
     //tady se bude vyvolavat akce ze storu podle toho, jestli je kliknuto na Buy nebo Sell
     dispatch(historyActions.increment());
-
-    console.log(buySell);
   };
 
-  const handleInputCryptoChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    console.log("hey");
+  const selectedCryptoInput = (crypto: string) => {
+    setInputName(crypto);
   };
 
   const handleBuySellChange = (
@@ -56,7 +53,7 @@ export default function Form() {
   };
 
   return (
-    <StyledForm onSubmit={onSubmitHandler}>
+    <StyledForm onSubmit={onSubmitHandler} ref={formRef}>
       <div className="form">
         <div>
           <ToggleButtonGroup
@@ -71,14 +68,12 @@ export default function Form() {
               Sell
             </ToggleButton>
           </ToggleButtonGroup>
-          <CryptoSelect />
+          <CryptoSelect selected={selectedCryptoInput} value={inputName} />
           <Input
             label=""
             input={{
               id: "Price per item",
               type: "text",
-              value: inputPrice,
-              onChange: handleInputCryptoChange,
               ref: priceInputRef,
             }}
           />
@@ -87,8 +82,7 @@ export default function Form() {
             input={{
               id: "Amount",
               type: "text",
-              value: inputAmount,
-              onChange: handleInputCryptoChange,
+              ref: amountInputRef,
             }}
           />
           <Input
@@ -96,8 +90,7 @@ export default function Form() {
             input={{
               id: "Date",
               type: "text",
-              value: inputDate,
-              onChange: handleInputCryptoChange,
+              ref: dateInputRef,
             }}
           />
           <div className="buttons-container">

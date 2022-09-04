@@ -8,13 +8,14 @@ import {
 } from "@mui/material";
 
 type CryptoSelectProps = {
-  ref?: React.Ref<HTMLInputElement | undefined>;
+  selected: (crypto: string) => void;
+  value: string;
 };
 export default function CryptoSelect(props: CryptoSelectProps) {
   const [selectedCrypto, setSelectedCrypto] = useState("");
 
   const selectCryptoHandler = (e: SelectChangeEvent<unknown>) => {
-    setSelectedCrypto(e.target.value as string);
+    props.selected(e.target.value as string);
   };
 
   return (
@@ -29,9 +30,8 @@ export default function CryptoSelect(props: CryptoSelectProps) {
           labelId="sort-select"
           id="sort-select"
           label="Sort by:"
-          value={selectedCrypto}
+          value={props.value}
           onChange={selectCryptoHandler}
-          ref={props.ref}
         >
           {/* Sem dát map function na API call nebo na listing crypta */}
           <MenuItem value="Bitcoin">Bitcoin</MenuItem>
