@@ -1,22 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { TBD: 0, TBD1: true };
+export interface CryptoItem {
+  id: number;
+  name: string;
+  ticker: string;
+  price: number;
+  date: string;
+}
+
+interface InitialState {
+  holdings: CryptoItem[];
+  TBD: boolean;
+}
+
+const initialState: InitialState = { holdings: [], TBD: true };
 
 const statisticsSlice = createSlice({
   name: "statistics",
-  initialState: initialState, //JS ES6 lze napsat jen initialState
+  initialState: initialState as InitialState,
   reducers: {
     //není potřeba psát if statementy. Tyto reducery budou triggernute na zaklade actions
-    incremet(state) {
+    addHolding(state, action) {
+      const item: CryptoItem = action.payload; // tady bude objekt s informacema z formu
       //každý reducer dostane State. Může i 2. parameter Action (pokud je potřeba)
-      state.TBD++;
-    },
-    decrement(state) {
-      state.TBD--;
+      state.holdings.push({
+        id: item.id,
+        name: item.name,
+        ticker: item.ticker,
+        price: item.price,
+        date: item.date,
+      });
     },
 
+    /*   removeHolding(state, action) {
+      state.holdings--;
+    }, */
+
     toggleCounter(state) {
-      state.TBD1 = !state.TBD1;
+      state.TBD = !state.TBD;
     },
   },
 });

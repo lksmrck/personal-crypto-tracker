@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Input from "../../material UI/Input";
 import { StyledForm } from "./styled";
 import { Button } from "@mui/material";
@@ -9,19 +9,42 @@ import { useSelector, useDispatch } from "react-redux";
 import { historyActions } from "../../store/history-slice";
 
 export default function Form() {
-  const [inputText, setInputText] = useState("");
+  const nameInputRef = useRef<HTMLInputElement>();
+  const priceInputRef = useRef<HTMLInputElement>();
+  const amountInputRef = useRef<HTMLInputElement>();
+  const dateInputRef = useRef<HTMLInputElement>();
+
+  //Inputs state data
+  const [inputCrypto, setInputCrypto] = useState("");
+  const [inputPrice, setInputPrice] = useState("");
+  const [inputAmount, setInputAmount] = useState("");
+  const [inputDate, setInputDate] = useState("");
+
+  const [inputData, setInputData] = useState({
+    name: "",
+    price: "",
+    amount: "",
+    date: "",
+  });
+
   const [buySell, setBuySell] = useState("");
 
   const dispatch = useDispatch();
 
   const historyState = useSelector((state: any) => state.history.TBD);
 
-  const onClickHandler = () => {
+  const onSubmitHandler = (e: React.SyntheticEvent): void => {
+    e.preventDefault();
+
+    //tady se bude vyvolavat akce ze storu podle toho, jestli je kliknuto na Buy nebo Sell
     dispatch(historyActions.increment());
-    console.log(historyState);
+
+    console.log(buySell);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputCryptoChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     console.log("hey");
   };
 
@@ -33,7 +56,7 @@ export default function Form() {
   };
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={onSubmitHandler}>
       <div className="form">
         <div>
           <ToggleButtonGroup
@@ -54,8 +77,9 @@ export default function Form() {
             input={{
               id: "Price per item",
               type: "text",
-              value: inputText,
-              onChange: handleInputChange,
+              value: inputPrice,
+              onChange: handleInputCryptoChange,
+              ref: priceInputRef,
             }}
           />
           <Input
@@ -63,8 +87,8 @@ export default function Form() {
             input={{
               id: "Amount",
               type: "text",
-              value: inputText,
-              onChange: handleInputChange,
+              value: inputAmount,
+              onChange: handleInputCryptoChange,
             }}
           />
           <Input
@@ -72,12 +96,12 @@ export default function Form() {
             input={{
               id: "Date",
               type: "text",
-              value: inputText,
-              onChange: handleInputChange,
+              value: inputDate,
+              onChange: handleInputCryptoChange,
             }}
           />
           <div className="buttons-container">
-            <Button onClick={onClickHandler}>Add</Button>
+            <Button type="submit">Add transaction</Button>
             <Button>Back</Button>
           </div>
         </div>
