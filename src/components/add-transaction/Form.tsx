@@ -6,27 +6,42 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CryptoSelect from "./CryptoSelect";
 import { useSelector, useDispatch } from "react-redux";
-import { historyActions } from "../../store/history-slice";
+import { transactionsActions } from "../../store/transactions-slice";
+import { statisticsActions, CryptoItem } from "../../store/statistics-slice";
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [inputName, setInputName] = useState<string>("");
-  const priceInputRef = useRef<HTMLInputElement | null>(null);
-  const amountInputRef = useRef<HTMLInputElement | null>(null);
+  const priceInputRef = useRef<any>(null);
+  const amountInputRef = useRef<any>(null);
   const dateInputRef = useRef<HTMLInputElement | null>(null);
 
   const [buySell, setBuySell] = useState("");
 
   const dispatch = useDispatch();
+  const holdings = useSelector((state: any) => state.statistics.holdings); //Dle slices, které jsem dal do store (index.tsx)
+  const transactions = useSelector(
+    (state: any) => state.transactions.transactions
+  ); //Dle slices, které jsem dal do store (index.tsx)
 
-  const onSelectCryptoChange = () => {};
+  const [transactionNumber, setTransactionNumber] = useState<number>(
+    transactions.length + 1
+  );
 
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
+
+    //Číslo transakce. Začíná od 1
+    setTransactionNumber((prevNumber) => prevNumber + 1);
+
+    //Sesbírání infa o transakci. Pak se pošle do statistics-slice a history-slice. Do každého slice jiné údaje.
     const formItem = {
+      transactionType: buySell,
+      transactionNumber: transactionNumber,
+      id: Math.random().toString(),
       name: inputName,
-      price: priceInputRef.current?.value,
-      amount: amountInputRef.current?.value,
+      price: parseInt(priceInputRef.current?.value),
+      amount: parseInt(amountInputRef.current?.value),
       date: dateInputRef.current?.value,
     };
     console.log(formItem);
@@ -37,8 +52,18 @@ export default function Form() {
     }
     setInputName("");
 
-    //tady se bude vyvolavat akce ze storu podle toho, jestli je kliknuto na Buy nebo Sell
-    dispatch(historyActions.increment());
+    //Sleduju, jestli položka už v array existuje.
+    const existingItem = holdings.find(
+      (holding: { name: string }) => holding.name === formItem.name
+    );
+
+    console.log(existingItem);
+    //Pokud položka už existuje, posílám do reduceru updateExistingHolding. Pokud je to první položka, posílám do addNewHolding
+    if (existingItem) {
+      dispatch(statisticsActions.updateExistingHolding(formItem));
+    } else dispatch(statisticsActions.addNewHolding(formItem));
+    /*  dispatch(historyActions.increment()); */
+    console.log(holdings);
   };
 
   const selectedCryptoInput = (crypto: string) => {
@@ -47,7 +72,7 @@ export default function Form() {
 
   const handleBuySellChange = (
     e: React.MouseEvent<HTMLElement>,
-    newBuySell: string
+    newBuySell: "buy" | "sell"
   ) => {
     setBuySell(newBuySell);
   };
@@ -73,7 +98,7 @@ export default function Form() {
             label=""
             input={{
               id: "Price per item",
-              type: "text",
+              type: "number",
               ref: priceInputRef,
             }}
           />
@@ -81,7 +106,7 @@ export default function Form() {
             label=""
             input={{
               id: "Amount",
-              type: "text",
+              type: "number",
               ref: amountInputRef,
             }}
           />
@@ -89,7 +114,7 @@ export default function Form() {
             label=""
             input={{
               id: "Date",
-              type: "text",
+              type: "date",
               ref: dateInputRef,
             }}
           />

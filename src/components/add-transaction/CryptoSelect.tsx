@@ -11,7 +11,7 @@ type CryptoSelectProps = {
   selected: (crypto: string) => void;
   value: string;
 };
-export default function CryptoSelect(props: CryptoSelectProps) {
+const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
   const [selectedCrypto, setSelectedCrypto] = useState("");
 
   const selectCryptoHandler = (e: SelectChangeEvent<unknown>) => {
@@ -42,4 +42,6 @@ export default function CryptoSelect(props: CryptoSelectProps) {
       </FormControl>
     </div>
   );
-}
+};
+
+export default CryptoSelect;

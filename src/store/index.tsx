@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"; //umožňuje zmergovat více slices do jednoho store.
-import historySlice from "./history-slice";
+import transactionsSlice from "./transactions-slice";
 import statisticsSlice from "./statistics-slice";
 
 const store = configureStore({
   reducer: {
-    history: historySlice.reducer,
+    transactions: transactionsSlice.reducer,
     statistics: statisticsSlice.reducer,
   },
 });

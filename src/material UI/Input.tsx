@@ -15,7 +15,7 @@ type InputProps = {
   };
 };
 
-const Input: React.FC<InputProps> = (props: InputProps) => {
+const Input: React.FC<InputProps> = (props) => {
   return (
     <div>
       <TextField
