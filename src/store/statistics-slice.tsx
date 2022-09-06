@@ -27,7 +27,7 @@ const statisticsSlice = createSlice({
   name: "statistics",
   initialState: initialState as InitialState,
   reducers: {
-    //není potřeba psát if statementy. Tyto reducery budou triggernute na zaklade actions
+    //Přidání nového itemu, když item ještě nemá žádný holding
     addNewHolding(state, action) {
       const item: CryptoItem = action.payload; // tady bude objekt s informacema z formu
       //každý reducer dostane State. Může i 2. parameter Action (pokud je potřeba)
@@ -39,14 +39,14 @@ const statisticsSlice = createSlice({
         date: item.date, // dá datum poslední transakce
       });
     },
-
+    //Upravení holdingu podle přikoupení/odprodání, pokud holding daného itemu už existuje
     updateExistingHolding(state, action) {
       const item: UpdatingCryptoItem = action.payload;
 
       if (item.transactionType === "buy") {
         const updatedHoldings = state.holdings.map((holding) => {
           if (holding.name === item.name) {
-            //pomocné výpočty
+            //pomocné výpočty ceny
             const oldTotalPrice = holding.price * holding.amount;
             const newTotalPrice = item.price * item.amount;
             const updatedPrice =
@@ -62,9 +62,26 @@ const statisticsSlice = createSlice({
           return holding;
         });
         state.holdings = updatedHoldings;
-      }
+      } else if (item.transactionType === "sell") {
+        const updatedHoldings = state.holdings.map((holding) => {
+          if (holding.name === item.name) {
+            //pomocné výpočty ceny
+            /*      const oldTotalPrice = holding.price * holding.amount;
+            const averagePrice = oldTotalPrice/holding.amount */
+            const newPrice = 1; //UPRAVIT
 
-      /*     else if (item.transactionType === "sell") {} */
+            return {
+              ...holding,
+              price: holding.price, // upravit
+              amount: holding.amount - item.amount,
+              date: item.date,
+            };
+          }
+
+          return holding;
+        });
+        state.holdings = updatedHoldings;
+      }
 
       /*   removeHolding(state, action) {
       state.holdings--;
