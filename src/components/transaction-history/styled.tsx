@@ -15,4 +15,10 @@ export const StyledTransactionHistory = styled.div`
   }
 `;
 
-export const StyledTransactionItem = styled.div``;
+export const StyledTransactionItem = styled.div`
+  .transactions-title {
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+  }
+`;

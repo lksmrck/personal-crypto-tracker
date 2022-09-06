@@ -6,8 +6,6 @@ export default function TransactionHistory() {
     <StyledTransactionHistory>
       <div className="transactions-container">
         <TransactionItem />
-        <TransactionItem />
-        <TransactionItem />
       </div>
     </StyledTransactionHistory>
   );

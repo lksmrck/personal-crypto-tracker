@@ -8,6 +8,7 @@ import CryptoSelect from "./CryptoSelect";
 import { useSelector, useDispatch } from "react-redux";
 import { transactionsActions } from "../../store/transactions-slice";
 import { statisticsActions, CryptoItem } from "../../store/statistics-slice";
+import { RootState } from "../../store";
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -19,9 +20,9 @@ export default function Form() {
   const [buySell, setBuySell] = useState("");
 
   const dispatch = useDispatch();
-  const holdings = useSelector((state: any) => state.statistics.holdings); //Dle slices, které jsem dal do store (index.tsx)
+  const holdings = useSelector((state: RootState) => state.statistics.holdings); //Dle slices, které jsem dal do store (index.tsx)
   const transactions = useSelector(
-    (state: any) => state.transactions.transactions
+    (state: RootState) => state.transactions.transactions
   ); //Dle slices, které jsem dal do store (index.tsx)
 
   const [transactionNumber, setTransactionNumber] = useState<number>(

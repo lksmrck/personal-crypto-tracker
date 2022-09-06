@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface Transaction {
+export interface Transaction {
   transactionType: /* "buy" | "sell"; */ string;
   id: number;
   name: string;
@@ -9,7 +9,7 @@ interface Transaction {
   date: string;
 }
 
-interface InitialState {
+export interface TransactionsState {
   transactions: Transaction[];
   TBD1: boolean;
 }
@@ -49,7 +49,7 @@ const DUMMY_TRANSACTIONS = [
   },
 ];
 
-const initialState: InitialState = {
+const initialState: TransactionsState = {
   transactions: /* [] */ DUMMY_TRANSACTIONS,
   TBD1: true,
 };
