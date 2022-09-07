@@ -87,3 +87,8 @@ export const cardSize = `
 width: 31.3%;
 height: 400px;
 `;
+
+//zatim nepoužito
+export const contentWidth = `
+width: 1300px;
+`;

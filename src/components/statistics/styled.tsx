@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { centerItems, cardSize, theme } from "../../common/theme";
+import { centerItems, cardSize, theme, contentWidth } from "../../common/theme";
 
 export const StyledStatistics = styled.div`
-  margin: 2% 2% 0 2%;
-  width: 96%;
+  margin: 2% 5% 0 7.5%;
+  width: 85%;
+  /*  ${contentWidth}; */
   display: flex;
   justify-content: start;
   flex-direction: row;

@@ -21,4 +21,11 @@ export const StyledTransactionItem = styled.div`
     color: white;
     font-weight: bold;
   }
+
+  .transaction-buy {
+    background-color: green;
+  }
+  .transaction-sell {
+    background-color: orange;
+  }
 `;

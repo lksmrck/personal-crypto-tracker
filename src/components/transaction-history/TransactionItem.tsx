@@ -19,13 +19,19 @@ export default function TransactionItem() {
       </div>
       {transactions.map((transaction: Transaction) => {
         return (
-          <>
+          <div
+            className={
+              transaction.transactionType === "buy"
+                ? "transaction-buy"
+                : "transaction-sell"
+            }
+          >
             <span>{transaction.id}</span>
             <span>{transaction.name}</span>
             <span>{transaction.price}</span>
             <span>{transaction.amount}</span>
             <span>{transaction.transactionType}</span>
-          </>
+          </div>
         );
       })}
     </StyledTransactionItem>
