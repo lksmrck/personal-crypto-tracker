@@ -35,10 +35,6 @@ export default function Statistics() {
   return (
     <StyledStatistics>
       <StatisticsCard />
-      <StatisticsCard />
-      <StatisticsCard />
-      <StatisticsCard />
-      <StatisticsCard />
     </StyledStatistics>
   );
 }

@@ -14,10 +14,16 @@ export const StyledStatistics = styled.div`
 `;
 
 export const StyledStatisticsCard = styled.div`
-  ${centerItems};
   ${cardSize};
   border: 1px solid red;
   margin: 1%;
   box-shadow: ${theme.cardShadow};
   border-radius: ${theme.borderRadius};
+  ${centerItems};
+
+  .stats-container {
+  }
+  .stats-title {
+    display: flex;
+  }
 `;

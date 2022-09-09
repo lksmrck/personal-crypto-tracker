@@ -9,5 +9,5 @@ const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>; //Typescript requirment
+export type RootState = ReturnType<typeof store.getState>; //Typescript type
 export default store;

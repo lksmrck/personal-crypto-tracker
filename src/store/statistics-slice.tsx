@@ -21,7 +21,41 @@ interface InitialState {
   TBD: boolean;
 }
 
-const initialState: InitialState = { holdings: [], TBD: true };
+const DUMMY_HOLDINGS = [
+  {
+    id: 1,
+    name: "bitcoin",
+    price: 24000,
+    amount: 14,
+    date: "24.1.2021",
+  },
+  {
+    id: 1,
+    name: "cardano",
+    price: 1.4,
+    amount: 190,
+    date: "24.1.2021",
+  },
+  {
+    id: 1,
+    name: "polkadot",
+    price: 15,
+    amount: 129,
+    date: "24.1.2021",
+  },
+  {
+    id: 1,
+    name: "ethereum",
+    price: 10,
+    amount: 14,
+    date: "24.1.2021",
+  },
+];
+
+const initialState: InitialState = {
+  holdings: DUMMY_HOLDINGS /* [] */,
+  TBD: true,
+};
 
 const statisticsSlice = createSlice({
   name: "statistics",
