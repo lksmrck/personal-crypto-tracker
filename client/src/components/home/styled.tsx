@@ -29,3 +29,6 @@ export const StyledHomePage = styled.div`
     border: 1px solid black;
   }
 `;
+
+export const StyledDashboardItem = styled.div``;
+export const StyledDashboard = styled.div``;

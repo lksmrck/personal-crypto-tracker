@@ -1,5 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface DashboardCryptoItem {
+  ticker: String;
+  name: String;
+  price: String;
+  dayMovement: String;
+  marketCap: String;
+}
+
 interface UpdatingCryptoItem {
   transactionType: "buy" | "sell";
   name: string;

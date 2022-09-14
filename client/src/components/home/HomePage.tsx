@@ -1,4 +1,4 @@
-import React from "react";
+import Dashboard from "./Dashboard";
 import { StyledHomePage } from "./styled";
 
 export default function HomePage() {
@@ -11,7 +11,9 @@ export default function HomePage() {
           <p>Statistics</p>
           <p>Transaction history</p>
         </div>
-        <div className="home-dashboard"></div>
+        <div className="home-dashboard">
+          <Dashboard />
+        </div>
       </div>
     </StyledHomePage>
   );
