@@ -17,18 +17,26 @@ export const StyledHomePage = styled.div`
   .home-dashboard {
     display: flex;
 
-    justify-content: center;
-    width: 60%;
+    width: 100%;
     border: 2px solid red;
-    span {
-      display: inline-block;
-      width: 20%;
-      border: 1px solid green;
-    }
 
     border: 1px solid black;
   }
 `;
 
-export const StyledDashboardItem = styled.div``;
-export const StyledDashboard = styled.div``;
+export const StyledDashboardItem = styled.div`
+  width: 100%;
+  .transactions-title {
+    background-color: antiquewhite;
+    font-weight: bold;
+    width: 100%;
+    border: 1px solid red;
+  }
+  span {
+    display: inline-block;
+    width: 20%;
+  }
+`;
+export const StyledDashboard = styled.div`
+  width: 100%;
+`;
