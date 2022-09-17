@@ -11,7 +11,11 @@ const routes = require("./routes/api");
 const MONGODB_URI = "doplnit adresu databaze";
 
 //Pripojeni na databazi
-mongoose.connect(MONGODB_URI);
+mongoose
+  .connect(MONGODB_URI)
+  .then(() => app.listen(PORT, console.log(`Server is starting at ${PORT}`)))
+  .catch((error) => console.log(error.message));
+
 mongoose.connection.on("connected", () => {
   //kdyz se connection provede, napise:
   console.log("Mongoose is connected!");
@@ -26,5 +30,3 @@ app.use(cors());
 
 // /api jako starting route
 app.use("/api", routes);
-
-app.listen(PORT, console.log(`Server is starting at ${PORT}`));
