@@ -6,9 +6,11 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CryptoSelect from "./CryptoSelect";
 import { useSelector, useDispatch } from "react-redux";
-import { transactionsActions } from "../../store/transactions-slice";
-import { statisticsActions, CryptoItem } from "../../store/statistics-slice";
-import { RootState } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../state/hooks";
+import { addHolding, updateHolding } from "../../state/actions/statistics";
+
+import { CryptoItem } from "../../common/modelTypes";
+import { RootState } from "../..";
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -19,15 +21,19 @@ export default function Form() {
 
   const [buySell, setBuySell] = useState("");
 
-  const dispatch = useDispatch();
-  const holdings = useSelector((state: RootState) => state.statistics.holdings); //Dle slices, které jsem dal do store (index.tsx)
-  const transactions = useSelector(
+  const dispatch = useAppDispatch();
+  const holdings = useAppSelector((state: RootState) => state.statistics); //Dle slices, které jsem dal do store (index.tsx)
+  const transactions = useAppSelector(
     (state: RootState) => state.transactions.transactions
   ); //Dle slices, které jsem dal do store (index.tsx)
 
   const [transactionNumber, setTransactionNumber] = useState<number>(
     transactions.length + 1
   );
+
+  const selectedCryptoInput = (crypto: string) => {
+    setInputName(crypto);
+  };
 
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
@@ -46,7 +52,7 @@ export default function Form() {
       date: dateInputRef.current?.value,
     };
     console.log(formItem);
-
+    console.log(holdings);
     //Clearing inputs
     if (formRef.current !== null) {
       formRef.current.reset();
@@ -58,17 +64,20 @@ export default function Form() {
       (holding: { name: string }) => holding.name === formItem.name
     );
 
-    console.log(existingItem);
+    const newHoldingItem = {
+      id: formItem.id,
+      name: formItem.name,
+      price: formItem.price,
+      amount: formItem.amount,
+      date: formItem.date,
+    };
+
     //Pokud položka už existuje, posílám do reduceru updateExistingHolding. Pokud je to první položka, posílám do addNewHolding
     if (existingItem) {
-      dispatch(statisticsActions.updateExistingHolding(formItem));
-    } else dispatch(statisticsActions.addNewHolding(formItem));
+      dispatch(updateHolding(formItem, formItem.name));
+    } else dispatch(addHolding(newHoldingItem));
     /*  dispatch(historyActions.increment()); */
     console.log(holdings);
-  };
-
-  const selectedCryptoInput = (crypto: string) => {
-    setInputName(crypto);
   };
 
   const handleBuySellChange = (

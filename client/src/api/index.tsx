@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const holdingsURL = "http://localhost:5000/holdings";
+const holdingsURL = "http://localhost:8000"; //dát /holdings a dolů /transactions
 const transactionsURL = "http://localhost:5000/transactions";
 
 //Holdings

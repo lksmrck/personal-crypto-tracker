@@ -3,7 +3,7 @@ import {
   ADD_HOLDING,
   UPDATE_HOLDING,
 } from "../../constants/actionTypes";
-import { StatisticsState } from "../../common/modelTypes";
+import { CryptoItem, StatisticsState } from "../../common/modelTypes";
 
 const DUMMY_HOLDINGS = [
   {
@@ -27,13 +27,13 @@ const DUMMY_HOLDINGS = [
     amount: 129,
     date: "24.1.2021",
   },
-  {
+  /* {
     id: 1,
     name: "ethereum",
     price: 10,
     amount: 14,
     date: "24.1.2021",
-  },
+  }, */
 ];
 
 const initialState: StatisticsState = {
@@ -41,16 +41,16 @@ const initialState: StatisticsState = {
   TBD: true,
 };
 
-export default (initialState: StatisticsState, action: any) => {
+export default (holdings = DUMMY_HOLDINGS, action: any) => {
   switch (action.type) {
     case FETCH_ALL_HOLDINGS:
       return action.payload;
     case ADD_HOLDING:
-      return initialState;
+      return [...holdings, action.payload];
     case UPDATE_HOLDING:
-      return initialState;
+      return holdings;
 
     default:
-      return initialState;
+      return holdings;
   }
 };

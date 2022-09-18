@@ -8,9 +8,9 @@ export default function MainPage() {
   return (
     <div>
       <Navbar />
-      <HomePage />
-      {/* <Form /> */}
-      {/* <Statistics /> */}
+      {/*    <HomePage /> */}
+      <Form />
+      <Statistics />
       {/*  <TransactionHistory /> */}
     </div>
   );

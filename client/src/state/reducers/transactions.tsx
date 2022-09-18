@@ -44,7 +44,7 @@ const initialState: TransactionsState = {
   TBD1: true,
 };
 
-export default (initialState: TransactionsState, action: any) => {
+export default (transactions = DUMMY_TRANSACTIONS, action: any) => {
   switch (action.type) {
     case FETCH_ALL_TRANSACTIONS:
       return action.payload;

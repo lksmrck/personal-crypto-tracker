@@ -1,4 +1,4 @@
-//Statistics (holdings)
+//Dashboard
 export interface DashboardCryptoItem {
   ticker: String;
   name: String;
@@ -6,7 +6,7 @@ export interface DashboardCryptoItem {
   dayMovement: String;
   marketCap: String;
 }
-
+//Statistics (holdings)
 export interface UpdatingCryptoItem {
   transactionType: "buy" | "sell";
   name: string;

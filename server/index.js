@@ -1,18 +1,25 @@
-const express = require("express");
+/* const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
-const cors = require("cors");
+const cors = require("cors"); */
+
+import express from "express";
+import mongoose from "mongoose";
+import path from "path";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-const routes = require("./routes/api");
+/* const routes = require("./routes/api"); */
+import routes from "./routes/api.js";
 
-const MONGODB_URI = "doplnit adresu databaze";
+const MONGODB_URL =
+  "mongodb+srv://lukasm10:christmas123@holdings.wugr4l2.mongodb.net/?retryWrites=true&w=majority";
 
 //Pripojeni na databazi
 mongoose
-  .connect(MONGODB_URI)
+  .connect(MONGODB_URL)
   .then(() => app.listen(PORT, console.log(`Server is starting at ${PORT}`)))
   .catch((error) => console.log(error.message));
 
@@ -29,4 +36,4 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // /api jako starting route
-app.use("/api", routes);
+app.use("/", routes);

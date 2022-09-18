@@ -3,13 +3,13 @@ import { Button } from "@mui/material";
 import { StyledStatisticsCard } from "./styled";
 import { BiPlusCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { CryptoItem } from "../../store/statistics-slice";
+import { RootState } from "../..";
+import { CryptoItem } from "../../common/modelTypes";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
 
-  const holdings = useSelector((state: RootState) => state.statistics.holdings);
+  const holdings = useSelector((state: RootState) => state.statistics);
 
   return (
     <>

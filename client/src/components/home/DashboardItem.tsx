@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DashboardCryptoItem } from "../../store/statistics-slice";
+import { DashboardCryptoItem } from "../../common/modelTypes";
 import { StyledDashboardItem } from "./styled";
 
 const DUMMY_DATA = [

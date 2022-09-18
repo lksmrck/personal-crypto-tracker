@@ -1,12 +1,11 @@
 import { StyledTransactionItem } from "./styled";
 import { useSelector } from "react-redux";
-import { Transaction } from "../../store/transactions-slice";
-import { RootState } from "../../store";
+import { Transaction } from "../../common/modelTypes";
+import { RootState } from "../..";
+import { useAppSelector, useAppDispatch } from "../../state/hooks";
 
 export default function TransactionItem() {
-  const transactions = useSelector(
-    (state: RootState) => state.transactions.transactions
-  );
+  const transactions = useAppSelector((state: RootState) => state.transactions);
 
   return (
     <StyledTransactionItem>
