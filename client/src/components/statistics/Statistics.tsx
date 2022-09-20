@@ -34,7 +34,7 @@ export default function Statistics() {
 
   return (
     <StyledStatistics>
-      <StatisticsCard />
+      <StatisticsCard key={1} />
     </StyledStatistics>
   );
 }

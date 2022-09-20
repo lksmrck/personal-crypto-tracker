@@ -49,9 +49,9 @@ export default (transactions = DUMMY_TRANSACTIONS, action: any) => {
     case FETCH_ALL_TRANSACTIONS:
       return action.payload;
     case ADD_TRANSACTION:
-      return initialState;
+      return action.payload;
 
     default:
-      return initialState;
+      return transactions;
   }
 };

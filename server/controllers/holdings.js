@@ -8,7 +8,6 @@ const router = express.Router();
 export const getHoldings = async (req, res) => {
   try {
     const holdings = await Holding.find();
-    console.log(Holding);
 
     res.status(200).json(holdings); //nastaví reponse status na 200
   } catch (error) {

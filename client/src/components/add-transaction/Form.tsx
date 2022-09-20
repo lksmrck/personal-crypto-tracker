@@ -5,11 +5,12 @@ import { Button } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import CryptoSelect from "./CryptoSelect";
-import { useSelector, useDispatch } from "react-redux";
+/* import { useSelector, useDispatch } from "react-redux"; */
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { addHolding, updateHolding } from "../../state/actions/statistics";
+import { addTransaction } from "../../state/actions/transactions";
 
-import { CryptoItem } from "../../common/modelTypes";
+/* import { CryptoItem } from "../../common/modelTypes"; */
 import { RootState } from "../..";
 
 export default function Form() {
@@ -23,9 +24,7 @@ export default function Form() {
 
   const dispatch = useAppDispatch();
   const holdings = useAppSelector((state: RootState) => state.statistics); //Dle slices, které jsem dal do store (index.tsx)
-  const transactions = useAppSelector(
-    (state: RootState) => state.transactions.transactions
-  ); //Dle slices, které jsem dal do store (index.tsx)
+  const transactions = useAppSelector((state: RootState) => state.transactions); //Dle slices, které jsem dal do store (index.tsx)
 
   const [transactionNumber, setTransactionNumber] = useState<number>(
     transactions.length + 1
@@ -51,8 +50,7 @@ export default function Form() {
       amount: parseInt(amountInputRef.current?.value),
       date: dateInputRef.current?.value,
     };
-    console.log(formItem);
-    console.log(holdings);
+
     //Clearing inputs
     if (formRef.current !== null) {
       formRef.current.reset();
@@ -63,8 +61,18 @@ export default function Form() {
     const existingItem = holdings.find(
       (holding: { name: string }) => holding.name === formItem.name
     );
+    console.log(holdings);
 
     const newHoldingItem = {
+      id: formItem.id,
+      name: formItem.name,
+      price: formItem.price,
+      amount: formItem.amount,
+      date: formItem.date,
+    };
+
+    const newTransactionItem = {
+      transactionType: formItem.transactionType,
       id: formItem.id,
       name: formItem.name,
       price: formItem.price,
@@ -76,8 +84,7 @@ export default function Form() {
     if (existingItem) {
       dispatch(updateHolding(formItem, formItem.name));
     } else dispatch(addHolding(newHoldingItem));
-    /*  dispatch(historyActions.increment()); */
-    console.log(holdings);
+    dispatch(addTransaction(newTransactionItem));
   };
 
   const handleBuySellChange = (
@@ -85,6 +92,7 @@ export default function Form() {
     newBuySell: "buy" | "sell"
   ) => {
     setBuySell(newBuySell);
+    console.log(newBuySell);
   };
 
   return (

@@ -3,26 +3,26 @@ import {
   ADD_HOLDING,
   UPDATE_HOLDING,
 } from "../../constants/actionTypes";
-import { CryptoItem, StatisticsState } from "../../common/modelTypes";
+import { StatisticsState } from "../../common/modelTypes";
 
 const DUMMY_HOLDINGS = [
   {
     id: 1,
-    name: "bitcoin",
+    name: "Bitcoin",
     price: 24000,
     amount: 14,
     date: "24.1.2021",
   },
   {
     id: 1,
-    name: "cardano",
+    name: "Cardano",
     price: 1.4,
     amount: 190,
     date: "24.1.2021",
   },
   {
     id: 1,
-    name: "polkadot",
+    name: "Polkadot",
     price: 15,
     amount: 129,
     date: "24.1.2021",

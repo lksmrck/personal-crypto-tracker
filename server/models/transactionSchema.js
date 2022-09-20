@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 //Schema
 const Schema = mongoose.Schema;
+
 const transactionSchema = new Schema({
   transactionType: /* "buy" | "sell"; */ String,
   id: Number,

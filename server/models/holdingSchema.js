@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 //Schema
 const Schema = mongoose.Schema;
+
 const holdingSchema = new Schema({
   id: Number,
   name: String,
