@@ -48,18 +48,19 @@ export const createHolding = async (req, res) => {
   }
 };
 
-/* export const updateHolding = async (req, res) => {
-    const { name } = req.params;
-    const { title, message, creator, selectedFile, tags } = req.body;
-    
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+export const updateHolding = async (req, res) => {
+  /* const { name } = req.params; */ //NEVIM NA CO JE???
+  const { id, name, price, amount, date } = req.body;
 
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`An error occured during the update.`);
 
-    await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+  const updatedHolding = { name, price, amount, date, _id: id };
 
-    res.json(updatedPost);
-} */
+  await Holding.findByIdAndUpdate(id, updatedPost, { new: true });
+
+  res.json(updatedHolding);
+};
 
 /* module.exports = router; */
 export default router;

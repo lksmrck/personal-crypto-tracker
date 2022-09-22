@@ -5,7 +5,7 @@ import {
   getHolding,
   getHoldings,
   createHolding,
-  /* updateHolding */
+  updateHolding,
 } from "../controllers/holdings.js";
 
 import {
@@ -18,8 +18,8 @@ const router = express.Router();
 //Holdings routes
 router.get("/holdings", getHoldings);
 router.post("/holdings", createHolding);
-router.get("/holdings/:id", getHolding); //dodělat
-/* router.patch("/:id", updateHolding); //dodělat */
+router.get("/holdings/:name", getHolding); //dodělat
+router.patch("holdings/:name", updateHolding); //dodělat
 
 //Transactions routes
 router.get("/transactions", getTransactions);

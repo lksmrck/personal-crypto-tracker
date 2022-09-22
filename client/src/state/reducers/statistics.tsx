@@ -36,19 +36,24 @@ const DUMMY_HOLDINGS = [
   }, */
 ];
 
-const initialState: StatisticsState = {
-  holdings: DUMMY_HOLDINGS /* [] */,
+/* const initialState: StatisticsState = {
+  holdings: DUMMY_HOLDINGS,
   TBD: true,
-};
+} */
 
-export default (holdings = DUMMY_HOLDINGS, action: any) => {
+export default (holdings = /* DUMMY_HOLDINGS */ [], action: any) => {
   switch (action.type) {
-    case FETCH_ALL_HOLDINGS:
+    case FETCH_ALL_HOLDINGS: // bude useEffect v APP komponentu. Na začátku se načte do state holdings z mongodb
       return action.payload;
-    case ADD_HOLDING:
+    case ADD_HOLDING: // přidání holdingu, pokud se daný coin ještě nedrží
       return [...holdings, action.payload];
     case UPDATE_HOLDING:
-      return holdings;
+      //SEM DAT LOGIKU OHLEDNE UPDATE VYPOCTU ATD.
+
+      return holdings.map(
+        (holding: any) =>
+          holding.name === action.payload.name ? action.payload : holding // _id = id přidělené automaticky v mongoose
+      );
 
     default:
       return holdings;

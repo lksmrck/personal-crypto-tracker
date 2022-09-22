@@ -5,11 +5,11 @@ import { getHoldings } from "./state/actions/statistics";
 
 function App() {
   const dispatch = useAppDispatch();
-  /* 
+
   //Fetch holdings z databáze
   useEffect(() => {
     dispatch(getHoldings());
-  }, [dispatch]); */
+  }, [dispatch]);
 
   return (
     <div className="App">

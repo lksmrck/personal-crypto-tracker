@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Input from "../../material UI/Input";
+import Input from "../Input";
 import { StyledForm } from "./styled";
 import { Button } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -61,8 +61,8 @@ export default function Form() {
     const existingItem = holdings.find(
       (holding: { name: string }) => holding.name === formItem.name
     );
-    console.log(holdings);
 
+    //Forma itemu, který se posílá do holdings reduceru
     const newHoldingItem = {
       id: formItem.id,
       name: formItem.name,
@@ -71,6 +71,7 @@ export default function Form() {
       date: formItem.date,
     };
 
+    //Forma itemu, který se posílá do transactions reduceru
     const newTransactionItem = {
       transactionType: formItem.transactionType,
       id: formItem.id,
@@ -82,7 +83,7 @@ export default function Form() {
 
     //Pokud položka už existuje, posílám do reduceru updateExistingHolding. Pokud je to první položka, posílám do addNewHolding
     if (existingItem) {
-      dispatch(updateHolding(formItem, formItem.name));
+      dispatch(updateHolding(formItem.name, formItem));
     } else dispatch(addHolding(newHoldingItem));
     dispatch(addTransaction(newTransactionItem));
   };

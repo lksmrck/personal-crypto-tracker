@@ -9,8 +9,8 @@ export const fetchHoldings = () => axios.get(holdingsURL);
 export const addHolding = (newHolding: any) =>
   axios.post(holdingsURL, newHolding);
 
-export const updateHolding = (id: any, updatedHolding: any) =>
-  axios.patch(`${holdingsURL}/${id}`, updatedHolding); //zkopirovany fetch - prizpusobit
+export const updateHolding = (name: string, updatedHolding: any) =>
+  axios.patch(`${holdingsURL}/${name}`, updatedHolding); //zkopirovany fetch - prizpusobit --> MELO BY BYT OK
 
 //Transactions history
 export const fetchTransactions = () => axios.get(transactionsURL);
