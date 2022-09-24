@@ -12,6 +12,7 @@ import { addTransaction } from "../../state/actions/transactions";
 
 /* import { CryptoItem } from "../../common/modelTypes"; */
 import { RootState } from "../..";
+import uptadeHolding from "./updateHolding";
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -81,9 +82,12 @@ export default function Form() {
       date: formItem.date,
     };
 
+    //Výpočty - Průměrná nákupní cena, celkový holding
+    const updatedHolding = updateHolding(existingItem, formItem);
+    console.log(updatedHolding);
     //Pokud položka už existuje, posílám do reduceru updateExistingHolding. Pokud je to první položka, posílám do addNewHolding
     if (existingItem) {
-      dispatch(updateHolding(formItem.name, formItem));
+      dispatch(updateHolding(formItem.name, updatedHolding));
     } else dispatch(addHolding(newHoldingItem));
     dispatch(addTransaction(newTransactionItem));
   };
@@ -93,7 +97,6 @@ export default function Form() {
     newBuySell: "buy" | "sell"
   ) => {
     setBuySell(newBuySell);
-    console.log(newBuySell);
   };
 
   return (

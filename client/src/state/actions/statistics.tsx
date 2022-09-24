@@ -18,7 +18,7 @@ export const getHoldings = () => async (dispatch: any) => {
 
 export const addHolding = (holding: any) => async (dispatch: any) => {
   try {
-    const { data } = await api.addHolding(holding);
+    const { data } = await api.addHolding(holding); // data se hned destructuruje response, která má v sobě vždycky data object.
 
     dispatch({ type: ADD_HOLDING, payload: data });
   } catch (error: any) {
@@ -28,9 +28,9 @@ export const addHolding = (holding: any) => async (dispatch: any) => {
 
 //rozlišit na BUY a SELL v componentu?
 export const updateHolding =
-  (id: any, holding: any) => async (dispatch: any) => {
+  (name: string, holding: any) => async (dispatch: any) => {
     try {
-      const { data } = await api.updateHolding(id, holding);
+      const { data } = await api.updateHolding(name, holding);
 
       dispatch({ type: UPDATE_HOLDING, payload: data });
     } catch (error: any) {

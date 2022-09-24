@@ -57,7 +57,8 @@ export const updateHolding = async (req, res) => {
 
   const updatedHolding = { name, price, amount, date, _id: id };
 
-  await Holding.findByIdAndUpdate(id, updatedPost, { new: true });
+  /* await Holding.findByIdAndUpdate(id, updatedPost, { new: true }); */
+  await Holding.replaceOne({ name: name }, updatedHolding); //pak dát jen NAME místo NAME:NAME
 
   res.json(updatedHolding);
 };

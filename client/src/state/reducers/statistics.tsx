@@ -41,7 +41,7 @@ const DUMMY_HOLDINGS = [
   TBD: true,
 } */
 
-export default (holdings = /* DUMMY_HOLDINGS */ [], action: any) => {
+export default (holdings = DUMMY_HOLDINGS /* [] */, action: any) => {
   switch (action.type) {
     case FETCH_ALL_HOLDINGS: // bude useEffect v APP komponentu. Na začátku se načte do state holdings z mongodb
       return action.payload;
