@@ -29,7 +29,7 @@ export const getHolding = async (req, res) => {
 
 export const createHolding = async (req, res) => {
   const { id, name, price, amount, date } = req.body;
-  console.log(req.body);
+  /* console.log(req.body); */
 
   const newHolding = new Holding({
     id,
@@ -49,13 +49,15 @@ export const createHolding = async (req, res) => {
 };
 
 export const updateHolding = async (req, res) => {
-  /* const { name } = req.params; */ //NEVIM NA CO JE???
-  const { id, name, price, amount, date } = req.body;
+  const { name } = req.params; //NEVIM NA CO JE???
+  /* const { id, name, price, amount, date } = req.body; */
+  const updatedHolding = req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`An error occured during the update.`);
+  /*   if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`An error occured during the update.`); */
 
-  const updatedHolding = { name, price, amount, date, _id: id };
+  /*  const updatedHolding = { _id: id, name, price, amount, date }; */
+  console.log(updatedHolding);
 
   /* await Holding.findByIdAndUpdate(id, updatedPost, { new: true }); */
   await Holding.replaceOne({ name: name }, updatedHolding); //pak dát jen NAME místo NAME:NAME

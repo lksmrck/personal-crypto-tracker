@@ -11,7 +11,7 @@ export default function MainPage() {
       {/*    <HomePage /> */}
       <Form />
       <Statistics />
-      {/*  <TransactionHistory /> */}
+      <TransactionHistory />
     </div>
   );
 }

@@ -48,8 +48,6 @@ export default (holdings = DUMMY_HOLDINGS /* [] */, action: any) => {
     case ADD_HOLDING: // přidání holdingu, pokud se daný coin ještě nedrží
       return [...holdings, action.payload];
     case UPDATE_HOLDING:
-      //SEM DAT LOGIKU OHLEDNE UPDATE VYPOCTU ATD.
-
       return holdings.map(
         (holding: any) =>
           holding.name === action.payload.name ? action.payload : holding // _id = id přidělené automaticky v mongoose

@@ -19,7 +19,7 @@ const router = express.Router();
 router.get("/holdings", getHoldings);
 router.post("/holdings", createHolding);
 router.get("/holdings/:name", getHolding); //dodělat
-router.patch("holdings/:name", updateHolding); //dodělat
+router.patch("/holdings/:name", updateHolding); //dodělat
 
 //Transactions routes
 router.get("/transactions", getTransactions);

@@ -9,10 +9,11 @@ import CryptoSelect from "./CryptoSelect";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { addHolding, updateHolding } from "../../state/actions/statistics";
 import { addTransaction } from "../../state/actions/transactions";
+import TransactionType from "./TransactionType";
 
 /* import { CryptoItem } from "../../common/modelTypes"; */
 import { RootState } from "../..";
-import uptadeHolding from "./updateHolding";
+import updateHoldingStatistics from "./updateHoldingStatistics";
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -21,7 +22,7 @@ export default function Form() {
   const amountInputRef = useRef<any>(null);
   const dateInputRef = useRef<HTMLInputElement | null>(null);
 
-  const [buySell, setBuySell] = useState("");
+  const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
 
   const dispatch = useAppDispatch();
   const holdings = useAppSelector((state: RootState) => state.statistics); //Dle slices, které jsem dal do store (index.tsx)
@@ -83,8 +84,9 @@ export default function Form() {
     };
 
     //Výpočty - Průměrná nákupní cena, celkový holding
-    const updatedHolding = updateHolding(existingItem, formItem);
+    const updatedHolding = updateHoldingStatistics(existingItem, formItem);
     console.log(updatedHolding);
+    console.log(existingItem);
     //Pokud položka už existuje, posílám do reduceru updateExistingHolding. Pokud je to první položka, posílám do addNewHolding
     if (existingItem) {
       dispatch(updateHolding(formItem.name, updatedHolding));
@@ -96,25 +98,23 @@ export default function Form() {
     e: React.MouseEvent<HTMLElement>,
     newBuySell: "buy" | "sell"
   ) => {
-    setBuySell(newBuySell);
+    if (newBuySell !== null) {
+      setBuySell(newBuySell);
+    }
+  };
+
+  const onClickBackHandler = () => {
+    console.log(buySell);
   };
 
   return (
     <StyledForm onSubmit={onSubmitHandler} ref={formRef}>
       <div className="form">
         <div>
-          <ToggleButtonGroup
-            value={buySell}
-            exclusive
-            onChange={handleBuySellChange}
-          >
-            <ToggleButton sx={{ color: "green", borderRadius: 2 }} value="buy">
-              Buy
-            </ToggleButton>
-            <ToggleButton sx={{ color: "red", borderRadius: 2 }} value="sell">
-              Sell
-            </ToggleButton>
-          </ToggleButtonGroup>
+          <TransactionType
+            buySell={buySell}
+            handleBuySellChange={handleBuySellChange}
+          />
           <CryptoSelect selected={selectedCryptoInput} value={inputName} />
           <Input
             label=""
@@ -142,7 +142,7 @@ export default function Form() {
           />
           <div className="buttons-container">
             <Button type="submit">Add transaction</Button>
-            <Button>Back</Button>
+            <Button onClick={onClickBackHandler}>Back</Button>
           </div>
         </div>
       </div>

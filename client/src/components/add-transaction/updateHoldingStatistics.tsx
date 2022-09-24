@@ -2,7 +2,7 @@
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
 
-const updateHolding = (
+const updateHoldingStatistics = (
   /* transactionType: string, */
 
   holdingToBeUpdated: any,
@@ -27,9 +27,10 @@ const updateHolding = (
   } else if (formItem.transactionType === "sell") {
     return {
       ...formItem,
+      price: holdingToBeUpdated.price,
       amount: holdingToBeUpdated.amount - formItem.amount,
     };
   }
 };
 
-export default updateHolding;
+export default updateHoldingStatistics;

@@ -49,7 +49,7 @@ export default (transactions = DUMMY_TRANSACTIONS, action: any) => {
     case FETCH_ALL_TRANSACTIONS:
       return action.payload;
     case ADD_TRANSACTION:
-      return action.payload;
+      return [...transactions, action.payload];
 
     default:
       return transactions;

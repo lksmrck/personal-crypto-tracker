@@ -17,7 +17,7 @@ export const getTransactions = async (req, res) => {
 
 export const addTransaction = async (req, res) => {
   const { transactionType, id, name, price, amount, date } = req.body;
-  console.log(req.body);
+  /*   console.log(req.body); */
 
   const newTransaction = new Transaction({
     transactionType,
