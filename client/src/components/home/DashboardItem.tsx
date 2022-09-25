@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 import { StyledDashboardItem } from "./styled";
+import DashboardContext from "../../state/DashboardContext";
 
 const DUMMY_DATA = [
   {
@@ -34,6 +35,15 @@ const DUMMY_DATA = [
 ];
 
 const DashboardItem: React.FC = () => {
+  /* const {getDashboardData} = useContext(DashboardContext) */
+  const context = useContext(DashboardContext);
+  const dashboardCryptoData = context?.dashboardData;
+
+  useEffect(() => {
+    context?.getDashboardData();
+    console.log(dashboardCryptoData);
+  }, []);
+
   const [dashboardItems, setDashboardItems] = useState(DUMMY_DATA);
   return (
     <StyledDashboardItem>
@@ -41,17 +51,17 @@ const DashboardItem: React.FC = () => {
         <span>Ticker</span>
         <span>Name</span>
         <span>Price</span>
-        <span>24h movement</span>
         <span>Market cap</span>
+        <span>24h movement</span>
       </div>
-      {DUMMY_DATA.map((item: DashboardCryptoItem) => {
+      {dashboardCryptoData.map((item: any) => {
         return (
           <div>
-            <span>{item.ticker}</span>
-            <span>{item.name}</span>
-            <span>{item.price}</span>
-            <span>{item.dayMovement}</span>
-            <span>{item.marketCap}</span>
+            <span>{item.symbol}</span>
+            <span>{item.id}</span>
+            <span>{item.current_price}</span>
+            <span>{item.market_cap}</span>
+            <span>{item.price_change_percentage_24h}</span>
           </div>
         );
       })}
