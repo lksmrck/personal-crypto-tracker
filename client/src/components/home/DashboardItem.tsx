@@ -3,7 +3,7 @@ import { DashboardCryptoItem } from "../../common/modelTypes";
 import { StyledDashboardItem } from "./styled";
 import DashboardContext from "../../state/DashboardContext";
 
-const DUMMY_DATA = [
+/* const DUMMY_DATA = [
   {
     ticker: "BTC",
     name: "Bitcoin",
@@ -32,7 +32,7 @@ const DUMMY_DATA = [
     dayMovement: "12%",
     marketCap: "11000000",
   },
-];
+]; */
 
 const DashboardItem: React.FC = () => {
   /* const {getDashboardData} = useContext(DashboardContext) */
@@ -41,10 +41,9 @@ const DashboardItem: React.FC = () => {
 
   useEffect(() => {
     context?.getDashboardData();
-    console.log(dashboardCryptoData);
   }, []);
-
-  const [dashboardItems, setDashboardItems] = useState(DUMMY_DATA);
+  /* 
+  const [dashboardItems, setDashboardItems] = useState(DUMMY_DATA); */
   return (
     <StyledDashboardItem>
       <div className="transactions-title">
@@ -57,8 +56,8 @@ const DashboardItem: React.FC = () => {
       {dashboardCryptoData.map((item: any) => {
         return (
           <div>
-            <span>{item.symbol}</span>
-            <span>{item.id}</span>
+            <span>{item.ticker}</span>
+            <span>{item.name}</span>
             <span>{item.current_price}</span>
             <span>{item.market_cap}</span>
             <span>{item.price_change_percentage_24h}</span>

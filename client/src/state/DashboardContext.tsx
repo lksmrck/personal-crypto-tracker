@@ -23,8 +23,19 @@ export const DashboardContextProvider: React.FC<{
     axios
       .get(url)
       .then((res) => {
-        setDashboardData(res.data);
-        console.log(res.data);
+        const rawData = res.data;
+        const reducedData = rawData.map((item: any) => ({
+          name: item.id,
+          ticker: item.symbol,
+          imageURL: item.image,
+          current_price: item.current_price,
+          market_cap: item.market_cap,
+          price_change_24h: item.price_change_24h,
+          price_change_percentage_24h: item.price_change_percentage_24h,
+          last_updated: item.last_updated,
+        }));
+        console.log(reducedData);
+        setDashboardData(reducedData);
       })
       .catch((error) => {
         console.log(error);
