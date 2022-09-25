@@ -5,6 +5,7 @@ import { BiPlusCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { RootState } from "../..";
 import { CryptoItem } from "../../common/modelTypes";
+import IconButton from "@mui/material/IconButton";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
@@ -44,7 +45,15 @@ const StatisticsCard = () => {
                 <p>
                   <span>Last updated</span> bude dotaženo
                 </p>
-                <BiPlusCircle />
+                <IconButton>
+                  <BiPlusCircle
+                    style={{
+                      color: "483196",
+                      width: "50px",
+                      height: "50px",
+                    }}
+                  />
+                </IconButton>
               </div>
             </div>
           </StyledStatisticsCard>

@@ -1,14 +1,6 @@
-//Custom hook pro výpočty při update holdingu (průměrná cena, držené množství atd)
-import { useAppSelector } from "../../state/hooks";
-import { RootState } from "../..";
+//Funkce pro výpočty při update holdingu (průměrná cena, držené množství atd)
 
-const updateHoldingStatistics = (
-  /* transactionType: string, */
-
-  holdingToBeUpdated: any,
-  formItem?: any
-) => {
-  /*   const holdings = useAppSelector((state: RootState) => state.statistics); */
+const updateHoldingStatistics = (holdingToBeUpdated: any, formItem?: any) => {
   const oldTotalPrice = holdingToBeUpdated.price * holdingToBeUpdated.amount;
 
   if (formItem.transactionType === "buy") {

@@ -26,7 +26,6 @@ export const addHolding = (holding: any) => async (dispatch: any) => {
   }
 };
 
-//rozlišit na BUY a SELL v componentu?
 export const updateHolding =
   (name: string, holding: any) => async (dispatch: any) => {
     try {

@@ -2,8 +2,7 @@ import React, { useState, useRef } from "react";
 import Input from "../Input";
 import { StyledForm } from "./styled";
 import { Button } from "@mui/material";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+
 import CryptoSelect from "./CryptoSelect";
 /* import { useSelector, useDispatch } from "react-redux"; */
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
@@ -64,6 +63,8 @@ export default function Form() {
       (holding: { name: string }) => holding.name === formItem.name
     );
 
+    console.log(existingItem);
+
     //Forma itemu, který se posílá do holdings reduceru
     const newHoldingItem = {
       id: formItem.id,
@@ -84,11 +85,12 @@ export default function Form() {
     };
 
     //Výpočty - Průměrná nákupní cena, celkový holding
-    const updatedHolding = updateHoldingStatistics(existingItem, formItem);
-    console.log(updatedHolding);
-    console.log(existingItem);
+
+    /*  console.log(updatedHolding);
+    console.log(existingItem); */
     //Pokud položka už existuje, posílám do reduceru updateExistingHolding. Pokud je to první položka, posílám do addNewHolding
-    if (existingItem) {
+    if (existingItem !== undefined) {
+      const updatedHolding = updateHoldingStatistics(existingItem, formItem);
       dispatch(updateHolding(formItem.name, updatedHolding));
     } else dispatch(addHolding(newHoldingItem));
     dispatch(addTransaction(newTransactionItem));
@@ -122,7 +124,9 @@ export default function Form() {
               id: "Price per item",
               type: "number",
               ref: priceInputRef,
+              min: 0.001,
             }}
+            startAdornment="$"
           />
           <Input
             label=""
@@ -130,6 +134,7 @@ export default function Form() {
               id: "Amount",
               type: "number",
               ref: amountInputRef,
+              min: 0.00001,
             }}
           />
           <Input

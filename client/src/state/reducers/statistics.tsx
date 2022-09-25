@@ -12,14 +12,14 @@ const DUMMY_HOLDINGS = [
     price: 24000,
     amount: 14,
     date: "24.1.2021",
-  },
+  } /* ,
   {
     id: 1,
     name: "Cardano",
     price: 1.4,
     amount: 190,
     date: "24.1.2021",
-  },
+  } */,
   {
     id: 1,
     name: "Polkadot",
@@ -48,9 +48,8 @@ export default (holdings = DUMMY_HOLDINGS /* [] */, action: any) => {
     case ADD_HOLDING: // přidání holdingu, pokud se daný coin ještě nedrží
       return [...holdings, action.payload];
     case UPDATE_HOLDING:
-      return holdings.map(
-        (holding: any) =>
-          holding.name === action.payload.name ? action.payload : holding // _id = id přidělené automaticky v mongoose
+      return holdings.map((holding: any) =>
+        holding.name === action.payload.name ? action.payload : holding
       );
 
     default:

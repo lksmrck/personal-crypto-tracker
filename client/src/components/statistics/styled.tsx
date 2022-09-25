@@ -20,6 +20,7 @@ export const StyledStatisticsCard = styled.div`
   box-shadow: ${theme.cardShadow};
   border-radius: ${theme.borderRadius};
   ${centerItems};
+  font-size: 20px;
 
   .stats-container {
   }

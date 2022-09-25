@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const holdingsURL = "http://localhost:8000/holdings"; //dát /holdings a dolů /transactions
+const holdingsURL = "http://localhost:8000/holdings";
 const transactionsURL = "http://localhost:8000/transactions";
 
 //Holdings
@@ -10,7 +10,7 @@ export const addHolding = (newHolding: any) =>
   axios.post(holdingsURL, newHolding);
 
 export const updateHolding = (name: string, updatedHolding: any) =>
-  axios.patch(`${holdingsURL}/${name}`, updatedHolding); //zkopirovany fetch - prizpusobit --> MELO BY BYT OK
+  axios.patch(`${holdingsURL}/${name}`, updatedHolding);
 
 //Transactions history
 export const fetchTransactions = () => axios.get(transactionsURL);

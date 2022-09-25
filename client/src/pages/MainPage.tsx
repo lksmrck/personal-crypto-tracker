@@ -8,7 +8,7 @@ export default function MainPage() {
   return (
     <div>
       <Navbar />
-      {/*    <HomePage /> */}
+      <HomePage />
       <Form />
       <Statistics />
       <TransactionHistory />

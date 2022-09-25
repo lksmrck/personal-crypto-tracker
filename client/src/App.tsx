@@ -3,6 +3,7 @@ import MainPage from "./pages/MainPage";
 import { useAppDispatch } from "./state/hooks";
 import { getHoldings } from "./state/actions/statistics";
 import { getTransactions } from "./state/actions/transactions";
+import { DashboardContextProvider } from "./state/DashboardContext";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -15,7 +16,9 @@ function App() {
 
   return (
     <div className="App">
-      <MainPage />
+      <DashboardContextProvider>
+        <MainPage />
+      </DashboardContextProvider>
     </div>
   );
 }

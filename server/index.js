@@ -1,8 +1,3 @@
-/* const express = require("express");
-const mongoose = require("mongoose");
-const path = require("path");
-const cors = require("cors"); */
-
 import express from "express";
 import mongoose from "mongoose";
 import path from "path";
@@ -11,7 +6,6 @@ import cors from "cors";
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-/* const routes = require("./routes/api"); */
 import routes from "./routes/api.js";
 
 const MONGODB_URL =
