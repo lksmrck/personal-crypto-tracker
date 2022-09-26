@@ -1,11 +1,18 @@
 //Dashboard
 export interface DashboardCryptoItem {
-  ticker: String;
   name: String;
-  price: String;
-  dayMovement: String;
-  marketCap: String;
+  ticker: String;
+  imageURL: String;
+  current_price: Number;
+  market_cap: Number;
+  price_change_24h: Number;
+  price_change_percentage_24h: Number;
+  last_updated: String;
+
+  /* dayMovement: String;
+  marketCap: String; */
 }
+
 //Statistics (holdings)
 export interface UpdatingCryptoItem {
   transactionType: "buy" | "sell";

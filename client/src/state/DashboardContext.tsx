@@ -2,11 +2,12 @@ import { createContext, useState } from "react";
 import { Dispatch } from "react";
 import { SetStateAction } from "react";
 import axios from "axios";
+import { DashboardCryptoItem } from "../common/modelTypes";
 
 interface AppContextInterface {
   setDashboardData: Dispatch<SetStateAction<string>>;
   getDashboardData: () => void;
-  dashboardData: any;
+  dashboardData: any /* DashboardCryptoItem[] */;
 }
 
 const DashboardContext = createContext<AppContextInterface | null>(null);
@@ -14,7 +15,8 @@ const DashboardContext = createContext<AppContextInterface | null>(null);
 export const DashboardContextProvider: React.FC<{
   children: any;
 }> = ({ children }) => {
-  const [dashboardData, setDashboardData] = useState<any>([]);
+  const [dashboardData, setDashboardData] =
+    useState<any /* DashboardCryptoItem[] */>([]);
 
   const url =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=1&sparkline=false&price_change_percentage=24h";
@@ -34,7 +36,6 @@ export const DashboardContextProvider: React.FC<{
           price_change_percentage_24h: item.price_change_percentage_24h,
           last_updated: item.last_updated,
         }));
-        console.log(reducedData);
         setDashboardData(reducedData);
       })
       .catch((error) => {

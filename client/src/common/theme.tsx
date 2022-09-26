@@ -50,8 +50,8 @@ export const theme: DefaultTheme = {
     text: "#001e3c",
     contrastBg: "#436fe5",
     label: "#a0a6af",
-    red: "#eb4c9b",
-    green: "#1ab586",
+    red: "#ea3943",
+    green: "#2bcc8f",
   },
   headerShadow:
     "rgb(167 175 183 / 32%) 5px 6px 5px 1px, rgb(190 205 245) 0px 2px 4px 0px;",
@@ -60,7 +60,7 @@ export const theme: DefaultTheme = {
   ...commonThemeProperties,
 };
 
-export const darkTheme: DefaultTheme = {
+/* export const darkTheme: DefaultTheme = {
   color: {
     layoutBg: "#082c46",
     cardBg: "#1b3e5a",
@@ -74,7 +74,7 @@ export const darkTheme: DefaultTheme = {
   cardShadow:
     "rgb(6 8 20 / 60%) 0px 1px 8px 0px, rgb(0 0 0 / 15%) 0px 4px 4px 0px",
   ...commonThemeProperties,
-};
+}; */
 
 export const centerItems = `
 display: flex;
@@ -91,4 +91,12 @@ height: 400px;
 //zatim nepoužito
 export const contentWidth = `
 width: 1300px;
+`;
+
+export const positivePercentage = `
+color: #2bcc8f;
+`;
+export const negativePercentage = `
+color: #ea3943;
+  
 `;

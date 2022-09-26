@@ -7,6 +7,7 @@ import { RootState } from "../..";
 import { CryptoItem } from "../../common/modelTypes";
 import IconButton from "@mui/material/IconButton";
 import DashboardContext from "../../state/DashboardContext";
+import { intlNumberFormat, numberFormat } from "../../utils/number-format";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
@@ -40,27 +41,42 @@ const StatisticsCard = () => {
           <StyledStatisticsCard>
             <div className="stats-container">
               <div className="stats-title">
-                <img src={btc_icon} alt="icon" width="50px" height="50px" />
+                <img
+                  src={cryptoObject?.imageURL}
+                  alt="icon"
+                  width="50px"
+                  height="50px"
+                />
                 <h1>{holding.name.toUpperCase()}</h1>
               </div>
 
               <div className="text-container">
                 <p>
-                  <span>Market price per unit:</span>{" "}
-                  {cryptoObject?.current_price}
+                  <span className="holding-price">Market price per unit:</span>{" "}
+                  {intlNumberFormat(cryptoObject?.current_price, "usd")}
                 </p>
                 <p>
-                  <span>Average purchase price</span> {holding.price}
+                  <span>Average purchase price</span>{" "}
+                  {intlNumberFormat(holding.price, "usd")}
                 </p>
                 <p>
                   <span>Holding amount</span> {holding.amount}
                 </p>
                 <p>
                   <span>P/L USD </span>
-                  {PLUSD}
+                  {intlNumberFormat(PLUSD, "usd")}
                 </p>
                 <p>
-                  <span>P/L %</span> <span>{PLpercentage}</span>
+                  <span
+                    className={
+                      PLpercentage > 0
+                        ? "positive-change"
+                        : "negative-percentage"
+                    }
+                  >
+                    P/L %
+                  </span>{" "}
+                  <span>{`${PLpercentage.toFixed(2)}%`}</span>
                 </p>
                 <p>
                   <span>Last transaction</span> {holding.date}
@@ -68,6 +84,7 @@ const StatisticsCard = () => {
                 <p>
                   <span>Last updated</span> {cryptoObject?.last_updated}
                 </p>
+
                 <IconButton>
                   <BiPlusCircle
                     style={{

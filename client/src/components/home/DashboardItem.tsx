@@ -2,37 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 import { StyledDashboardItem } from "./styled";
 import DashboardContext from "../../state/DashboardContext";
-
-/* const DUMMY_DATA = [
-  {
-    ticker: "BTC",
-    name: "Bitcoin",
-    price: "22,000 USD",
-    dayMovement: "7%",
-    marketCap: "381000000",
-  },
-  {
-    ticker: "ETH",
-    name: "Ethereum",
-    price: "1,580 USD",
-    dayMovement: "-2%",
-    marketCap: "193000000",
-  },
-  {
-    ticker: "USDT",
-    name: "Tether",
-    price: "1 USD",
-    dayMovement: "0%",
-    marketCap: "67000000",
-  },
-  {
-    ticker: "SOL",
-    name: "Solana",
-    price: "33.28 USD",
-    dayMovement: "12%",
-    marketCap: "11000000",
-  },
-]; */
+import { firstLetterCapitalized } from "../../utils/text-format";
+import { intlNumberFormat, numberFormat } from "../../utils/number-format";
 
 const DashboardItem: React.FC = () => {
   /* const {getDashboardData} = useContext(DashboardContext) */
@@ -46,21 +17,40 @@ const DashboardItem: React.FC = () => {
   const [dashboardItems, setDashboardItems] = useState(DUMMY_DATA); */
   return (
     <StyledDashboardItem>
-      <div className="transactions-title">
-        <span>Ticker</span>
-        <span>Name</span>
-        <span>Price</span>
-        <span>Market cap</span>
-        <span>24h movement</span>
+      <div className="dashboard-headings-container">
+        <span className="name-heading">Name</span>
+        <span className="price-heading">Price</span>
+        <span className="market-cap-heading">Market cap</span>
+        <span className="movement-heading">24h movement</span>
       </div>
       {dashboardCryptoData.map((item: any) => {
         return (
-          <div>
-            <span>{item.ticker}</span>
-            <span>{item.name}</span>
-            <span>{item.current_price}</span>
-            <span>{item.market_cap}</span>
-            <span>{item.price_change_percentage_24h}</span>
+          <div className="data-container">
+            <div className="coin-name-container">
+              <img src={item.imageURL} alt="icon" width="22px" height="22px" />
+              <span className="coin-name">
+                {firstLetterCapitalized(item.name)}
+              </span>
+              <span className="coin-ticker">{item.ticker.toUpperCase()}</span>
+            </div>
+            <div className="coin-price">
+              <span>{intlNumberFormat(item.current_price, "usd")}</span>
+            </div>
+            <div className="market-cap">
+              <span>{`$${numberFormat(item.market_cap)}`}</span>
+            </div>
+            <div className="coin-24h-percentage">
+              <span
+                className={
+                  item.price_change_percentage_24h > 0
+                    ? "positive-change"
+                    : "negative-change"
+                }
+              >
+                {" "}
+                {`${item.price_change_percentage_24h.toFixed(2)}%`}
+              </span>
+            </div>
           </div>
         );
       })}
