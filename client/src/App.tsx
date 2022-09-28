@@ -5,15 +5,14 @@ import { getHoldings } from "./state/actions/statistics";
 import { getTransactions } from "./state/actions/transactions";
 import { DashboardContextProvider } from "./state/DashboardContext";
 import Navbar from "./components/layout/Navbar";
-import AddTransaction from "./pages/AddTransaction";
 import Holdings from "./pages/Holdings";
 import Transactions from "./pages/Transactions";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 function App() {
   const dispatch = useAppDispatch();
 
-  //Fetch holdings z databáze
+  //Fetch holdings z databáze - TADY NEBO V HOLDINGS/TRANSACTIONS KOMPONENTU?????
   useEffect(() => {
     dispatch(getHoldings());
     dispatch(getTransactions());
@@ -23,6 +22,9 @@ function App() {
     <div className="App">
       <DashboardContextProvider>
         <Navbar />
+        <Route path="/" exact>
+          <Redirect to="/dashboard" />
+        </Route>
         <Route path="/dashboard">
           <HomeDashboard />
         </Route>

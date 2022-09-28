@@ -17,8 +17,6 @@ const StatisticsCard = () => {
 
   useEffect(() => {
     context?.getDashboardData();
-    /* const jedna = holdings[0].name.toLowerCase();
-    const dva = dashboardCryptoData[0].name; */
   }, []);
 
   const holdings = useSelector((state: RootState) => state.statistics);

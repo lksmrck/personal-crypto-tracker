@@ -133,7 +133,8 @@ export default function Form(props: FormProps) {
               id: "Price per item",
               type: "number",
               ref: priceInputRef,
-              min: 0.001,
+              min: 0.01,
+              step: 0.01,
             }}
             startAdornment="$"
           />
@@ -144,6 +145,7 @@ export default function Form(props: FormProps) {
               type: "number",
               ref: amountInputRef,
               min: 0.00001,
+              step: 0.00001,
             }}
           />
           <Input

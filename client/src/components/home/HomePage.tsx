@@ -14,7 +14,7 @@ export default function HomePage() {
               <Button variant="contained">Add Transaction</Button>
             </Link>
             <Link to="/holdings">
-              <Button variant="contained">Holding statistics</Button>
+              <Button variant="contained">My holdings</Button>
             </Link>
             <Link to="/transactions">
               <Button variant="contained">Transaction history</Button>

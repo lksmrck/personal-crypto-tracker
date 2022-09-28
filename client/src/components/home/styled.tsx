@@ -27,6 +27,7 @@ export const StyledHomePage = styled.div`
     button {
       margin: 2%;
     }
+    margin-bottom: 2%;
   }
 
   .home-dashboard {
@@ -40,8 +41,10 @@ export const StyledHomePage = styled.div`
 `;
 
 export const StyledDashboardItem = styled.div`
-  width: 100%;
+  width: 60%;
   background-color: white;
+  box-shadow: ${theme.cardShadow};
+  border-radius: ${theme.borderRadius};
   .dashboard-headings-container {
     background-color: antiquewhite;
     font-weight: bold;
@@ -65,6 +68,11 @@ export const StyledDashboardItem = styled.div`
     margin: 1px;
     border-bottom: 1px solid #d6dde3;
     height: 25px;
+    align-items: center;
+  }
+  .data-container:hover {
+    background-color: #dadfe3;
+    cursor: pointer;
   }
   .coin-name-container {
     display: flex;
@@ -122,6 +130,6 @@ export const StyledDashboardItem = styled.div`
 `;
 export const StyledDashboard = styled.div`
   width: 100%;
-  box-shadow: ${theme.cardShadow};
-  border-radius: ${theme.borderRadius};
+  display: flex;
+  justify-content: center;
 `;

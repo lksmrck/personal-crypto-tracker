@@ -4,9 +4,11 @@ import HomePage from "./HomePage";
 
 export default function Dashboard() {
   return (
-    <StyledDashboard>
+    <>
       <HomePage />
-      <DashboardItem />
-    </StyledDashboard>
+      <StyledDashboard>
+        <DashboardItem />
+      </StyledDashboard>
+    </>
   );
 }
