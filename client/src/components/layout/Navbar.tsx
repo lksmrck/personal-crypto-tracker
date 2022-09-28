@@ -13,8 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 /* import AdbIcon from '@mui/icons-material/Adb'; */
 
-const pages = ["Home", "Add transaction", "Statistics", "Transaction history"];
-const settings = ["Profile", "Dashboard", "Logout"];
+const pages = ["Dashboard", "Add transaction", "Holdings", "Transactions"];
+const settings = ["Profile", "Logout"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLInputElement | null>(

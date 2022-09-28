@@ -93,10 +93,10 @@ export const contentWidth = `
 width: 1300px;
 `;
 
-export const positivePercentage = `
+export const positiveChange = `
 color: #2bcc8f;
 `;
-export const negativePercentage = `
+export const negativeChange = `
 color: #ea3943;
   
 `;

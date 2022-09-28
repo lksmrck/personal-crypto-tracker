@@ -1,5 +1,12 @@
 import styled from "styled-components";
-import { centerItems, cardSize, theme, contentWidth } from "../../common/theme";
+import {
+  centerItems,
+  cardSize,
+  theme,
+  contentWidth,
+  positiveChange,
+  negativeChange,
+} from "../../common/theme";
 
 export const StyledStatistics = styled.div`
   margin: 2% 5% 0 7.5%;
@@ -20,11 +27,31 @@ export const StyledStatisticsCard = styled.div`
   box-shadow: ${theme.cardShadow};
   border-radius: ${theme.borderRadius};
   ${centerItems};
-  font-size: 20px;
+  font-size: 15px;
+  background-color: white;
 
   .stats-container {
   }
   .stats-title {
     display: flex;
+    h1 {
+      margin-left: 5%;
+      font-size: 45px;
+    }
+  }
+  .text-container {
+    margin-top: 7%;
+  }
+  .positive-change {
+    ${positiveChange}
+  }
+  .negative-change {
+    ${negativeChange}
+  }
+  .holding-headings {
+    color: grey;
+  }
+  .holding-price {
+    font-weight: bold;
   }
 `;

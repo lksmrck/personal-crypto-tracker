@@ -1,13 +1,14 @@
 import { useContext, useEffect } from "react";
 import btc_icon from "../../assets/bitcoin-logo.png";
 import { StyledStatisticsCard } from "./styled";
-import { BiPlusCircle } from "react-icons/bi";
+import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { RootState } from "../..";
 import { CryptoItem } from "../../common/modelTypes";
 import IconButton from "@mui/material/IconButton";
 import DashboardContext from "../../state/DashboardContext";
-import { intlNumberFormat, numberFormat } from "../../utils/number-format";
+import { intlNumberFormat } from "../../utils/number-format";
+import { formatDate } from "../../utils/date-format";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
@@ -19,8 +20,6 @@ const StatisticsCard = () => {
     const jedna = holdings[0].name.toLowerCase();
     const dva = dashboardCryptoData[0].name;
 
-    console.log(jedna);
-    console.log(dva);
   }, []); */
 
   const holdings = useSelector((state: RootState) => state.statistics);
@@ -36,6 +35,7 @@ const StatisticsCard = () => {
           holding.amount * holding.price;
 
         const PLpercentage = PLUSD / (holding.amount * holding.price);
+        const myDate = new Date(cryptoObject?.last_updated);
 
         return (
           <StyledStatisticsCard>
@@ -44,53 +44,75 @@ const StatisticsCard = () => {
                 <img
                   src={cryptoObject?.imageURL}
                   alt="icon"
-                  width="50px"
-                  height="50px"
+                  width="60px"
+                  height="60px"
                 />
                 <h1>{holding.name.toUpperCase()}</h1>
               </div>
 
               <div className="text-container">
                 <p>
-                  <span className="holding-price">Market price per unit:</span>{" "}
-                  {intlNumberFormat(cryptoObject?.current_price, "usd")}
+                  <span className="holding-headings">
+                    Market price per unit:{" "}
+                  </span>
+                  <span className="holding-price">
+                    {intlNumberFormat(cryptoObject?.current_price, "usd")}
+                  </span>
                 </p>
                 <p>
-                  <span>Average purchase price</span>{" "}
+                  <span className="holding-headings">
+                    Average purchase price:
+                  </span>{" "}
                   {intlNumberFormat(holding.price, "usd")}
                 </p>
                 <p>
-                  <span>Holding amount</span> {holding.amount}
+                  <span className="holding-headings">Holding amount: </span>{" "}
+                  {holding.amount}
                 </p>
                 <p>
-                  <span>P/L USD </span>
-                  {intlNumberFormat(PLUSD, "usd")}
+                  <span className="holding-headings">P/L USD: </span>
+                  <span
+                    className={
+                      PLUSD > 0 ? "positive-change" : "negative-percentage"
+                    }
+                  >
+                    {intlNumberFormat(PLUSD, "usd")}
+                  </span>
                 </p>
                 <p>
+                  <span className="holding-headings">P/L %:</span>{" "}
                   <span
                     className={
                       PLpercentage > 0
                         ? "positive-change"
                         : "negative-percentage"
                     }
-                  >
-                    P/L %
-                  </span>{" "}
-                  <span>{`${PLpercentage.toFixed(2)}%`}</span>
+                  >{`${PLpercentage.toFixed(2)}%`}</span>
                 </p>
                 <p>
-                  <span>Last transaction</span> {holding.date}
+                  <span className="holding-headings">Last transaction: </span>
+                  <span> {holding.date}</span>
                 </p>
                 <p>
-                  <span>Last updated</span> {cryptoObject?.last_updated}
+                  <span className="holding-headings">Last updated: </span>
+                  <span> {myDate.toLocaleTimeString()}</span>
                 </p>
 
                 <IconButton>
                   <BiPlusCircle
                     style={{
-                      color: "483196",
-                      width: "50px",
-                      height: "50px",
+                      color: "green",
+                      width: "45px",
+                      height: "45px",
+                    }}
+                  />
+                </IconButton>
+                <IconButton>
+                  <BiMinusCircle
+                    style={{
+                      color: "red",
+                      width: "45px",
+                      height: "45px",
                     }}
                   />
                 </IconButton>

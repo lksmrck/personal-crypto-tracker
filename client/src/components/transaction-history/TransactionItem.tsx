@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Transaction } from "../../common/modelTypes";
 import { RootState } from "../..";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
+import { intlNumberFormat } from "../../utils/number-format";
+import { firstLetterCapitalized } from "../../utils/text-format";
 
 export default function TransactionItem() {
   const transactions = useAppSelector((state: RootState) => state.transactions);
@@ -26,8 +28,10 @@ export default function TransactionItem() {
             }
           >
             <span>{transaction.id}</span>
-            <span>{transaction.name}</span>
-            <span>{transaction.price}</span>
+            <span className="transaction-name">
+              {firstLetterCapitalized(transaction.name)}
+            </span>
+            <span>{intlNumberFormat(transaction.price, "usd")}</span>
             <span>{transaction.amount}</span>
             <span>{transaction.transactionType}</span>
           </div>

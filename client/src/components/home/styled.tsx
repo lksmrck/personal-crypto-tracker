@@ -2,8 +2,8 @@ import styled from "styled-components";
 import {
   centerItems,
   theme,
-  positivePercentage,
-  negativePercentage,
+  positiveChange,
+  negativeChange,
 } from "../../common/theme";
 
 export const StyledHomePage = styled.div`
@@ -18,6 +18,13 @@ export const StyledHomePage = styled.div`
   }
   .home-hav {
   }
+  .buttons-container {
+    display: flex;
+    ${centerItems}
+    button {
+      margin: 2%;
+    }
+  }
 
   .home-dashboard {
     display: flex;
@@ -31,6 +38,7 @@ export const StyledHomePage = styled.div`
 
 export const StyledDashboardItem = styled.div`
   width: 100%;
+  background-color: white;
   .dashboard-headings-container {
     background-color: antiquewhite;
     font-weight: bold;
@@ -103,10 +111,10 @@ export const StyledDashboardItem = styled.div`
     padding-right: 10%;
   }
   .positive-change {
-    ${positivePercentage}
+    ${positiveChange}
   }
   .negative-change {
-    ${negativePercentage}
+    ${negativeChange}
   }
 `;
 export const StyledDashboard = styled.div`

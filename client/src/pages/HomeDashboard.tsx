@@ -2,16 +2,12 @@ import Form from "../components/add-transaction/Form";
 import Navbar from "../components/layout/Navbar";
 import Statistics from "../components/statistics/Statistics";
 import TransactionHistory from "../components/transaction-history/TransactionHistory";
-import HomePage from "../components/home/HomePage";
+import Dashboard from "../components/home/Dashboard";
 
-export default function MainPage() {
+export default function HomeDashboard() {
   return (
     <div>
-      <Navbar />
-      <HomePage />
-      <Form />
-      <Statistics />
-      <TransactionHistory />
+      <Dashboard />
     </div>
   );
 }

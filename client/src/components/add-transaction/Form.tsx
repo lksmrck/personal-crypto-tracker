@@ -77,7 +77,7 @@ export default function Form() {
     //Forma itemu, který se posílá do transactions reduceru
     const newTransactionItem = {
       transactionType: formItem.transactionType,
-      id: formItem.id,
+      id: transactionNumber,
       name: formItem.name,
       price: formItem.price,
       amount: formItem.amount,
@@ -146,8 +146,16 @@ export default function Form() {
             }}
           />
           <div className="buttons-container">
-            <Button type="submit">Add transaction</Button>
-            <Button onClick={onClickBackHandler}>Back</Button>
+            <Button type="submit" variant="contained">
+              Add transaction
+            </Button>
+            <Button
+              onClick={onClickBackHandler}
+              variant="outlined"
+              color="error"
+            >
+              Back
+            </Button>
           </div>
         </div>
       </div>
