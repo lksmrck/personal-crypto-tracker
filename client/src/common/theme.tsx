@@ -60,22 +60,6 @@ export const theme: DefaultTheme = {
   ...commonThemeProperties,
 };
 
-/* export const darkTheme: DefaultTheme = {
-  color: {
-    layoutBg: "#082c46",
-    cardBg: "#1b3e5a",
-    text: "#ffffff",
-    contrastBg: "#cbd5f2",
-    label: "#bbc5ce",
-    red: "#eb4c9b",
-    green: "#1ab586",
-  },
-  headerShadow: "rgb(0 0 0 / 10%) 0px 4px 4px, rgb(6 8 20 / 70%) 0px 1px 10px",
-  cardShadow:
-    "rgb(6 8 20 / 60%) 0px 1px 8px 0px, rgb(0 0 0 / 15%) 0px 4px 4px 0px",
-  ...commonThemeProperties,
-}; */
-
 export const centerItems = `
 display: flex;
 justify-content: center;

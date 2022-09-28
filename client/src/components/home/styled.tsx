@@ -14,6 +14,9 @@ export const StyledHomePage = styled.div`
   h1 {
     font-size: 70px;
   }
+  a {
+    text-decoration: none;
+  }
   .home-container {
   }
   .home-hav {

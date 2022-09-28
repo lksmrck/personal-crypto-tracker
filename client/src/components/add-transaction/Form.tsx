@@ -1,20 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import Input from "../Input";
 import { StyledForm } from "./styled";
 import { Button } from "@mui/material";
-
+import DashboardContext from "../../state/DashboardContext";
 import CryptoSelect from "./CryptoSelect";
 /* import { useSelector, useDispatch } from "react-redux"; */
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { addHolding, updateHolding } from "../../state/actions/statistics";
 import { addTransaction } from "../../state/actions/transactions";
 import TransactionType from "./TransactionType";
+import { Dispatch, SetStateAction } from "react";
 
 /* import { CryptoItem } from "../../common/modelTypes"; */
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 
-export default function Form() {
+type FormProps = {
+  formShown: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function Form(props: FormProps) {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [inputName, setInputName] = useState<string>("");
   const priceInputRef = useRef<any>(null);
@@ -30,6 +35,14 @@ export default function Form() {
   const [transactionNumber, setTransactionNumber] = useState<number>(
     transactions.length + 1
   );
+
+  const context = useContext(DashboardContext);
+  const dashboardCryptoData = context?.dashboardData;
+  useEffect(() => {
+    context?.getDashboardData();
+    /* const jedna = holdings[0].name.toLowerCase();
+    const dva = dashboardCryptoData[0].name; */
+  }, []);
 
   const selectedCryptoInput = (crypto: string) => {
     setInputName(crypto);
@@ -105,10 +118,6 @@ export default function Form() {
     }
   };
 
-  const onClickBackHandler = () => {
-    console.log(buySell);
-  };
-
   return (
     <StyledForm onSubmit={onSubmitHandler} ref={formRef}>
       <div className="form">
@@ -150,7 +159,7 @@ export default function Form() {
               Add transaction
             </Button>
             <Button
-              onClick={onClickBackHandler}
+              onClick={() => props.formShown(false)}
               variant="outlined"
               color="error"
             >

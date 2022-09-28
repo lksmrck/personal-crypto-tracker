@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import DashboardContext from "../../state/DashboardContext";
 import { firstLetterCapitalized } from "../../utils/text-format";
+import { StyledCryptoName } from "./styled";
 
 type CryptoSelectProps = {
   selected: (crypto: string) => void;
@@ -23,7 +24,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
   };
 
   return (
-    <div className="select-crypto">
+    <div>
       <FormControl
         variant="filled"
         sx={{ minWidth: 120, backgroundColor: "white" }}
@@ -40,8 +41,15 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
           {/* Items v selectu se mapují z dat, které se stáhnout z API */}
           {dashboardCryptoData.map((crypto: any) => {
             return (
-              <MenuItem value={crypto.name}>
-                {firstLetterCapitalized(crypto.name)}
+              <MenuItem
+                key={crypto.name}
+                value={crypto.name}
+                sx={{ display: "flex" }}
+              >
+                <img src={crypto.imageURL} height="20px" width="20px" />
+                <StyledCryptoName>
+                  {firstLetterCapitalized(crypto.name)}
+                </StyledCryptoName>
               </MenuItem>
             );
           })}

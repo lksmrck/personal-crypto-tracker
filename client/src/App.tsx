@@ -8,6 +8,7 @@ import Navbar from "./components/layout/Navbar";
 import AddTransaction from "./pages/AddTransaction";
 import Holdings from "./pages/Holdings";
 import Transactions from "./pages/Transactions";
+import { Route } from "react-router-dom";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,10 +23,15 @@ function App() {
     <div className="App">
       <DashboardContextProvider>
         <Navbar />
-        <HomeDashboard />
-        <AddTransaction />
-        <Holdings />
-        <Transactions />
+        <Route path="/dashboard">
+          <HomeDashboard />
+        </Route>
+        <Route path="/holdings">
+          <Holdings />
+        </Route>
+        <Route path="/transactions">
+          <Transactions />
+        </Route>
       </DashboardContextProvider>
     </div>
   );
