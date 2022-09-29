@@ -99,7 +99,9 @@ const StatisticsCard = () => {
 
                 <IconButton
                   onClick={() => {
+                    formContext?.setFormShown(true);
                     formContext?.setSelectedCrypto(holding.name.toLowerCase());
+                    formContext?.setTransactionType("buy");
                   }}
                 >
                   <BiPlusCircle
@@ -110,7 +112,13 @@ const StatisticsCard = () => {
                     }}
                   />
                 </IconButton>
-                <IconButton>
+                <IconButton
+                  onClick={() => {
+                    formContext?.setFormShown(true);
+                    formContext?.setSelectedCrypto(holding.name.toLowerCase());
+                    formContext?.setTransactionType("sell");
+                  }}
+                >
                   <BiMinusCircle
                     style={{
                       color: "red",

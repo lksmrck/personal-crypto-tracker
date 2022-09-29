@@ -1,17 +1,22 @@
 import { StyledAddTransaction } from "./styled";
 import Form from "./Form";
-import { useState } from "react";
+import { useContext } from "react";
 import { Button } from "@mui/material";
+import FormContext from "../../state/FormContext";
 
 export default function AddTransaction() {
-  const [formShown, setFormShown] = useState(false);
+  const formContext = useContext(FormContext);
+
   return (
     <StyledAddTransaction>
-      {formShown ? (
-        <Form formShown={setFormShown} />
+      {formContext?.formShown ? (
+        <Form />
       ) : (
         <div className="button-container">
-          <Button variant="contained" onClick={() => setFormShown(true)}>
+          <Button
+            variant="contained"
+            onClick={() => formContext?.setFormShown(true)}
+          >
             Add transaction
           </Button>
         </div>

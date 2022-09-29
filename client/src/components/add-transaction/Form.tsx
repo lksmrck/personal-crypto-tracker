@@ -3,6 +3,7 @@ import Input from "../Input";
 import { StyledForm } from "./styled";
 import { Button } from "@mui/material";
 import DashboardContext from "../../state/DashboardContext";
+import FormContext from "../../state/FormContext";
 import CryptoSelect from "./CryptoSelect";
 /* import { useSelector, useDispatch } from "react-redux"; */
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
@@ -15,11 +16,7 @@ import { Dispatch, SetStateAction } from "react";
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 
-type FormProps = {
-  formShown: Dispatch<SetStateAction<boolean>>;
-};
-
-export default function Form(props: FormProps) {
+export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [inputName, setInputName] = useState<string>("");
   const priceInputRef = useRef<any>(null);
@@ -38,11 +35,17 @@ export default function Form(props: FormProps) {
 
   const context = useContext(DashboardContext);
   const dashboardCryptoData = context?.dashboardData;
+
+  const formContext = useContext(FormContext);
+
   useEffect(() => {
     context?.getDashboardData();
-    /* const jedna = holdings[0].name.toLowerCase();
-    const dva = dashboardCryptoData[0].name; */
   }, []);
+
+  useEffect(() => {
+    setInputName(formContext?.selectedCrypto!);
+    setBuySell(formContext?.transactionType!);
+  }, [formContext?.selectedCrypto, formContext?.transactionType]);
 
   const selectedCryptoInput = (crypto: string) => {
     setInputName(crypto);
@@ -75,8 +78,6 @@ export default function Form(props: FormProps) {
     const existingItem = holdings.find(
       (holding: { name: string }) => holding.name === formItem.name
     );
-
-    console.log(existingItem);
 
     //Forma itemu, který se posílá do holdings reduceru
     const newHoldingItem = {
@@ -161,7 +162,7 @@ export default function Form(props: FormProps) {
               Add transaction
             </Button>
             <Button
-              onClick={() => props.formShown(false)}
+              onClick={() => formContext?.setFormShown(false)}
               variant="outlined"
               color="error"
             >
