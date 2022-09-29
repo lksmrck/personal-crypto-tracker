@@ -127,6 +127,9 @@ export const StyledDashboardItem = styled.div`
   .negative-change {
     ${negativeChange}
   }
+  /*  .trade-icon {
+    padding-right: 2%;
+  } */
 `;
 export const StyledDashboard = styled.div`
   width: 100%;
