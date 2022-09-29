@@ -28,7 +28,6 @@ const DashboardItem: React.FC = () => {
   }, []);
 
   const dashboardItemClickHandler = (crypto: any): any => {
-    console.log(crypto);
     formContext?.setSelectedCrypto(crypto);
     formContext?.setFormShown(true);
     history.push("/holdings");
@@ -38,17 +37,24 @@ const DashboardItem: React.FC = () => {
   return (
     <StyledDashboardItem>
       <div className="dashboard-headings-container">
+        <span className="number-heading">#</span>
         <span className="name-heading">Name</span>
         <span className="price-heading">Price</span>
         <span className="market-cap-heading">Market cap</span>
-        <span className="movement-heading">24h movement</span>
+        <span className="movement-heading">24h change</span>
+        <span className="last-update-heading">Last updated</span>
       </div>
-      {dashboardCryptoData.map((item: any) => {
+      {dashboardCryptoData.map((item: any, index: number) => {
+        const lastUpdate = new Date(item?.last_updated);
+
         return (
           <div
             className="data-container"
             onClick={() => dashboardItemClickHandler(item.name.toLowerCase())}
           >
+            <div className="coin-number">
+              <span>{index + 1}</span>
+            </div>
             <div className="coin-name-container">
               <img src={item.imageURL} alt="icon" width="22px" height="22px" />
               <span className="coin-name">
@@ -73,6 +79,9 @@ const DashboardItem: React.FC = () => {
                 {" "}
                 {`${item.price_change_percentage_24h.toFixed(2)}%`}
               </span>
+            </div>
+            <div>
+              <span>{lastUpdate.toLocaleTimeString()}</span>
             </div>
             <span className="trade-icon">
               {/* <IconButton>

@@ -34,7 +34,7 @@ const StatisticsCard = () => {
           holding.amount * holding.price;
 
         const PLpercentage = PLUSD / (holding.amount * holding.price);
-        const myDate = new Date(cryptoObject?.last_updated);
+        const lastUpdate = new Date(cryptoObject?.last_updated);
 
         return (
           <StyledStatisticsCard>
@@ -94,7 +94,7 @@ const StatisticsCard = () => {
                 </p>
                 <p>
                   <span className="holding-headings">Last updated: </span>
-                  <span> {myDate.toLocaleTimeString()}</span>
+                  <span> {lastUpdate.toLocaleTimeString()}</span>
                 </p>
 
                 <IconButton

@@ -34,33 +34,57 @@ export const StyledHomePage = styled.div`
     display: flex;
 
     width: 100%;
-    /*  border: 2px solid red; */
-
-    /* border: 1px solid black; */
   }
 `;
 
 export const StyledDashboardItem = styled.div`
-  width: 60%;
+  width: 80%;
   background-color: white;
   box-shadow: ${theme.cardShadow};
   border-radius: ${theme.borderRadius};
+
   .dashboard-headings-container {
-    background-color: antiquewhite;
+    background-color: #90e1ff;
     font-weight: bold;
     width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     height: 30px;
     border-bottom: 2px solid grey;
 
+    .number-heading {
+      width: 5%;
+      text-align: center;
+    }
+    .name-heading {
+      width: 25%;
+      padding-left: 1%;
+      padding-top: 0.5%;
+    }
+    .price-heading {
+      width: 15%;
+      text-align: right;
+      padding-right: 9%;
+    }
+    .market-cap-heading {
+      width: 20%;
+      text-align: right;
+      padding-right: 7%;
+    }
+    .movement-heading {
+      width: 20%;
+      text-align: right;
+      padding-right: 10%;
+    }
+    .last-update-heading {
+      width: 15%;
+    }
     span {
       display: inline-block;
-      width: 25%;
+      /*   width: 16.667%; */
     }
   }
-  span {
-    display: inline-block;
-    /* width: 20%; */
-  }
+
   .data-container {
     display: flex;
     /* justify-content: space-evenly; */
@@ -73,6 +97,11 @@ export const StyledDashboardItem = styled.div`
   .data-container:hover {
     background-color: #dadfe3;
     cursor: pointer;
+  }
+  .coin-number {
+    width: 5%;
+    text-align: center;
+    color: grey;
   }
   .coin-name-container {
     display: flex;
@@ -89,51 +118,34 @@ export const StyledDashboardItem = styled.div`
     /* font-size: 14px; */
   }
   .coin-price {
-    width: 25%;
+    width: 15%;
     text-align: right;
     font-weight: bold;
     /*    border: 1px solid red; */
     padding-right: 9%;
   }
   .market-cap {
-    width: 25%;
+    width: 20%;
     text-align: right;
     padding-right: 7%;
   }
   .coin-24h-percentage {
     text-align: right;
-    width: 25%;
+    width: 20%;
     padding-right: 10%;
   }
-  .price-heading {
-    text-align: right;
-    padding-right: 9%;
-  }
-  .market-cap-heading {
-    text-align: right;
-    padding-right: 7%;
-  }
-  .name-heading {
-    padding-left: 1%;
-    padding-top: 0.5%;
-  }
-  .movement-heading {
-    text-align: right;
-    padding-right: 10%;
-  }
+
   .positive-change {
     ${positiveChange}
   }
   .negative-change {
     ${negativeChange}
   }
-  /*  .trade-icon {
-    padding-right: 2%;
-  } */
 `;
 export const StyledDashboard = styled.div`
-  width: 100%;
+  width: 1500px;
   display: flex;
   justify-content: center;
   margin-bottom: 5%;
+  /* overflow: scroll; */
 `;
