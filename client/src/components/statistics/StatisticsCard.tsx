@@ -7,13 +7,15 @@ import { RootState } from "../..";
 import { CryptoItem } from "../../common/modelTypes";
 import IconButton from "@mui/material/IconButton";
 import DashboardContext from "../../state/DashboardContext";
+import FormContext from "../../state/FormContext";
 import { intlNumberFormat } from "../../utils/number-format";
-import { formatDate } from "../../utils/date-format";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
   const context = useContext(DashboardContext);
   const dashboardCryptoData = context?.dashboardData;
+
+  const formContext = useContext(FormContext);
 
   useEffect(() => {
     context?.getDashboardData();
@@ -95,7 +97,11 @@ const StatisticsCard = () => {
                   <span> {myDate.toLocaleTimeString()}</span>
                 </p>
 
-                <IconButton>
+                <IconButton
+                  onClick={() => {
+                    formContext?.setSelectedCrypto(holding.name.toLowerCase());
+                  }}
+                >
                   <BiPlusCircle
                     style={{
                       color: "green",

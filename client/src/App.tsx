@@ -8,6 +8,7 @@ import Navbar from "./components/layout/Navbar";
 import Holdings from "./pages/Holdings";
 import Transactions from "./pages/Transactions";
 import { Route, Redirect } from "react-router-dom";
+import { FormContextProvider } from "./state/FormContext";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,12 +26,14 @@ function App() {
         <Route path="/" exact>
           <Redirect to="/dashboard" />
         </Route>
-        <Route path="/dashboard">
-          <HomeDashboard />
-        </Route>
-        <Route path="/holdings">
-          <Holdings />
-        </Route>
+        <FormContextProvider>
+          <Route path="/dashboard">
+            <HomeDashboard />
+          </Route>
+          <Route path="/holdings">
+            <Holdings />
+          </Route>
+        </FormContextProvider>
         <Route path="/transactions">
           <Transactions />
         </Route>
