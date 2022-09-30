@@ -37,6 +37,7 @@ export const DashboardContextProvider: React.FC<{
           price_change_24h: item.price_change_24h,
           price_change_percentage_24h: item.price_change_percentage_24h,
           last_updated: item.last_updated,
+          allTimeHigh: item.ath,
         }));
         setDashboardData(reducedData);
       })

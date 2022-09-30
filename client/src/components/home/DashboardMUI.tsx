@@ -1,14 +1,9 @@
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
-import { useState, useContext, useEffect, MouseEventHandler } from "react";
-import { DashboardCryptoItem } from "../../common/modelTypes";
-import { StyledDashboardItem } from "./styled";
+import { useContext, useEffect, MouseEventHandler } from "react";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
-import { firstLetterCapitalized } from "../../utils/text-format";
 import { intlNumberFormat, numberFormat } from "../../utils/number-format";
-import { GrTransaction } from "react-icons/gr";
-import { IconButton } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { DashboardWrapper } from "./styled";
 
@@ -34,8 +29,11 @@ export default function DashboardMUI() {
       ticker: crypto.ticker.toUpperCase(),
       price: intlNumberFormat(crypto.current_price, "usd"),
       marketCap: "$" + numberFormat(crypto.market_cap),
-      priceChangeNumber: crypto.price_change_percentage_24h,
-      priceChange: crypto.price_change_percentage_24h.toFixed(2) + "%",
+      priceChangeNumber: crypto.price_change_24h,
+      priceChange: intlNumberFormat(crypto.price_change_24h, "usd"),
+      priceChangePercentage:
+        crypto.price_change_percentage_24h.toFixed(2) + "%",
+      allTimeHigh: intlNumberFormat(crypto.allTimeHigh, "usd"),
       lastUpdate: lastUpdate.toLocaleTimeString(),
     };
   });
@@ -44,7 +42,7 @@ export default function DashboardMUI() {
     {
       field: "id",
       headerName: "#",
-      width: 30,
+      width: 20,
       align: "center",
       headerAlign: "center",
     },
@@ -54,7 +52,7 @@ export default function DashboardMUI() {
         return <img src={params.row.icon} width="25px" height="25px" />;
       },
       headerName: "",
-      width: 60,
+      width: 30,
     },
     {
       field: "ticker",
@@ -65,14 +63,14 @@ export default function DashboardMUI() {
     {
       field: "name",
       headerName: "Name",
-      width: 160,
+      width: 150,
       cellClassName: "coin-name",
     },
 
     {
       field: "price",
       headerName: "Price",
-      width: 130,
+      width: 100,
       headerAlign: "right",
       align: "right",
       cellClassName: "coin-price",
@@ -87,13 +85,31 @@ export default function DashboardMUI() {
     {
       field: "priceChange",
       headerName: "24h change",
-      width: 160,
+      width: 130,
       headerAlign: "right",
       align: "right",
       cellClassName: (params) =>
         params.row.priceChangeNumber > 0
           ? "positive-change"
           : "negative-change",
+    },
+    {
+      field: "priceChangePercentage",
+      headerName: "24h change %",
+      width: 130,
+      headerAlign: "right",
+      align: "right",
+      cellClassName: (params) =>
+        params.row.priceChangeNumber > 0
+          ? "positive-change"
+          : "negative-change",
+    },
+    {
+      field: "allTimeHigh",
+      headerName: "All time high",
+      width: 140,
+      headerAlign: "right",
+      align: "right",
     },
     {
       field: "lastUpdate",
