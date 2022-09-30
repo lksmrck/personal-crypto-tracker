@@ -38,7 +38,9 @@ export const StyledHomePage = styled.div`
 `;
 
 export const StyledDashboardItem = styled.div`
-  width: 80%;
+  margin: 0 auto;
+  max-width: calc(100% - 60px);
+  width: 1200px;
   background-color: white;
   box-shadow: ${theme.cardShadow};
   border-radius: ${theme.borderRadius};
@@ -143,9 +145,33 @@ export const StyledDashboardItem = styled.div`
   }
 `;
 export const StyledDashboard = styled.div`
-  width: 1500px;
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 5%;
   /* overflow: scroll; */
+`;
+
+export const DashboardWrapper = styled.div`
+  width: 80%;
+  background-color: white;
+  box-shadow: ${theme.cardShadow};
+  border-radius: ${theme.borderRadius};
+
+  .positive-change {
+    ${positiveChange}
+  }
+  .negative-change {
+    ${negativeChange}
+  }
+  .coin-name {
+    font-weight: bold;
+  }
+  .coin-price {
+    font-weight: bold;
+  }
+
+  .coin-ticker {
+    color: grey;
+  }
 `;

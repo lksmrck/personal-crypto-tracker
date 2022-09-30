@@ -29,6 +29,7 @@ export const DashboardContextProvider: React.FC<{
         //Uložím jen některá data z celého objektu.
         const reducedData = rawData.map((item: any) => ({
           name: item.id,
+          ofiName: item.name,
           ticker: item.symbol,
           imageURL: item.image,
           current_price: item.current_price,
