@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,13 +12,29 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory, useLocation } from "react-router-dom";
 
 const pages = ["Dashboard", "Holdings", "Transactions"];
 const settings = ["Logout"];
 
 const Navbar = () => {
+  const lsUser = localStorage.getItem("profile");
+  const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+
+  const [user, setUser] = useState(lsUser !== null ? JSON.parse(lsUser) : null);
+
+  useEffect(() => {
+    const token = user?.token;
+
+    //JWT - potom při manual auth
+    if (lsUser !== null) {
+      setUser(JSON.parse(lsUser));
+    }
+  }, []);
+
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLInputElement | null>(
     null
   );
@@ -36,6 +53,9 @@ const Navbar = () => {
 
   const handleCloseUserMenu = (): void => {
     setAnchorElUser(null);
+    dispatch({ type: "LOGOUT" });
+    history.push("/");
+    setUser(null);
   };
 
   const onClickHandler = (page: any) => {
@@ -107,7 +127,64 @@ const Navbar = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {user == null ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Sign in">
+                <Button
+                  variant="contained"
+                  color="success"
+                  onClick={() => {
+                    history.push("/auth");
+                  }}
+                >
+                  SIGN IN
+                </Button>
+              </Tooltip>
+              {/* <Tooltip title="Register">
+              <Button variant="contained" color="error">
+                Register
+              </Button>
+            </Tooltip> */}
+            </Box>
+          ) : (
+            <div>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt={user.result.name} src={user.result.imageUrl} />
+                  </IconButton>
+                </Tooltip>
+
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+              <Typography variant="h6" noWrap>
+                {user.result.name}
+              </Typography>
+            </div>
+          )}
+
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -135,7 +212,7 @@ const Navbar = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

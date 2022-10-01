@@ -10,15 +10,15 @@ export default function HomePage() {
         <div className="home-nav">
           <h1>Welcome to Crypto Tracker ☄️</h1>
           <div className="buttons-container">
-            <Link to="/add_transaction">
-              <Button variant="contained">Add Transaction</Button>
-            </Link>
-            <Link to="/holdings">
-              <Button variant="contained">My holdings</Button>
-            </Link>
-            <Link to="/transactions">
-              <Button variant="contained">Transaction history</Button>
-            </Link>
+            <Button component={Link} to="/add_transaction" variant="contained">
+              Add Transaction
+            </Button>
+            <Button component={Link} to="/holdings" variant="contained">
+              My holdings
+            </Button>
+            <Button component={Link} to="/transactions" variant="contained">
+              Transaction history
+            </Button>
           </div>
         </div>
         <div className="home-dashboard"></div>

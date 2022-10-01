@@ -7,7 +7,7 @@ import { intlNumberFormat, numberFormat } from "../../utils/number-format";
 import { useHistory } from "react-router-dom";
 import { DashboardWrapper } from "./styled";
 
-export default function DashboardMUI() {
+const DashboardTable = () => {
   const context = useContext(DashboardContext);
   const dashboardCryptoData = context?.dashboardData;
 
@@ -24,6 +24,7 @@ export default function DashboardMUI() {
 
     return {
       id: index + 1,
+      identifier: crypto.name,
       icon: crypto.imageURL,
       name: crypto.ofiName,
       ticker: crypto.ticker.toUpperCase(),
@@ -45,6 +46,7 @@ export default function DashboardMUI() {
       width: 20,
       align: "center",
       headerAlign: "center",
+      cellClassName: "default",
     },
     {
       field: "icon",
@@ -53,10 +55,11 @@ export default function DashboardMUI() {
       },
       headerName: "",
       width: 30,
+      cellClassName: "default",
     },
     {
       field: "ticker",
-      headerName: "Ticker",
+      headerName: "",
       width: 70,
       cellClassName: "coin-ticker",
     },
@@ -81,6 +84,7 @@ export default function DashboardMUI() {
       width: 170,
       headerAlign: "right",
       align: "right",
+      cellClassName: "default",
     },
     {
       field: "priceChange",
@@ -110,6 +114,7 @@ export default function DashboardMUI() {
       width: 140,
       headerAlign: "right",
       align: "right",
+      cellClassName: "default",
     },
     {
       field: "lastUpdate",
@@ -117,14 +122,15 @@ export default function DashboardMUI() {
       width: 150,
       headerAlign: "right",
       align: "right",
+      cellClassName: "default",
     },
   ];
 
-  /*   const dashboardItemClickHandler = (crypto: any): any => {
-    formContext?.setSelectedCrypto(crypto);
+  const handleRowClick = (params: any): any => {
+    formContext?.setSelectedCrypto(params.row.identifier);
     formContext?.setFormShown(true);
     history.push("/holdings");
-  }; */
+  };
 
   return (
     <DashboardWrapper>
@@ -136,7 +142,10 @@ export default function DashboardMUI() {
         autoHeight
         density={"comfortable"}
         disableSelectionOnClick
+        onRowClick={handleRowClick}
       />
     </DashboardWrapper>
   );
-}
+};
+
+export default DashboardTable;
