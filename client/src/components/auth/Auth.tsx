@@ -10,6 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import { gapi } from "gapi-script";
 import { useHistory } from "react-router-dom";
+import { register, login } from "../../state/actions/auth";
 
 const initialState = {
   firstName: "",
@@ -41,10 +42,18 @@ export default function Auth() {
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-    console.log(formData);
+
+    /* if (!registered) {
+      dispatch(register(formData, history));
+    } else {
+      dispatch(login(formData, history));
+    }
+    console.log(formData); */
   };
 
-  const handleChange = () => {};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value }); //narolluje všechny staré formData a změní pouze ty, které se rovanjí name (např firstName v objektu = firstName name inputu) a priradi tam current value. PŘEDPOKLAD: POLOŽKY V OBJEKTU = NAME INPUTŮ
+  };
 
   const googleSuccess = async (
     res: GoogleLoginResponse | GoogleLoginResponseOffline
@@ -75,6 +84,7 @@ export default function Auth() {
           <Input
             label=""
             input={{
+              name: "email",
               id: "E-mail",
               type: "e-mail",
               onChange: handleChange,
@@ -83,6 +93,7 @@ export default function Auth() {
           <Input
             label=""
             input={{
+              name: "password",
               id: "Password",
               type: "password",
               onChange: handleChange,
@@ -114,6 +125,7 @@ export default function Auth() {
           <Input
             label=""
             input={{
+              name: "firstName",
               id: "First name",
               type: "text",
               onChange: handleChange,
@@ -122,6 +134,7 @@ export default function Auth() {
           <Input
             label=""
             input={{
+              name: "lastName",
               id: "Last name",
               type: "text",
               onChange: handleChange,
@@ -130,6 +143,7 @@ export default function Auth() {
           <Input
             label=""
             input={{
+              name: "email",
               id: "E-mail",
               type: "e-mail",
               onChange: handleChange,
@@ -138,6 +152,7 @@ export default function Auth() {
           <Input
             label=""
             input={{
+              name: "password",
               id: "Password",
               type: "password",
               onChange: handleChange,
@@ -146,6 +161,7 @@ export default function Auth() {
           <Input
             label=""
             input={{
+              name: "confirmPassword",
               id: "Confirm password",
               type: "password",
               onChange: handleChange,

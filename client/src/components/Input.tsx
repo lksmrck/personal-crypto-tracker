@@ -12,6 +12,7 @@ type InputProps = {
     ref?: React.Ref<HTMLInputElement | null>;
     min?: number;
     step?: number;
+    name?: string;
   };
   inputLabelProps?: {
     shrink: boolean;
