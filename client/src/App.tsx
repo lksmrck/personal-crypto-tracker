@@ -21,22 +21,20 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-      <DashboardContextProvider>
-        <Navbar />
-        <Route path="/" exact>
-          <Redirect to="/dashboard" />
-        </Route>
-        <Switch>
-          <FormContextProvider>
-            <Route path="/dashboard" exact component={HomeDashboard} />
-            <Route path="/holdings" exact component={Holdings} />
-            <Route path="/transactions" exact component={Transactions} />
-            <Route path="/auth" exact component={Auth} />
-          </FormContextProvider>
-        </Switch>
-      </DashboardContextProvider>
-    </div>
+    <DashboardContextProvider>
+      <Navbar />
+      <Route path="/" exact>
+        <Redirect to="/dashboard" />
+      </Route>
+      <Switch>
+        <FormContextProvider>
+          <Route path="/dashboard" exact component={HomeDashboard} />
+          <Route path="/holdings" exact component={Holdings} />
+          <Route path="/transactions" exact component={Transactions} />
+          <Route path="/auth" exact component={Auth} />
+        </FormContextProvider>
+      </Switch>
+    </DashboardContextProvider>
   );
 }
 

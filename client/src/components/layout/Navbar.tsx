@@ -33,7 +33,7 @@ const Navbar = () => {
     if (lsUser !== null) {
       setUser(JSON.parse(lsUser));
     }
-  }, []);
+  }, [location]); //==> when location changes (z /auth na / tak set user)
 
   const [anchorElNav, setAnchorElNav] = React.useState<HTMLInputElement | null>(
     null

@@ -11,7 +11,19 @@ import { useDispatch } from "react-redux";
 import { gapi } from "gapi-script";
 import { useHistory } from "react-router-dom";
 
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
 export default function Auth() {
+  const [formData, setFormData] = useState(initialState);
+
+  const [registered, setRegistered] = useState(true);
+
   const clientID =
     "1065422573478-630fs1ejaapidoaot95o16c8s0v2khnl.apps.googleusercontent.com";
   const dispatch = useDispatch();
@@ -27,13 +39,12 @@ export default function Auth() {
     gapi.load("client:auth2", initClient);
   });
 
-  const initialState = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmedPassword: "",
+  const handleSubmit = (e: React.SyntheticEvent): void => {
+    e.preventDefault();
+    console.log(formData);
   };
+
+  const handleChange = () => {};
 
   const googleSuccess = async (
     res: GoogleLoginResponse | GoogleLoginResponseOffline
@@ -58,44 +69,103 @@ export default function Auth() {
   };
 
   return (
-    <StyledAuth>
-      <div className="auth-container">
-        <Input
-          label=""
-          input={{
-            id: "Name",
-            type: "text",
-          }}
-        />
-        <Input
-          label=""
-          input={{
-            id: "E-mail",
-            type: "e-mail",
-          }}
-        />
-        <div className="buttons-container">
+    <StyledAuth onSubmit={handleSubmit}>
+      {registered ? (
+        <div className="auth-container">
+          <Input
+            label=""
+            input={{
+              id: "E-mail",
+              type: "e-mail",
+              onChange: handleChange,
+            }}
+          />
+          <Input
+            label=""
+            input={{
+              id: "Password",
+              type: "password",
+              onChange: handleChange,
+            }}
+          />
+
           <GoogleLogin
             clientId={clientID}
             buttonText="Sign in with Google"
-            /*      render={(renderProps) => (
-              <Button
-                variant="contained"
-                onClick={renderProps.onClick}
-                
-                startIcon={<AiOutlineGoogle />}
-              >
-                Google Sign In
-              </Button>
-            )} */
             onSuccess={googleSuccess}
             onFailure={googleFailure}
             cookiePolicy="single_host_origin"
           />
-          <Button variant="contained">Login</Button>
-          <Button variant="contained">Back</Button>
+
+          <Button type="submit" variant="contained" fullWidth>
+            Login
+          </Button>
+          <Button
+            onClick={() => {
+              setRegistered(false);
+            }}
+            variant="contained"
+          >
+            Not registered? Register here
+          </Button>
         </div>
-      </div>
+      ) : (
+        <div className="auth-container">
+          <Input
+            label=""
+            input={{
+              id: "First name",
+              type: "text",
+              onChange: handleChange,
+            }}
+          />
+          <Input
+            label=""
+            input={{
+              id: "Last name",
+              type: "text",
+              onChange: handleChange,
+            }}
+          />
+          <Input
+            label=""
+            input={{
+              id: "E-mail",
+              type: "e-mail",
+              onChange: handleChange,
+            }}
+          />
+          <Input
+            label=""
+            input={{
+              id: "Password",
+              type: "password",
+              onChange: handleChange,
+            }}
+          />
+          <Input
+            label=""
+            input={{
+              id: "Confirm password",
+              type: "password",
+              onChange: handleChange,
+            }}
+          />
+          <div className="buttons-container">
+            <Button type="submit" variant="contained">
+              Register
+            </Button>
+            <Button
+              onClick={() => {
+                setRegistered(true);
+              }}
+              variant="contained"
+            >
+              Back
+            </Button>
+          </div>
+        </div>
+      )}
     </StyledAuth>
   );
 }
