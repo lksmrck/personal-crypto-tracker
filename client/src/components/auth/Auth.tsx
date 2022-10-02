@@ -7,10 +7,10 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from "react-google-login";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../state/hooks";
 import { gapi } from "gapi-script";
 import { useHistory } from "react-router-dom";
-import { register, login } from "../../state/actions/auth";
+import { registerUser, loginUser } from "../../state/actions/auth";
 
 const initialState = {
   firstName: "",
@@ -27,7 +27,7 @@ export default function Auth() {
 
   const clientID =
     "1065422573478-630fs1ejaapidoaot95o16c8s0v2khnl.apps.googleusercontent.com";
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
 
   useEffect(() => {
@@ -43,12 +43,12 @@ export default function Auth() {
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
-    /* if (!registered) {
-      dispatch(register(formData, history));
+    if (!registered) {
+      dispatch(registerUser(formData, history));
     } else {
-      dispatch(login(formData, history));
+      dispatch(loginUser(formData, history));
     }
-    console.log(formData); */
+    console.log(formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
