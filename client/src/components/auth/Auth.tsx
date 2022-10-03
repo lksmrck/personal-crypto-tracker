@@ -184,7 +184,6 @@ export default function Auth() {
             </Grid>
           </form>
         </Paper>
-        {/* div that looks like paper */}
       </Container>
     </StyledTestAuth>
   );

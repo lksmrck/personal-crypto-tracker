@@ -27,7 +27,7 @@ export const StyledForm = styled.form`
     margin-top: 20px;
     width: 500px;
     /* border: 2px red solid; */
-    border-radius: 15px;
+    border-radius: ${theme.borderRadius};
     height: 350px;
     box-shadow: ${theme.cardShadow};
     background-color: white;

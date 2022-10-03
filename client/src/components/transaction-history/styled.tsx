@@ -39,11 +39,11 @@ export const StyledTransactionItem = styled.div`
 export const TransactionsWrapper = styled.div`
   .transactions-buy {
     background-color: #2bc361;
-    /*   &:hover {
+    /* &:hover {
       background-color: green;
     } */
   }
-  /*   .transactions-buy:hover {
+  /* &.transactions-buy:hover {
     background-color: blue;
   } */
 

@@ -98,11 +98,6 @@ export default function Form() {
       date: formItem.date,
     };
 
-    //Výpočty - Průměrná nákupní cena, celkový holding
-
-    /*  console.log(updatedHolding);
-    console.log(existingItem); */
-    //Pokud položka už existuje, posílám do reduceru updateExistingHolding. Pokud je to první položka, posílám do addNewHolding
     if (existingItem !== undefined) {
       const updatedHolding = updateHoldingStatistics(existingItem, formItem);
       dispatch(updateHolding(formItem.name, updatedHolding));
@@ -138,6 +133,7 @@ export default function Form() {
               step: 0.01,
             }}
             startAdornment="$"
+            autoFocus
           />
           <Input
             label=""

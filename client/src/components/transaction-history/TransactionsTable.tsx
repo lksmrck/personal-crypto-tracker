@@ -32,6 +32,7 @@ const TransactionsTable = () => {
       price: transaction.price,
       amount: transaction.amount,
       transactionType: transaction.transactionType,
+      date: transaction.date,
     };
   });
 
@@ -39,41 +40,39 @@ const TransactionsTable = () => {
     {
       field: "id",
       headerName: "#",
-      width: 20,
+      width: 40,
       align: "center",
       headerAlign: "center",
-      /* cellClassName: "default", */
     },
     {
       field: "name",
       headerName: "Name",
-      width: 150,
-      /* cellClassName: "coin-name", */
+      width: 180,
     },
 
     {
       field: "price",
       headerName: "Price",
-      width: 100,
+      width: 180,
       headerAlign: "right",
       align: "right",
-      /* cellClassName: "coin-price", */
     },
     {
       field: "amount",
       headerName: "Amount",
-      width: 140,
+      width: 150,
       headerAlign: "right",
       align: "right",
-      /* cellClassName: "default", */
     },
     {
       field: "transactionType",
       headerName: "Transaction type",
-      width: 150,
-      /*   headerAlign: "right",
-      align: "right",
-      cellClassName: "default", */
+      width: 180,
+    },
+    {
+      field: "date",
+      headerName: "Date",
+      width: 180,
     },
   ];
 
@@ -82,11 +81,7 @@ const TransactionsTable = () => {
       <DataGrid
         rows={rows}
         columns={columns}
-        /*  pageSize={5}
-        rowsPerPageOptions={[5]} */
-        /* rowHeight={50} */
         autoHeight
-        /*  density={"comfortable"} */
         disableSelectionOnClick
         getRowClassName={(params) =>
           `transactions-${params.row.transactionType}`

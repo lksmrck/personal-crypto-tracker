@@ -18,6 +18,7 @@ type InputProps = {
     shrink: boolean;
   };
   startAdornment?: string;
+  autoFocus?: boolean;
 };
 
 const Input: React.FC<InputProps> = ({
@@ -25,6 +26,7 @@ const Input: React.FC<InputProps> = ({
   label,
   inputLabelProps,
   startAdornment,
+  autoFocus,
 }) => {
   return (
     <div>
@@ -36,6 +38,7 @@ const Input: React.FC<InputProps> = ({
         size="small"
         inputProps={{ ...input }}
         color="primary"
+        autoFocus={autoFocus}
         required={true}
         InputLabelProps={inputLabelProps}
         margin="dense"
