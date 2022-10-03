@@ -6,11 +6,13 @@ import FormContext from "../../state/FormContext";
 import { intlNumberFormat, numberFormat } from "../../utils/number-format";
 import { useHistory } from "react-router-dom";
 import { TransactionsWrapper } from "./styled";
-import { useAppSelector } from "../../state/hooks";
+import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
+import { getTransactions } from "../../state/actions/transactions";
 
 const TransactionsTable = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
+  const dispatch = useAppDispatch();
 
   const context = useContext(DashboardContext);
   const dashboardCryptoData = context?.dashboardData;
@@ -19,9 +21,10 @@ const TransactionsTable = () => {
 
   const formContext = useContext(FormContext);
 
-  /*   useEffect(() => {
-    context?.getDashboardData();
-  }, []); */
+  //fetch z mongoDB
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
 
   const rows = transactions.map((transaction: any, index: number) => {
     /*    const lastUpdate = new Date(crypto?.last_updated); */

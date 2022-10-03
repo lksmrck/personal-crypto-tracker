@@ -18,24 +18,6 @@ export const StyledTransactionHistory = styled.div`
   }
 `;
 
-export const StyledTransactionItem = styled.div`
-  .transactions-title {
-    background-color: purple;
-    color: white;
-    font-weight: bold;
-  }
-
-  .transaction-buy {
-    background-color: #2bc361;
-  }
-  .transaction-sell {
-    background-color: #da6987;
-  }
-  .transaction-name {
-    font-weight: bold;
-  }
-`;
-
 export const TransactionsWrapper = styled.div`
   .transactions-buy {
     background-color: #2bc361;

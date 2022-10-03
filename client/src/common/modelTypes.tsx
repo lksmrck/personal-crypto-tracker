@@ -49,3 +49,5 @@ export interface TransactionsState {
   transactions: Transaction[];
   TBD1: boolean;
 }
+
+//Vložit INPUT PROPS !!!!

@@ -1,7 +1,7 @@
 import {
   FETCH_ALL_TRANSACTIONS,
   ADD_TRANSACTION,
-} from "../../constants/actionTypes.js";
+} from "../../constants/actionTypes";
 
 import * as api from "../../api/index";
 

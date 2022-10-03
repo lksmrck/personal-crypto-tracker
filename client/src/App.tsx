@@ -15,10 +15,10 @@ function App() {
   const dispatch = useAppDispatch();
 
   //Fetch holdings z databáze - TADY NEBO V HOLDINGS/TRANSACTIONS KOMPONENTU?????
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch(getHoldings());
     dispatch(getTransactions());
-  }, [dispatch]);
+  }, [dispatch]); */
 
   return (
     <DashboardContextProvider>

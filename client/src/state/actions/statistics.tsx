@@ -2,7 +2,7 @@ import {
   FETCH_ALL_HOLDINGS,
   ADD_HOLDING,
   UPDATE_HOLDING,
-} from "../../constants/actionTypes.js";
+} from "../../constants/actionTypes";
 
 import * as api from "../../api/index";
 

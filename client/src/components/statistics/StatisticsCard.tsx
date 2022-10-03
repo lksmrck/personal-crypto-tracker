@@ -9,17 +9,21 @@ import IconButton from "@mui/material/IconButton";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import { intlNumberFormat } from "../../utils/number-format";
+import { useAppDispatch } from "../../state/hooks";
+import { getHoldings } from "../../state/actions/statistics";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
   const context = useContext(DashboardContext);
-  const dashboardCryptoData = context?.dashboardData;
-
   const formContext = useContext(FormContext);
+  const dispatch = useAppDispatch();
+
+  const dashboardCryptoData = context?.dashboardData;
 
   useEffect(() => {
     context?.getDashboardData();
-  }, []);
+    dispatch(getHoldings());
+  }, [dispatch]);
 
   const holdings = useSelector((state: RootState) => state.statistics);
 

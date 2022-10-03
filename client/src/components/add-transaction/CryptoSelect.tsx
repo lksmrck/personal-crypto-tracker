@@ -37,6 +37,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
           label="Sort by:"
           value={props.value}
           onChange={selectCryptoHandler}
+          required
         >
           {/* Items v selectu se mapují z dat, které se stáhnout z API */}
           {dashboardCryptoData.map((crypto: any) => {

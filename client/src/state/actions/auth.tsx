@@ -1,4 +1,4 @@
-import { AUTH } from "../../constants/actionTypes.js";
+import { AUTH } from "../../constants/actionTypes";
 
 import * as api from "../../api/index";
 import { AnyAction } from "@reduxjs/toolkit";
