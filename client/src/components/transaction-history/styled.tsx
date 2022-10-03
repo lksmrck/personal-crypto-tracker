@@ -35,3 +35,22 @@ export const StyledTransactionItem = styled.div`
     font-weight: bold;
   }
 `;
+
+export const TransactionsWrapper = styled.div`
+  .transactions-buy {
+    background-color: #2bc361;
+    /*   &:hover {
+      background-color: green;
+    } */
+  }
+  /*   .transactions-buy:hover {
+    background-color: blue;
+  } */
+
+  .transactions-sell {
+    background-color: #da6987;
+  }
+  /*   .transactions-sell:hover {
+    background-color: red;
+  } */
+`;
