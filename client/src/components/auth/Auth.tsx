@@ -12,7 +12,7 @@ import { FiLock } from "react-icons/fi";
 import { AiOutlineGoogle } from "react-icons/ai";
 
 import { StyledTestAuth } from "./styled";
-import TestInput from "./TestInput";
+import AuthInput from "./AuthInput";
 import {
   GoogleLogin,
   GoogleLoginResponse,
@@ -104,14 +104,14 @@ export default function Auth() {
             <Grid container spacing={2}>
               {isRegistration && (
                 <>
-                  <TestInput
+                  <AuthInput
                     name="firstName"
                     label="First Name"
                     handleChange={handleChange}
                     autoFocus
                     half
                   />
-                  <TestInput
+                  <AuthInput
                     name="lastName"
                     label="Last Name"
                     handleChange={handleChange}
@@ -119,13 +119,13 @@ export default function Auth() {
                   />
                 </>
               )}
-              <TestInput
+              <AuthInput
                 name="email"
                 label="E-mail Address"
                 handleChange={handleChange}
                 type="email"
               />
-              <TestInput
+              <AuthInput
                 name="password"
                 label="Password"
                 handleChange={handleChange}
@@ -135,7 +135,7 @@ export default function Auth() {
                 }
               />
               {isRegistration && (
-                <TestInput
+                <AuthInput
                   name="confirmPassword"
                   label="Confirm Password"
                   handleChange={handleChange}
@@ -153,7 +153,7 @@ export default function Auth() {
               {isRegistration ? "Sign Up" : "Sign In"}
             </Button>
             <GoogleLogin
-              clientId="Google ID"
+              clientId={clientID}
               render={(renderProps) => (
                 <Button
                   color="primary"

@@ -20,25 +20,28 @@ type InputProps = {
   startAdornment?: string;
 };
 
-const Input: React.FC<InputProps> = (props) => {
+const Input: React.FC<InputProps> = ({
+  input,
+  label,
+  inputLabelProps,
+  startAdornment,
+}) => {
   return (
     <div>
       <TextField
         sx={{ width: 200 }}
         className="inputs"
-        label={props.input.id}
+        label={input.id}
         variant="standard"
         size="small"
-        inputProps={{ ...props.input }}
+        inputProps={{ ...input }}
         color="primary"
         required={true}
-        InputLabelProps={props.inputLabelProps}
+        InputLabelProps={inputLabelProps}
         margin="dense"
         InputProps={{
           startAdornment: (
-            <InputAdornment position="start">
-              {props.startAdornment}
-            </InputAdornment>
+            <InputAdornment position="start">{startAdornment}</InputAdornment>
           ),
         }}
       />
