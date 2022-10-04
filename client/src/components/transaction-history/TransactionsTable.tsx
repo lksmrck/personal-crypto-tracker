@@ -9,11 +9,11 @@ import { TransactionsWrapper } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
 import { getTransactions } from "../../state/actions/transactions";
+import { lsUserId } from "../../utils/ls-userId";
 
 const TransactionsTable = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
-  const auth = useAppSelector((state: RootState) => state.auth);
-  const userId = auth.authData.result._id;
+  const userId = lsUserId();
 
   const dispatch = useAppDispatch();
 

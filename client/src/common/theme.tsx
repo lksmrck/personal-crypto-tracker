@@ -6,7 +6,8 @@ declare module "styled-components" {
       [key: string]: string;
     };
     borderRadius: string;
-    cardShadow: string;
+
+    boxShadow: string;
   }
 }
 
@@ -24,8 +25,8 @@ export const theme: DefaultTheme = {
     red: "#ea3943",
     green: "#2bcc8f",
   },
-  cardShadow:
-    "rgb(14 23 102 / 40%) 0px 2px 6px, rgb(233 241 248 / 75%) 0px 2px 4px",
+  boxShadow:
+    "-webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75); -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75); box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);",
   ...commonProperties,
 };
 

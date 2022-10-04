@@ -9,7 +9,7 @@ export const StyledTransactionHistory = styled.div`
   .transactions-container {
     width: 60%;
 
-    box-shadow: ${theme.cardShadow};
+    ${theme.boxShadow}
     border-radius: ${theme.borderRadius};
     span {
       display: inline-block;

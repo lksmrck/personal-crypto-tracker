@@ -29,7 +29,7 @@ export const StyledForm = styled.form`
     /* border: 2px red solid; */
     border-radius: ${theme.borderRadius};
     height: 350px;
-    box-shadow: ${theme.cardShadow};
+    ${theme.boxShadow}
     background-color: white;
   }
 `;

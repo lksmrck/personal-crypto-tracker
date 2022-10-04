@@ -16,20 +16,18 @@ export const StyledStatistics = styled.div`
   justify-content: start;
   flex-direction: row;
   flex-wrap: wrap;
-
-  border: 2px solid brown;
 `;
 
 export const StyledStatisticsCard = styled.div`
   ${cardSize};
-  border: 1px solid red;
+  /*  border: 1px solid red; */
   margin: 1%;
-  box-shadow: ${theme.cardShadow};
+
   border-radius: ${theme.borderRadius};
   ${centerItems};
   font-size: 15px;
   background-color: white;
-
+  ${theme.boxShadow}
   .stats-container {
   }
   .stats-title {

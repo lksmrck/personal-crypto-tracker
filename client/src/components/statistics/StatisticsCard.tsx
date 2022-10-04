@@ -11,6 +11,7 @@ import FormContext from "../../state/FormContext";
 import { intlNumberFormat } from "../../utils/number-format";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { getHoldings } from "../../state/actions/statistics";
+import { lsUserId } from "../../utils/ls-userId";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
@@ -18,8 +19,12 @@ const StatisticsCard = () => {
   const formContext = useContext(FormContext);
   const dispatch = useAppDispatch();
 
-  const auth = useAppSelector((state: RootState) => state.auth);
-  const userId = auth.authData.result._id;
+  /*  const auth = useAppSelector((state: RootState) => state.auth); */
+
+  const userId = lsUserId();
+  //Vytáhnutí userId z localStorage
+
+  /* const userId = auth.authData.result._id; */
 
   const dashboardCryptoData = context?.dashboardData;
 

@@ -47,7 +47,7 @@ export const StyledDashboard = styled.div`
 export const DashboardWrapper = styled.div`
   width: 80%;
   background-color: white;
-  box-shadow: ${theme.cardShadow};
+  ${theme.boxShadow}
   border-radius: ${theme.borderRadius};
 
   .positive-change {
