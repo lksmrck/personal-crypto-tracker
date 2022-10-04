@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const transactionSchema = new Schema({
   transactionType: /* "buy" | "sell"; */ String,
-  id: Number,
+  userId: String,
   name: String,
   price: Number,
   amount: Number,

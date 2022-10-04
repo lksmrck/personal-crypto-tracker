@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const holdingSchema = new Schema({
-  id: Number,
+  userId: String,
   name: String,
   price: Number,
   amount: Number,

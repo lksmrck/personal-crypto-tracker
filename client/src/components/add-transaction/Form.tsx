@@ -33,10 +33,6 @@ export default function Form() {
   const transactions = useAppSelector((state: RootState) => state.transactions); //Dle slices, které jsem dal do store (index.tsx)
   const auth = useAppSelector((state: RootState) => state.auth);
 
-  const [transactionNumber, setTransactionNumber] = useState<number>(
-    transactions.length + 1
-  );
-
   const context = useContext(DashboardContext);
   const dashboardCryptoData = context?.dashboardData;
 
@@ -59,14 +55,11 @@ export default function Form() {
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
-    //Číslo transakce. Začíná od 1
-    setTransactionNumber((prevNumber) => prevNumber + 1);
-
     //Sesbírání infa o transakci. Pak se pošle do statistics-slice a history-slice. Do každého slice jiné údaje.
     const formItem = {
       transactionType: buySell,
-      transactionNumber: transactionNumber,
-      id: Math.random().toString(),
+
+      userId: loggedUserId,
       name: inputName,
       price: parseInt(priceInputRef.current?.value),
       amount: parseInt(amountInputRef.current?.value),
@@ -85,8 +78,9 @@ export default function Form() {
     );
 
     //Forma itemu, který se posílá do holdings reduceru
+    //ZKUSIT DAT ZKRACENE
     const newHoldingItem = {
-      id: formItem.id,
+      userId: formItem.userId,
       name: formItem.name,
       price: formItem.price,
       amount: formItem.amount,
@@ -96,7 +90,7 @@ export default function Form() {
     //Forma itemu, který se posílá do transactions reduceru
     const newTransactionItem = {
       transactionType: formItem.transactionType,
-      id: transactionNumber,
+      userId: formItem.userId,
       name: formItem.name,
       price: formItem.price,
       amount: formItem.amount,

@@ -7,7 +7,7 @@ import { StatisticsState } from "../../common/modelTypes";
 
 const DUMMY_HOLDINGS = [
   {
-    id: 1,
+    userId: 1,
     name: "Bitcoin",
     price: 24000,
     amount: 14,
@@ -21,7 +21,7 @@ const DUMMY_HOLDINGS = [
     date: "24.1.2021",
   } */,
   {
-    id: 1,
+    userId: 1,
     name: "Polkadot",
     price: 15,
     amount: 129,

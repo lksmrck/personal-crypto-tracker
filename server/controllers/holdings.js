@@ -28,11 +28,11 @@ export const getHolding = async (req, res) => {
 };
 
 export const createHolding = async (req, res) => {
-  const { id, name, price, amount, date } = req.body;
+  const { userId, name, price, amount, date } = req.body;
   console.log(req.body);
 
   const newHolding = new Holding({
-    id,
+    userId,
     name,
     price,
     amount,

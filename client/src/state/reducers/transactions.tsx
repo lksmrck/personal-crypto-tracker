@@ -7,7 +7,7 @@ import { TransactionsState } from "../../common/modelTypes";
 const DUMMY_TRANSACTIONS = [
   {
     transactionType: "buy",
-    id: 1,
+    userId: 1,
     name: "Bitcon",
     price: 20,
     amount: 10,
@@ -15,7 +15,7 @@ const DUMMY_TRANSACTIONS = [
   },
   {
     transactionType: "sell",
-    id: 2,
+    userId: 2,
     name: "Ethereum",
     price: 5,
     amount: 400,
@@ -23,7 +23,7 @@ const DUMMY_TRANSACTIONS = [
   },
   {
     transactionType: "sell",
-    id: 3,
+    userId: 3,
     name: "Bitcon",
     price: 3,
     amount: 1,
@@ -31,7 +31,7 @@ const DUMMY_TRANSACTIONS = [
   },
   {
     transactionType: "buy",
-    id: 4,
+    userId: 4,
     name: "Polkadot",
     price: 30,
     amount: 80,
@@ -41,7 +41,6 @@ const DUMMY_TRANSACTIONS = [
 
 const initialState: TransactionsState = {
   transactions: /* [] */ DUMMY_TRANSACTIONS,
-  TBD1: true,
 };
 
 export default (transactions = DUMMY_TRANSACTIONS, action: any) => {

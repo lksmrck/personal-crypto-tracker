@@ -23,7 +23,7 @@ export interface UpdatingCryptoItem {
 }
 
 export interface CryptoItem {
-  id: number;
+  userId: number;
   name: string;
   price: number;
   amount: number;
@@ -38,7 +38,7 @@ export interface StatisticsState {
 //Transactions
 export interface Transaction {
   transactionType: /* "buy" | "sell"; */ string;
-  id: number;
+  userId: number;
   name: string;
   price: number;
   amount: number;
@@ -47,7 +47,6 @@ export interface Transaction {
 
 export interface TransactionsState {
   transactions: Transaction[];
-  TBD1: boolean;
 }
 
 //Vložit INPUT PROPS !!!!
