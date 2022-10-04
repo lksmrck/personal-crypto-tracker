@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import { intlNumberFormat } from "../../utils/number-format";
-import { useAppDispatch } from "../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { getHoldings } from "../../state/actions/statistics";
 
 const StatisticsCard = () => {
@@ -18,11 +18,14 @@ const StatisticsCard = () => {
   const formContext = useContext(FormContext);
   const dispatch = useAppDispatch();
 
+  const auth = useAppSelector((state: RootState) => state.auth);
+  const userId = auth.authData.result._id;
+
   const dashboardCryptoData = context?.dashboardData;
 
   useEffect(() => {
     context?.getDashboardData();
-    dispatch(getHoldings());
+    dispatch(getHoldings(userId));
   }, [dispatch]);
 
   const holdings = useSelector((state: RootState) => state.statistics);

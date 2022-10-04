@@ -5,9 +5,9 @@ import {
 
 import * as api from "../../api/index";
 
-export const getTransactions = () => async (dispatch: any) => {
+export const getTransactions = (userId: any) => async (dispatch: any) => {
   try {
-    const { data } = await api.fetchTransactions();
+    const { data } = await api.fetchTransactions(userId);
 
     dispatch({ type: FETCH_ALL_TRANSACTIONS, payload: data });
   } catch (error: any) {

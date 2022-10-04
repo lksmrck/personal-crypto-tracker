@@ -6,8 +6,9 @@ import Transaction from "../models/transactionSchema.js";
 const router = express.Router();
 
 export const getTransactions = async (req, res) => {
+  const userId = req.query.userId;
   try {
-    const transactions = await Transaction.find();
+    const transactions = await Transaction.find({ userId });
 
     res.status(200).json(transactions); //nastaví reponse status na 200
   } catch (error) {

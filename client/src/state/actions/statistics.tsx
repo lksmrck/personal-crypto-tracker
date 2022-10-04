@@ -6,9 +6,9 @@ import {
 
 import * as api from "../../api/index";
 
-export const getHoldings = () => async (dispatch: any) => {
+export const getHoldings = (userId: any) => async (dispatch: any) => {
   try {
-    const { data } = await api.fetchHoldings();
+    const { data } = await api.fetchHoldings(userId);
 
     dispatch({ type: FETCH_ALL_HOLDINGS, payload: data });
   } catch (error: any) {

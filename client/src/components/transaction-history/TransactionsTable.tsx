@@ -12,6 +12,9 @@ import { getTransactions } from "../../state/actions/transactions";
 
 const TransactionsTable = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
+  const auth = useAppSelector((state: RootState) => state.auth);
+  const userId = auth.authData.result._id;
+
   const dispatch = useAppDispatch();
 
   const context = useContext(DashboardContext);
@@ -23,7 +26,7 @@ const TransactionsTable = () => {
 
   //fetch z mongoDB
   useEffect(() => {
-    dispatch(getTransactions());
+    dispatch(getTransactions(userId));
   }, [dispatch]);
 
   const rows = transactions.map((transaction: any, index: number) => {

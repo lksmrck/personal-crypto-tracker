@@ -5,9 +5,12 @@ import Holding from "../models/holdingSchema.js";
 
 const router = express.Router();
 
+//params z get requestu
 export const getHoldings = async (req, res) => {
+  const userId = req.query.userId;
+
   try {
-    const holdings = await Holding.find();
+    const holdings = await Holding.find({ userId });
 
     res.status(200).json(holdings); //nastaví reponse status na 200
   } catch (error) {
@@ -15,6 +18,7 @@ export const getHoldings = async (req, res) => {
   }
 };
 
+// NEPOUZITO
 export const getHolding = async (req, res) => {
   const { name } = req.params;
 
