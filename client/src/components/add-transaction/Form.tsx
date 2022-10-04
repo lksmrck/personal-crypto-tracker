@@ -15,6 +15,7 @@ import { Dispatch, SetStateAction } from "react";
 /* import { CryptoItem } from "../../common/modelTypes"; */
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
+/* import { RootState } from '../../index'; */
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -25,9 +26,12 @@ export default function Form() {
 
   const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
 
+  const [loggedUserId, setLoggedUserId] = useState();
+
   const dispatch = useAppDispatch();
   const holdings = useAppSelector((state: RootState) => state.statistics); //Dle slices, které jsem dal do store (index.tsx)
   const transactions = useAppSelector((state: RootState) => state.transactions); //Dle slices, které jsem dal do store (index.tsx)
+  const auth = useAppSelector((state: RootState) => state.auth);
 
   const [transactionNumber, setTransactionNumber] = useState<number>(
     transactions.length + 1
@@ -40,6 +44,7 @@ export default function Form() {
 
   useEffect(() => {
     context?.getDashboardData();
+    setLoggedUserId(auth.authData.result._id);
   }, []);
 
   useEffect(() => {

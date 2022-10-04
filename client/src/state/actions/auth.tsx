@@ -1,7 +1,6 @@
 import { AUTH } from "../../constants/actionTypes";
 
 import * as api from "../../api/index";
-import { AnyAction } from "@reduxjs/toolkit";
 
 export const loginUser =
   (formData: any, history: any) => async (dispatch: any) => {
@@ -9,6 +8,7 @@ export const loginUser =
       //log in the user (call the backend endpoints)
       const { data } = await api.loginUser(formData);
       dispatch({ type: AUTH, data });
+      console.log(data.result._id);
       history.push("/");
     } catch (error) {
       console.log(error);
