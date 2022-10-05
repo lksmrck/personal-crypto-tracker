@@ -9,3 +9,59 @@ export const StyledBackdrop = styled.div`
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.75);
 `;
+
+export const StyledHeader = styled.header`
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  padding: 0 2% 0 8%;
+  /* justify-content: space-between; */
+  align-items: center;
+  background-color: #008080;
+
+  .nav-logo {
+    font-size: 2rem;
+    color: white;
+  }
+`;
+
+export const StyledNavbar = styled.nav`
+  display: flex;
+  /*   border: 1px solid black; */
+  width: 100%;
+
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* border: 1px solid red; */
+    width: 90%;
+  }
+
+  li {
+    margin-left: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: #88dfdf;
+  }
+  a:hover,
+  a:active,
+  a.active {
+    color: #e6fcfc;
+  }
+  .button-wrapper {
+    button {
+      height: 3rem;
+    }
+    .logged-in {
+      display: flex;
+    }
+  }
+`;
