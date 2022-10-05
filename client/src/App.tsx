@@ -24,10 +24,8 @@ function App() {
       <Switch>
         <FormContextProvider>
           <Route path="/dashboard" exact component={HomeDashboard} />
-
           <Route path="/holdings" exact component={Holdings} />
           <Route path="/transactions" exact component={Transactions} />
-
           <Route path="/auth" exact component={Auth} />
         </FormContextProvider>
       </Switch>

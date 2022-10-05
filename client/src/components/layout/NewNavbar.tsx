@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { StyledHeader, StyledNavbar } from "./styled";
 import { Button } from "@mui/material";
-import { lsUserId } from "../../utils/ls-userId";
+
 import { useAppDispatch } from "../../state/hooks";
 import { useHistory, useLocation } from "react-router-dom";
 import { Avatar, Typography } from "@mui/material";
@@ -37,7 +37,10 @@ const NewNavbar = () => {
 
   return (
     <StyledHeader>
-      <div className="nav-logo">Crypto Tracker</div>
+      <div className="nav-logo">
+        <div>Crypto</div>
+        <div className="logo-tracker">Tracker</div>
+      </div>
       <StyledNavbar>
         <ul>
           <li>
@@ -68,7 +71,7 @@ const NewNavbar = () => {
           ) : (
             <div className="logged-in">
               <Avatar alt={user.result.name} src={user.result.imageUrl} />
-              <Typography variant="h6" noWrap>
+              <Typography noWrap variant="h6">
                 {user.result.name}
               </Typography>
               <Button variant="contained" color="error" onClick={onClickLogout}>

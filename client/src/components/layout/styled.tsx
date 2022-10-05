@@ -14,21 +14,25 @@ export const StyledHeader = styled.header`
   width: 100%;
   height: 5rem;
   display: flex;
-  padding: 0 2% 0 8%;
-  /* justify-content: space-between; */
+  padding: 0 2% 0 7%;
+
   align-items: center;
   background-color: #008080;
 
   .nav-logo {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white;
+    font-family: monospace;
+  }
+  .logo-tracker {
+    margin-left: 1.5rem;
   }
 `;
 
 export const StyledNavbar = styled.nav`
   display: flex;
-  /*   border: 1px solid black; */
   width: 100%;
+  margin-left: 1.5rem;
 
   ul {
     list-style: none;
@@ -36,9 +40,7 @@ export const StyledNavbar = styled.nav`
     margin: 0;
     padding: 0;
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
-    /* border: 1px solid red; */
     width: 90%;
   }
 
@@ -62,6 +64,12 @@ export const StyledNavbar = styled.nav`
     }
     .logged-in {
       display: flex;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+    }
+    .logged-in > * {
+      margin: 1rem;
     }
   }
 `;
