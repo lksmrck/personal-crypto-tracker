@@ -11,7 +11,7 @@ import { addHolding, updateHolding } from "../../state/actions/statistics";
 import { addTransaction } from "../../state/actions/transactions";
 import TransactionType from "./TransactionType";
 import { Dispatch, SetStateAction } from "react";
-
+import { lsUserId } from "../../utils/ls-userId";
 /* import { CryptoItem } from "../../common/modelTypes"; */
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
@@ -40,7 +40,7 @@ export default function Form() {
 
   useEffect(() => {
     context?.getDashboardData();
-    setLoggedUserId(auth.authData.result._id);
+    setLoggedUserId(lsUserId());
   }, []);
 
   useEffect(() => {

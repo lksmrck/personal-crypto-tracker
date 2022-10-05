@@ -4,20 +4,20 @@ import { useAppDispatch } from "./state/hooks";
 import { getHoldings } from "./state/actions/statistics";
 import { getTransactions } from "./state/actions/transactions";
 import { DashboardContextProvider } from "./state/DashboardContext";
-import Navbar from "./components/layout/Navbar";
+
 import Holdings from "./pages/Holdings";
 import Transactions from "./pages/Transactions";
 import Auth from "./components/auth/Auth";
 import { Route, Redirect, Switch, useLocation } from "react-router-dom";
 import { FormContextProvider } from "./state/FormContext";
 import { lsUserId } from "./utils/ls-userId";
-import NewNavbar from "./components/layout/NewNavbar";
+import Navbar from "./components/layout/Navbar";
 
 function App() {
   return (
     <DashboardContextProvider>
-      <NewNavbar />
-      {/*  <Navbar /> */}
+      <Navbar />
+
       <Route path="/" exact>
         <Redirect to="/dashboard" />
       </Route>

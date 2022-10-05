@@ -8,31 +8,27 @@ import {
 
 export const StyledHomePage = styled.div`
   display: flex;
-
   justify-content: center;
 
   h1 {
     font-size: 70px;
+    margin-top: 1%;
   }
   a {
     text-decoration: none;
   }
-  .home-container {
-  }
-  .home-hav {
-  }
+
   .buttons-container {
     display: flex;
-    ${centerItems}
-    button {
-      margin: 2%;
-    }
+    ${centerItems};
     margin-bottom: 2%;
   }
 
+  .buttons-container > * {
+    margin: 1%;
+  }
   .home-dashboard {
     display: flex;
-
     width: 100%;
   }
 `;
@@ -58,14 +54,12 @@ export const DashboardWrapper = styled.div`
     ${negativeChange}
     cursor:default
   }
-  .coin-name {
-    font-weight: bold;
-    cursor: default;
-  }
+  .coin-name,
   .coin-price {
     font-weight: bold;
     cursor: default;
   }
+
   .coin-ticker {
     color: grey;
     cursor: default;

@@ -7,12 +7,9 @@ export default function HomePage() {
   return (
     <StyledHomePage>
       <div className="home-container">
-        <div className="home-nav">
+        <div>
           <h1>Welcome to Crypto Tracker ☄️</h1>
           <div className="buttons-container">
-            <Button component={Link} to="/add_transaction" variant="contained">
-              Add Transaction
-            </Button>
             <Button component={Link} to="/holdings" variant="contained">
               My holdings
             </Button>

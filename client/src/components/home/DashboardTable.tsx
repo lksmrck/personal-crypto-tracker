@@ -17,7 +17,6 @@ const DashboardTable = () => {
 
   useEffect(() => {
     context?.getDashboardData();
-    console.log("dashboard useeffect");
   }, []);
 
   const rows = dashboardCryptoData.map((crypto: any, index: number) => {

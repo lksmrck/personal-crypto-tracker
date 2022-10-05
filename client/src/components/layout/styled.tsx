@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../common/theme";
 
 export const StyledBackdrop = styled.div`
   position: fixed;
@@ -18,6 +19,7 @@ export const StyledHeader = styled.header`
 
   align-items: center;
   background-color: #008080;
+  ${theme.navbarShadow}
 
   .nav-logo {
     font-size: 1.5rem;

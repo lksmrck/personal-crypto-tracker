@@ -15,27 +15,35 @@ const TransactionsTable = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
   const userId = lsUserId();
 
+  const context = useContext(DashboardContext);
+
   const dispatch = useAppDispatch();
 
-  const context = useContext(DashboardContext);
+  //fetch z mongoDB + fetch dashboard data
+  useEffect(() => {
+    dispatch(getTransactions(userId));
+    context?.getDashboardData();
+  }, [dispatch]);
+
   const dashboardCryptoData = context?.dashboardData;
 
   const history = useHistory();
 
   const formContext = useContext(FormContext);
 
-  //fetch z mongoDB
-  useEffect(() => {
-    dispatch(getTransactions(userId));
-  }, [dispatch]);
-
   const rows = transactions.map((transaction: any, index: number) => {
     /*    const lastUpdate = new Date(crypto?.last_updated); */
 
+    //Najdu crypto v contextu podle jména, abych dosadil ikonu
+    const dashboardCrypto = dashboardCryptoData.find(
+      (crypto: any) => crypto.name === transaction.name
+    );
+
     return {
+      icon: dashboardCrypto?.imageURL,
       id: index + 1,
       name: transaction.name,
-      price: transaction.price,
+      price: intlNumberFormat(transaction.price, "usd"),
       amount: transaction.amount,
       transactionType: transaction.transactionType,
       date: transaction.date,
@@ -51,6 +59,15 @@ const TransactionsTable = () => {
       headerAlign: "center",
     },
     {
+      field: "icon",
+      renderCell: (params) => {
+        return <img src={params.row.icon} width="25px" height="25px" />;
+      },
+      headerName: "",
+      width: 50,
+      align: "center",
+    },
+    {
       field: "name",
       headerName: "Name",
       width: 180,
@@ -58,7 +75,7 @@ const TransactionsTable = () => {
 
     {
       field: "price",
-      headerName: "Price",
+      headerName: "Price per item",
       width: 180,
       headerAlign: "right",
       align: "right",
