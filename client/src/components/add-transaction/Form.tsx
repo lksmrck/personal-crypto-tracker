@@ -16,12 +16,13 @@ import { lsUserId } from "../../utils/ls-userId";
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 /* import { RootState } from '../../index'; */
+import { HoldingItem } from "../../common/modelTypes";
 
 export default function Form() {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [inputName, setInputName] = useState<string>("");
-  const priceInputRef = useRef<any>(null);
-  const amountInputRef = useRef<any>(null);
+  const priceInputRef = useRef<HTMLInputElement>(null);
+  const amountInputRef = useRef<HTMLInputElement>(null);
   const dateInputRef = useRef<HTMLInputElement | null>(null);
 
   const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
@@ -58,11 +59,10 @@ export default function Form() {
     //Sesbírání infa o transakci. Pak se pošle do statistics-slice a history-slice. Do každého slice jiné údaje.
     const formItem = {
       transactionType: buySell,
-
       userId: loggedUserId,
       name: inputName,
-      price: parseInt(priceInputRef.current?.value),
-      amount: parseInt(amountInputRef.current?.value),
+      price: parseInt(priceInputRef.current?.value!),
+      amount: parseInt(amountInputRef.current?.value!),
       date: dateInputRef.current?.value,
     };
 
@@ -74,7 +74,7 @@ export default function Form() {
 
     //Sleduju, jestli položka už v array existuje.
     const existingItem = holdings.find(
-      (holding: { name: string }) => holding.name === formItem.name
+      (holding: HoldingItem) => holding.name === formItem.name
     );
 
     //Forma itemu, který se posílá do holdings reduceru

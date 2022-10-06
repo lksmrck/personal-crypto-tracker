@@ -24,8 +24,8 @@ export interface UpdatingCryptoItem {
   date: string;
 }
 
-export interface CryptoItem {
-  userId: number;
+export interface HoldingItem {
+  userId: string;
   name: string;
   price: number;
   amount: number;
@@ -33,7 +33,7 @@ export interface CryptoItem {
 }
 
 export interface StatisticsState {
-  holdings: CryptoItem[];
+  holdings: HoldingItem[];
   TBD: boolean;
 }
 

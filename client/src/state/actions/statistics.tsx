@@ -3,10 +3,11 @@ import {
   ADD_HOLDING,
   UPDATE_HOLDING,
 } from "../../constants/actionTypes";
+import { HoldingItem } from "../../common/modelTypes";
 
 import * as api from "../../api/index";
 
-export const getHoldings = (userId: any) => async (dispatch: any) => {
+export const getHoldings = (userId: string) => async (dispatch: any) => {
   try {
     const { data } = await api.fetchHoldings(userId);
 

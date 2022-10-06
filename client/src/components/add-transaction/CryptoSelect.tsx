@@ -9,6 +9,7 @@ import {
 import DashboardContext from "../../state/DashboardContext";
 import { firstLetterCapitalized } from "../../utils/text-format";
 import { StyledCryptoName } from "./styled";
+import { DashboardCryptoItem } from "../../common/modelTypes";
 
 type CryptoSelectProps = {
   selected: (crypto: string) => void;
@@ -40,7 +41,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
           required
         >
           {/* Items v selectu se mapují z dat, které se stáhnout z API */}
-          {dashboardCryptoData?.map((crypto: any) => {
+          {dashboardCryptoData?.map((crypto: DashboardCryptoItem) => {
             return (
               <MenuItem
                 key={crypto.name}

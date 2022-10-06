@@ -4,7 +4,7 @@ import { StyledStatisticsCard } from "./styled";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { RootState } from "../..";
-import { CryptoItem } from "../../common/modelTypes";
+import { HoldingItem } from "../../common/modelTypes";
 import IconButton from "@mui/material/IconButton";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
@@ -38,7 +38,7 @@ const StatisticsCard = () => {
 
   return (
     <>
-      {holdings.map((holding: CryptoItem) => {
+      {holdings.map((holding: HoldingItem) => {
         const cryptoObject = dashboardCryptoData?.find(
           (item: DashboardCryptoItem) =>
             item.name.toLowerCase() === holding.name.toLowerCase()

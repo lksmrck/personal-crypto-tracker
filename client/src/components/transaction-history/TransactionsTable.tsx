@@ -10,6 +10,7 @@ import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
 import { getTransactions } from "../../state/actions/transactions";
 import { lsUserId } from "../../utils/ls-userId";
+import { DashboardCryptoItem } from "../../common/modelTypes";
 
 const TransactionsTable = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
@@ -35,8 +36,8 @@ const TransactionsTable = () => {
     /*    const lastUpdate = new Date(crypto?.last_updated); */
 
     //Najdu crypto v contextu podle jména, abych dosadil ikonu
-    const dashboardCrypto = dashboardCryptoData.find(
-      (crypto: any) => crypto.name === transaction.name
+    const dashboardCrypto = dashboardCryptoData?.find(
+      (crypto: DashboardCryptoItem) => crypto.name === transaction.name
     );
 
     return {
