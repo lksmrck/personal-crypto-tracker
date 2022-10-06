@@ -5,9 +5,9 @@ import axios from "axios";
 import { DashboardCryptoItem } from "../common/modelTypes";
 
 interface AppContextInterface {
-  setDashboardData: Dispatch<SetStateAction<string>>;
+  setDashboardData: Dispatch<SetStateAction<DashboardCryptoItem[]>>;
   getDashboardData: () => void;
-  dashboardData: any /* DashboardCryptoItem[] */;
+  dashboardData: DashboardCryptoItem[];
 }
 
 const DashboardContext = createContext<AppContextInterface | null>(null);
@@ -15,8 +15,7 @@ const DashboardContext = createContext<AppContextInterface | null>(null);
 export const DashboardContextProvider: React.FC<{
   children: any;
 }> = ({ children }) => {
-  const [dashboardData, setDashboardData] =
-    useState<any /* DashboardCryptoItem[] */>([]);
+  const [dashboardData, setDashboardData] = useState<DashboardCryptoItem[]>([]);
 
   const url =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=1&sparkline=false&price_change_percentage=24h";
@@ -28,8 +27,8 @@ export const DashboardContextProvider: React.FC<{
         const rawData = res.data;
         //Uložím jen některá data z celého objektu.
         const reducedData = rawData.map((item: any) => ({
-          name: item.id,
-          ofiName: item.name,
+          identifier: item.id,
+          name: item.name,
           ticker: item.symbol,
           imageURL: item.image,
           current_price: item.current_price,

@@ -12,6 +12,7 @@ import { intlNumberFormat } from "../../utils/number-format";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { getHoldings } from "../../state/actions/statistics";
 import { lsUserId } from "../../utils/ls-userId";
+import { DashboardCryptoItem } from "../../common/modelTypes";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
@@ -38,15 +39,16 @@ const StatisticsCard = () => {
   return (
     <>
       {holdings.map((holding: CryptoItem) => {
-        const cryptoObject = dashboardCryptoData.find(
-          (item: any) => item.name.toLowerCase() === holding.name.toLowerCase()
+        const cryptoObject = dashboardCryptoData?.find(
+          (item: DashboardCryptoItem) =>
+            item.name.toLowerCase() === holding.name.toLowerCase()
         );
         const PLUSD =
-          holding.amount * cryptoObject?.current_price -
+          holding.amount * cryptoObject?.current_price! -
           holding.amount * holding.price;
 
         const PLpercentage = PLUSD / (holding.amount * holding.price);
-        const lastUpdate = new Date(cryptoObject?.last_updated);
+        const lastUpdate = new Date(cryptoObject?.last_updated!);
 
         return (
           <StyledStatisticsCard>
@@ -67,7 +69,7 @@ const StatisticsCard = () => {
                     Market price per unit:{" "}
                   </span>
                   <span className="holding-price">
-                    {intlNumberFormat(cryptoObject?.current_price, "usd")}
+                    {intlNumberFormat(cryptoObject?.current_price!, "usd")}
                   </span>
                 </p>
                 <p>

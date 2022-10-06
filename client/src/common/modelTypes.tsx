@@ -1,13 +1,15 @@
 //Dashboard
 export interface DashboardCryptoItem {
-  name: String;
-  ticker: String;
-  imageURL: String;
-  current_price: Number;
-  market_cap: Number;
-  price_change_24h: Number;
-  price_change_percentage_24h: Number;
-  last_updated: String;
+  identifier: string;
+  name: string;
+  ticker: string;
+  imageURL: string;
+  current_price: number;
+  market_cap: number;
+  price_change_24h: number;
+  price_change_percentage_24h: number;
+  last_updated: string;
+  allTimeHigh: number;
 
   /* dayMovement: String;
   marketCap: String; */

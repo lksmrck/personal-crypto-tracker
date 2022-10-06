@@ -40,7 +40,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
           required
         >
           {/* Items v selectu se mapují z dat, které se stáhnout z API */}
-          {dashboardCryptoData.map((crypto: any) => {
+          {dashboardCryptoData?.map((crypto: any) => {
             return (
               <MenuItem
                 key={crypto.name}

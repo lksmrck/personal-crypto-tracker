@@ -6,6 +6,7 @@ import FormContext from "../../state/FormContext";
 import { intlNumberFormat, numberFormat } from "../../utils/number-format";
 import { useHistory } from "react-router-dom";
 import { DashboardWrapper } from "./styled";
+import { DashboardCryptoItem } from "../../common/modelTypes";
 
 const DashboardTable = () => {
   const context = useContext(DashboardContext);
@@ -19,25 +20,27 @@ const DashboardTable = () => {
     context?.getDashboardData();
   }, []);
 
-  const rows = dashboardCryptoData.map((crypto: any, index: number) => {
-    const lastUpdate = new Date(crypto?.last_updated);
+  const rows: any = dashboardCryptoData?.map(
+    (crypto: DashboardCryptoItem, index: number) => {
+      const lastUpdate = new Date(crypto?.last_updated);
 
-    return {
-      id: index + 1,
-      identifier: crypto.name,
-      icon: crypto.imageURL,
-      name: crypto.ofiName,
-      ticker: crypto.ticker.toUpperCase(),
-      price: intlNumberFormat(crypto.current_price, "usd"),
-      marketCap: "$" + numberFormat(crypto.market_cap),
-      priceChangeNumber: crypto.price_change_24h,
-      priceChange: intlNumberFormat(crypto.price_change_24h, "usd"),
-      priceChangePercentage:
-        crypto.price_change_percentage_24h.toFixed(2) + "%",
-      allTimeHigh: intlNumberFormat(crypto.allTimeHigh, "usd"),
-      lastUpdate: lastUpdate.toLocaleTimeString(),
-    };
-  });
+      return {
+        id: index + 1,
+        identifier: crypto.name,
+        icon: crypto.imageURL,
+        name: crypto.name,
+        ticker: crypto.ticker.toUpperCase(),
+        price: intlNumberFormat(crypto.current_price, "usd"),
+        marketCap: "$" + numberFormat(crypto.market_cap),
+        priceChangeNumber: crypto.price_change_24h,
+        priceChange: intlNumberFormat(crypto.price_change_24h, "usd"),
+        priceChangePercentage:
+          crypto.price_change_percentage_24h.toFixed(2) + "%",
+        allTimeHigh: intlNumberFormat(crypto.allTimeHigh, "usd"),
+        lastUpdate: lastUpdate.toLocaleTimeString(),
+      };
+    }
+  );
 
   const columns: GridColDef[] = [
     {
