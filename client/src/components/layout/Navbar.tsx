@@ -71,7 +71,7 @@ const Navbar = () => {
           ) : (
             <div className="logged-in">
               <Avatar alt={user.result.name} src={user.result.imageUrl} />
-              <Typography noWrap variant="h6">
+              <Typography noWrap variant="h6" sx={{ color: "#e6fcfc" }}>
                 {user.result.name}
               </Typography>
               <Button variant="contained" color="error" onClick={onClickLogout}>
