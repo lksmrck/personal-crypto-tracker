@@ -96,6 +96,7 @@ export default function Form() {
       amount: formItem.amount,
       date: formItem.date,
     };
+    formContext?.setFormShown(false);
 
     if (existingItem !== undefined) {
       const updatedHolding = updateHoldingStatistics(existingItem, formItem);

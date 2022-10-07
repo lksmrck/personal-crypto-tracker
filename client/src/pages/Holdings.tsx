@@ -17,6 +17,7 @@ export default function Holdings() {
       {user ? (
         <>
           <AddTransaction />
+
           <Statistics />
         </>
       ) : (

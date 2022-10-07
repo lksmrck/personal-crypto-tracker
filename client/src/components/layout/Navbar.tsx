@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <StyledHeader>
-      <div className="nav-logo">
+      <div className="nav-logo" onClick={() => history.push("/dashboard")}>
         <div>Crypto</div>
         <div className="logo-tracker">Tracker</div>
       </div>

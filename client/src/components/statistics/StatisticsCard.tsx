@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import btc_icon from "../../assets/bitcoin-logo.png";
 import { StyledStatisticsCard } from "./styled";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
-import { useSelector } from "react-redux";
+
 import { RootState } from "../..";
 import { HoldingItem } from "../../common/modelTypes";
 import IconButton from "@mui/material/IconButton";
@@ -30,12 +30,7 @@ const StatisticsCard = () => {
 
   const dashboardCryptoData = context?.dashboardData;
 
-  useEffect(() => {
-    context?.getDashboardData();
-    dispatch(getHoldings(userId));
-  }, [dispatch]);
-
-  const holdings = useSelector((state: RootState) => state.statistics);
+  const holdings = useAppSelector((state: RootState) => state.statistics);
 
   return (
     <>
@@ -118,9 +113,7 @@ const StatisticsCard = () => {
                   <IconButton
                     onClick={() => {
                       formContext?.setFormShown(true);
-                      formContext?.setSelectedCrypto(
-                        holding.name.toLowerCase()
-                      );
+                      formContext?.setSelectedCrypto(holding.name);
                       formContext?.setTransactionType("buy");
                     }}
                   >
@@ -135,9 +128,7 @@ const StatisticsCard = () => {
                   <IconButton
                     onClick={() => {
                       formContext?.setFormShown(true);
-                      formContext?.setSelectedCrypto(
-                        holding.name.toLowerCase()
-                      );
+                      formContext?.setSelectedCrypto(holding.name);
                       formContext?.setTransactionType("sell");
                     }}
                   >

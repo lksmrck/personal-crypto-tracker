@@ -25,6 +25,7 @@ export const StyledHeader = styled.header`
     font-size: 1.5rem;
     color: white;
     font-family: monospace;
+    cursor: pointer;
   }
   .logo-tracker {
     margin-left: 1.5rem;

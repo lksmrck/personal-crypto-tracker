@@ -16,6 +16,15 @@ export const StyledTransactionHistory = styled.div`
       width: 20%;
     }
   }
+  .no-transaction-found {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
+    button {
+      margin: 2%;
+    }
+  }
 `;
 
 export const TransactionsWrapper = styled.div`

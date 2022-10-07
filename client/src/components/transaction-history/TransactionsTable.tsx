@@ -21,12 +21,6 @@ const TransactionsTable = () => {
 
   const dispatch = useAppDispatch();
 
-  //fetch z mongoDB + fetch dashboard data
-  useEffect(() => {
-    dispatch(getTransactions(userId));
-    context?.getDashboardData();
-  }, [dispatch]);
-
   const dashboardCryptoData = context?.dashboardData;
 
   const history = useHistory();
