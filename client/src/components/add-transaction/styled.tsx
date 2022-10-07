@@ -7,6 +7,14 @@ export const StyledAddTransaction = styled.div`
     ${centerItems}
   }
 
+  .select-transaction-type {
+    margin: 5% 0 5% 20%;
+  }
+
+  .select-crypto {
+    min-width: 200px;
+  }
+
   button {
   }
 `;
@@ -14,8 +22,8 @@ export const StyledAddTransaction = styled.div`
 export const StyledForm = styled.form`
   display: flex;
   justify-content: center;
-  border: 2px black solid;
-  height: 400px;
+
+  height: 500px;
 
   .select-name {
     color: red;
@@ -24,13 +32,22 @@ export const StyledForm = styled.form`
 
   .form {
     ${centerItems};
-    margin-top: 20px;
-    width: 500px;
+    margin-top: 2%;
+    width: 550px;
+    height: 400px;
     /* border: 2px red solid; */
     border-radius: ${theme.borderRadius};
-    height: 350px;
     ${theme.boxShadow}
     background-color: white;
+    button {
+      margin: 2%;
+      margin-top: 4%;
+    }
+  }
+  .buttons-container {
+    display: flex;
+
+    margin-left: -10%;
   }
 `;
 

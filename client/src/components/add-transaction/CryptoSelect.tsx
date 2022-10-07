@@ -26,11 +26,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
 
   return (
     <div>
-      <FormControl
-        variant="filled"
-        sx={{ minWidth: 120, backgroundColor: "white" }}
-        size="small"
-      >
+      <FormControl variant="filled" size="small" className="select-crypto">
         <InputLabel id="sort-select">Select crypto:</InputLabel>
         <Select
           labelId="sort-select"

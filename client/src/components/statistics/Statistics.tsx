@@ -4,7 +4,7 @@ import { StyledStatistics } from "./styled";
 export default function Statistics() {
   return (
     <StyledStatistics>
-      <StatisticsCard key={1} />
+      <StatisticsCard />
     </StyledStatistics>
   );
 }

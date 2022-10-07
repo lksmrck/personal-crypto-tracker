@@ -16,7 +16,12 @@ const TransactionType: React.FC<TransactionTypeProps> = ({
   handleBuySellChange,
 }) => {
   return (
-    <ToggleButtonGroup value={buySell} exclusive onChange={handleBuySellChange}>
+    <ToggleButtonGroup
+      value={buySell}
+      exclusive
+      onChange={handleBuySellChange}
+      className="select-transaction-type"
+    >
       <ToggleButton color="success" value="buy">
         Buy
       </ToggleButton>

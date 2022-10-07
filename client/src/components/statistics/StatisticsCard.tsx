@@ -51,99 +51,106 @@ const StatisticsCard = () => {
         const lastUpdate = new Date(cryptoObject?.last_updated!);
 
         return (
-          <StyledStatisticsCard>
-            <div className="stats-container">
-              <div className="stats-title">
-                <img
-                  src={cryptoObject?.imageURL}
-                  alt="icon"
-                  width="60px"
-                  height="60px"
-                />
-                <h1>{holding.name.toUpperCase()}</h1>
-              </div>
+          //Pokud je držené množství > 0, vyrenderuje holding card
+          holding.amount > 0 && (
+            <StyledStatisticsCard>
+              <div className="stats-container">
+                <div className="stats-title">
+                  <img
+                    src={cryptoObject?.imageURL}
+                    alt="icon"
+                    width="60px"
+                    height="60px"
+                  />
+                  <h1>{holding.name.toUpperCase()}</h1>
+                </div>
 
-              <div className="text-container">
-                <p>
-                  <span className="holding-headings">
-                    Market price per unit:{" "}
-                  </span>
-                  <span className="holding-price">
-                    {intlNumberFormat(cryptoObject?.current_price!, "usd")}
-                  </span>
-                </p>
-                <p>
-                  <span className="holding-headings">
-                    Average purchase price:
-                  </span>{" "}
-                  {intlNumberFormat(holding.price, "usd")}
-                </p>
-                <p>
-                  <span className="holding-headings">Holding amount: </span>{" "}
-                  {holding.amount}
-                </p>
-                <p>
-                  <span className="holding-headings">P/L USD: </span>
-                  <span
-                    className={
-                      PLUSD > 0 ? "positive-change" : "negative-percentage"
-                    }
+                <div className="text-container">
+                  <p>
+                    <span className="holding-headings">
+                      Market price per unit:{" "}
+                    </span>
+                    <span className="holding-price">
+                      {intlNumberFormat(cryptoObject?.current_price!, "usd")}
+                    </span>
+                  </p>
+                  <p>
+                    <span className="holding-headings">
+                      Average purchase price:
+                    </span>{" "}
+                    {intlNumberFormat(holding.price, "usd")}
+                  </p>
+                  <p>
+                    <span className="holding-headings">Holding amount: </span>{" "}
+                    {holding.amount}
+                  </p>
+                  <p>
+                    <span className="holding-headings">P/L USD: </span>
+                    <span
+                      className={
+                        PLUSD > 0 ? "positive-change" : "negative-percentage"
+                      }
+                    >
+                      {intlNumberFormat(PLUSD, "usd")}
+                    </span>
+                  </p>
+                  <p>
+                    <span className="holding-headings">P/L %:</span>{" "}
+                    <span
+                      className={
+                        PLpercentage > 0
+                          ? "positive-change"
+                          : "negative-percentage"
+                      }
+                    >{`${PLpercentage.toFixed(2)}%`}</span>
+                  </p>
+                  <p>
+                    <span className="holding-headings">Last transaction: </span>
+                    <span> {holding.date}</span>
+                  </p>
+                  <p>
+                    <span className="holding-headings">Last updated: </span>
+                    <span> {lastUpdate.toLocaleTimeString()}</span>
+                  </p>
+
+                  <IconButton
+                    onClick={() => {
+                      formContext?.setFormShown(true);
+                      formContext?.setSelectedCrypto(
+                        holding.name.toLowerCase()
+                      );
+                      formContext?.setTransactionType("buy");
+                    }}
                   >
-                    {intlNumberFormat(PLUSD, "usd")}
-                  </span>
-                </p>
-                <p>
-                  <span className="holding-headings">P/L %:</span>{" "}
-                  <span
-                    className={
-                      PLpercentage > 0
-                        ? "positive-change"
-                        : "negative-percentage"
-                    }
-                  >{`${PLpercentage.toFixed(2)}%`}</span>
-                </p>
-                <p>
-                  <span className="holding-headings">Last transaction: </span>
-                  <span> {holding.date}</span>
-                </p>
-                <p>
-                  <span className="holding-headings">Last updated: </span>
-                  <span> {lastUpdate.toLocaleTimeString()}</span>
-                </p>
-
-                <IconButton
-                  onClick={() => {
-                    formContext?.setFormShown(true);
-                    formContext?.setSelectedCrypto(holding.name.toLowerCase());
-                    formContext?.setTransactionType("buy");
-                  }}
-                >
-                  <BiPlusCircle
-                    style={{
-                      color: "green",
-                      width: "45px",
-                      height: "45px",
+                    <BiPlusCircle
+                      style={{
+                        color: "green",
+                        width: "45px",
+                        height: "45px",
+                      }}
+                    />
+                  </IconButton>
+                  <IconButton
+                    onClick={() => {
+                      formContext?.setFormShown(true);
+                      formContext?.setSelectedCrypto(
+                        holding.name.toLowerCase()
+                      );
+                      formContext?.setTransactionType("sell");
                     }}
-                  />
-                </IconButton>
-                <IconButton
-                  onClick={() => {
-                    formContext?.setFormShown(true);
-                    formContext?.setSelectedCrypto(holding.name.toLowerCase());
-                    formContext?.setTransactionType("sell");
-                  }}
-                >
-                  <BiMinusCircle
-                    style={{
-                      color: "red",
-                      width: "45px",
-                      height: "45px",
-                    }}
-                  />
-                </IconButton>
+                  >
+                    <BiMinusCircle
+                      style={{
+                        color: "red",
+                        width: "45px",
+                        height: "45px",
+                      }}
+                    />
+                  </IconButton>
+                </div>
               </div>
-            </div>
-          </StyledStatisticsCard>
+            </StyledStatisticsCard>
+          )
         );
       })}
     </>
