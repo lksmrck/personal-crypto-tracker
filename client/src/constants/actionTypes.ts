@@ -12,3 +12,8 @@ export const ADD_TRANSACTION = "ADD_TRANSACTION";
 //Auth
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
+
+//Error handling
+export const SET_ERROR = "SET_ERROR"
+export const CLEAR_ERROR = "CLEAR_ERROR"
+

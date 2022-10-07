@@ -23,6 +23,7 @@ import { gapi } from "gapi-script";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch } from "../../state/hooks";
 import { registerUser, loginUser } from "../../state/actions/auth";
+import { SET_ERROR } from "../../constants/actionTypes";
 
 const initialState = {
   firstName: "",
@@ -81,13 +82,18 @@ export default function Auth() {
       dispatch({ type: "AUTH", data: { result, token } });
       history.push("/");
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: SET_ERROR,
+        payload: "An error occured during the Google sign in.",
+      });
     }
   };
 
   const googleFailure = (error: any) => {
-    console.log(error);
-    console.log("Google sign in was unsuccesful.");
+    dispatch({
+      type: SET_ERROR,
+      payload: "An error occured during the Google sign in.",
+    });
   };
 
   return (

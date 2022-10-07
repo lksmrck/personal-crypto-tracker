@@ -1,4 +1,4 @@
-import { AUTH } from "../../constants/actionTypes";
+import { AUTH, SET_ERROR } from "../../constants/actionTypes";
 
 import * as api from "../../api/index";
 
@@ -11,7 +11,10 @@ export const loginUser =
       console.log(data.result._id);
       history.push("/");
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: SET_ERROR,
+        payload: "An error occured during the login.",
+      });
     }
   };
 
@@ -24,6 +27,9 @@ export const registerUser =
 
       history.push("/");
     } catch (error) {
-      console.log(error);
+      dispatch({
+        type: SET_ERROR,
+        payload: "An error occured during the registration.",
+      });
     }
   };

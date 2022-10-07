@@ -9,15 +9,15 @@ import { DashboardWrapper } from "./styled";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 
 const DashboardTable = () => {
-  const context = useContext(DashboardContext);
-  const dashboardCryptoData = context?.dashboardData;
+  const dashboardContext = useContext(DashboardContext);
+  const formContext = useContext(FormContext);
+
+  const dashboardCryptoData = dashboardContext?.dashboardData;
 
   const history = useHistory();
 
-  const formContext = useContext(FormContext);
-
   useEffect(() => {
-    context?.getDashboardData();
+    dashboardContext?.getDashboardData();
   }, []);
 
   const rows: any = dashboardCryptoData?.map(

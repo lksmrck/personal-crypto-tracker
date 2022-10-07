@@ -4,7 +4,6 @@ import {
   UPDATE_HOLDING,
 } from "../../constants/actionTypes";
 import { StatisticsState, HoldingItem } from "../../common/modelTypes";
-import { Action } from "@reduxjs/toolkit";
 
 export default (holdings = [], action: any) => {
   switch (action.type) {

@@ -2,6 +2,7 @@ import {
   FETCH_ALL_HOLDINGS,
   ADD_HOLDING,
   UPDATE_HOLDING,
+  SET_ERROR,
 } from "../../constants/actionTypes";
 import { HoldingItem } from "../../common/modelTypes";
 
@@ -13,7 +14,7 @@ export const getHoldings = (userId: string) => async (dispatch: any) => {
 
     dispatch({ type: FETCH_ALL_HOLDINGS, payload: data });
   } catch (error: any) {
-    console.log(error.message);
+    dispatch({ type: SET_ERROR, payload: error.message });
   }
 };
 
@@ -23,7 +24,7 @@ export const addHolding = (holding: HoldingItem) => async (dispatch: any) => {
 
     dispatch({ type: ADD_HOLDING, payload: data });
   } catch (error: any) {
-    console.log(error.message);
+    dispatch({ type: SET_ERROR, payload: error.message });
   }
 };
 
@@ -34,6 +35,6 @@ export const updateHolding =
 
       dispatch({ type: UPDATE_HOLDING, payload: data });
     } catch (error: any) {
-      console.log(error.message);
+      dispatch({ type: SET_ERROR, payload: error.message });
     }
   };
