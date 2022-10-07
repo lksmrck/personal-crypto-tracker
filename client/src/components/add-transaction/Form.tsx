@@ -23,7 +23,7 @@ export default function Form() {
   const [inputName, setInputName] = useState<string>("");
   const priceInputRef = useRef<HTMLInputElement>(null);
   const amountInputRef = useRef<HTMLInputElement>(null);
-  const dateInputRef = useRef<HTMLInputElement | null>(null);
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
 
@@ -59,11 +59,11 @@ export default function Form() {
     //Sesbírání infa o transakci. Pak se pošle do statistics-slice a history-slice. Do každého slice jiné údaje.
     const formItem = {
       transactionType: buySell,
-      userId: loggedUserId,
+      userId: loggedUserId!,
       name: inputName,
       price: parseInt(priceInputRef.current?.value!),
       amount: parseInt(amountInputRef.current?.value!),
-      date: dateInputRef.current?.value,
+      date: dateInputRef.current!.value,
     };
 
     //Clearing inputs

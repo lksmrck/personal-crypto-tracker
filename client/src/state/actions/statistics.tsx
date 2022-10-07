@@ -17,7 +17,7 @@ export const getHoldings = (userId: string) => async (dispatch: any) => {
   }
 };
 
-export const addHolding = (holding: any) => async (dispatch: any) => {
+export const addHolding = (holding: HoldingItem) => async (dispatch: any) => {
   try {
     const { data } = await api.addHolding(holding); // data se hned destructuruje response, která má v sobě vždycky data object.
 
@@ -28,7 +28,7 @@ export const addHolding = (holding: any) => async (dispatch: any) => {
 };
 
 export const updateHolding =
-  (name: string, holding: any) => async (dispatch: any) => {
+  (name: string, holding: HoldingItem) => async (dispatch: any) => {
     try {
       const { data } = await api.updateHolding(name, holding);
 

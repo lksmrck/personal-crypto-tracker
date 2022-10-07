@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { centerItems } from "../common/theme";
+import { centerItems } from "../../common/theme";
 export const StyledNeedToLogin = styled.div`
   height: 85vh;
   ${centerItems}

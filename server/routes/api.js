@@ -2,7 +2,6 @@
 import express from "express";
 
 import {
-  getHolding,
   getHoldings,
   createHolding,
   updateHolding,
@@ -20,7 +19,7 @@ const router = express.Router();
 //Holdings routes
 router.get("/holdings", getHoldings);
 router.post("/holdings", createHolding);
-router.get("/holdings/:name", getHolding);
+
 router.patch("/holdings/:name", updateHolding);
 
 //Transactions routes

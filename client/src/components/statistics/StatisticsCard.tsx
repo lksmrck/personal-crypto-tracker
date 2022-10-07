@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { getHoldings } from "../../state/actions/statistics";
 import { lsUserId } from "../../utils/ls-userId";
 import { DashboardCryptoItem } from "../../common/modelTypes";
+import { formatDate } from "../../utils/date-format";
 
 const StatisticsCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
@@ -49,6 +50,7 @@ const StatisticsCard = () => {
 
         const PLpercentage = PLUSD / (holding.amount * holding.price);
         const lastUpdate = new Date(cryptoObject?.last_updated!);
+        const lastTransaction = new Date(holding.date);
 
         return (
           //Pokud je držené množství > 0, vyrenderuje holding card
@@ -62,7 +64,7 @@ const StatisticsCard = () => {
                     width="60px"
                     height="60px"
                   />
-                  <h1>{holding.name.toUpperCase()}</h1>
+                  <h1>{holding.name}</h1>
                 </div>
 
                 <div className="text-container">
@@ -106,7 +108,7 @@ const StatisticsCard = () => {
                   </p>
                   <p>
                     <span className="holding-headings">Last transaction: </span>
-                    <span> {holding.date}</span>
+                    <span> {formatDate(lastTransaction)}</span>
                   </p>
                   <p>
                     <span className="holding-headings">Last updated: </span>

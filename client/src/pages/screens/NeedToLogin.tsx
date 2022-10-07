@@ -9,7 +9,7 @@ export default function NeedToLogin() {
   return (
     <StyledNeedToLogin>
       <div className="container">
-        <h1>You need to sign up to see this page.</h1>
+        <h1>You need to sign in to see this page.</h1>
 
         <Button
           variant="contained"
@@ -17,7 +17,7 @@ export default function NeedToLogin() {
             history.push("/auth");
           }}
         >
-          Sign Up
+          Sign In
         </Button>
       </div>
     </StyledNeedToLogin>

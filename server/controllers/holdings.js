@@ -18,19 +18,6 @@ export const getHoldings = async (req, res) => {
   }
 };
 
-// NEPOUZITO
-export const getHolding = async (req, res) => {
-  const { name } = req.params;
-
-  try {
-    const oneHolding = await Holding.findById(id); // UPRAVIT !!! na Find a najit podle jmena
-
-    res.status(200).json(oneHolding);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
 export const createHolding = async (req, res) => {
   const { userId, name, price, amount, date } = req.body;
   console.log(req.body);

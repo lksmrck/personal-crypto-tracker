@@ -3,14 +3,15 @@ import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
 import { useContext, useEffect, MouseEventHandler } from "react";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
-import { intlNumberFormat, numberFormat } from "../../utils/number-format";
+import { intlNumberFormat } from "../../utils/number-format";
 import { useHistory } from "react-router-dom";
 import { TransactionsWrapper } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
 import { getTransactions } from "../../state/actions/transactions";
 import { lsUserId } from "../../utils/ls-userId";
-import { DashboardCryptoItem } from "../../common/modelTypes";
+import { DashboardCryptoItem, Transaction } from "../../common/modelTypes";
+import { formatDate } from "../../utils/date-format";
 
 const TransactionsTable = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
@@ -32,7 +33,7 @@ const TransactionsTable = () => {
 
   const formContext = useContext(FormContext);
 
-  const rows = transactions.map((transaction: any, index: number) => {
+  const rows = transactions.map((transaction: Transaction, index: number) => {
     /*    const lastUpdate = new Date(crypto?.last_updated); */
 
     //Najdu crypto v contextu podle jména, abych dosadil ikonu
@@ -40,6 +41,7 @@ const TransactionsTable = () => {
       (crypto: DashboardCryptoItem) => crypto.name === transaction.name
     );
 
+    const transactionDate = new Date(transaction.date);
     return {
       icon: dashboardCrypto?.imageURL,
       id: index + 1,
@@ -47,7 +49,7 @@ const TransactionsTable = () => {
       price: intlNumberFormat(transaction.price, "usd"),
       amount: transaction.amount,
       transactionType: transaction.transactionType,
-      date: transaction.date,
+      date: formatDate(transactionDate),
     };
   });
 

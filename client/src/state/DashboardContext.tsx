@@ -8,6 +8,8 @@ interface AppContextInterface {
   setDashboardData: Dispatch<SetStateAction<DashboardCryptoItem[]>>;
   getDashboardData: () => void;
   dashboardData: DashboardCryptoItem[];
+  isError: boolean;
+  setIsError: Dispatch<SetStateAction<boolean>>;
 }
 
 const DashboardContext = createContext<AppContextInterface | null>(null);
@@ -16,6 +18,7 @@ export const DashboardContextProvider: React.FC<{
   children: any;
 }> = ({ children }) => {
   const [dashboardData, setDashboardData] = useState<DashboardCryptoItem[]>([]);
+  const [isError, setIsError] = useState(false);
 
   const url =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=1&sparkline=false&price_change_percentage=24h";
@@ -51,6 +54,8 @@ export const DashboardContextProvider: React.FC<{
         setDashboardData,
         getDashboardData,
         dashboardData,
+        isError,
+        setIsError,
       }}
     >
       {children}

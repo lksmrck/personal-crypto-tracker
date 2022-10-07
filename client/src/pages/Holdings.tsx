@@ -3,7 +3,7 @@ import AddTransaction from "../components/add-transaction/AddTransaction";
 import { useEffect, useState } from "react";
 import { lsUserId } from "../utils/ls-userId";
 
-import NeedToLogin from "../components/NeedToLogin";
+import NeedToLogin from "./screens/NeedToLogin";
 
 export default function Holdings() {
   const [user, setUser] = useState(lsUserId());

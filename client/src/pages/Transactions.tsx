@@ -1,5 +1,5 @@
 import TransactionHistory from "../components/transaction-history/TransactionHistory";
-import NeedToLogin from "../components/NeedToLogin";
+import NeedToLogin from "./screens/NeedToLogin";
 import { lsUserId } from "../utils/ls-userId";
 import { useState, useEffect } from "react";
 

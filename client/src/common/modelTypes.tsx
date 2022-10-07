@@ -29,12 +29,11 @@ export interface HoldingItem {
   name: string;
   price: number;
   amount: number;
-  date: string;
+  date: string | number;
 }
 
 export interface StatisticsState {
   holdings: HoldingItem[];
-  TBD: boolean;
 }
 
 //Transactions
@@ -50,5 +49,9 @@ export interface Transaction {
 export interface TransactionsState {
   transactions: Transaction[];
 }
+
+export interface LoginData {}
+
+export interface RegisterData {}
 
 //Vložit INPUT PROPS !!!!

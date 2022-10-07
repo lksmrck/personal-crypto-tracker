@@ -66,7 +66,7 @@ const Navbar = () => {
         <section className="button-wrapper">
           {!user ? (
             <Button variant="contained" onClick={onClickLogin}>
-              Sign Up
+              Sign In
             </Button>
           ) : (
             <div className="logged-in">
