@@ -11,6 +11,7 @@ type InputProps = {
     inputPlaceholder?: string | number;
     ref?: React.Ref<HTMLInputElement | null>;
     min?: number;
+    max?: number;
     step?: number;
     name?: string;
   };

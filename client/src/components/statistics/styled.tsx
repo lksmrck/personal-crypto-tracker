@@ -8,6 +8,33 @@ import {
   negativeChange,
 } from "../../common/theme";
 
+export const StyledTestStats = styled.div`
+  .positive-change {
+    ${positiveChange}
+  }
+  .negative-change {
+    ${negativeChange}
+  }
+  .card-header {
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+  }
+  .titles-container {
+    margin-top: 3%;
+    margin-left: 15%;
+  }
+  .data-container {
+    text-align: right;
+    margin-top: 3%;
+    margin-right: 15%;
+  }
+  .card {
+    ${theme.boxShadow}
+    padding: 0.2%
+  }
+`;
+
 export const StyledStatistics = styled.div`
   margin: 2% 5% 0 7.5%;
   width: 85%;
@@ -37,7 +64,10 @@ export const StyledStatisticsCard = styled.div`
   font-size: 15px;
   background-color: white;
   ${theme.boxShadow}
+  border: 2px solid green;
+
   .stats-container {
+    border: 1px solid red;
   }
   .stats-title {
     display: flex;

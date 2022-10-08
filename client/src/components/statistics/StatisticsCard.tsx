@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import btc_icon from "../../assets/bitcoin-logo.png";
 import { StyledStatisticsCard } from "./styled";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
+import { Grid, Paper } from "@mui/material";
 
 import { RootState } from "../..";
 import { HoldingItem } from "../../common/modelTypes";

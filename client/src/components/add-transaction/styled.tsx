@@ -6,16 +6,8 @@ export const StyledAddTransaction = styled.div`
     margin-top: 2%;
     ${centerItems}
   }
-
-  .select-transaction-type {
-    margin: 5% 0 5% 20%;
-  }
-
   .select-crypto {
     min-width: 200px;
-  }
-
-  button {
   }
 `;
 
@@ -23,34 +15,60 @@ export const StyledForm = styled.form`
   display: flex;
   justify-content: center;
 
-  height: 500px;
+  height: 550px;
 
-  .select-name {
+  /*  .select-name {
     color: red;
     font-size: 20px;
-  }
+  } */
 
   .form {
-    ${centerItems};
     margin-top: 2%;
     width: 550px;
-    height: 400px;
-    /* border: 2px red solid; */
+    height: 500px;
+    /*  border: 2px red solid; */
     border-radius: ${theme.borderRadius};
-    ${theme.boxShadow}
+    ${theme.boxShadow};
+    ${centerItems};
     background-color: white;
     button {
       margin: 2%;
       margin-top: 4%;
     }
   }
-  .buttons-container {
-    display: flex;
+  .form-data-container {
+    width: 100%;
 
-    margin-left: -10%;
+    ${centerItems};
+    flex-direction: column;
+
+    /*     border: 1px red solid; */
+  }
+  .buttons-container {
+    width: 100%;
+    ${centerItems}/* border: 1px red solid; */
+    /*   margin-left: -10%; */
+  }
+  .sell-amount-check {
+    color: red;
+    font-size: 13px;
   }
 `;
 
 export const StyledCryptoName = styled.span`
   margin-left: 10px;
+`;
+export const StyledTransactionType = styled.div`
+  width: 100%;
+  /*  border: 3px solid green; */
+
+  .select-transaction-type {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* border: 1px solid blue; */
+  }
+  .select-transaction-type > * {
+    width: 100px;
+  }
 `;

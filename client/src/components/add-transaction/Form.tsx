@@ -28,11 +28,10 @@ export default function Form() {
   const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
 
   const [loggedUserId, setLoggedUserId] = useState();
+  const [formIsValid, setFormIsValid] = useState(true);
 
   const dispatch = useAppDispatch();
   const holdings = useAppSelector((state: RootState) => state.statistics);
-  /*   const transactions = useAppSelector((state: RootState) => state.transactions);
-  const auth = useAppSelector((state: RootState) => state.auth); */
 
   const context = useContext(DashboardContext);
   /* const dashboardCryptoData = context?.dashboardData; */
@@ -123,7 +122,7 @@ export default function Form() {
   return (
     <StyledForm onSubmit={onSubmitHandler} ref={formRef}>
       <div className="form">
-        <div>
+        <div className="form-data-container">
           <TransactionType
             buySell={buySell}
             handleBuySellChange={handleBuySellChange}
@@ -148,9 +147,14 @@ export default function Form() {
               type: "number",
               ref: amountInputRef,
               min: 0.00001,
+              max: 4,
               step: 0.00001,
             }}
           />
+          <p className="sell-amount-check">
+            You can't sell more than you hold. Your acutal holding of Bitcoin is
+            4
+          </p>
           <Input
             label=""
             input={{

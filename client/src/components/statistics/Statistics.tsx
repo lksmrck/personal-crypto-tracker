@@ -9,6 +9,7 @@ import { StyledWrapper } from "./styled";
 import { lsUserId } from "../../utils/ls-userId";
 import { getHoldings } from "../../state/actions/statistics";
 import DashboardContext from "../../state/DashboardContext";
+import StatCardTest from "./StatCardTest";
 
 export default function Statistics() {
   const holdings = useAppSelector((state: RootState) => state.statistics);
@@ -31,7 +32,8 @@ export default function Statistics() {
     <>
       {holdings.length > 0 ? (
         <StyledStatistics>
-          <StatisticsCard />
+          {/* <StatisticsCard /> */}
+          <StatCardTest />
         </StyledStatistics>
       ) : (
         !formContext?.formShown && (

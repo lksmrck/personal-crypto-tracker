@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useContext } from "react";
 import DashboardContext from "../../state/DashboardContext";
@@ -6,20 +5,16 @@ import DashboardContext from "../../state/DashboardContext";
 import { intlNumberFormat } from "../../utils/number-format";
 
 import { TransactionsWrapper } from "./styled";
-import { useAppSelector, useAppDispatch } from "../../state/hooks";
+import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
 
-import { lsUserId } from "../../utils/ls-userId";
 import { DashboardCryptoItem, Transaction } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 
 const TransactionsTable = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
-  const userId = lsUserId();
 
   const context = useContext(DashboardContext);
-
-  const dispatch = useAppDispatch();
 
   const dashboardCryptoData = context?.dashboardData;
 
@@ -55,19 +50,19 @@ const TransactionsTable = () => {
         return <img src={params.row.icon} width="25px" height="25px" />;
       },
       headerName: "",
-      width: 50,
+      width: 70,
       align: "center",
     },
     {
       field: "name",
       headerName: "Name",
-      width: 180,
+      width: 90,
     },
 
     {
       field: "price",
       headerName: "Price per item",
-      width: 180,
+      width: 90,
       headerAlign: "right",
       align: "right",
     },
@@ -82,6 +77,8 @@ const TransactionsTable = () => {
       field: "transactionType",
       headerName: "Transaction type",
       width: 180,
+      align: "center",
+      headerAlign: "center",
     },
     {
       field: "date",

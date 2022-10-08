@@ -11,7 +11,7 @@ import { getTransactions } from "../../state/actions/transactions";
 import { lsUserId } from "../../utils/ls-userId";
 
 export default function TransactionHistory() {
-  const holdings = useAppSelector((state: RootState) => state.statistics);
+  const transactions = useAppSelector((state: RootState) => state.transactions);
   const dispatch = useAppDispatch();
   const history = useHistory();
   const formContext = useContext(FormContext);
@@ -32,7 +32,7 @@ export default function TransactionHistory() {
 
   return (
     <StyledTransactionHistory>
-      {holdings.length > 0 ? (
+      {transactions.length > 0 ? (
         <div className="transactions-container">
           <TransactionsTable />
         </div>

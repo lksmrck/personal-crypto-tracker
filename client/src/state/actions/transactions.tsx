@@ -3,10 +3,11 @@ import {
   ADD_TRANSACTION,
   SET_ERROR,
 } from "../../constants/actionTypes";
+import { Transaction } from "../../common/modelTypes";
 
 import * as api from "../../api/index";
 
-export const getTransactions = (userId: any) => async (dispatch: any) => {
+export const getTransactions = (userId: string) => async (dispatch: any) => {
   try {
     const { data } = await api.fetchTransactions(userId);
 
@@ -16,12 +17,13 @@ export const getTransactions = (userId: any) => async (dispatch: any) => {
   }
 };
 
-export const addTransaction = (transaction: any) => async (dispatch: any) => {
-  try {
-    const { data } = await api.addTransaction(transaction);
+export const addTransaction =
+  (transaction: Transaction) => async (dispatch: any) => {
+    try {
+      const { data } = await api.addTransaction(transaction);
 
-    dispatch({ type: ADD_TRANSACTION, payload: data });
-  } catch (error: any) {
-    dispatch({ type: SET_ERROR, payload: error.message });
-  }
-};
+      dispatch({ type: ADD_TRANSACTION, payload: data });
+    } catch (error: any) {
+      dispatch({ type: SET_ERROR, payload: error.message });
+    }
+  };

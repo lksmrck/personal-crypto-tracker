@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { centerItems } from "../../common/theme";
 export const StyledNeedToLogin = styled.div`
-  height: 85vh;
+  height: 60vh;
   ${centerItems}
   .container {
     display: flex;
@@ -13,7 +13,7 @@ export const StyledNeedToLogin = styled.div`
 `;
 
 export const StyledErrorScreen = styled.div`
-  height: 85vh;
+  height: 60vh;
   ${centerItems}
   .container {
     display: flex;
