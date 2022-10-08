@@ -1,14 +1,14 @@
 import Box from "@mui/material/Box";
-import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
-import { useContext, useEffect, MouseEventHandler } from "react";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { useContext } from "react";
 import DashboardContext from "../../state/DashboardContext";
-import FormContext from "../../state/FormContext";
+
 import { intlNumberFormat } from "../../utils/number-format";
-import { useHistory } from "react-router-dom";
+
 import { TransactionsWrapper } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
-import { getTransactions } from "../../state/actions/transactions";
+
 import { lsUserId } from "../../utils/ls-userId";
 import { DashboardCryptoItem, Transaction } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
@@ -23,13 +23,7 @@ const TransactionsTable = () => {
 
   const dashboardCryptoData = context?.dashboardData;
 
-  const history = useHistory();
-
-  const formContext = useContext(FormContext);
-
   const rows = transactions.map((transaction: Transaction, index: number) => {
-    /*    const lastUpdate = new Date(crypto?.last_updated); */
-
     //Najdu crypto v contextu podle jména, abych dosadil ikonu
     const dashboardCrypto = dashboardCryptoData?.find(
       (crypto: DashboardCryptoItem) => crypto.name === transaction.name

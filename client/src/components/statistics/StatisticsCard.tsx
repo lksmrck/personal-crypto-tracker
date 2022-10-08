@@ -23,8 +23,8 @@ const StatisticsCard = () => {
 
   /*  const auth = useAppSelector((state: RootState) => state.auth); */
 
-  const userId = lsUserId();
   //Vytáhnutí userId z localStorage
+  const userId = lsUserId();
 
   /* const userId = auth.authData.result._id; */
 

@@ -140,8 +140,6 @@ const DashboardTable = () => {
       <DataGrid
         rows={rows}
         columns={columns}
-        /*  pageSize={5}
-        rowsPerPageOptions={[5]} */
         autoHeight
         density={"comfortable"}
         disableSelectionOnClick

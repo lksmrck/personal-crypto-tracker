@@ -5,17 +5,13 @@ import { Button } from "@mui/material";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import CryptoSelect from "./CryptoSelect";
-/* import { useSelector, useDispatch } from "react-redux"; */
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { addHolding, updateHolding } from "../../state/actions/statistics";
 import { addTransaction } from "../../state/actions/transactions";
 import TransactionType from "./TransactionType";
-import { Dispatch, SetStateAction } from "react";
 import { lsUserId } from "../../utils/ls-userId";
-/* import { CryptoItem } from "../../common/modelTypes"; */
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
-/* import { RootState } from '../../index'; */
 import { HoldingItem } from "../../common/modelTypes";
 
 export default function Form() {
@@ -30,12 +26,12 @@ export default function Form() {
   const [loggedUserId, setLoggedUserId] = useState();
 
   const dispatch = useAppDispatch();
-  const holdings = useAppSelector((state: RootState) => state.statistics); //Dle slices, které jsem dal do store (index.tsx)
-  const transactions = useAppSelector((state: RootState) => state.transactions); //Dle slices, které jsem dal do store (index.tsx)
-  const auth = useAppSelector((state: RootState) => state.auth);
+  const holdings = useAppSelector((state: RootState) => state.statistics);
+  /*   const transactions = useAppSelector((state: RootState) => state.transactions);
+  const auth = useAppSelector((state: RootState) => state.auth); */
 
   const context = useContext(DashboardContext);
-  const dashboardCryptoData = context?.dashboardData;
+  /* const dashboardCryptoData = context?.dashboardData; */
 
   const formContext = useContext(FormContext);
 
@@ -110,7 +106,8 @@ export default function Form() {
     newBuySell: "buy" | "sell"
   ) => {
     if (newBuySell !== null) {
-      setBuySell(newBuySell);
+      /* setBuySell(newBuySell); */
+      formContext?.setTransactionType(newBuySell);
     }
   };
 
