@@ -9,6 +9,7 @@ import {
 } from "../../common/theme";
 
 export const StyledTestStats = styled.div`
+  /* border: 3px solid purple; */
   .positive-change {
     ${positiveChange}
   }
@@ -29,20 +30,14 @@ export const StyledTestStats = styled.div`
     margin-top: 3%;
     margin-right: 15%;
   }
-  .card {
-    ${theme.boxShadow}
-    padding: 0.2%
+  .card-paper {
+    ${theme.boxShadow}/*  margin: 0.5% */
   }
 `;
 
 export const StyledStatistics = styled.div`
-  margin: 2% 5% 0 7.5%;
-  width: 85%;
-  /*  ${contentWidth}; */
-  display: flex;
-  justify-content: start;
-  flex-direction: row;
-  flex-wrap: wrap;
+  margin-top: 2%;
+  width: 100%;
 
   .no-holdings-found {
     width: 100%;

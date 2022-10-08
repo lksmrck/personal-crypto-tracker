@@ -98,7 +98,7 @@ export default function Auth() {
 
   return (
     <StyledTestAuth>
-      <Container component="main" maxWidth="xs">
+      <Container maxWidth="xs">
         <Paper className="paper" elevation={3}>
           <Avatar className="avatar">
             <FiLock />

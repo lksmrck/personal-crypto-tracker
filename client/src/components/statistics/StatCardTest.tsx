@@ -37,7 +37,7 @@ const StatCardTest = () => {
   return (
     <Container>
       <StyledTestStats>
-        <Grid container /* spacing={2.5} */>
+        <Grid container /* spacing={2.5} */ spacing={2.5}>
           {holdings.map((holding: HoldingItem) => {
             const cryptoObject = dashboardCryptoData?.find(
               (item: DashboardCryptoItem) =>
@@ -52,15 +52,8 @@ const StatCardTest = () => {
             const lastTransaction = new Date(holding.date);
 
             return (
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                key={holding.name}
-                className="card"
-              >
-                <Paper>
+              <Grid item xs={12} sm={12} md={6} lg={4} key={holding.name}>
+                <Paper className="card-paper">
                   <div className="card-header">
                     <img
                       src={cryptoObject?.imageURL}
