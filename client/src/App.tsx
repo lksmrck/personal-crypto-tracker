@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
 import HomeDashboard from "./pages/HomeDashboard";
 import { DashboardContextProvider } from "./state/DashboardContext";
-
 import Holdings from "./pages/Holdings";
 import Transactions from "./pages/Transactions";
 import Auth from "./components/auth/Auth";
-import { Route, Redirect, Switch, useLocation } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import { FormContextProvider } from "./state/FormContext";
 import Navbar from "./components/layout/Navbar";
 import { useAppSelector } from "./state/hooks";

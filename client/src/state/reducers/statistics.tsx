@@ -2,8 +2,9 @@ import {
   FETCH_ALL_HOLDINGS,
   ADD_HOLDING,
   UPDATE_HOLDING,
+  DELETE_HOLDING,
 } from "../../constants/actionTypes";
-import { StatisticsState, HoldingItem } from "../../common/modelTypes";
+import { HoldingItem } from "../../common/modelTypes";
 
 export default (holdings = [], action: any) => {
   switch (action.type) {
@@ -15,6 +16,11 @@ export default (holdings = [], action: any) => {
       return holdings.map((holding: HoldingItem) =>
         holding.name === action.payload.name ? action.payload : holding
       );
+    case DELETE_HOLDING:
+      holdings = holdings.filter((holding: HoldingItem) => {
+        return holding.name !== action.payload.itemName;
+      });
+      return holdings;
 
     default:
       return holdings;

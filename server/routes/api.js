@@ -5,6 +5,7 @@ import {
   getHoldings,
   createHolding,
   updateHolding,
+  deleteHolding,
 } from "../controllers/holdings.js";
 
 import {
@@ -19,8 +20,8 @@ const router = express.Router();
 //Holdings routes
 router.get("/holdings", getHoldings);
 router.post("/holdings", createHolding);
-
 router.patch("/holdings/:name", updateHolding);
+router.post("/holdings/delete", deleteHolding);
 
 //Transactions routes
 router.get("/transactions", getTransactions);

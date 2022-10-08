@@ -6,7 +6,11 @@ import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import CryptoSelect from "./CryptoSelect";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
-import { addHolding, updateHolding } from "../../state/actions/statistics";
+import {
+  addHolding,
+  updateHolding,
+  deleteHolding,
+} from "../../state/actions/statistics";
 import { addTransaction } from "../../state/actions/transactions";
 import TransactionType from "./TransactionType";
 import { lsUserId } from "../../utils/ls-userId";
@@ -96,7 +100,12 @@ export default function Form() {
 
     if (existingItem !== undefined) {
       const updatedHolding = updateHoldingStatistics(existingItem, formItem);
-      dispatch(updateHolding(formItem.name, updatedHolding));
+      if (updatedHolding.amount != 0) {
+        dispatch(updateHolding(formItem.name, updatedHolding));
+      }
+      dispatch(
+        deleteHolding({ userId: loggedUserId!, itemName: formItem.name })
+      );
     } else dispatch(addHolding(newHoldingItem));
     dispatch(addTransaction(newTransactionItem));
   };

@@ -3,6 +3,7 @@ import {
   ADD_HOLDING,
   UPDATE_HOLDING,
   SET_ERROR,
+  DELETE_HOLDING,
 } from "../../constants/actionTypes";
 import { HoldingItem } from "../../common/modelTypes";
 
@@ -38,3 +39,15 @@ export const updateHolding =
       dispatch({ type: SET_ERROR, payload: error.message });
     }
   };
+
+//V případě, že držený amount klesne na 0, mažu z databaze.
+export const deleteHolding = (formData: Object) => async (dispatch: any) => {
+  try {
+    const { data } = await api.deleteHolding(formData);
+
+    console.log(data);
+    dispatch({ type: DELETE_HOLDING, payload: data });
+  } catch (error) {
+    dispatch({ type: SET_ERROR, payload: error });
+  }
+};

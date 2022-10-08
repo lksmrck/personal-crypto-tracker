@@ -16,6 +16,10 @@ export const addHolding = (newHolding: HoldingItem) =>
 export const updateHolding = (name: string, updatedHolding: HoldingItem) =>
   axios.patch(`${holdingsURL}/${name}`, updatedHolding);
 
+//Pokud se všechen Holding prodal (tzn. držený amount = 0), tak mažu z databáze. V případném opětovném nákupu se vytvoří znovu a od té doby se znovu počítá průměrná cena a P/L
+export const deleteHolding = (formData: Object) =>
+  axios.post(`${holdingsURL}/delete`, formData);
+
 //Transactions history
 export const fetchTransactions = (userId: string) =>
   axios.get(transactionsURL, { params: { userId: userId } });

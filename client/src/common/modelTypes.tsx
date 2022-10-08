@@ -10,12 +10,9 @@ export interface DashboardCryptoItem {
   price_change_percentage_24h: number;
   last_updated: string;
   allTimeHigh: number;
-
-  /* dayMovement: String;
-  marketCap: String; */
 }
 
-//Statistics (holdings)
+//Holdings
 export interface UpdatingCryptoItem {
   transactionType: "buy" | "sell";
   name: string;
@@ -32,10 +29,6 @@ export interface HoldingItem {
   date: string | number;
 }
 
-export interface StatisticsState {
-  holdings: HoldingItem[];
-}
-
 //Transactions
 export interface Transaction {
   transactionType: /* "buy" | "sell"; */ string;
@@ -46,10 +39,7 @@ export interface Transaction {
   date: string;
 }
 
-export interface TransactionsState {
-  transactions: Transaction[];
-}
-
+//AUTH
 export interface LoginData {}
 
 export interface RegisterData {}

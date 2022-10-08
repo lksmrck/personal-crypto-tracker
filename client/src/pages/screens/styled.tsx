@@ -11,3 +11,15 @@ export const StyledNeedToLogin = styled.div`
     margin: 0.5rem;
   }
 `;
+
+export const StyledErrorScreen = styled.div`
+  height: 85vh;
+  ${centerItems}
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .container > * {
+    margin: 0.5rem;
+  }
+`;

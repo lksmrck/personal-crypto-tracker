@@ -40,21 +40,23 @@ export const createHolding = async (req, res) => {
 };
 
 export const updateHolding = async (req, res) => {
-  const { name } = req.params; //NEVIM NA CO JE???
-  /* const { id, name, price, amount, date } = req.body; */
+  const { name } = req.params;
+
   const updatedHolding = req.body;
 
-  /*   if (!mongoose.Types.ObjectId.isValid(id))
-    return res.status(404).send(`An error occured during the update.`); */
+  console.log("updated holding:" + updatedHolding);
 
-  /*  const updatedHolding = { _id: id, name, price, amount, date }; */
-  console.log(updatedHolding);
-
-  /* await Holding.findByIdAndUpdate(id, updatedPost, { new: true }); */
-  await Holding.replaceOne({ name: name }, updatedHolding); //pak dát jen NAME místo NAME:NAME
+  await Holding.replaceOne({ name }, updatedHolding); //pak dát jen NAME místo NAME:NAME
 
   res.json(updatedHolding);
 };
 
-/* module.exports = router; */
+export const deleteHolding = async (req, res) => {
+  const itemToDelete = req.body;
+
+  await Holding.remove({ name: itemToDelete.itemName });
+
+  res.json(itemToDelete);
+};
+
 export default router;

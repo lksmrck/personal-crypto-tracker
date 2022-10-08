@@ -7,7 +7,6 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import DashboardContext from "../../state/DashboardContext";
-import { firstLetterCapitalized } from "../../utils/text-format";
 import { StyledCryptoName } from "./styled";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 import { useAppSelector } from "../../state/hooks";
@@ -48,6 +47,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
           onChange={selectCryptoHandler}
           required
         >
+          {/* V případě "SELL" dá možnost pouze toho krypta, které držím (a mám tedy co prodávat). Při "BUY" dá možnost nákupu z celého crypta, jehož hodnoty se stáhly z API */}
           {transactionType == "buy"
             ? dashboardCryptoData?.map((crypto: DashboardCryptoItem) => {
                 return (
