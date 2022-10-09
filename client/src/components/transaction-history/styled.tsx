@@ -29,19 +29,10 @@ export const StyledTransactionHistory = styled.div`
 
 export const TransactionsWrapper = styled.div`
   .transactions-buy {
-    background-color: #2bc361;
-    /* &:hover {
-      background-color: green;
-    } */
+    background-color: ${theme.color.green};
   }
-  /* &.transactions-buy:hover {
-    background-color: blue;
-  } */
 
   .transactions-sell {
-    background-color: #da6987;
+    background-color: ${theme.color.red};
   }
-  /*   .transactions-sell:hover {
-    background-color: red;
-  } */
 `;

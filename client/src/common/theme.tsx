@@ -22,7 +22,7 @@ export const theme: DefaultTheme = {
     text: "#001e3c",
     contrastBg: "#436fe5",
     label: "#a0a6af",
-    red: "#ea3943",
+    red: "#ee5761",
     green: "#2bcc8f",
   },
   navbarShadow:
@@ -54,6 +54,7 @@ export const positiveChange = `
 color: #2bcc8f;
 `;
 export const negativeChange = `
-color: #ea3943;
-  
+color: #ec4852;
+
 `;
+/* ed5860 */

@@ -40,7 +40,7 @@ const TransactionsTable = () => {
     {
       field: "id",
       headerName: "#",
-      width: 40,
+      width: 30,
       align: "center",
       headerAlign: "center",
     },
@@ -50,13 +50,13 @@ const TransactionsTable = () => {
         return <img src={params.row.icon} width="25px" height="25px" />;
       },
       headerName: "",
-      width: 70,
+      width: 50,
       align: "center",
     },
     {
       field: "name",
       headerName: "Name",
-      width: 90,
+      width: 80,
     },
 
     {
@@ -97,6 +97,10 @@ const TransactionsTable = () => {
         getRowClassName={(params) =>
           `transactions-${params.row.transactionType}`
         }
+        sx={{
+          "& .transactions-buy:hover": { backgroundColor: "#25b07b" },
+          "& .transactions-sell:hover": { backgroundColor: "#ea3943" },
+        }}
       />
     </TransactionsWrapper>
   );
