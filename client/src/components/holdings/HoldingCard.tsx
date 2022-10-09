@@ -1,6 +1,4 @@
 import { useContext, useEffect } from "react";
-import btc_icon from "../../assets/bitcoin-logo.png";
-import { StyledStatisticsCard } from "./styled";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
 import { Grid, Paper, Container } from "@mui/material";
 
@@ -11,11 +9,11 @@ import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import { intlNumberFormat } from "../../utils/number-format";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
-import { getHoldings } from "../../state/actions/statistics";
+
 import { lsUserId } from "../../utils/ls-userId";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
-import { StyledTestStats } from "./styled";
+import { StyledHoldingCard } from "./styled";
 
 const HoldingCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
@@ -36,7 +34,7 @@ const HoldingCard = () => {
 
   return (
     <Container>
-      <StyledTestStats>
+      <StyledHoldingCard>
         <Grid container /* spacing={2.5} */ spacing={2.5}>
           {holdings.map((holding: HoldingItem) => {
             const cryptoObject = dashboardCryptoData?.find(
@@ -163,7 +161,7 @@ const HoldingCard = () => {
             );
           })}
         </Grid>
-      </StyledTestStats>
+      </StyledHoldingCard>
     </Container>
   );
 };

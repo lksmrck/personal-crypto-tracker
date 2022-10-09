@@ -6,7 +6,7 @@ import FormContext from "../../state/FormContext";
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
 
-export default function AddTransaction() {
+const AddTransaction = () => {
   const formContext = useContext(FormContext);
   const holdings = useAppSelector((state: RootState) => state.statistics);
 
@@ -28,4 +28,5 @@ export default function AddTransaction() {
       )}
     </StyledAddTransaction>
   );
-}
+};
+export default AddTransaction;

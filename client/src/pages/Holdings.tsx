@@ -5,7 +5,7 @@ import { lsUserId } from "../utils/ls-userId";
 
 import NeedToLogin from "./screens/NeedToLogin";
 
-export default function Holdings() {
+const Holdings = () => {
   const [user, setUser] = useState(lsUserId());
 
   useEffect(() => {
@@ -25,4 +25,5 @@ export default function Holdings() {
       )}
     </>
   );
-}
+};
+export default Holdings;

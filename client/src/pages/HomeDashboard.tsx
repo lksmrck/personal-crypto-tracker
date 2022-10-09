@@ -1,5 +1,6 @@
 import Dashboard from "../components/home/Dashboard";
 
-export default function HomeDashboard() {
+const HomeDashboard = () => {
   return <Dashboard />;
-}
+};
+export default HomeDashboard;

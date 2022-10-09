@@ -8,7 +8,7 @@ import {
   negativeChange,
 } from "../../common/theme";
 
-export const StyledTestStats = styled.div`
+export const StyledHoldingCard = styled.div`
   /* border: 3px solid purple; */
   .positive-change {
     ${positiveChange}
@@ -39,11 +39,16 @@ export const StyledTestStats = styled.div`
     align-items: center;
     /*    border: 1px solid red; */
     justify-content: space-between;
+    /*   border: 1px solid red; */
+    height: 100px;
   }
 
   .card-header-logo-name-container {
     ${centerItems}
-    margin: 4%
+    margin: 4%;
+    h2 {
+      margin-left: 6%;
+    }
   }
   .card-header-price-container {
     display: flex;
@@ -77,45 +82,6 @@ export const StyledStatistics = styled.div`
     flex-direction: column;
     margin-top: 10%;
     border: 1px solid red;
-  }
-`;
-
-export const StyledStatisticsCard = styled.div`
-  ${cardSize};
-  /*  border: 1px solid red; */
-  margin: 1%;
-
-  border-radius: ${theme.borderRadius};
-  ${centerItems};
-  font-size: 15px;
-  background-color: white;
-  ${theme.boxShadow}
-  border: 2px solid green;
-
-  .stats-container {
-    border: 1px solid red;
-  }
-  .stats-title {
-    display: flex;
-    h1 {
-      margin-left: 5%;
-      font-size: 45px;
-    }
-  }
-  .text-container {
-    margin-top: 7%;
-  }
-  .positive-change {
-    ${positiveChange}
-  }
-  .negative-change {
-    ${negativeChange}
-  }
-  .holding-headings {
-    color: grey;
-  }
-  .holding-price {
-    font-weight: bold;
   }
 `;
 

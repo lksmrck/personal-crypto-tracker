@@ -34,14 +34,12 @@ export const StyledHomePage = styled.div`
 `;
 
 export const StyledDashboard = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5%;
+  width: 1110px;
+  margin: 0 auto;
 `;
 
 export const DashboardWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   background-color: white;
   ${theme.boxShadow}
   border-radius: ${theme.borderRadius};

@@ -10,7 +10,7 @@ import DashboardContext from "../../state/DashboardContext";
 import { getTransactions } from "../../state/actions/transactions";
 import { lsUserId } from "../../utils/ls-userId";
 
-export default function TransactionHistory() {
+const TransactionsHistory = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -46,4 +46,5 @@ export default function TransactionHistory() {
       )}
     </StyledTransactionHistory>
   );
-}
+};
+export default TransactionsHistory;

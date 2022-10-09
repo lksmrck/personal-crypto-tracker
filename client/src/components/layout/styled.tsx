@@ -16,7 +16,7 @@ export const StyledHeader = styled.header`
   height: 5rem;
   display: flex;
   padding: 0 2% 0 7%;
-
+  justify-content: space-between;
   align-items: center;
   background-color: #008080;
   ${theme.navbarShadow}
@@ -30,12 +30,16 @@ export const StyledHeader = styled.header`
   .logo-tracker {
     margin-left: 1.5rem;
   }
+  .hamburger {
+    /* display: none; */
+  }
 `;
 
 export const StyledNavbar = styled.nav`
   display: flex;
   width: 100%;
   margin-left: 1.5rem;
+  display: none;
 
   ul {
     list-style: none;

@@ -76,7 +76,7 @@ const DashboardTable = () => {
     {
       field: "price",
       headerName: "Price",
-      width: 100,
+      width: 120,
       headerAlign: "right",
       align: "right",
       cellClassName: "coin-price",

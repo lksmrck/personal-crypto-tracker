@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import { useAppDispatch } from "../../state/hooks";
 import { useHistory, useLocation } from "react-router-dom";
 import { Avatar, Typography } from "@mui/material";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = () => {
   /*  const userId = lsUserId(); */
@@ -40,6 +41,12 @@ const Navbar = () => {
       <div className="nav-logo" onClick={() => history.push("/dashboard")}>
         <div>Crypto</div>
         <div className="logo-tracker">Tracker</div>
+      </div>
+      <div className="hamburger">
+        <HamburgerMenu
+          isUserLogged={user}
+          setIsUserLogged={() => setUser(null)}
+        />
       </div>
       <StyledNavbar>
         <ul>

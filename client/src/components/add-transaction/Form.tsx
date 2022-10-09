@@ -18,7 +18,7 @@ import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
 
-export default function Form() {
+const Form = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [inputName, setInputName] = useState<string>("");
   const priceInputRef = useRef<HTMLInputElement>(null);
@@ -179,4 +179,5 @@ export default function Form() {
       </div>
     </StyledForm>
   );
-}
+};
+export default Form;

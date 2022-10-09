@@ -10,6 +10,7 @@ interface AppContextInterface {
   setDashboardData: Dispatch<SetStateAction<DashboardCryptoItem[]>>;
   getDashboardData: () => void;
   dashboardData: DashboardCryptoItem[];
+  isLoading: boolean;
 }
 
 const DashboardContext = createContext<AppContextInterface | null>(null);
@@ -18,6 +19,7 @@ export const DashboardContextProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const [dashboardData, setDashboardData] = useState<DashboardCryptoItem[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -25,6 +27,7 @@ export const DashboardContextProvider: React.FC<{
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=1&sparkline=false&price_change_percentage=24h";
 
   const getDashboardData = () => {
+    setIsLoading(true);
     axios
       .get(url)
       .then((res) => {
@@ -42,9 +45,11 @@ export const DashboardContextProvider: React.FC<{
           last_updated: item.last_updated,
           allTimeHigh: item.ath,
         }));
+        setIsLoading(false);
         setDashboardData(reducedData);
       })
       .catch((error) => {
+        setIsLoading(false);
         dispatch({ type: SET_ERROR, payload: error.message });
       });
   };
@@ -55,6 +60,7 @@ export const DashboardContextProvider: React.FC<{
         setDashboardData,
         getDashboardData,
         dashboardData,
+        isLoading,
       }}
     >
       {children}

@@ -14,18 +14,12 @@ export const StyledAddTransaction = styled.div`
 export const StyledForm = styled.form`
   display: flex;
   justify-content: center;
-
   height: 550px;
-
-  /*  .select-name {
-    color: red;
-    font-size: 20px;
-  } */
 
   .form {
     margin-top: 2%;
-    width: 550px;
-    height: 500px;
+    width: 450px;
+    height: 400px;
     /*  border: 2px red solid; */
     border-radius: ${theme.borderRadius};
     ${theme.boxShadow};

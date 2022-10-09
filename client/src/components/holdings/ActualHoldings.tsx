@@ -10,7 +10,7 @@ import { getHoldings } from "../../state/actions/statistics";
 import DashboardContext from "../../state/DashboardContext";
 import HoldingCard from "./HoldingCard";
 
-export default function ActualHoldings() {
+const ActualHoldings = () => {
   const holdings = useAppSelector((state: RootState) => state.statistics);
   const dispatch = useAppDispatch();
   const formContext = useContext(FormContext);
@@ -47,4 +47,5 @@ export default function ActualHoldings() {
       )}
     </>
   );
-}
+};
+export default ActualHoldings;

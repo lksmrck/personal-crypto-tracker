@@ -3,7 +3,7 @@ import { StyledHomePage } from "./styled";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function HomePage() {
+const HomePage = () => {
   return (
     <StyledHomePage>
       <div className="home-container">
@@ -22,4 +22,5 @@ export default function HomePage() {
       </div>
     </StyledHomePage>
   );
-}
+};
+export default HomePage;

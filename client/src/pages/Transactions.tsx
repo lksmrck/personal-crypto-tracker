@@ -1,9 +1,9 @@
-import TransactionHistory from "../components/transactions/TransactionHistory";
+import TransactionsHistory from "../components/transactions/TransactionsHistory";
 import NeedToLogin from "./screens/NeedToLogin";
 import { lsUserId } from "../utils/ls-userId";
 import { useState, useEffect } from "react";
 
-export default function Transactions() {
+const Transactions = () => {
   const [user, setUser] = useState(lsUserId());
 
   useEffect(() => {
@@ -14,11 +14,12 @@ export default function Transactions() {
     <>
       {user ? (
         <>
-          <TransactionHistory />
+          <TransactionsHistory />
         </>
       ) : (
         <NeedToLogin />
       )}
     </>
   );
-}
+};
+export default Transactions;

@@ -33,7 +33,7 @@ const initialState = {
   confirmPassword: "",
 };
 
-export default function Auth() {
+const Auth = () => {
   const [formData, setFormData] = useState(initialState);
   const [isRegistration, setIsRegistration] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -193,4 +193,5 @@ export default function Auth() {
       </Container>
     </StyledTestAuth>
   );
-}
+};
+export default Auth;
