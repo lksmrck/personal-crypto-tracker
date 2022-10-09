@@ -16,10 +16,6 @@ const DashboardTable = () => {
 
   const history = useHistory();
 
-  useEffect(() => {
-    dashboardContext?.getDashboardData();
-  }, []);
-
   const rows: any = dashboardCryptoData?.map(
     (crypto: DashboardCryptoItem, index: number) => {
       const lastUpdate = new Date(crypto?.last_updated);

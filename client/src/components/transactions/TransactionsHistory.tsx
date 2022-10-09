@@ -9,9 +9,13 @@ import FormContext from "../../state/FormContext";
 import DashboardContext from "../../state/DashboardContext";
 import { getTransactions } from "../../state/actions/transactions";
 import { lsUserId } from "../../utils/ls-userId";
+import LoadingSpinner from "../layout/LoadingSpinner";
 
 const TransactionsHistory = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
+  const loadingState = useAppSelector(
+    (state: RootState) => state.errorAndLoading
+  );
   const dispatch = useAppDispatch();
   const history = useHistory();
   const formContext = useContext(FormContext);
@@ -32,7 +36,9 @@ const TransactionsHistory = () => {
 
   return (
     <StyledTransactionHistory>
-      {transactions.length > 0 ? (
+      {loadingState.loading ? (
+        <LoadingSpinner />
+      ) : transactions.length > 0 ? (
         <div className="transactions-container">
           <TransactionsTable />
         </div>

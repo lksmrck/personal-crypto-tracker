@@ -7,20 +7,18 @@ import DashboardContext from "../../state/DashboardContext";
 import LoadingSpinner from "../layout/LoadingSpinner";
 
 const Dashboard = () => {
-  const context = useContext(DashboardContext);
-  const [isLoading, setIsLoading] = useState(context?.isLoading);
+  const dashboardContext = useContext(DashboardContext);
 
   useEffect(() => {
-    setIsLoading(context?.isLoading);
-    console.log(context?.isLoading);
-  }, [context?.isLoading]);
+    dashboardContext?.getDashboardData();
+  }, []);
 
   return (
     <div>
       <HomePage />
       <StyledDashboard>
-        {/* {context?.isLoading ? <LoadingSpinner /> : <DashboardTable />} */}
-        <DashboardTable />
+        {dashboardContext?.isLoading ? <LoadingSpinner /> : <DashboardTable />}
+        {/* <DashboardTable /> */}
       </StyledDashboard>
     </div>
   );

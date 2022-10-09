@@ -42,52 +42,59 @@ const Navbar = () => {
         <div>Crypto</div>
         <div className="logo-tracker">Tracker</div>
       </div>
+
+      <StyledNavbar>
+        <div className="navbar-items-container">
+          <ul>
+            <li>
+              <NavLink to="/dashboard" activeClassName="active">
+                Dashboard
+              </NavLink>
+            </li>
+            {user && (
+              <>
+                <li>
+                  <NavLink to="/holdings" activeClassName="active">
+                    Holdings
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/transactions" activeClassName="active">
+                    Transactions
+                  </NavLink>
+                </li>
+              </>
+            )}
+          </ul>
+          <section className="button-wrapper">
+            {!user ? (
+              <Button variant="contained" onClick={onClickLogin}>
+                Sign In
+              </Button>
+            ) : (
+              <div className="logged-in">
+                <Avatar alt={user.result.name} src={user.result.imageUrl} />
+                <Typography noWrap variant="h6" sx={{ color: "#e6fcfc" }}>
+                  {user.result.name}
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={onClickLogout}
+                >
+                  Logout
+                </Button>
+              </div>
+            )}
+          </section>
+        </div>
+      </StyledNavbar>
       <div className="hamburger">
         <HamburgerMenu
           isUserLogged={user}
           setIsUserLogged={() => setUser(null)}
         />
       </div>
-      <StyledNavbar>
-        <ul>
-          <li>
-            <NavLink to="/dashboard" activeClassName="active">
-              Dashboard
-            </NavLink>
-          </li>
-          {user && (
-            <>
-              <li>
-                <NavLink to="/holdings" activeClassName="active">
-                  Holdings
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/transactions" activeClassName="active">
-                  Transactions
-                </NavLink>
-              </li>
-            </>
-          )}
-        </ul>
-        <section className="button-wrapper">
-          {!user ? (
-            <Button variant="contained" onClick={onClickLogin}>
-              Sign In
-            </Button>
-          ) : (
-            <div className="logged-in">
-              <Avatar alt={user.result.name} src={user.result.imageUrl} />
-              <Typography noWrap variant="h6" sx={{ color: "#e6fcfc" }}>
-                {user.result.name}
-              </Typography>
-              <Button variant="contained" color="error" onClick={onClickLogout}>
-                Logout
-              </Button>
-            </div>
-          )}
-        </section>
-      </StyledNavbar>
     </StyledHeader>
   );
 };

@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { StyledErrorScreen } from "./styled";
 
 export default function ErrorScreen() {
-  const error = useAppSelector((state: RootState) => state.error);
+  const error = useAppSelector((state: RootState) => state.errorAndLoading);
   const dispatch = useAppDispatch();
   const history = useHistory();
 

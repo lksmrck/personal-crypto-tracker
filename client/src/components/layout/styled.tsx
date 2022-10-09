@@ -39,7 +39,9 @@ export const StyledNavbar = styled.nav`
   display: flex;
   width: 100%;
   margin-left: 1.5rem;
-  display: none;
+  .navbar-items-container {
+    display: none;
+  }
 
   ul {
     list-style: none;
@@ -49,6 +51,7 @@ export const StyledNavbar = styled.nav`
     display: flex;
     align-items: center;
     width: 90%;
+    display: none;
   }
 
   li {

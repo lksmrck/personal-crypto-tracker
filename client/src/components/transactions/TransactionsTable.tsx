@@ -62,7 +62,7 @@ const TransactionsTable = () => {
     {
       field: "price",
       headerName: "Price per item",
-      width: 130,
+      width: 145,
       headerAlign: "right",
       align: "right",
     },

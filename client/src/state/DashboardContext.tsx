@@ -28,6 +28,7 @@ export const DashboardContextProvider: React.FC<{
 
   const getDashboardData = () => {
     setIsLoading(true);
+
     axios
       .get(url)
       .then((res) => {
@@ -50,6 +51,7 @@ export const DashboardContextProvider: React.FC<{
       })
       .catch((error) => {
         setIsLoading(false);
+
         dispatch({ type: SET_ERROR, payload: error.message });
       });
   };

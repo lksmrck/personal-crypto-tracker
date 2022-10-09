@@ -12,7 +12,7 @@ import ErrorScreen from "./pages/screens/ErrorScreen";
 import HamburgerMenu from "./components/layout/HamburgerMenu";
 
 function App() {
-  const error = useAppSelector((state: RootState) => state.error);
+  const error = useAppSelector((state: RootState) => state.errorAndLoading);
 
   return (
     <DashboardContextProvider>

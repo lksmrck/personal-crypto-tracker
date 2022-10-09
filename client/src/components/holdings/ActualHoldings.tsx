@@ -9,9 +9,13 @@ import { lsUserId } from "../../utils/ls-userId";
 import { getHoldings } from "../../state/actions/statistics";
 import DashboardContext from "../../state/DashboardContext";
 import HoldingCard from "./HoldingCard";
+import LoadingSpinner from "../layout/LoadingSpinner";
 
 const ActualHoldings = () => {
   const holdings = useAppSelector((state: RootState) => state.statistics);
+  const loadingState = useAppSelector(
+    (state: RootState) => state.errorAndLoading
+  );
   const dispatch = useAppDispatch();
   const formContext = useContext(FormContext);
   const dashboardContext = useContext(DashboardContext);
@@ -22,14 +26,21 @@ const ActualHoldings = () => {
     formContext?.setSelectedCrypto("Bitcoin");
   };
 
-  useEffect(() => {
-    dashboardContext?.getDashboardData();
-    dispatch(getHoldings(userId));
-  }, [dispatch]);
+  useEffect(
+    () => {
+      dashboardContext?.getDashboardData();
+      dispatch(getHoldings(userId));
+    },
+    [
+      /* dispatch */
+    ]
+  );
 
   return (
     <>
-      {holdings.length > 0 ? (
+      {loadingState.loading ? (
+        <LoadingSpinner />
+      ) : holdings.length > 0 ? (
         <StyledStatistics>
           <HoldingCard />
         </StyledStatistics>
@@ -45,6 +56,12 @@ const ActualHoldings = () => {
           </StyledWrapper>
         )
       )}
+
+      {/*  {holdings.length > 0 ? (
+        <StyledStatistics>
+          {loadingState.loading ? <LoadingSpinner /> : <HoldingCard />}
+        </StyledStatistics>
+      ) : ""} */}
     </>
   );
 };

@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { IconButton } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch } from "../../state/hooks";
+import { firstLetterCapitalized } from "../../utils/text-format";
 
 interface HamburgerMenuProps {
   isUserLogged: boolean;
@@ -21,6 +22,8 @@ const HamburgerMenu = ({
   const history = useHistory();
   const dispatch = useAppDispatch();
 
+  const menuItemsLogged = ["holdings", "transactions"];
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -33,7 +36,7 @@ const HamburgerMenu = ({
     handleClose();
     dispatch({ type: "LOGOUT" });
     history.push("/");
-    setIsUserLogged();
+    /*  setIsUserLogged(); */
   };
 
   return (
@@ -72,26 +75,30 @@ const HamburgerMenu = ({
         </MenuItem>
         {isUserLogged ? (
           <>
-            <MenuItem
-              onClick={() => {
-                handleClose();
-                history.push("/holdings");
-              }}
-            >
-              Holdings
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                handleClose();
-                history.push("/transactions");
-              }}
-            >
-              Transactions
-            </MenuItem>
+            {menuItemsLogged.map((item: string) => {
+              return (
+                <MenuItem
+                  key={item}
+                  onClick={() => {
+                    handleClose();
+                    history.push(`/${item}`);
+                  }}
+                >
+                  {firstLetterCapitalized(item)}
+                </MenuItem>
+              );
+            })}
             <MenuItem onClick={onClickLogout}>Logout</MenuItem>
           </>
         ) : (
-          <MenuItem onClick={handleClose}>Sign In</MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              history.push("/auth");
+            }}
+          >
+            Sign In
+          </MenuItem>
         )}
       </Menu>
     </div>

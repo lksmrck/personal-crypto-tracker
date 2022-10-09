@@ -4,6 +4,8 @@ import {
   UPDATE_HOLDING,
   SET_ERROR,
   DELETE_HOLDING,
+  START_LOADING,
+  STOP_LOADING,
 } from "../../constants/actionTypes";
 import { HoldingItem } from "../../common/modelTypes";
 
@@ -11,10 +13,12 @@ import * as api from "../../api/index";
 
 export const getHoldings = (userId: string) => async (dispatch: any) => {
   try {
-    const { data } = await api.fetchHoldings(userId);
-
+    dispatch({ type: START_LOADING });
+    const { data } = await api.fetchHoldings(userId); //const response = await fetch(...)
     dispatch({ type: FETCH_ALL_HOLDINGS, payload: data });
+    dispatch({ type: STOP_LOADING });
   } catch (error: any) {
+    dispatch({ type: STOP_LOADING });
     dispatch({ type: SET_ERROR, payload: error.message });
   }
 };
