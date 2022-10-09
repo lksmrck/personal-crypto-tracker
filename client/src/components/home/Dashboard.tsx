@@ -6,7 +6,7 @@ import { useContext, useState, useEffect } from "react";
 import DashboardContext from "../../state/DashboardContext";
 import LoadingSpinner from "../layout/LoadingSpinner";
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const dashboardContext = useContext(DashboardContext);
 
   useEffect(() => {

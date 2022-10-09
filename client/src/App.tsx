@@ -9,19 +9,12 @@ import Navbar from "./components/layout/Navbar";
 import { useAppSelector } from "./state/hooks";
 import { RootState } from ".";
 import ErrorScreen from "./pages/screens/ErrorScreen";
-import HamburgerMenu from "./components/layout/HamburgerMenu";
 
-function App() {
+const App: React.FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);
 
   return (
     <DashboardContextProvider>
-      {/*  <HamburgerMenu
-        isUserLogged={true}
-        setIsUserLogged={(e: number) => {
-          setTest(e);
-        }}
-      /> */}
       <Navbar />
       {error.isError ? (
         <ErrorScreen />
@@ -42,6 +35,6 @@ function App() {
       )}
     </DashboardContextProvider>
   );
-}
+};
 
 export default App;

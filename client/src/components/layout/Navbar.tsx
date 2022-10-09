@@ -9,7 +9,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Avatar, Typography } from "@mui/material";
 import HamburgerMenu from "./HamburgerMenu";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   /*  const userId = lsUserId(); */
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -89,6 +89,12 @@ const Navbar = () => {
           </section>
         </div>
       </StyledNavbar>
+      <div className="user">
+        <Avatar alt={user.result.name} src={user.result.imageUrl} />
+        <Typography noWrap variant="h6" sx={{ color: "#e6fcfc" }}>
+          {user.result.name}
+        </Typography>
+      </div>
       <div className="hamburger">
         <HamburgerMenu
           isUserLogged={user}

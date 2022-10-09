@@ -7,18 +7,17 @@ import {
 
 const errorState = { isError: false, errorMessage: "", loading: false };
 
-export default (error = errorState, action: any) => {
+export default (state = errorState, action: any) => {
   switch (action.type) {
     case SET_ERROR:
-      return { ...errorState, isError: true, errorMessage: action.payload };
+      return { ...state, isError: true, errorMessage: action.payload };
     case CLEAR_ERROR:
-      return { ...errorState, isError: false, errorMessage: null };
+      return { ...state, isError: false, errorMessage: null };
     case START_LOADING:
-      return { ...errorState, loading: true };
-
+      return { ...state, loading: true };
     case STOP_LOADING:
-      return { ...errorState, loading: false };
+      return { ...state, loading: false };
     default:
-      return error;
+      return state;
   }
 };

@@ -3,7 +3,7 @@ import NeedToLogin from "./screens/NeedToLogin";
 import { lsUserId } from "../utils/ls-userId";
 import { useState, useEffect } from "react";
 
-const Transactions = () => {
+const Transactions: React.FC = () => {
   const [user, setUser] = useState(lsUserId());
 
   useEffect(() => {

@@ -10,7 +10,7 @@ import {
   addHolding,
   updateHolding,
   deleteHolding,
-} from "../../state/actions/statistics";
+} from "../../state/actions/holdings";
 import { addTransaction } from "../../state/actions/transactions";
 import TransactionType from "./TransactionType";
 import { lsUserId } from "../../utils/ls-userId";
@@ -18,7 +18,7 @@ import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
 
-const Form = () => {
+const Form: React.FC = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [inputName, setInputName] = useState<string>("");
   const priceInputRef = useRef<HTMLInputElement>(null);
@@ -31,7 +31,7 @@ const Form = () => {
   const [formIsValid, setFormIsValid] = useState(true);
 
   const dispatch = useAppDispatch();
-  const holdings = useAppSelector((state: RootState) => state.statistics);
+  const holdings = useAppSelector((state: RootState) => state.holdings);
 
   const context = useContext(DashboardContext);
   /* const dashboardCryptoData = context?.dashboardData; */

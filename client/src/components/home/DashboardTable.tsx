@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 import { DashboardWrapper } from "./styled";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 
-const DashboardTable = () => {
+const DashboardTable: React.FC = () => {
   const dashboardContext = useContext(DashboardContext);
   const formContext = useContext(FormContext);
 

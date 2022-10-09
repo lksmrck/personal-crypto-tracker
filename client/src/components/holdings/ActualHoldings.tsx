@@ -6,13 +6,14 @@ import { useContext, useEffect } from "react";
 import FormContext from "../../state/FormContext";
 import { StyledWrapper } from "./styled";
 import { lsUserId } from "../../utils/ls-userId";
-import { getHoldings } from "../../state/actions/statistics";
+import { getHoldings } from "../../state/actions/holdings";
 import DashboardContext from "../../state/DashboardContext";
 import HoldingCard from "./HoldingCard";
 import LoadingSpinner from "../layout/LoadingSpinner";
+/* import { useState } from "react"; */
 
-const ActualHoldings = () => {
-  const holdings = useAppSelector((state: RootState) => state.statistics);
+const ActualHoldings: React.FC = () => {
+  const holdings = useAppSelector((state: RootState) => state.holdings);
   const loadingState = useAppSelector(
     (state: RootState) => state.errorAndLoading
   );
@@ -20,6 +21,8 @@ const ActualHoldings = () => {
   const formContext = useContext(FormContext);
   const dashboardContext = useContext(DashboardContext);
   const userId = lsUserId();
+  /* 
+  const [holdingsAmount, setHoldingsAmount] = useState(0); */
 
   const onClickButton = () => {
     formContext?.setFormShown(true);
@@ -35,6 +38,12 @@ const ActualHoldings = () => {
       /* dispatch */
     ]
   );
+  /*   useEffect(() => {
+    const awaitHoldings = setTimeout(() => {
+      setHoldingsAmount(holdings.length);
+    }, 1000);
+    return () => clearTimeout(awaitHoldings);
+  }, [holdings]); */
 
   return (
     <>

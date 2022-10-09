@@ -13,7 +13,7 @@ interface HamburgerMenuProps {
   setIsUserLogged: any;
 }
 
-const HamburgerMenu = ({
+const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   isUserLogged,
   setIsUserLogged,
 }: HamburgerMenuProps) => {
@@ -36,7 +36,7 @@ const HamburgerMenu = ({
     handleClose();
     dispatch({ type: "LOGOUT" });
     history.push("/");
-    /*  setIsUserLogged(); */
+    setIsUserLogged();
   };
 
   return (

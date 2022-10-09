@@ -3,7 +3,7 @@ import { StyledHomePage } from "./styled";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <StyledHomePage>
       <div className="home-container">

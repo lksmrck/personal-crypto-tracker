@@ -33,7 +33,7 @@ const initialState = {
   confirmPassword: "",
 };
 
-const Auth = () => {
+const Auth: React.FC = () => {
   const [formData, setFormData] = useState(initialState);
   const [isRegistration, setIsRegistration] = useState(false);
   const [showPassword, setShowPassword] = useState(false);

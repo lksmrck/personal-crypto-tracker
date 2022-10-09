@@ -19,7 +19,7 @@ type CryptoSelectProps = {
 const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
   const dashboardContext = useContext(DashboardContext);
   const formContext = useContext(FormContext);
-  const holdings = useAppSelector((state) => state.statistics);
+  const holdings = useAppSelector((state) => state.holdings);
 
   const dashboardCryptoData = dashboardContext?.dashboardData;
   const [transactionType, setTransactionType] = useState(

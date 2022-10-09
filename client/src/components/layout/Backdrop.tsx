@@ -5,7 +5,7 @@ type BackdropProps = {
   children: React.ReactNode;
 };
 
-const Backdrop = (props: BackdropProps) => {
+const Backdrop: React.FC<BackdropProps> = (props: BackdropProps) => {
   return <StyledBackdrop>{props.children}</StyledBackdrop>;
 };
 

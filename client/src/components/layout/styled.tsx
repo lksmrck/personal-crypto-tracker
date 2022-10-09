@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../common/theme";
+import { centerItems, theme } from "../../common/theme";
 
 export const StyledBackdrop = styled.div`
   position: fixed;
@@ -32,6 +32,9 @@ export const StyledHeader = styled.header`
   }
   .hamburger {
     /* display: none; */
+  }
+  .user {
+    ${centerItems}/* border: 1px solid red */
   }
 `;
 

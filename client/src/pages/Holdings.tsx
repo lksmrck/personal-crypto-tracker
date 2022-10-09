@@ -5,7 +5,7 @@ import { lsUserId } from "../utils/ls-userId";
 
 import NeedToLogin from "./screens/NeedToLogin";
 
-const Holdings = () => {
+const Holdings: React.FC = () => {
   const [user, setUser] = useState(lsUserId());
 
   useEffect(() => {

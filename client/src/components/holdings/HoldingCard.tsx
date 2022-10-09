@@ -15,7 +15,7 @@ import { DashboardCryptoItem } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 import { StyledHoldingCard } from "./styled";
 
-const HoldingCard = () => {
+const HoldingCard: React.FC = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
   const context = useContext(DashboardContext);
   const formContext = useContext(FormContext);
@@ -30,7 +30,7 @@ const HoldingCard = () => {
 
   const dashboardCryptoData = context?.dashboardData;
 
-  const holdings = useAppSelector((state: RootState) => state.statistics);
+  const holdings = useAppSelector((state: RootState) => state.holdings);
 
   return (
     <Container>

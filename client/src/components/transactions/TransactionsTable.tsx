@@ -11,7 +11,7 @@ import { RootState } from "../..";
 import { DashboardCryptoItem, Transaction } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 
-const TransactionsTable = () => {
+const TransactionsTable: React.FC = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
 
   const context = useContext(DashboardContext);

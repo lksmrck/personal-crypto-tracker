@@ -6,9 +6,9 @@ import FormContext from "../../state/FormContext";
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
 
-const AddTransaction = () => {
+const AddTransaction: React.FC = () => {
   const formContext = useContext(FormContext);
-  const holdings = useAppSelector((state: RootState) => state.statistics);
+  const holdings = useAppSelector((state: RootState) => state.holdings);
 
   return (
     <StyledAddTransaction>

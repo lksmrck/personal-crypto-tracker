@@ -6,7 +6,7 @@ import { CLEAR_ERROR } from "../../constants/actionTypes";
 import { useHistory } from "react-router-dom";
 import { StyledErrorScreen } from "./styled";
 
-export default function ErrorScreen() {
+const ErrorScreen: React.FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -31,4 +31,5 @@ export default function ErrorScreen() {
       </div>
     </StyledErrorScreen>
   );
-}
+};
+export default ErrorScreen;

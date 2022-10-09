@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { StyledNeedToLogin } from "./styled";
 
-export default function NeedToLogin() {
+const NeedToLogin: React.FC = () => {
   const history = useHistory();
 
   return (
@@ -22,4 +22,5 @@ export default function NeedToLogin() {
       </div>
     </StyledNeedToLogin>
   );
-}
+};
+export default NeedToLogin;
