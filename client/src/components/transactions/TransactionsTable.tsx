@@ -40,7 +40,7 @@ const TransactionsTable = () => {
     {
       field: "id",
       headerName: "#",
-      width: 30,
+      width: 40,
       align: "center",
       headerAlign: "center",
     },
@@ -50,19 +50,19 @@ const TransactionsTable = () => {
         return <img src={params.row.icon} width="25px" height="25px" />;
       },
       headerName: "",
-      width: 50,
+      width: 70,
       align: "center",
     },
     {
       field: "name",
       headerName: "Name",
-      width: 80,
+      width: 130,
     },
 
     {
       field: "price",
       headerName: "Price per item",
-      width: 90,
+      width: 130,
       headerAlign: "right",
       align: "right",
     },
@@ -83,7 +83,7 @@ const TransactionsTable = () => {
     {
       field: "date",
       headerName: "Date",
-      width: 180,
+      width: 200,
     },
   ];
 

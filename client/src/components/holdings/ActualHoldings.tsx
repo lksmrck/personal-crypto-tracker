@@ -1,4 +1,3 @@
-import StatisticsCard from "./StatisticsCard";
 import { StyledStatistics } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
@@ -9,9 +8,9 @@ import { StyledWrapper } from "./styled";
 import { lsUserId } from "../../utils/ls-userId";
 import { getHoldings } from "../../state/actions/statistics";
 import DashboardContext from "../../state/DashboardContext";
-import StatCardTest from "./StatCardTest";
+import HoldingCard from "./HoldingCard";
 
-export default function Statistics() {
+export default function ActualHoldings() {
   const holdings = useAppSelector((state: RootState) => state.statistics);
   const dispatch = useAppDispatch();
   const formContext = useContext(FormContext);
@@ -32,8 +31,7 @@ export default function Statistics() {
     <>
       {holdings.length > 0 ? (
         <StyledStatistics>
-          {/* <StatisticsCard /> */}
-          <StatCardTest />
+          <HoldingCard />
         </StyledStatistics>
       ) : (
         !formContext?.formShown && (

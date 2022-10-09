@@ -92,7 +92,7 @@ const DashboardTable = () => {
     {
       field: "priceChange",
       headerName: "24h change",
-      width: 130,
+      width: 115,
       headerAlign: "right",
       align: "right",
       cellClassName: (params) =>
@@ -103,7 +103,7 @@ const DashboardTable = () => {
     {
       field: "priceChangePercentage",
       headerName: "24h change %",
-      width: 130,
+      width: 115,
       headerAlign: "right",
       align: "right",
       cellClassName: (params) =>
@@ -114,7 +114,7 @@ const DashboardTable = () => {
     {
       field: "allTimeHigh",
       headerName: "All time high",
-      width: 140,
+      width: 120,
       headerAlign: "right",
       align: "right",
       cellClassName: "default",
@@ -122,7 +122,7 @@ const DashboardTable = () => {
     {
       field: "lastUpdate",
       headerName: "Last updated",
-      width: 150,
+      width: 130,
       headerAlign: "right",
       align: "right",
       cellClassName: "default",

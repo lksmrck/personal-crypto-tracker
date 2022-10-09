@@ -1,4 +1,4 @@
-import Statistics from "../components/statistics/Statistics";
+import ActualHoldings from "../components/holdings/ActualHoldings";
 import AddTransaction from "../components/add-transaction/AddTransaction";
 import { useEffect, useState } from "react";
 import { lsUserId } from "../utils/ls-userId";
@@ -18,7 +18,7 @@ export default function Holdings() {
         <>
           <AddTransaction />
 
-          <Statistics />
+          <ActualHoldings />
         </>
       ) : (
         <NeedToLogin />

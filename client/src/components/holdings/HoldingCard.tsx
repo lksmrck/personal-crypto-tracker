@@ -17,7 +17,7 @@ import { DashboardCryptoItem } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 import { StyledTestStats } from "./styled";
 
-const StatCardTest = () => {
+const HoldingCard = () => {
   // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
   const context = useContext(DashboardContext);
   const formContext = useContext(FormContext);
@@ -54,55 +54,57 @@ const StatCardTest = () => {
             return (
               <Grid item xs={12} sm={12} md={6} lg={4} key={holding.name}>
                 <Paper className="card-paper">
-                  <div className="card-header">
-                    <img
-                      src={cryptoObject?.imageURL}
-                      alt="icon"
-                      width="40px"
-                      height="40px"
-                    />
-                    <h2>{holding.name}</h2>
+                  <div className="card-header-container">
+                    <div className="card-header-logo-name-container">
+                      <img
+                        src={cryptoObject?.imageURL}
+                        alt="icon"
+                        width="40px"
+                        height="40px"
+                      />
+                      <h2>{holding.name}</h2>
+                    </div>
+                    <div className="card-header-price-container">
+                      <h5 className="price">
+                        {intlNumberFormat(cryptoObject?.current_price!, "usd")}
+                      </h5>
+                    </div>
                   </div>
                   <Grid container>
                     <Grid item xs={6} sm={6} md={6}>
                       <div className="titles-container">
                         {/* <Paper> */}
-                        <p> Market price:</p>
-                        <p>My purch price:</p>
+                        {/* <p> Market price:</p> */}
+                        <p>Average purchase price:</p>
                         <p>Holding amount:</p>
-                        <p>P/L USD:</p>
-                        <p>P/L %:</p>
+                        <p>Total purchase price:</p>
+                        <p className="PL">Total P/L USD:</p>
+                        <p className="PL">Total P/L %:</p>
+                        <hr></hr>
                         <p>Last transaction:</p>
                         <p>Last updated:</p>
-                        <IconButton
-                          onClick={() => {
-                            formContext?.setFormShown(true);
-                            formContext?.setSelectedCrypto(holding.name);
-                            formContext?.setTransactionType("buy");
-                          }}
-                        >
-                          <BiPlusCircle
-                            style={{
-                              color: "green",
-                              width: "45px",
-                              height: "45px",
-                            }}
-                          />
-                        </IconButton>
+
                         {/* </Paper> */}
                       </div>
                     </Grid>
                     <Grid item xs={6} sm={6} md={6}>
                       <div className="data-container">
                         {/* <Paper> */}
-                        <p>
+                        {/*   <p>
                           {intlNumberFormat(
                             cryptoObject?.current_price!,
                             "usd"
                           )}
-                        </p>
+                        </p> */}
                         <p>{intlNumberFormat(holding.price, "usd")}</p>
                         <p>{holding.amount}</p>
+                        <p>
+                          {intlNumberFormat(
+                            holding.amount * holding.price,
+                            "usd"
+                          )}
+                        </p>
+
                         <p
                           className={
                             PLUSD > 0 ? "positive-change" : "negative-change"
@@ -115,27 +117,47 @@ const StatCardTest = () => {
                             PLUSD > 0 ? "positive-change" : "negative-change"
                           }
                         >{`${PLpercentage.toFixed(2)}%`}</p>
+                        <hr></hr>
                         <p>{formatDate(lastTransaction)}</p>
                         <p>{lastUpdate.toLocaleTimeString()}</p>
-                        <IconButton
-                          onClick={() => {
-                            formContext?.setFormShown(true);
-                            formContext?.setSelectedCrypto(holding.name);
-                            formContext?.setTransactionType("sell");
-                          }}
-                        >
-                          <BiMinusCircle
-                            style={{
-                              color: "red",
-                              width: "45px",
-                              height: "45px",
-                            }}
-                          />
-                        </IconButton>
+
                         {/* </Paper> */}
                       </div>
                     </Grid>
                   </Grid>
+                  <div className="card-buttons-container">
+                    <IconButton
+                      onClick={() => {
+                        formContext?.setFormShown(true);
+                        formContext?.setSelectedCrypto(holding.name);
+                        formContext?.setTransactionType("buy");
+                      }}
+                    >
+                      <BiPlusCircle
+                        style={{
+                          color: "green",
+                          width: "45px",
+                          height: "45px",
+                        }}
+                      />
+                    </IconButton>
+
+                    <IconButton
+                      onClick={() => {
+                        formContext?.setFormShown(true);
+                        formContext?.setSelectedCrypto(holding.name);
+                        formContext?.setTransactionType("sell");
+                      }}
+                    >
+                      <BiMinusCircle
+                        style={{
+                          color: "red",
+                          width: "45px",
+                          height: "45px",
+                        }}
+                      />
+                    </IconButton>
+                  </div>
                 </Paper>
               </Grid>
             );
@@ -146,4 +168,4 @@ const StatCardTest = () => {
   );
 };
 
-export default StatCardTest;
+export default HoldingCard;

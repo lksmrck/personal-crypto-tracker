@@ -12,15 +12,15 @@ export const StyledTestStats = styled.div`
   /* border: 3px solid purple; */
   .positive-change {
     ${positiveChange}
+    font-size: 15px;
+    font-weight: bold;
   }
   .negative-change {
     ${negativeChange}
+    font-size: 15px;
+    font-weight: bold;
   }
-  .card-header {
-    margin-left: 5%;
-    display: flex;
-    align-items: center;
-  }
+
   .titles-container {
     margin-top: 3%;
     margin-left: 15%;
@@ -31,7 +31,38 @@ export const StyledTestStats = styled.div`
     margin-right: 15%;
   }
   .card-paper {
-    ${theme.boxShadow}/*  margin: 0.5% */
+    ${theme.boxShadow} /*  margin: 0.5% */
+    font-size: 14px
+  }
+  .card-header-container {
+    display: flex;
+    align-items: center;
+    /*    border: 1px solid red; */
+    justify-content: space-between;
+  }
+
+  .card-header-logo-name-container {
+    ${centerItems}
+    margin: 4%
+  }
+  .card-header-price-container {
+    display: flex;
+    justify-content: center;
+    /*  align-items: center; */
+    align-items: flex-end;
+    margin-right: 4%;
+
+    /*  border: 1px solid red; */
+  }
+  .price {
+    font-size: 20px;
+  }
+  .card-buttons-container {
+    ${centerItems}
+  }
+  .PL {
+    font-size: 15px;
+    font-weight: bold;
   }
 `;
 
