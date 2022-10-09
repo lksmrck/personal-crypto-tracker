@@ -16,7 +16,12 @@ export const getHoldings = (userId: string) => async (dispatch: any) => {
     dispatch({ type: START_LOADING });
     const { data } = await api.fetchHoldings(userId); //const response = await fetch(...)
     dispatch({ type: FETCH_ALL_HOLDINGS, payload: data });
-    dispatch({ type: STOP_LOADING });
+    if (data) {
+      setTimeout(() => {
+        dispatch({ type: STOP_LOADING });
+      }, 100);
+      /*  clearTimeout(loaded); */
+    }
   } catch (error: any) {
     dispatch({ type: STOP_LOADING });
     dispatch({ type: SET_ERROR, payload: error.message });

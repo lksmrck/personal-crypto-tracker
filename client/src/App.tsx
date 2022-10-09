@@ -9,6 +9,7 @@ import Navbar from "./components/layout/Navbar";
 import { useAppSelector } from "./state/hooks";
 import { RootState } from ".";
 import ErrorScreen from "./pages/screens/ErrorScreen";
+import NavTest from "./components/layout/Navbar";
 
 const App: React.FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);

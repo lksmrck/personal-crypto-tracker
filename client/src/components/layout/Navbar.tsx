@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import { StyledHeader, StyledNavbar } from "./styled";
+import { StyledNavContainer, StyledNavbar } from "./styled";
 import { Button } from "@mui/material";
 
 import { useAppDispatch } from "../../state/hooks";
@@ -37,14 +37,13 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <StyledHeader>
+    <StyledNavContainer>
       <div className="nav-logo" onClick={() => history.push("/dashboard")}>
         <div>Crypto</div>
         <div className="logo-tracker">Tracker</div>
       </div>
-
       <StyledNavbar>
-        <div className="navbar-items-container">
+        <div>
           <ul>
             <li>
               <NavLink to="/dashboard" activeClassName="active">
@@ -66,42 +65,50 @@ const Navbar: React.FC = () => {
               </>
             )}
           </ul>
-          <section className="button-wrapper">
-            {!user ? (
-              <Button variant="contained" onClick={onClickLogin}>
-                Sign In
-              </Button>
-            ) : (
-              <div className="logged-in">
-                <Avatar alt={user.result.name} src={user.result.imageUrl} />
-                <Typography noWrap variant="h6" sx={{ color: "#e6fcfc" }}>
-                  {user.result.name}
-                </Typography>
+        </div>
+        <div className="prava-cast">
+          {" "}
+          {/* zacina prava cast Navbaru*/}
+          {user ? (
+            <>
+              <div className="user">
+                <Avatar
+                  alt={user.result.name}
+                  src={user.result.imageUrl}
+                  sx={{ marginRight: "6%" }}
+                />
+                <p>{user.result.name}</p>
+              </div>
+              <div className="right-nav-button">
                 <Button
                   variant="contained"
                   color="error"
                   onClick={onClickLogout}
                 >
                   Logout
-                </Button>
+                </Button>{" "}
               </div>
-            )}
-          </section>
+            </>
+          ) : (
+            <div className="sign-in-button-container">
+              <Button
+                variant="contained"
+                onClick={onClickLogin}
+                className="right-nav-button"
+              >
+                Sign In
+              </Button>
+            </div>
+          )}
+          <div className="hamburger">
+            <HamburgerMenu
+              isUserLogged={user}
+              setIsUserLogged={() => setUser(null)}
+            />
+          </div>
         </div>
       </StyledNavbar>
-      <div className="user">
-        <Avatar alt={user.result.name} src={user.result.imageUrl} />
-        <Typography noWrap variant="h6" sx={{ color: "#e6fcfc" }}>
-          {user.result.name}
-        </Typography>
-      </div>
-      <div className="hamburger">
-        <HamburgerMenu
-          isUserLogged={user}
-          setIsUserLogged={() => setUser(null)}
-        />
-      </div>
-    </StyledHeader>
+    </StyledNavContainer>
   );
 };
 

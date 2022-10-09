@@ -28,13 +28,12 @@ const Form: React.FC = () => {
   const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
 
   const [loggedUserId, setLoggedUserId] = useState();
-  const [formIsValid, setFormIsValid] = useState(true);
+  const [formIsValid, setFormIsValid] = useState<boolean>(true);
 
   const dispatch = useAppDispatch();
   const holdings = useAppSelector((state: RootState) => state.holdings);
 
   const context = useContext(DashboardContext);
-  /* const dashboardCryptoData = context?.dashboardData; */
 
   const formContext = useContext(FormContext);
 
@@ -48,65 +47,137 @@ const Form: React.FC = () => {
     setBuySell(formContext?.transactionType!);
   }, [formContext?.selectedCrypto, formContext?.transactionType]);
 
+  useEffect(() => {
+    setFormIsValid(true);
+  }, [inputName, buySell]);
+
   const selectedCryptoInput = (crypto: string) => {
     setInputName(crypto);
   };
 
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-
-    //Sesbírání infa o transakci. Pak se pošle do statistics-slice a history-slice. Do každého slice jiné údaje.
-    const formItem = {
-      transactionType: buySell,
-      userId: loggedUserId!,
-      name: inputName,
-      price: parseInt(priceInputRef.current?.value!),
-      amount: parseInt(amountInputRef.current?.value!),
-      date: dateInputRef.current!.value,
-    };
-
-    //Clearing inputs
-    if (formRef.current !== null) {
-      formRef.current.reset();
-    }
-    setInputName("");
-
-    //Sleduju, jestli položka už v array existuje.
-    const existingItem = holdings.find(
-      (holding: HoldingItem) => holding.name === formItem.name
-    );
-
-    //Forma itemu, který se posílá do holdings reduceru
-    //ZKUSIT DAT ZKRACENE
-    const newHoldingItem = {
-      userId: formItem.userId,
-      name: formItem.name,
-      price: formItem.price,
-      amount: formItem.amount,
-      date: formItem.date,
-    };
-
-    //Forma itemu, který se posílá do transactions reduceru
-    const newTransactionItem = {
-      transactionType: formItem.transactionType,
-      userId: formItem.userId,
-      name: formItem.name,
-      price: formItem.price,
-      amount: formItem.amount,
-      date: formItem.date,
-    };
-    formContext?.setFormShown(false);
-
-    if (existingItem !== undefined) {
-      const updatedHolding = updateHoldingStatistics(existingItem, formItem);
-      if (updatedHolding.amount != 0) {
-        dispatch(updateHolding(formItem.name, updatedHolding));
-      }
-      dispatch(
-        deleteHolding({ userId: loggedUserId!, itemName: formItem.name })
+    let existingItem;
+    if (buySell === "sell") {
+      existingItem = holdings.find(
+        (holding: HoldingItem) => holding.name === inputName
       );
-    } else dispatch(addHolding(newHoldingItem));
-    dispatch(addTransaction(newTransactionItem));
+    }
+
+    //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings - pak se prirazuje formIsValid state.
+    if (
+      buySell === "sell" &&
+      existingItem.amount >= amountInputRef.current?.value!
+    ) {
+      setFormIsValid(true);
+      const formItem = {
+        transactionType: buySell,
+        userId: loggedUserId!,
+        name: inputName,
+        price: parseInt(priceInputRef.current?.value!),
+        amount: parseInt(amountInputRef.current?.value!),
+        date: dateInputRef.current!.value,
+      };
+
+      //Clearing inputs
+      if (formRef.current !== null) {
+        formRef.current.reset();
+      }
+      setInputName("");
+
+      //Sleduju, jestli položka už v array existuje.
+
+      //Forma itemu, který se posílá do holdings reduceru
+      //ZKUSIT DAT ZKRACENE
+      const newHoldingItem = {
+        userId: formItem.userId,
+        name: formItem.name,
+        price: formItem.price,
+        amount: formItem.amount,
+        date: formItem.date,
+      };
+
+      //Forma itemu, který se posílá do transactions reduceru
+      const newTransactionItem = {
+        transactionType: formItem.transactionType,
+        userId: formItem.userId,
+        name: formItem.name,
+        price: formItem.price,
+        amount: formItem.amount,
+        date: formItem.date,
+      };
+      formContext?.setFormShown(false);
+
+      if (existingItem !== undefined) {
+        const updatedHolding = updateHoldingStatistics(existingItem, formItem);
+        if (updatedHolding.amount != 0) {
+          dispatch(updateHolding(formItem.name, updatedHolding));
+        }
+        dispatch(
+          deleteHolding({ userId: loggedUserId!, itemName: formItem.name })
+        );
+      } else dispatch(addHolding(newHoldingItem));
+      dispatch(addTransaction(newTransactionItem));
+    }
+
+    setFormIsValid(false);
+
+    /* if (formIsValid) {
+      //Sesbírání infa o transakci. Pak se pošle do statistics-slice a history-slice. Do každého slice jiné údaje.
+      const formItem = {
+        transactionType: buySell,
+        userId: loggedUserId!,
+        name: inputName,
+        price: parseInt(priceInputRef.current?.value!),
+        amount: parseInt(amountInputRef.current?.value!),
+        date: dateInputRef.current!.value,
+      };
+
+      //Clearing inputs
+      if (formRef.current !== null) {
+        formRef.current.reset();
+      }
+      setInputName("");
+
+      //Sleduju, jestli položka už v array existuje.
+      const existingItem = holdings.find(
+        (holding: HoldingItem) => holding.name === formItem.name
+      );
+      //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings
+
+      //Forma itemu, který se posílá do holdings reduceru
+      //ZKUSIT DAT ZKRACENE
+      const newHoldingItem = {
+        userId: formItem.userId,
+        name: formItem.name,
+        price: formItem.price,
+        amount: formItem.amount,
+        date: formItem.date,
+      };
+
+      //Forma itemu, který se posílá do transactions reduceru
+      const newTransactionItem = {
+        transactionType: formItem.transactionType,
+        userId: formItem.userId,
+        name: formItem.name,
+        price: formItem.price,
+        amount: formItem.amount,
+        date: formItem.date,
+      };
+      formContext?.setFormShown(false);
+
+      if (existingItem !== undefined) {
+        const updatedHolding = updateHoldingStatistics(existingItem, formItem);
+        if (updatedHolding.amount != 0) {
+          dispatch(updateHolding(formItem.name, updatedHolding));
+        }
+        dispatch(
+          deleteHolding({ userId: loggedUserId!, itemName: formItem.name })
+        );
+      } else dispatch(addHolding(newHoldingItem));
+      dispatch(addTransaction(newTransactionItem));
+    } */
+    console.log("final" + formIsValid);
   };
 
   const handleBuySellChange = (
@@ -147,11 +218,11 @@ const Form: React.FC = () => {
               type: "number",
               ref: amountInputRef,
               min: 0.00001,
-              max: 4,
+
               step: 0.00001,
             }}
           />
-          <p className="sell-amount-check">
+          <p className={formIsValid ? "hide" : "display"}>
             You can't sell more than you hold. Your acutal holding of Bitcoin is
             4
           </p>

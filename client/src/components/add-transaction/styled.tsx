@@ -43,9 +43,13 @@ export const StyledForm = styled.form`
     ${centerItems}/* border: 1px red solid; */
     /*   margin-left: -10%; */
   }
-  .sell-amount-check {
+
+  .display {
     color: red;
     font-size: 13px;
+  }
+  .hide {
+    display: none;
   }
 `;
 
