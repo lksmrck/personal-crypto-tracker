@@ -17,13 +17,12 @@ import { lsUserId } from "../../utils/ls-userId";
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
-import { FormItem } from "../../common/modelTypes";
 
-const userId = lsUserId();
+/* const userId = lsUserId(); */
 
 const initialState = {
   transactionType: "buy",
-  userId,
+  userId: "",
   name: "",
   price: "",
   amount: "",
@@ -31,11 +30,21 @@ const initialState = {
 };
 
 const Form: React.FC = () => {
+  const userId = lsUserId();
+
+  const initialState = {
+    transactionType: "buy",
+    userId,
+    name: "",
+    price: "",
+    amount: "",
+    date: "",
+  };
+
   const [formData, setFormData] = useState(initialState);
   const formRef = useRef<HTMLFormElement | null>(null);
   const [existingHolding, setExistingHolding] = useState<HoldingItem>();
 
-  const [loggedUserId, setLoggedUserId] = useState();
   const [formIsValid, setFormIsValid] = useState<boolean>(true);
 
   const dispatch = useAppDispatch();
@@ -47,7 +56,7 @@ const Form: React.FC = () => {
 
   useEffect(() => {
     context?.getDashboardData();
-    setLoggedUserId(lsUserId());
+    setFormData({ ...formData, userId });
   }, []);
 
   useEffect(() => {
@@ -56,20 +65,15 @@ const Form: React.FC = () => {
       name: formContext?.selectedCrypto!,
       transactionType: formContext?.transactionType!,
     });
+    //Aby se pak zobrazilo v případě špatně zadaného množství - viz. DOM
     const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === formContext?.selectedCrypto!
     );
     setExistingHolding(existingItem);
   }, [formContext?.selectedCrypto, formContext?.transactionType]);
 
-  /*   useEffect(() => {
-    setFormIsValid(true);
-  }, [inputName, buySell]); */
-
   const selectedCryptoInput = (crypto: string) => {
-    //NEW
     setFormData({ ...formData, name: crypto });
-    /* setInputName(crypto); */
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,11 +86,10 @@ const Form: React.FC = () => {
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
+    //Existing item - aby se pak níže poslal do update nebo delete.
     const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === formData.name
     );
-    console.log(formData.name);
-    console.log("zacatek - existingItemm" + existingItem);
 
     //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings - pak se prirazuje formIsValid state.
     if (
@@ -95,7 +98,6 @@ const Form: React.FC = () => {
       formData.transactionType === "buy"
     ) {
       setFormIsValid(true);
-      //FORM ITEM DÁT PRYČ
 
       const adjustedFormItem = {
         ...formData,
@@ -107,7 +109,6 @@ const Form: React.FC = () => {
       if (formRef.current !== null) {
         formRef.current.reset();
       }
-      /*  setInputName(""); */
 
       formContext?.setFormShown(false);
 
@@ -117,8 +118,6 @@ const Form: React.FC = () => {
           adjustedFormItem
         );
         if (updatedHolding.amount != 0) {
-          console.log("dispatchuju update");
-          console.log(updatedHolding);
           dispatch(updateHolding(adjustedFormItem.name, updatedHolding));
         } else {
           dispatch(
@@ -126,9 +125,6 @@ const Form: React.FC = () => {
           );
         }
       } else {
-        console.log("dispatchuju add");
-        console.log(existingItem);
-        console.log(adjustedFormItem);
         dispatch(addHolding(adjustedFormItem));
       }
       dispatch(addTransaction(adjustedFormItem));
@@ -141,7 +137,6 @@ const Form: React.FC = () => {
     newBuySell: "buy" | "sell"
   ) => {
     if (newBuySell !== null) {
-      /* setBuySell(newBuySell); */
       formContext?.setTransactionType(newBuySell);
     }
   };

@@ -57,7 +57,6 @@ export const DashboardWrapper = styled.div`
     font-weight: bold;
     cursor: default;
   }
-
   .coin-ticker {
     color: grey;
     cursor: default;

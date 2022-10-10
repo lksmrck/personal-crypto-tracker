@@ -17,7 +17,6 @@ export default (state = authState, action: any) => {
       return { ...state, authData: null };
     case AUTH_ERROR:
       return { ...state, error: true, errorMessage: action?.data };
-    //Poiuziju clear error?
     case CLEAR_AUTH_ERROR:
       return { ...state, error: false, errorMessage: "" };
     default:

@@ -9,7 +9,6 @@ export default (transactions = [], action: any) => {
       return action.payload;
     case ADD_TRANSACTION:
       return [...transactions, action.payload];
-
     default:
       return transactions;
   }

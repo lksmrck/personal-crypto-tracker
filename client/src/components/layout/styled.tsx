@@ -1,15 +1,5 @@
 import styled from "styled-components";
-import { centerItems, theme } from "../../common/theme";
-
-export const StyledBackdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 20;
-  background-color: rgba(0, 0, 0, 0.75);
-`;
+import { theme } from "../../common/theme";
 
 export const StyledNavContainer = styled.header`
   width: 100%;
@@ -94,7 +84,6 @@ export const StyledNavbar = styled.nav`
     display: flex;
     align-items: center;
     margin-right: 1%;
-    /*  border: 2px solid blue; */
     button {
       margin-left: 4%;
     }

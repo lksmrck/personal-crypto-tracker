@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { centerItems } from "../../common/theme";
 export const StyledNeedToLogin = styled.div`
-  height: 60vh;
+  height: 100%;
+  margin-top: 15%;
   ${centerItems}
   .container {
     display: flex;

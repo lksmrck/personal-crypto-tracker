@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -28,7 +27,6 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    console.log(anchorEl);
     setAnchorEl(null);
   };
 
@@ -74,7 +72,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
           Dashboard
         </MenuItem>
         {isUserLogged ? (
-          <>
+          <div>
             {menuItemsLogged.map((item: string) => {
               return (
                 <MenuItem
@@ -89,7 +87,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
               );
             })}
             <MenuItem onClick={onClickLogout}>Logout</MenuItem>
-          </>
+          </div>
         ) : (
           <MenuItem
             onClick={() => {

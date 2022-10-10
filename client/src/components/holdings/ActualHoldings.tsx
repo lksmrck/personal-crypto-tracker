@@ -10,7 +10,6 @@ import { getHoldings } from "../../state/actions/holdings";
 import DashboardContext from "../../state/DashboardContext";
 import HoldingCard from "./HoldingCard";
 import LoadingSpinner from "../layout/LoadingSpinner";
-/* import { useState } from "react"; */
 
 const ActualHoldings: React.FC = () => {
   const holdings = useAppSelector((state: RootState) => state.holdings);
@@ -21,32 +20,19 @@ const ActualHoldings: React.FC = () => {
   const formContext = useContext(FormContext);
   const dashboardContext = useContext(DashboardContext);
   const userId = lsUserId();
-  /* 
-  const [holdingsAmount, setHoldingsAmount] = useState(0); */
 
   const onClickButton = () => {
     formContext?.setFormShown(true);
     formContext?.setSelectedCrypto("Bitcoin");
   };
 
-  useEffect(
-    () => {
-      dashboardContext?.getDashboardData();
-      dispatch(getHoldings(userId));
-    },
-    [
-      /* dispatch */
-    ]
-  );
-  /*   useEffect(() => {
-    const awaitHoldings = setTimeout(() => {
-      setHoldingsAmount(holdings.length);
-    }, 1000);
-    return () => clearTimeout(awaitHoldings);
-  }, [holdings]); */
+  useEffect(() => {
+    dashboardContext?.getDashboardData();
+    dispatch(getHoldings(userId));
+  }, []);
 
   return (
-    <>
+    <div>
       {loadingState.loading ? (
         <LoadingSpinner />
       ) : holdings.length > 0 ? (
@@ -65,13 +51,7 @@ const ActualHoldings: React.FC = () => {
           </StyledWrapper>
         )
       )}
-
-      {/*  {holdings.length > 0 ? (
-        <StyledStatistics>
-          {loadingState.loading ? <LoadingSpinner /> : <HoldingCard />}
-        </StyledStatistics>
-      ) : ""} */}
-    </>
+    </div>
   );
 };
 export default ActualHoldings;

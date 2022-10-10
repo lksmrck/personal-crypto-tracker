@@ -1,15 +1,12 @@
 import styled from "styled-components";
 import {
   centerItems,
-  cardSize,
   theme,
-  contentWidth,
   positiveChange,
   negativeChange,
 } from "../../common/theme";
 
 export const StyledHoldingCard = styled.div`
-  /* border: 3px solid purple; */
   .positive-change {
     ${positiveChange}
     font-size: 15px;
@@ -31,15 +28,13 @@ export const StyledHoldingCard = styled.div`
     margin-right: 15%;
   }
   .card-paper {
-    ${theme.boxShadow} /*  margin: 0.5% */
+    ${theme.boxShadow}
     font-size: 14px
   }
   .card-header-container {
     display: flex;
     align-items: center;
-    /*    border: 1px solid red; */
     justify-content: space-between;
-    /*   border: 1px solid red; */
     height: 100px;
   }
 
@@ -53,11 +48,8 @@ export const StyledHoldingCard = styled.div`
   .card-header-price-container {
     display: flex;
     justify-content: center;
-    /*  align-items: center; */
     align-items: flex-end;
     margin-right: 4%;
-
-    /*  border: 1px solid red; */
   }
   .price {
     font-size: 20px;

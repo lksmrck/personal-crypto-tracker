@@ -20,7 +20,6 @@ export const StyledForm = styled.form`
     margin-top: 2%;
     width: 450px;
     height: 400px;
-    /*  border: 2px red solid; */
     border-radius: ${theme.borderRadius};
     ${theme.boxShadow};
     ${centerItems};
@@ -35,13 +34,10 @@ export const StyledForm = styled.form`
 
     ${centerItems};
     flex-direction: column;
-
-    /*     border: 1px red solid; */
   }
   .buttons-container {
     width: 100%;
-    ${centerItems}/* border: 1px red solid; */
-    /*   margin-left: -10%; */
+    ${centerItems}
   }
 
   .display {
@@ -58,13 +54,10 @@ export const StyledCryptoName = styled.span`
 `;
 export const StyledTransactionType = styled.div`
   width: 100%;
-  /*  border: 3px solid green; */
-
   .select-transaction-type {
     display: flex;
     justify-content: center;
     width: 100%;
-    /* border: 1px solid blue; */
   }
   .select-transaction-type > * {
     width: 100px;

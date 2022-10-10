@@ -19,7 +19,10 @@ const AddTransaction: React.FC = () => {
           <div className="button-container">
             <Button
               variant="contained"
-              onClick={() => formContext?.setFormShown(true)}
+              onClick={() => {
+                formContext?.setFormShown(true);
+                formContext?.setTransactionType("buy");
+              }}
             >
               Add transaction
             </Button>

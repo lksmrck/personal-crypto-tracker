@@ -1,9 +1,7 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useContext } from "react";
 import DashboardContext from "../../state/DashboardContext";
-
 import { intlNumberFormat } from "../../utils/number-format";
-
 import { TransactionsWrapper } from "./styled";
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
@@ -19,7 +17,7 @@ const TransactionsTable: React.FC = () => {
   const dashboardCryptoData = context?.dashboardData;
 
   const rows = transactions.map((transaction: Transaction, index: number) => {
-    //Najdu crypto v contextu podle jména, abych dosadil ikonu
+    //Najdu crypto v contextu podle jména, aby se dosadila crypto ikona.
     const dashboardCrypto = dashboardCryptoData?.find(
       (crypto: DashboardCryptoItem) => crypto.name === transaction.name
     );

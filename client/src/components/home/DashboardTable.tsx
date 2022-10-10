@@ -1,6 +1,5 @@
-import Box from "@mui/material/Box";
-import { DataGrid, GridColDef, GridCellParams } from "@mui/x-data-grid";
-import { useContext, useEffect, MouseEventHandler } from "react";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { useContext } from "react";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import { intlNumberFormat, numberFormat } from "../../utils/number-format";

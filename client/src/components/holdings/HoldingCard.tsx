@@ -1,32 +1,20 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
 import { Grid, Paper, Container } from "@mui/material";
-
 import { RootState } from "../..";
 import { HoldingItem } from "../../common/modelTypes";
 import IconButton from "@mui/material/IconButton";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import { intlNumberFormat } from "../../utils/number-format";
-import { useAppDispatch, useAppSelector } from "../../state/hooks";
-
-import { lsUserId } from "../../utils/ls-userId";
+import { useAppSelector } from "../../state/hooks";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 import { StyledHoldingCard } from "./styled";
 
 const HoldingCard: React.FC = () => {
-  // tady bude useEffect, který se bude aktualizovat při fetchi (při změně statistics array)
   const context = useContext(DashboardContext);
   const formContext = useContext(FormContext);
-  const dispatch = useAppDispatch();
-
-  /*  const auth = useAppSelector((state: RootState) => state.auth); */
-
-  //Vytáhnutí userId z localStorage
-  const userId = lsUserId();
-
-  /* const userId = auth.authData.result._id; */
 
   const dashboardCryptoData = context?.dashboardData;
 
@@ -35,7 +23,7 @@ const HoldingCard: React.FC = () => {
   return (
     <Container>
       <StyledHoldingCard>
-        <Grid container /* spacing={2.5} */ spacing={2.5}>
+        <Grid container spacing={2.5}>
           {holdings.map((holding: HoldingItem) => {
             const cryptoObject = dashboardCryptoData?.find(
               (item: DashboardCryptoItem) =>
@@ -71,8 +59,6 @@ const HoldingCard: React.FC = () => {
                   <Grid container>
                     <Grid item xs={6} sm={6} md={6}>
                       <div className="titles-container">
-                        {/* <Paper> */}
-                        {/* <p> Market price:</p> */}
                         <p>Average purchase price:</p>
                         <p>Holding amount:</p>
                         <p>Total purchase price:</p>
@@ -81,19 +67,10 @@ const HoldingCard: React.FC = () => {
                         <hr></hr>
                         <p>Last transaction:</p>
                         <p>Last updated:</p>
-
-                        {/* </Paper> */}
                       </div>
                     </Grid>
                     <Grid item xs={6} sm={6} md={6}>
                       <div className="data-container">
-                        {/* <Paper> */}
-                        {/*   <p>
-                          {intlNumberFormat(
-                            cryptoObject?.current_price!,
-                            "usd"
-                          )}
-                        </p> */}
                         <p>{intlNumberFormat(holding.price, "usd")}</p>
                         <p>{holding.amount}</p>
                         <p>
@@ -118,8 +95,6 @@ const HoldingCard: React.FC = () => {
                         <hr></hr>
                         <p>{formatDate(lastTransaction)}</p>
                         <p>{lastUpdate.toLocaleTimeString()}</p>
-
-                        {/* </Paper> */}
                       </div>
                     </Grid>
                   </Grid>

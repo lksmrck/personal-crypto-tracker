@@ -10,7 +10,7 @@ import {
 import { FiLock } from "react-icons/fi";
 import { AiOutlineGoogle } from "react-icons/ai";
 
-import { StyledTestAuth } from "./styled";
+import { StyledAuth } from "./styled";
 import AuthInput from "./AuthInput";
 import {
   GoogleLogin,
@@ -77,7 +77,6 @@ const Auth: React.FC = () => {
     } else {
       dispatch(loginUser(formData, history));
     }
-    /* console.log(formData); */
   };
 
   const googleSuccess = async (
@@ -109,7 +108,7 @@ const Auth: React.FC = () => {
   };
 
   return (
-    <StyledTestAuth>
+    <StyledAuth>
       <Container maxWidth="xs">
         <Paper className="paper" elevation={3}>
           <Avatar className="avatar">
@@ -214,7 +213,7 @@ const Auth: React.FC = () => {
           </form>
         </Paper>
       </Container>
-    </StyledTestAuth>
+    </StyledAuth>
   );
 };
 export default Auth;

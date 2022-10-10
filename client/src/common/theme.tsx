@@ -37,17 +37,6 @@ export const centerItems = `
 display: flex;
 justify-content: center;
 align-items: center;
-
-`;
-
-export const cardSize = `
-width: 31.3%;
-height: 400px;
-`;
-
-//zatim nepoužito
-export const contentWidth = `
-width: 1300px;
 `;
 
 export const positiveChange = `
@@ -55,6 +44,4 @@ color: #2bcc8f;
 `;
 export const negativeChange = `
 color: #ec4852;
-
 `;
-/* ed5860 */
