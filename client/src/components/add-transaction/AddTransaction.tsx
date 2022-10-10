@@ -1,7 +1,6 @@
 import { StyledAddTransaction } from "./styled";
 import Form from "./Form";
 import { useContext } from "react";
-import { Button } from "@mui/material";
 import FormContext from "../../state/FormContext";
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
@@ -27,15 +26,6 @@ const AddTransaction: React.FC = () => {
               text="Add transaction"
               purple
             />
-            {/*    <Button
-              variant="contained"
-              onClick={() => {
-                formContext?.setFormShown(true);
-                formContext?.setTransactionType("buy");
-              }}
-            >
-              Add transaction
-            </Button> */}
           </div>
         )
       )}

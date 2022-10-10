@@ -2,7 +2,7 @@ import { StyledTransactionHistory } from "./styled";
 import TransactionsTable from "./TransactionsTable";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
-import { Button } from "@mui/material";
+import MyButton from "../layout/MyButton";
 import { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import FormContext from "../../state/FormContext";
@@ -45,9 +45,12 @@ const TransactionsHistory: React.FC = () => {
       ) : (
         <div className="no-transaction-found">
           <h1>No transactions found. Please add one.</h1>
-          <Button variant="contained" onClick={onClickButton}>
-            Add transaction
-          </Button>
+          <MyButton
+            text="Add transaction"
+            onClick={onClickButton}
+            variant="contained"
+            purple
+          />
         </div>
       )}
     </StyledTransactionHistory>

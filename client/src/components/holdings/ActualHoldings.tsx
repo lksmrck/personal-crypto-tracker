@@ -10,6 +10,7 @@ import { getHoldings } from "../../state/actions/holdings";
 import DashboardContext from "../../state/DashboardContext";
 import HoldingCard from "./HoldingCard";
 import LoadingSpinner from "../layout/LoadingSpinner";
+import MyButton from "../layout/MyButton";
 
 const ActualHoldings: React.FC = () => {
   const holdings = useAppSelector((state: RootState) => state.holdings);
@@ -44,9 +45,13 @@ const ActualHoldings: React.FC = () => {
           <StyledWrapper>
             <div className="no-holdings-found">
               <h1>No holdings found. Please add one.</h1>
-              <Button variant="contained" onClick={onClickButton}>
-                Add transaction
-              </Button>
+
+              <MyButton
+                text="Add transaction"
+                onClick={onClickButton}
+                variant="contained"
+                purple
+              />
             </div>
           </StyledWrapper>
         )

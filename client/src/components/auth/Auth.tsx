@@ -54,7 +54,8 @@ const Auth: React.FC = () => {
       });
     };
     gapi.load("client:auth2", initClient);
-  });
+    dispatch({ type: CLEAR_AUTH_ERROR });
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!passwordValid) {
@@ -180,15 +181,6 @@ const Auth: React.FC = () => {
               fullWidth
               text={isRegistration ? "Sign Up" : "Sign In"}
             />
-            {/*  <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className="submit"
-            >
-              {isRegistration ? "Sign Up" : "Sign In"}
-            </Button> */}
             <GoogleLogin
               clientId={clientID}
               render={(renderProps) => (

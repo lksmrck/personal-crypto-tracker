@@ -37,14 +37,28 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
   return (
     <div>
       <FormControl variant="filled" size="small" className="select-crypto">
-        <InputLabel id="sort-select">Select crypto:</InputLabel>
+        <InputLabel
+          id="crypto-select"
+          sx={{ "&.Mui-focused": { color: "#6c1c6a" } }}
+        >
+          Select crypto:
+        </InputLabel>
         <Select
-          labelId="sort-select"
-          id="sort-select"
-          label="Sort by:"
+          labelId="crypto-select"
+          id="crypto-select"
+          label="crypto-select"
           value={props.value}
           onChange={selectCryptoHandler}
           required
+          variant="filled"
+          sx={{
+            "&:before": {
+              borderColor: "#6c1c6a",
+            },
+            "&:after": {
+              borderColor: "#6c1c6a",
+            },
+          }}
         >
           {/* V případě "SELL" dá možnost pouze toho krypta, které držím (a mám tedy co prodávat). Při "BUY" dá možnost nákupu z celého crypta, jehož hodnoty se stáhly z API */}
           {transactionType == "buy"

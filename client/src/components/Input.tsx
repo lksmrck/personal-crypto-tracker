@@ -34,7 +34,6 @@ const Input: React.FC<InputProps> = ({
   return (
     <div>
       <TextField
-        sx={{ width: 200 }}
         className="inputs"
         label={input.id}
         variant="standard"
@@ -50,6 +49,20 @@ const Input: React.FC<InputProps> = ({
           startAdornment: (
             <InputAdornment position="start">{startAdornment}</InputAdornment>
           ),
+        }}
+        sx={{
+          width: 200,
+          "& label.Mui-focused": {
+            color: "#6c1c6a",
+          },
+          "& .MuiInput-underline:after": {
+            borderBottomColor: "#6c1c6a",
+          },
+          "& .MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+              borderColor: "#6c1c6a",
+            },
+          },
         }}
       />
     </div>

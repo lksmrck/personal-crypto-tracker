@@ -56,6 +56,19 @@ const TestInput: React.FC<InputPropss> = ({
               ""
             ),
         }}
+        sx={{
+          "& label.Mui-focused": {
+            color: "#6c1c6a",
+          },
+          "& .MuiInput-underline:after": {
+            borderBottomColor: "#6c1c6a",
+          },
+          "& .MuiOutlinedInput-root": {
+            "&.Mui-focused fieldset": {
+              borderColor: "#6c1c6a",
+            },
+          },
+        }}
       />
     </Grid>
   );

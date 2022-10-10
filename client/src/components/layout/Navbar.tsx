@@ -104,6 +104,7 @@ const Navbar: React.FC = () => {
                 onClick={onClickLogin}
                 purple
                 variant="contained"
+                className="right-nav-button"
               />
             </div>
           )}
