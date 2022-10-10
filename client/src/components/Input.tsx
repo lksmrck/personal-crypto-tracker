@@ -3,6 +3,7 @@ import { InputAdornment } from "@mui/material";
 
 type InputProps = {
   label: string;
+  name?: string;
   input: {
     id: string;
     type: string;
@@ -13,7 +14,7 @@ type InputProps = {
     min?: number;
 
     step?: number;
-    name?: string;
+    /*  name?: string; */
   };
   inputLabelProps?: {
     shrink: boolean;
@@ -28,6 +29,7 @@ const Input: React.FC<InputProps> = ({
   inputLabelProps,
   startAdornment,
   autoFocus,
+  name,
 }) => {
   return (
     <div>
@@ -43,6 +45,7 @@ const Input: React.FC<InputProps> = ({
         required={true}
         InputLabelProps={inputLabelProps}
         margin="dense"
+        name={name}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">{startAdornment}</InputAdornment>

@@ -5,7 +5,7 @@ import {
   START_LOADING,
   STOP_LOADING,
 } from "../../constants/actionTypes";
-import { Transaction } from "../../common/modelTypes";
+import { Transaction, FormItem } from "../../common/modelTypes";
 
 import * as api from "../../api/index";
 
@@ -28,7 +28,7 @@ export const getTransactions = (userId: string) => async (dispatch: any) => {
 };
 
 export const addTransaction =
-  (transaction: Transaction) => async (dispatch: any) => {
+  (transaction: FormItem) => async (dispatch: any) => {
     try {
       const { data } = await api.addTransaction(transaction);
 

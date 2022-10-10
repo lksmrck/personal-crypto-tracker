@@ -6,7 +6,6 @@ import {
   Grid,
   Typography,
   Container,
-  TextField,
 } from "@mui/material";
 import { FiLock } from "react-icons/fi";
 import { AiOutlineGoogle } from "react-icons/ai";
@@ -37,6 +36,7 @@ const Auth: React.FC = () => {
   const [formData, setFormData] = useState(initialState);
   const [isRegistration, setIsRegistration] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(true);
 
   const clientID =
     "1065422573478-630fs1ejaapidoaot95o16c8s0v2khnl.apps.googleusercontent.com";
@@ -56,7 +56,12 @@ const Auth: React.FC = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: CLEAR_AUTH_ERROR });
+    if (!passwordValid) {
+      setPasswordValid(true);
+    }
+    if (authState.error) {
+      dispatch({ type: CLEAR_AUTH_ERROR });
+    }
     setFormData({ ...formData, [e.target.name]: e.target.value }); //narolluje všechny staré formData a změní pouze ty, které se rovanjí name (např firstName v objektu = firstName name inputu) a priradi tam current value. PŘEDPOKLAD: POLOŽKY V OBJEKTU = NAME INPUTŮ
   };
 
@@ -64,7 +69,11 @@ const Auth: React.FC = () => {
     e.preventDefault();
 
     if (isRegistration) {
-      dispatch(registerUser(formData, history));
+      if (formData.password.length >= 6) {
+        dispatch(registerUser(formData, history));
+      } else {
+        setPasswordValid(false);
+      }
     } else {
       dispatch(loginUser(formData, history));
     }
@@ -152,6 +161,12 @@ const Auth: React.FC = () => {
                 />
               )}
             </Grid>
+            {isRegistration && !passwordValid && (
+              <Typography sx={{ color: "red" }}>
+                Password must have at least 6 letters.
+              </Typography>
+            )}
+
             {authState?.error && (
               <Typography sx={{ color: "red" }}>
                 {authState.errorMessage}

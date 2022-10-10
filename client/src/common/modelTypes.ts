@@ -45,3 +45,12 @@ export interface LoginData {}
 export interface RegisterData {}
 
 //Vložit INPUT PROPS !!!!
+
+export interface FormItem {
+  transactionType: /* "buy" | "sell"; */ string;
+  userId: number;
+  name: string;
+  price: number;
+  amount: number;
+  date: string;
+}

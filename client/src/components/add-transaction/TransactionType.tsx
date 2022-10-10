@@ -5,7 +5,7 @@ import React from "react";
 import { StyledTransactionType } from "./styled";
 
 type TransactionTypeProps = {
-  buySell: "buy" | "sell";
+  buySell: string;
   handleBuySellChange: (
     e: React.MouseEvent<HTMLElement>,
     newBuySell: "buy" | "sell"

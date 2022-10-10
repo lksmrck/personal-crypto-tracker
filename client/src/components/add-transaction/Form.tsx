@@ -17,14 +17,23 @@ import { lsUserId } from "../../utils/ls-userId";
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
+import { FormItem } from "../../common/modelTypes";
+
+const userId = lsUserId();
+
+const initialState = {
+  transactionType: "buy",
+  userId,
+  name: "",
+  price: "",
+  amount: "",
+  date: "",
+};
 
 const Form: React.FC = () => {
+  const [formData, setFormData] = useState(initialState);
   const formRef = useRef<HTMLFormElement | null>(null);
-  const [inputName, setInputName] = useState<string>("");
-  const priceInputRef = useRef<HTMLInputElement>(null);
-  const amountInputRef = useRef<HTMLInputElement>(null);
-  const dateInputRef = useRef<HTMLInputElement>(null);
-  const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
+  const [existingHolding, setExistingHolding] = useState<HoldingItem>();
 
   const [loggedUserId, setLoggedUserId] = useState();
   const [formIsValid, setFormIsValid] = useState<boolean>(true);
@@ -42,141 +51,89 @@ const Form: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setInputName(formContext?.selectedCrypto!);
-    setBuySell(formContext?.transactionType!);
+    setFormData({
+      ...formData,
+      name: formContext?.selectedCrypto!,
+      transactionType: formContext?.transactionType!,
+    });
+    const existingItem = holdings.find(
+      (holding: HoldingItem) => holding.name === formContext?.selectedCrypto!
+    );
+    setExistingHolding(existingItem);
   }, [formContext?.selectedCrypto, formContext?.transactionType]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     setFormIsValid(true);
-  }, [inputName, buySell]);
+  }, [inputName, buySell]); */
 
   const selectedCryptoInput = (crypto: string) => {
-    setInputName(crypto);
+    //NEW
+    setFormData({ ...formData, name: crypto });
+    /* setInputName(crypto); */
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!formIsValid) {
+      setFormIsValid(true);
+    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
-    let existingItem;
-    if (buySell === "sell") {
-      existingItem = holdings.find(
-        (holding: HoldingItem) => holding.name === inputName
-      );
-    }
+
+    const existingItem = holdings.find(
+      (holding: HoldingItem) => holding.name === formData.name
+    );
+    console.log(formData.name);
+    console.log("zacatek - existingItemm" + existingItem);
 
     //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings - pak se prirazuje formIsValid state.
     if (
-      buySell === "sell" &&
-      existingItem.amount >= amountInputRef.current?.value!
+      (formData.transactionType === "sell" &&
+        existingItem.amount >= formData.amount) ||
+      formData.transactionType === "buy"
     ) {
       setFormIsValid(true);
-      const formItem = {
-        transactionType: buySell,
-        userId: loggedUserId!,
-        name: inputName,
-        price: parseInt(priceInputRef.current?.value!),
-        amount: parseInt(amountInputRef.current?.value!),
-        date: dateInputRef.current!.value,
+      //FORM ITEM DÁT PRYČ
+
+      const adjustedFormItem = {
+        ...formData,
+        price: parseInt(formData.price),
+        amount: parseInt(formData.amount),
       };
 
       //Clearing inputs
       if (formRef.current !== null) {
         formRef.current.reset();
       }
-      setInputName("");
+      /*  setInputName(""); */
 
-      //Sleduju, jestli položka už v array existuje.
-
-      //Forma itemu, který se posílá do holdings reduceru
-      //ZKUSIT DAT ZKRACENE
-      const newHoldingItem = {
-        userId: formItem.userId,
-        name: formItem.name,
-        price: formItem.price,
-        amount: formItem.amount,
-        date: formItem.date,
-      };
-
-      //Forma itemu, který se posílá do transactions reduceru
-      const newTransactionItem = {
-        transactionType: formItem.transactionType,
-        userId: formItem.userId,
-        name: formItem.name,
-        price: formItem.price,
-        amount: formItem.amount,
-        date: formItem.date,
-      };
       formContext?.setFormShown(false);
 
       if (existingItem !== undefined) {
-        const updatedHolding = updateHoldingStatistics(existingItem, formItem);
-        if (updatedHolding.amount != 0) {
-          dispatch(updateHolding(formItem.name, updatedHolding));
-        }
-        dispatch(
-          deleteHolding({ userId: loggedUserId!, itemName: formItem.name })
+        const updatedHolding = updateHoldingStatistics(
+          existingItem,
+          adjustedFormItem
         );
-      } else dispatch(addHolding(newHoldingItem));
-      dispatch(addTransaction(newTransactionItem));
+        if (updatedHolding.amount != 0) {
+          console.log("dispatchuju update");
+          console.log(updatedHolding);
+          dispatch(updateHolding(adjustedFormItem.name, updatedHolding));
+        } else {
+          dispatch(
+            deleteHolding({ userId: formData.userId, itemName: formData.name })
+          );
+        }
+      } else {
+        console.log("dispatchuju add");
+        console.log(existingItem);
+        console.log(adjustedFormItem);
+        dispatch(addHolding(adjustedFormItem));
+      }
+      dispatch(addTransaction(adjustedFormItem));
     }
-
     setFormIsValid(false);
-
-    /* if (formIsValid) {
-      //Sesbírání infa o transakci. Pak se pošle do statistics-slice a history-slice. Do každého slice jiné údaje.
-      const formItem = {
-        transactionType: buySell,
-        userId: loggedUserId!,
-        name: inputName,
-        price: parseInt(priceInputRef.current?.value!),
-        amount: parseInt(amountInputRef.current?.value!),
-        date: dateInputRef.current!.value,
-      };
-
-      //Clearing inputs
-      if (formRef.current !== null) {
-        formRef.current.reset();
-      }
-      setInputName("");
-
-      //Sleduju, jestli položka už v array existuje.
-      const existingItem = holdings.find(
-        (holding: HoldingItem) => holding.name === formItem.name
-      );
-      //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings
-
-      //Forma itemu, který se posílá do holdings reduceru
-      //ZKUSIT DAT ZKRACENE
-      const newHoldingItem = {
-        userId: formItem.userId,
-        name: formItem.name,
-        price: formItem.price,
-        amount: formItem.amount,
-        date: formItem.date,
-      };
-
-      //Forma itemu, který se posílá do transactions reduceru
-      const newTransactionItem = {
-        transactionType: formItem.transactionType,
-        userId: formItem.userId,
-        name: formItem.name,
-        price: formItem.price,
-        amount: formItem.amount,
-        date: formItem.date,
-      };
-      formContext?.setFormShown(false);
-
-      if (existingItem !== undefined) {
-        const updatedHolding = updateHoldingStatistics(existingItem, formItem);
-        if (updatedHolding.amount != 0) {
-          dispatch(updateHolding(formItem.name, updatedHolding));
-        }
-        dispatch(
-          deleteHolding({ userId: loggedUserId!, itemName: formItem.name })
-        );
-      } else dispatch(addHolding(newHoldingItem));
-      dispatch(addTransaction(newTransactionItem));
-    } */
-    console.log("final" + formIsValid);
   };
 
   const handleBuySellChange = (
@@ -194,44 +151,48 @@ const Form: React.FC = () => {
       <div className="form">
         <div className="form-data-container">
           <TransactionType
-            buySell={buySell}
+            buySell={formData.transactionType}
             handleBuySellChange={handleBuySellChange}
           />
-          <CryptoSelect selected={selectedCryptoInput} value={inputName} />
+          <CryptoSelect selected={selectedCryptoInput} value={formData.name} />
           <Input
             label=""
             input={{
               id: "Price per item",
               type: "number",
-              ref: priceInputRef,
               min: 0.01,
               step: 0.01,
+              onChange: handleChange,
             }}
             startAdornment="$"
             autoFocus
+            name="price"
           />
           <Input
             label=""
             input={{
               id: "Amount",
               type: "number",
-              ref: amountInputRef,
-              min: 0.00001,
 
+              min: 0.00001,
               step: 0.00001,
+              onChange: handleChange,
             }}
+            name="amount"
           />
           <p className={formIsValid ? "hide" : "display"}>
             You can't sell more than you hold. Your acutal holding of{" "}
-            {inputName} is DOPLNIT.
+            {formData.name} is {existingHolding ? existingHolding!.amount : ""}.
           </p>
           <Input
             label=""
             input={{
               id: "Date",
               type: "date",
-              ref: dateInputRef,
+
+              onChange: handleChange,
             }}
+            name="date"
           />
           <div className="buttons-container">
             <Button type="submit" variant="contained">

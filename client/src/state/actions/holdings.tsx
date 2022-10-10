@@ -7,7 +7,7 @@ import {
   START_LOADING,
   STOP_LOADING,
 } from "../../constants/actionTypes";
-import { HoldingItem } from "../../common/modelTypes";
+import { HoldingItem, FormItem } from "../../common/modelTypes";
 
 import * as api from "../../api/index";
 
