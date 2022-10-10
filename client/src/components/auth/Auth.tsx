@@ -21,9 +21,9 @@ import {
 
 import { gapi } from "gapi-script";
 import { useHistory } from "react-router-dom";
-import { useAppDispatch } from "../../state/hooks";
+import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { registerUser, loginUser } from "../../state/actions/auth";
-import { SET_ERROR } from "../../constants/actionTypes";
+import { CLEAR_AUTH_ERROR, SET_ERROR } from "../../constants/actionTypes";
 
 const initialState = {
   firstName: "",
@@ -41,6 +41,8 @@ const Auth: React.FC = () => {
   const clientID =
     "1065422573478-630fs1ejaapidoaot95o16c8s0v2khnl.apps.googleusercontent.com";
   const dispatch = useAppDispatch();
+  const authState = useAppSelector((state) => state.auth);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -54,6 +56,7 @@ const Auth: React.FC = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch({ type: CLEAR_AUTH_ERROR });
     setFormData({ ...formData, [e.target.name]: e.target.value }); //narolluje všechny staré formData a změní pouze ty, které se rovanjí name (např firstName v objektu = firstName name inputu) a priradi tam current value. PŘEDPOKLAD: POLOŽKY V OBJEKTU = NAME INPUTŮ
   };
 
@@ -65,7 +68,7 @@ const Auth: React.FC = () => {
     } else {
       dispatch(loginUser(formData, history));
     }
-    console.log(formData);
+    /* console.log(formData); */
   };
 
   const googleSuccess = async (
@@ -149,6 +152,11 @@ const Auth: React.FC = () => {
                 />
               )}
             </Grid>
+            {authState?.error && (
+              <Typography sx={{ color: "red" }}>
+                {authState.errorMessage}
+              </Typography>
+            )}
             <Button
               type="submit"
               fullWidth

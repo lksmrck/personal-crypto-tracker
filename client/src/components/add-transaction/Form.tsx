@@ -24,7 +24,6 @@ const Form: React.FC = () => {
   const priceInputRef = useRef<HTMLInputElement>(null);
   const amountInputRef = useRef<HTMLInputElement>(null);
   const dateInputRef = useRef<HTMLInputElement>(null);
-
   const [buySell, setBuySell] = useState<"buy" | "sell">("buy");
 
   const [loggedUserId, setLoggedUserId] = useState();
@@ -223,8 +222,8 @@ const Form: React.FC = () => {
             }}
           />
           <p className={formIsValid ? "hide" : "display"}>
-            You can't sell more than you hold. Your acutal holding of Bitcoin is
-            4
+            You can't sell more than you hold. Your acutal holding of{" "}
+            {inputName} is DOPLNIT.
           </p>
           <Input
             label=""

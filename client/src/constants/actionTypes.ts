@@ -13,6 +13,8 @@ export const ADD_TRANSACTION = "ADD_TRANSACTION";
 //Auth
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
+export const AUTH_ERROR = "AUTH_ERROR"
+export const CLEAR_AUTH_ERROR = "CLEAR_AUTH_ERROR"
 
 //Error and loading handling
 export const SET_ERROR = "SET_ERROR"

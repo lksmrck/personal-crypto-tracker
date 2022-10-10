@@ -11,15 +11,8 @@ type InputPropss = {
     value?: string | number;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     inputPlaceholder?: string | number;
-    ref?: React.Ref<HTMLInputElement | null>;
-    min?: number;
-    step?: number;
     name?: string;
   };
-  inputLabelProps?: {
-    shrink: boolean;
-  };
-  InputProps?: any;
   startAdornment?: string;
   endAdornment?: string;
   half?: boolean;
