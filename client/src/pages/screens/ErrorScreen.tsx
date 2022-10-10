@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { CLEAR_ERROR } from "../../constants/actionTypes";
 import { useHistory } from "react-router-dom";
 import { StyledErrorScreen } from "./styled";
+import MyButton from "../../components/layout/MyButton";
 
 const ErrorScreen: React.FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);
@@ -21,13 +22,12 @@ const ErrorScreen: React.FC = () => {
       <div className="container">
         <h1>Something went wrong</h1>
         <h1>{error.errorMessage}</h1>
-        <Button
+        <MyButton
           variant="contained"
-          color="primary"
           onClick={clearErrorAndGoDashboard}
-        >
-          Back to dashboard
-        </Button>
+          text="Back to Dashboard"
+          purple
+        />
       </div>
     </StyledErrorScreen>
   );

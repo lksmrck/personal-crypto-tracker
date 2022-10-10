@@ -1,7 +1,7 @@
-import Dashboard from "./Dashboard";
 import { StyledHomePage } from "./styled";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import MyButton from "../layout/MyButton";
 
 const HomePage: React.FC = () => {
   return (
@@ -10,12 +10,20 @@ const HomePage: React.FC = () => {
         <div>
           <h1>Welcome to Crypto Tracker ☄️</h1>
           <div className="buttons-container">
-            <Button component={Link} to="/holdings" variant="contained">
-              My holdings
-            </Button>
-            <Button component={Link} to="/transactions" variant="contained">
-              Transaction history
-            </Button>
+            <MyButton
+              text="My holdings"
+              purple
+              component={Link}
+              to="/holdings"
+              variant="contained"
+            />
+            <MyButton
+              text="Transaction history"
+              purple
+              component={Link}
+              to="/transactions"
+              variant="contained"
+            />
           </div>
         </div>
         <div className="home-dashboard"></div>

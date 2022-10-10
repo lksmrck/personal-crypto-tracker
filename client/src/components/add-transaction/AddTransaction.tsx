@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import FormContext from "../../state/FormContext";
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
+import MyButton from "../layout/MyButton";
 
 const AddTransaction: React.FC = () => {
   const formContext = useContext(FormContext);
@@ -17,7 +18,16 @@ const AddTransaction: React.FC = () => {
       ) : (
         holdings.length > 0 && (
           <div className="button-container">
-            <Button
+            <MyButton
+              variant="contained"
+              onClick={() => {
+                formContext?.setFormShown(true);
+                formContext?.setTransactionType("buy");
+              }}
+              text="Add transaction"
+              purple
+            />
+            {/*    <Button
               variant="contained"
               onClick={() => {
                 formContext?.setFormShown(true);
@@ -25,7 +35,7 @@ const AddTransaction: React.FC = () => {
               }}
             >
               Add transaction
-            </Button>
+            </Button> */}
           </div>
         )
       )}

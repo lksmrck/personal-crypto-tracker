@@ -23,6 +23,7 @@ import { useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { registerUser, loginUser } from "../../state/actions/auth";
 import { CLEAR_AUTH_ERROR, SET_ERROR } from "../../constants/actionTypes";
+import MyButton from "../layout/MyButton";
 
 const initialState = {
   firstName: "",
@@ -171,7 +172,15 @@ const Auth: React.FC = () => {
                 {authState.errorMessage}
               </Typography>
             )}
-            <Button
+            <MyButton
+              type="submit"
+              variant="contained"
+              purple
+              className="submit"
+              fullWidth
+              text={isRegistration ? "Sign Up" : "Sign In"}
+            />
+            {/*  <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -179,21 +188,19 @@ const Auth: React.FC = () => {
               className="submit"
             >
               {isRegistration ? "Sign Up" : "Sign In"}
-            </Button>
+            </Button> */}
             <GoogleLogin
               clientId={clientID}
               render={(renderProps) => (
-                <Button
-                  color="primary"
+                <MyButton
+                  text="Sign in with google"
+                  purple
                   className="google-button"
                   fullWidth
                   onClick={renderProps.onClick}
-                  disabled={renderProps.disabled}
                   startIcon={<AiOutlineGoogle />}
                   variant="contained"
-                >
-                  Sign in with Google
-                </Button>
+                />
               )}
               cookiePolicy="single_host_origin"
               onSuccess={googleSuccess}
@@ -203,6 +210,7 @@ const Auth: React.FC = () => {
               <Grid item>
                 <Button
                   onClick={() => setIsRegistration((prevState) => !prevState)}
+                  sx={{ color: "purple" }}
                 >
                   {isRegistration
                     ? "Already have an account? Sign In"

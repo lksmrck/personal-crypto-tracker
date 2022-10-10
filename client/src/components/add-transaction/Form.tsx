@@ -17,6 +17,7 @@ import { lsUserId } from "../../utils/ls-userId";
 import { RootState } from "../..";
 import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
+import MyButton from "../layout/MyButton";
 
 /* const userId = lsUserId(); */
 
@@ -190,16 +191,28 @@ const Form: React.FC = () => {
             name="date"
           />
           <div className="buttons-container">
-            <Button type="submit" variant="contained">
+            <MyButton
+              type="submit"
+              variant="contained"
+              text="Add transaction"
+              purple
+            />
+            {/*   <Button type="submit" variant="contained">
               Add transaction
-            </Button>
-            <Button
+            </Button> */}
+            <MyButton
+              variant="contained"
+              text="Back"
+              onClick={() => formContext?.setFormShown(false)}
+              red
+            />
+            {/*  <Button
               onClick={() => formContext?.setFormShown(false)}
               variant="outlined"
               color="error"
             >
               Back
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>

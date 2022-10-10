@@ -5,20 +5,22 @@ export const StyledNavContainer = styled.header`
   width: 100%;
   height: 5rem;
   display: flex;
-  padding: 0 2% 0 7%;
+  padding: 0 2% 0 4%;
   justify-content: space-between;
   align-items: center;
   background-color: #008080;
   ${theme.navbarShadow}
 
   .nav-logo {
+    display: flex;
     font-size: 1.5rem;
     color: white;
     font-family: monospace;
     cursor: pointer;
   }
-  .logo-tracker {
-    margin-left: 1.5rem;
+  .logo-text {
+    margin-left: 1rem;
+    margin-top: 0.3rem;
   }
   .hamburger {
     display: none;

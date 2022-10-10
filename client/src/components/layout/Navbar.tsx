@@ -3,11 +3,13 @@ import { NavLink } from "react-router-dom";
 
 import { StyledNavContainer, StyledNavbar } from "./styled";
 import { Button } from "@mui/material";
+import logo from "../../assets/LogoPic.png";
 
 import { useAppDispatch } from "../../state/hooks";
 import { useHistory, useLocation } from "react-router-dom";
 import { Avatar, Typography } from "@mui/material";
 import HamburgerMenu from "./HamburgerMenu";
+import MyButton from "./MyButton";
 
 const Navbar: React.FC = () => {
   /*  const userId = lsUserId(); */
@@ -39,8 +41,8 @@ const Navbar: React.FC = () => {
   return (
     <StyledNavContainer>
       <div className="nav-logo" onClick={() => history.push("/dashboard")}>
-        <div>Crypto</div>
-        <div className="logo-tracker">Tracker</div>
+        <img src={logo} height="70px" width="70px" />
+        <div className="logo-text">Crypto Tracker</div>
       </div>
       <StyledNavbar>
         <div>
@@ -80,24 +82,29 @@ const Navbar: React.FC = () => {
                 <p>{user.result.name}</p>
               </div>
               <div className="right-nav-button">
-                <Button
+                <MyButton
+                  text="Logout"
+                  onClick={onClickLogout}
+                  red
+                  variant="contained"
+                />
+                {/*   <Button
                   variant="contained"
                   color="error"
                   onClick={onClickLogout}
                 >
                   Logout
-                </Button>{" "}
+                </Button>{" "} */}
               </div>
             </>
           ) : (
             <div className="sign-in-button-container">
-              <Button
-                variant="contained"
+              <MyButton
+                text="Sign In"
                 onClick={onClickLogin}
-                className="right-nav-button"
-              >
-                Sign In
-              </Button>
+                purple
+                variant="contained"
+              />
             </div>
           )}
           <div className="hamburger">
