@@ -6,6 +6,7 @@ import { CLEAR_ERROR } from "../../constants/actionTypes";
 import { useHistory } from "react-router-dom";
 import { StyledErrorScreen } from "./styled";
 import MyButton from "../../components/layout/MyButton";
+import somethingWrong from "../../assets/somethingWrong.png";
 
 const ErrorScreen: React.FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);
@@ -20,6 +21,7 @@ const ErrorScreen: React.FC = () => {
   return (
     <StyledErrorScreen>
       <div className="container">
+        <img src={somethingWrong} width="350px" height="350px" />
         <h1>Something went wrong</h1>
         <h1>{error.errorMessage}</h1>
         <MyButton

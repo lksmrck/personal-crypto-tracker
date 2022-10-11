@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import { FiLock } from "react-icons/fi";
 import { AiOutlineGoogle } from "react-icons/ai";
-
 import { StyledAuth } from "./styled";
 import AuthInput from "./AuthInput";
 import {
@@ -17,7 +16,6 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from "react-google-login";
-
 import { gapi } from "gapi-script";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";

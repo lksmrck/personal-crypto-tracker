@@ -5,7 +5,6 @@ import { intlNumberFormat } from "../../utils/number-format";
 import { TransactionsWrapper } from "./styled";
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
-
 import { DashboardCryptoItem, Transaction } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 

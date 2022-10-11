@@ -1,10 +1,11 @@
 import { AUTH, AUTH_ERROR } from "../../constants/actionTypes";
 import { AuthData } from "../../common/modelTypes";
+import { AppDispatch } from "../..";
 
 import * as api from "../../api/index";
 
 export const loginUser =
-  (formData: AuthData, history: any) => async (dispatch: any) => {
+  (formData: AuthData, history: any) => async (dispatch: AppDispatch) => {
     try {
       const { data } = await api.loginUser(formData);
       dispatch({ type: AUTH, data });
@@ -22,7 +23,7 @@ export const loginUser =
   };
 
 export const registerUser =
-  (formData: AuthData, history: any) => async (dispatch: any) => {
+  (formData: AuthData, history: any) => async (dispatch: AppDispatch) => {
     try {
       const { data } = await api.registerUser(formData);
       dispatch({ type: AUTH, data });

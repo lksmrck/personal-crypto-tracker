@@ -135,3 +135,47 @@ export const StyledNavbar = styled.nav`
     width: 100px;
   }
 `;
+
+export const StyledFooter = styled.footer`
+  color: white;
+  background-color: #008080;
+  padding-top: 0.5em;
+  position: relative;
+  bottom: 0;
+
+  width: 100%;
+  margin-top: 3rem;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .col {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-left: 2.5rem;
+    font-family: monospace;
+    font-size: 16px;
+  }
+  .text-left {
+    font-size: 12px;
+    margin: 0.2rem 0 0.2rem 2.5rem;
+    font-family: monospace;
+  }
+  .text-right {
+    font-size: 12px;
+    font-family: monospace;
+    margin-right: 1rem;
+  }
+`;
+
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
+export const ContentWrapper = styled.div`
+  flex: 1;
+`;

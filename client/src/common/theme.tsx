@@ -12,16 +12,11 @@ declare module "styled-components" {
 }
 
 const commonProperties = {
-  borderRadius: "3px",
+  borderRadius: "4px",
 };
 
 export const theme: DefaultTheme = {
   color: {
-    layoutBg: "#dce2f1",
-    cardBg: "#FFFF",
-    text: "#001e3c",
-    contrastBg: "#436fe5",
-    label: "#a0a6af",
     red: "#ee5761",
     green: "#2bcc8f",
   },

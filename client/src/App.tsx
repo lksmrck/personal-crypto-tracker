@@ -9,7 +9,8 @@ import Navbar from "./components/layout/Navbar";
 import { useAppSelector } from "./state/hooks";
 import { RootState } from ".";
 import ErrorScreen from "./pages/screens/ErrorScreen";
-import NavTest from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import { PageContainer, ContentWrapper } from "./components/layout/styled";
 
 const App: React.FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);
@@ -17,23 +18,28 @@ const App: React.FC = () => {
   return (
     <DashboardContextProvider>
       <Navbar />
-      {error.isError ? (
-        <ErrorScreen />
-      ) : (
-        <>
-          <Route path="/" exact>
-            <Redirect to="/dashboard" />
-          </Route>
-          <Switch>
-            <FormContextProvider>
-              <Route path="/dashboard" exact component={HomeDashboard} />
-              <Route path="/holdings" exact component={Holdings} />
-              <Route path="/transactions" exact component={Transactions} />
-              <Route path="/auth" exact component={Auth} />
-            </FormContextProvider>
-          </Switch>
-        </>
-      )}
+      <PageContainer>
+        <ContentWrapper>
+          {error.isError ? (
+            <ErrorScreen />
+          ) : (
+            <div>
+              <Route path="/" exact>
+                <Redirect to="/dashboard" />
+              </Route>
+              <Switch>
+                <FormContextProvider>
+                  <Route path="/dashboard" exact component={HomeDashboard} />
+                  <Route path="/holdings" exact component={Holdings} />
+                  <Route path="/transactions" exact component={Transactions} />
+                  <Route path="/auth" exact component={Auth} />
+                </FormContextProvider>
+              </Switch>
+            </div>
+          )}
+        </ContentWrapper>
+        <Footer />
+      </PageContainer>
     </DashboardContextProvider>
   );
 };
