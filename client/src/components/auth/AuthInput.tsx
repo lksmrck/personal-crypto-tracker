@@ -5,16 +5,7 @@ import { MdVisibilityOff } from "react-icons/md";
 
 type InputPropss = {
   label: string;
-  input?: {
-    id: string;
-    type: string;
-    value?: string | number;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    inputPlaceholder?: string | number;
-    name?: string;
-  };
   startAdornment?: string;
-  endAdornment?: string;
   half?: boolean;
   name?: string;
   autoFocus?: boolean;
@@ -31,7 +22,6 @@ const TestInput: React.FC<InputPropss> = ({
   autoFocus,
   type,
   handleShowPassword,
-  endAdornment,
 }) => {
   return (
     <Grid item xs={12} sm={half ? 6 : 12}>

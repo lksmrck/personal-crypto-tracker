@@ -88,13 +88,6 @@ const Navbar: React.FC = () => {
                   red
                   variant="contained"
                 />
-                {/*   <Button
-                  variant="contained"
-                  color="error"
-                  onClick={onClickLogout}
-                >
-                  Logout
-                </Button>{" "} */}
               </div>
             </>
           ) : (

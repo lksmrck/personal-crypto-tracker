@@ -1,4 +1,4 @@
-import { StyledStatistics } from "./styled";
+import { StyledHoldings } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
 import { Button } from "@mui/material";
@@ -37,9 +37,9 @@ const ActualHoldings: React.FC = () => {
       {loadingState.loading ? (
         <LoadingSpinner />
       ) : holdings.length > 0 ? (
-        <StyledStatistics>
+        <StyledHoldings>
           <HoldingCard />
-        </StyledStatistics>
+        </StyledHoldings>
       ) : (
         !formContext?.formShown && (
           <StyledWrapper>

@@ -11,12 +11,14 @@ import { RootState } from ".";
 import ErrorScreen from "./pages/screens/ErrorScreen";
 import Footer from "./components/layout/Footer";
 import { PageContainer, ContentWrapper } from "./components/layout/styled";
+import FloatingScrollButton from "./components/layout/FloatingScrollButton";
 
 const App: React.FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);
 
   return (
     <DashboardContextProvider>
+      <FloatingScrollButton />
       <Navbar />
       <PageContainer>
         <ContentWrapper>

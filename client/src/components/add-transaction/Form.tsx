@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
-import Input from "../Input";
+import FormInput from "./FormInput";
 import { StyledForm } from "./styled";
-import { Button } from "@mui/material";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import CryptoSelect from "./CryptoSelect";
@@ -151,8 +150,7 @@ const Form: React.FC = () => {
             handleBuySellChange={handleBuySellChange}
           />
           <CryptoSelect selected={selectedCryptoInput} value={formData.name} />
-          <Input
-            label=""
+          <FormInput
             input={{
               id: "Price per item",
               type: "number",
@@ -164,12 +162,10 @@ const Form: React.FC = () => {
             autoFocus
             name="price"
           />
-          <Input
-            label=""
+          <FormInput
             input={{
               id: "Amount",
               type: "number",
-
               min: 0.00001,
               step: 0.00001,
               onChange: handleChange,
@@ -180,12 +176,10 @@ const Form: React.FC = () => {
             You can't sell more than you hold. Your acutal holding of{" "}
             {formData.name} is {existingHolding ? existingHolding!.amount : ""}.
           </p>
-          <Input
-            label=""
+          <FormInput
             input={{
               id: "Date",
               type: "date",
-
               onChange: handleChange,
             }}
             name="date"

@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
     <StyledHomePage>
       <div className="home-container">
         <div>
-          <h1>Welcome to Crypto Tracker ☄️</h1>
+          <h2>Welcome to Crypto Tracker</h2>
           <div className="buttons-container">
             <MyButton
               text="My holdings"

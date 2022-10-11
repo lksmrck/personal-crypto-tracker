@@ -137,7 +137,7 @@ export const StyledNavbar = styled.nav`
 `;
 
 export const StyledFooter = styled.footer`
-  color: white;
+  color: #87dfdf;
   background-color: #008080;
   padding-top: 0.5em;
   position: relative;
@@ -147,9 +147,17 @@ export const StyledFooter = styled.footer`
   margin-top: 3rem;
 
   .row {
+    img {
+      margin-right: 0.7rem;
+    }
     display: flex;
     justify-content: space-between;
   }
+
+  .row-icons {
+    margin: 0.5rem 3rem 0 0;
+  }
+
   .col {
     display: flex;
     align-items: center;
@@ -162,11 +170,18 @@ export const StyledFooter = styled.footer`
     font-size: 12px;
     margin: 0.2rem 0 0.2rem 2.5rem;
     font-family: monospace;
+    @media only screen and (max-width: 615px) {
+      font-size: 11px;
+      margin-left: 1rem;
+    }
   }
   .text-right {
     font-size: 12px;
     font-family: monospace;
     margin-right: 1rem;
+    @media only screen and (max-width: 615px) {
+      font-size: 10px;
+    }
   }
 `;
 

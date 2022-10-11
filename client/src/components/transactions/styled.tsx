@@ -8,7 +8,7 @@ export const StyledTransactionHistory = styled.div`
 
   .transactions-container {
     margin: 0 auto;
-    width: 840px;
+    width: 950px;
     ${theme.boxShadow}
     border-radius: ${theme.borderRadius};
     span {

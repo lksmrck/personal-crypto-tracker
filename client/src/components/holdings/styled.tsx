@@ -63,18 +63,9 @@ export const StyledHoldingCard = styled.div`
   }
 `;
 
-export const StyledStatistics = styled.div`
+export const StyledHoldings = styled.div`
   margin-top: 2%;
   width: 100%;
-
-  .no-holdings-found {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 10%;
-    border: 1px solid red;
-  }
 `;
 
 export const StyledWrapper = styled.div`

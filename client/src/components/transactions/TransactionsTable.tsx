@@ -28,6 +28,10 @@ const TransactionsTable: React.FC = () => {
       name: transaction.name,
       price: intlNumberFormat(transaction.price, "usd"),
       amount: transaction.amount,
+      totalAmount: intlNumberFormat(
+        transaction.amount * transaction.price,
+        "usd"
+      ),
       transactionType: transaction.transactionType,
       date: formatDate(transactionDate),
     };
@@ -66,6 +70,13 @@ const TransactionsTable: React.FC = () => {
     {
       field: "amount",
       headerName: "Amount",
+      width: 100,
+      headerAlign: "right",
+      align: "right",
+    },
+    {
+      field: "totalAmount",
+      headerName: "Total paid amount",
       width: 150,
       headerAlign: "right",
       align: "right",
@@ -80,7 +91,7 @@ const TransactionsTable: React.FC = () => {
     {
       field: "date",
       headerName: "Date",
-      width: 200,
+      width: 100,
     },
   ];
 

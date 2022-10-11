@@ -10,9 +10,9 @@ export const StyledHomePage = styled.div`
   display: flex;
   justify-content: center;
 
-  h1 {
-    font-size: 70px;
-    margin-top: 1%;
+  h2 {
+    font-size: 40px;
+    margin: 3% 0;
   }
   a {
     text-decoration: none;

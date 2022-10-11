@@ -2,31 +2,22 @@ import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 
 type InputProps = {
-  label: string;
   name?: string;
   input: {
     id: string;
     type: string;
     value?: string | number;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    inputPlaceholder?: string | number;
-    ref?: React.Ref<HTMLInputElement | null>;
     min?: number;
-
     step?: number;
-    /*  name?: string; */
   };
-  inputLabelProps?: {
-    shrink: boolean;
-  };
+
   startAdornment?: string;
   autoFocus?: boolean;
 };
 
-const Input: React.FC<InputProps> = ({
+const FormInput: React.FC<InputProps> = ({
   input,
-  label,
-  inputLabelProps,
   startAdornment,
   autoFocus,
   name,
@@ -42,7 +33,6 @@ const Input: React.FC<InputProps> = ({
         color="primary"
         autoFocus={autoFocus}
         required={true}
-        InputLabelProps={inputLabelProps}
         margin="dense"
         name={name}
         InputProps={{
@@ -69,4 +59,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default FormInput;
