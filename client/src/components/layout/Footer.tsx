@@ -4,13 +4,16 @@ import { FiTwitter } from "react-icons/fi";
 import { FiFacebook } from "react-icons/fi";
 import { FiInstagram } from "react-icons/fi";
 import { IconButton } from "@mui/material";
+import { useHistory } from "react-router-dom";
 
 const Footer = () => {
+  const history = useHistory();
+
   return (
     <StyledFooter>
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col" onClick={() => history.push("/dashboard")}>
             <img src={logo} height="50px" width="50px" />
             <h4>CryptoTracker</h4>
           </div>

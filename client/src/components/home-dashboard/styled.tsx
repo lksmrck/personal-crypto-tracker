@@ -13,6 +13,9 @@ export const StyledHomePage = styled.div`
   h2 {
     font-size: 40px;
     margin: 3% 0;
+    @media only screen and (max-width: 535px) {
+      font-size: 35px;
+    }
   }
   a {
     text-decoration: none;

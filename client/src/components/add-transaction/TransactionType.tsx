@@ -25,7 +25,7 @@ const TransactionType: React.FC<TransactionTypeProps> = ({
         className="select-transaction-type"
       >
         <ToggleButton
-          /* color="success" */ value="buy"
+          value="buy"
           sx={{
             "&.MuiToggleButton-root": {
               backgroundColor: "#f0f0f0",

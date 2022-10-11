@@ -34,8 +34,8 @@ export const StyledNavContainer = styled.header`
     justify-content: flex-end;
     width: 330px;
     cursor: pointer;
-    @media only screen and (max-width: 550px) {
-      width: 255px;
+    @media only screen and (max-width: 625px) {
+      width: 210px;
     }
     p {
       color: #e6fcfc;
@@ -142,7 +142,6 @@ export const StyledFooter = styled.footer`
   padding-top: 0.5em;
   position: relative;
   bottom: 0;
-
   width: 100%;
   margin-top: 3rem;
 
@@ -165,6 +164,7 @@ export const StyledFooter = styled.footer`
     margin-left: 2.5rem;
     font-family: monospace;
     font-size: 16px;
+    cursor: pointer;
   }
   .text-left {
     font-size: 12px;

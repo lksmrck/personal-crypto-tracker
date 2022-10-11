@@ -18,8 +18,6 @@ import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
 import MyButton from "../layout/MyButton";
 
-/* const userId = lsUserId(); */
-
 const initialState = {
   transactionType: "buy",
   userId: "",
@@ -77,9 +75,11 @@ const Form: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //Když vyskočí hláška s invalid state, po update inputů zmizí.
     if (!formIsValid) {
       setFormIsValid(true);
     }
+    //Input name = initial state object properties
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -112,6 +112,7 @@ const Form: React.FC = () => {
 
       formContext?.setFormShown(false);
 
+      //Pokud dané krypto už aktuálně držím, proženu transakci přes updateHoldingStatistics funkci, kde se vypočítá nový holding objects vč. průměrné nák. ceny. Ten se potom pošle do reduceru
       if (existingItem !== undefined) {
         const updatedHolding = updateHoldingStatistics(
           existingItem,
@@ -191,22 +192,12 @@ const Form: React.FC = () => {
               text="Add transaction"
               purple
             />
-            {/*   <Button type="submit" variant="contained">
-              Add transaction
-            </Button> */}
             <MyButton
               variant="contained"
               text="Back"
               onClick={() => formContext?.setFormShown(false)}
               red
             />
-            {/*  <Button
-              onClick={() => formContext?.setFormShown(false)}
-              variant="outlined"
-              color="error"
-            >
-              Back
-            </Button> */}
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ import { gapi } from "gapi-script";
 import { useHistory } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { registerUser, loginUser } from "../../state/actions/auth";
-import { CLEAR_AUTH_ERROR, SET_ERROR } from "../../constants/actionTypes";
+import { CLEAR_AUTH_ERROR, AUTH_ERROR } from "../../constants/actionTypes";
 import MyButton from "../layout/MyButton";
 
 const initialState = {
@@ -92,18 +92,26 @@ const Auth: React.FC = () => {
     try {
       dispatch({ type: "AUTH", data: { result, token } });
       history.push("/");
-    } catch (error) {
+    } catch (error: any) {
+      const errMsg =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
       dispatch({
-        type: SET_ERROR,
-        payload: "An error occured during the Google sign in.",
+        type: AUTH_ERROR,
+        data: errMsg,
       });
     }
   };
 
   const googleFailure = (error: any) => {
+    const errMsg =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
     dispatch({
-      type: SET_ERROR,
-      payload: "An error occured during the Google sign in.",
+      type: AUTH_ERROR,
+      data: errMsg,
     });
   };
 

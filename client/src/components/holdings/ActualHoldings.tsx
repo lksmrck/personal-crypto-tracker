@@ -1,7 +1,6 @@
 import { StyledHoldings } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
-import { Button } from "@mui/material";
 import { useContext, useEffect } from "react";
 import FormContext from "../../state/FormContext";
 import { StyledWrapper } from "./styled";
@@ -45,7 +44,6 @@ const ActualHoldings: React.FC = () => {
           <StyledWrapper>
             <div className="no-holdings-found">
               <h1>No holdings found. Please add one.</h1>
-
               <MyButton
                 text="Add transaction"
                 onClick={onClickButton}

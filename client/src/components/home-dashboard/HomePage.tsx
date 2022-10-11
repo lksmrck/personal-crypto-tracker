@@ -1,5 +1,4 @@
 import { StyledHomePage } from "./styled";
-import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import MyButton from "../layout/MyButton";
 
