@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { centerItems } from "../../common/theme";
-import somethingWrong from "../../assets/somethingWrong.png";
 
 export const StyledNeedToLogin = styled.div`
   height: 100%;
@@ -16,8 +15,10 @@ export const StyledNeedToLogin = styled.div`
 `;
 
 export const StyledErrorScreen = styled.div`
-  height: 100vh;
+  padding-top: 20%;
+  height: 100%;
   ${centerItems}
+
   background-color: white;
   .container {
     display: flex;

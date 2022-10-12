@@ -12,7 +12,7 @@ export const loginUser =
       history.push("/");
     } catch (error: any) {
       const errMsg =
-        error.response && error.response.data.message
+        error.response && error.response.data?.message
           ? error.response.data.message
           : error.message;
       dispatch({
@@ -31,7 +31,7 @@ export const registerUser =
       history.push("/");
     } catch (error: any) {
       const errMsg =
-        error.response && error.response.data.message
+        error.response && error.response.data?.message
           ? error.response.data.message
           : error.message;
 
