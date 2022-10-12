@@ -9,7 +9,10 @@ import { DashboardCryptoItem, Transaction } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 
 const TransactionsTable: React.FC = () => {
-  const transactions = useAppSelector((state: RootState) => state.transactions);
+  const tryTransactions = useAppSelector(
+    (state: RootState) => state.transactions
+  );
+  const transactions = tryTransactions ? tryTransactions : [];
 
   const context = useContext(DashboardContext);
 

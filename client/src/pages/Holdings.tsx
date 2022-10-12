@@ -17,7 +17,6 @@ const Holdings: React.FC = () => {
       {user ? (
         <>
           <AddTransaction />
-
           <ActualHoldings />
         </>
       ) : (

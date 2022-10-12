@@ -12,7 +12,11 @@ import { lsUserId } from "../../utils/ls-userId";
 import LoadingSpinner from "../layout/LoadingSpinner";
 
 const TransactionsHistory: React.FC = () => {
-  const transactions = useAppSelector((state: RootState) => state.transactions);
+  const tryTransactions = useAppSelector(
+    (state: RootState) => state.transactions
+  );
+  const transactions = tryTransactions ? tryTransactions : [];
+
   const loadingState = useAppSelector(
     (state: RootState) => state.errorAndLoading
   );

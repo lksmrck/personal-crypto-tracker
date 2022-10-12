@@ -12,7 +12,6 @@ import HamburgerMenu from "./HamburgerMenu";
 import MyButton from "./MyButton";
 
 const Navbar: React.FC = () => {
-  /*  const userId = lsUserId(); */
   const dispatch = useAppDispatch();
   const history = useHistory();
   const location = useLocation();

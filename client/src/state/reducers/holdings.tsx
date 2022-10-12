@@ -5,8 +5,9 @@ import {
   DELETE_HOLDING,
 } from "../../constants/actionTypes";
 import { HoldingItem } from "../../common/modelTypes";
+import { Actions } from "../../common/modelTypes";
 
-export default (holdings = [], action: any) => {
+export default (holdings = [], action: Actions) => {
   switch (action.type) {
     case FETCH_ALL_HOLDINGS: // bude useEffect v APP komponentu. Na začátku se načte do state holdings z mongodb
       return action.payload;

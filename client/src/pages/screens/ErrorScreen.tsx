@@ -1,7 +1,6 @@
 import React from "react";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
-import { Button } from "@mui/material";
 import { CLEAR_ERROR } from "../../constants/actionTypes";
 import { useHistory } from "react-router-dom";
 import { StyledErrorScreen } from "./styled";

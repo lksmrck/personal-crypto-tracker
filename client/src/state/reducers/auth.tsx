@@ -1,5 +1,6 @@
 import { CLEAR_AUTH_ERROR } from "../../constants/actionTypes";
 import { AUTH, AUTH_ERROR, LOGOUT } from "../../constants/actionTypes";
+import { AuthActions } from "../../common/modelTypes";
 
 const authState = {
   authData: null,
@@ -7,7 +8,7 @@ const authState = {
   errorMessage: "",
 };
 
-export default (state = authState, action: any) => {
+export default (state = authState, action: AuthActions) => {
   switch (action.type) {
     case AUTH:
       localStorage.setItem("profile", JSON.stringify({ ...action?.data }));

@@ -2,8 +2,9 @@ import {
   FETCH_ALL_TRANSACTIONS,
   ADD_TRANSACTION,
 } from "../../constants/actionTypes";
+import { Actions } from "../../common/modelTypes";
 
-export default (transactions = [], action: any) => {
+export default (transactions = [], action: Actions) => {
   switch (action.type) {
     case FETCH_ALL_TRANSACTIONS:
       return action.payload;
