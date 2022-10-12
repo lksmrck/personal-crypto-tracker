@@ -1,4 +1,3 @@
-/* const express = require("express"); */
 import express from "express";
 
 import {
@@ -28,7 +27,7 @@ router.get("/transactions", getTransactions);
 router.post("/transactions", addTransaction);
 
 //Auth routes
-router.post("/login", loginUser); // !!! POST protože chceme poslat data do backendu (from form to backend)
+router.post("/login", loginUser);
 router.post("/register", registerUser);
 
 export default router;

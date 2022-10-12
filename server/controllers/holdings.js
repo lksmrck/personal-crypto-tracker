@@ -46,7 +46,7 @@ export const updateHolding = async (req, res) => {
 
   console.log("updated holding:" + updatedHolding);
 
-  await Holding.replaceOne({ name }, updatedHolding); //pak dát jen NAME místo NAME:NAME
+  await Holding.replaceOne({ name }, updatedHolding);
 
   res.json(updatedHolding);
 };

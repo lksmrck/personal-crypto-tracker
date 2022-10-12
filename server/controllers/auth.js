@@ -41,7 +41,7 @@ export const registerUser = async (req, res) => {
   console.log(req.body);
 
   try {
-    const existingUser = await User.findOne({ email }); //CHeck, že user s daným e-mailem ještě neexistuje
+    const existingUser = await User.findOne({ email }); //Check, že user s daným e-mailem ještě neexistuje
     if (existingUser) {
       return res.status(404).json({ message: "User already exists." });
     }

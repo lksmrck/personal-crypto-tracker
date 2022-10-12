@@ -18,7 +18,6 @@ mongoose
   .catch((error) => console.log(error.message));
 
 mongoose.connection.on("connected", () => {
-  //kdyz se connection provede, napise:
   console.log("Mongoose is connected!");
 });
 
@@ -31,3 +30,7 @@ app.use(cors());
 
 // /api jako starting route
 app.use("/", routes);
+
+/* app.get("/", (req, res) => {
+  res.send("APP IS RUNNING");
+}); */
