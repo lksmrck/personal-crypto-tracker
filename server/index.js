@@ -31,6 +31,6 @@ app.use(cors());
 // /api jako starting route
 app.use("/", routes);
 
-/* app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("APP IS RUNNING");
-}); */
+});
