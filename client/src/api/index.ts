@@ -5,10 +5,10 @@ const BASE_URL_LH = "http://localhost:8000"
 
 const BASE_URL = "https://personalcryptotracker.herokuapp.com/"
 
-const holdingsURL = BASE_URL_LH + "/holdings";
-const transactionsURL = BASE_URL_LH + "/transactions";
-const registerURL = BASE_URL_LH + "/register";
-const loginURL = BASE_URL_LH + "/login";
+const holdingsURL = BASE_URL + "/holdings";
+const transactionsURL = BASE_URL + "/transactions";
+const registerURL = BASE_URL + "/register";
+const loginURL = BASE_URL + "/login";
 
 //Holdings
 export const fetchHoldings = (userId: string) =>
