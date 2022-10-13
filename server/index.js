@@ -8,12 +8,11 @@ const PORT = process.env.PORT || 8000;
 
 import routes from "./routes/api.js";
 
-const MONGODB_URL =
-  "mongodb+srv://lukasm10:christmas123@holdings.wugr4l2.mongodb.net/?retryWrites=true&w=majority";
+const MONGO_CLUSTER = process.env.MONGODB;
 
 //Pripojeni na databazi
 mongoose
-  .connect(MONGODB_URL)
+  .connect(/* MONGODB_URL */ MONGO_CLUSTER)
   .then(() => app.listen(PORT, console.log(`Server is starting at ${PORT}`)))
   .catch((error) => console.log(error.message));
 
