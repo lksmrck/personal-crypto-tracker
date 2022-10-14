@@ -26,9 +26,9 @@ export const loginUser = async (req, res) => {
     }
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
-      "test",
+      "secretWord",
       { expiresIn: "1h" }
-    ); //"test" je secred word, které bych měl vědět jen já, mít někde uchované
+    ); //"secretWord" je secred word, které bych měl vědět jen já, mít někde uchované
 
     res.status(200).json({ result: existingUser, token });
   } catch (error) {

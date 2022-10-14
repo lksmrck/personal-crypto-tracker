@@ -177,7 +177,7 @@ const Form: React.FC = () => {
           />
           <p className={formIsValid ? "hide" : "display"}>
             You can't sell more than you hold. Your acutal holding of{" "}
-            {formData.name} is {existingHolding ? existingHolding!.amount : ""}.
+            {formData.name} is {existingHolding?.amount}.
           </p>
           <FormInput
             input={{

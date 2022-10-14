@@ -65,8 +65,7 @@ const Navbar: React.FC = () => {
             )}
           </ul>
         </div>
-        <div className="prava-cast">
-          {" "}
+        <div className="right-side">
           {/* zacina prava cast Navbaru*/}
           {user ? (
             <>

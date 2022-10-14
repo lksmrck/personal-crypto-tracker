@@ -59,7 +59,7 @@ const HoldingCard: React.FC = () => {
                   <Grid container>
                     <Grid item xs={6} sm={6} md={6}>
                       <div className="titles-container">
-                        <p>Average purchase price:</p>
+                        <p>Average purch. price:</p>
                         <p>Holding amount:</p>
                         <p>Total purchase price:</p>
                         <p className="PL">Total P/L USD:</p>

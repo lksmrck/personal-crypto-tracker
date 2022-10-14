@@ -1,54 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../common/theme";
 
-export const StyledNavContainer = styled.header`
-  width: 100vw;
-
-  height: 5rem;
-  display: flex;
-  padding: 0 2% 0 4%;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #008080;
-  ${theme.navbarShadow}
-
-  .nav-logo {
-    display: flex;
-    font-size: 1.5rem;
-    color: white;
-    font-family: monospace;
-    cursor: pointer;
-  }
-  .logo-text {
-    margin-left: 1rem;
-    margin-top: 0.3rem;
-  }
-  .hamburger {
-    display: none;
-    @media only screen and (max-width: 1030px) {
-      display: flex;
-    }
-  }
-  .user {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 330px;
-    cursor: pointer;
-    @media only screen and (max-width: 625px) {
-      width: 210px;
-    }
-    p {
-      color: #e6fcfc;
-      margin-right: 2%;
-      font-size: 18px;
-      @media only screen and (max-width: 550px) {
-        font-size: 15px;
-      }
-    }
-  }
-`;
-
 export const StyledLoadingSpinner = styled.div`
   display: grid;
   justify-content: center;
@@ -73,6 +25,68 @@ export const StyledLoadingSpinner = styled.div`
   }
 `;
 
+export const StyledNavContainer = styled.header`
+  width: 100vw;
+  max-width: 100vw;
+  overflow: hidden;
+  height: 5rem;
+  display: flex;
+  padding: 0 2% 0 4%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #008080;
+  ${theme.navbarShadow}
+  @media only screen and (max-width: 625px) {
+    padding-left: 2.5%;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    font-family: monospace;
+
+    cursor: pointer;
+    @media only screen and (max-width: 625px) {
+      font-size: 1.2rem;
+      img {
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+  .logo-text {
+    margin-left: 1rem;
+    margin-top: 0.3rem;
+  }
+  .hamburger {
+    display: none;
+
+    @media only screen and (max-width: 1030px) {
+      display: flex;
+    }
+  }
+  .user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 330px;
+
+    cursor: pointer;
+    @media only screen and (max-width: 625px) {
+      width: 145px;
+    }
+    p {
+      color: #e6fcfc;
+      font-size: 18px;
+      @media only screen and (max-width: 550px) {
+        font-size: 11px;
+      }
+    }
+  }
+`;
+
 export const StyledNavbar = styled.nav`
   display: flex;
   width: 100%;
@@ -80,19 +94,22 @@ export const StyledNavbar = styled.nav`
   align-items: center;
   justify-content: space-between;
 
-  .navbar-items-container {
-    display: none;
-  }
-  .prava-cast {
+  .right-side {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     margin-right: 1%;
+
     button {
       margin-left: 4%;
     }
+    @media only screen and (max-width: 625px) {
+      justify-content: flex-end;
+      margin-left: -15px;
+    }
   }
-  .prava-cast > * {
-    margin: 2%;
+  .right-side > * {
+    margin: 2% 0 2% 2%;
   }
 
   .right-nav-button {
