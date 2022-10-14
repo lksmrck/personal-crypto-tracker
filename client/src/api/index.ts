@@ -1,7 +1,7 @@
 import axios from "axios";
 import { HoldingItem, Transaction } from "../common/modelTypes";
 
-/* const BASE_URL_LH = "http://localhost:8000" */
+const BASE_URL_LH = "http://localhost:8000"
 
 const BASE_URL = "https://personalcryptotracker.herokuapp.com"
 

@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { theme } from "../../common/theme";
 
 export const StyledNavContainer = styled.header`
-  width: 100%;
+  width: 100vw;
+
   height: 5rem;
   display: flex;
   padding: 0 2% 0 4%;
@@ -142,7 +143,7 @@ export const StyledFooter = styled.footer`
   padding-top: 0.5em;
   position: relative;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   margin-top: 3rem;
 
   .row {
@@ -155,6 +156,9 @@ export const StyledFooter = styled.footer`
 
   .row-icons {
     margin: 0.5rem 3rem 0 0;
+    @media only screen and (max-width: 615px) {
+      margin: 0.5rem 1rem 0 0.5rem;
+    }
   }
 
   .col {
@@ -171,8 +175,8 @@ export const StyledFooter = styled.footer`
     margin: 0.2rem 0 0.2rem 2.5rem;
     font-family: monospace;
     @media only screen and (max-width: 615px) {
-      font-size: 11px;
-      margin-left: 1rem;
+      font-size: 9px;
+      margin-left: 0.5rem;
     }
   }
   .text-right {
@@ -180,7 +184,8 @@ export const StyledFooter = styled.footer`
     font-family: monospace;
     margin-right: 1rem;
     @media only screen and (max-width: 615px) {
-      font-size: 10px;
+      font-size: 8px;
+      margin-right: 0.5rem;
     }
   }
 `;

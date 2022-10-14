@@ -2,12 +2,10 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import { StyledNavContainer, StyledNavbar } from "./styled";
-import { Button } from "@mui/material";
 import logo from "../../assets/LogoPic.png";
-
 import { useAppDispatch } from "../../state/hooks";
 import { useHistory, useLocation } from "react-router-dom";
-import { Avatar, Typography } from "@mui/material";
+import { Avatar } from "@mui/material";
 import HamburgerMenu from "./HamburgerMenu";
 import MyButton from "./MyButton";
 

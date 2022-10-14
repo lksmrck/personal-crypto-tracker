@@ -14,7 +14,7 @@ export const StyledHomePage = styled.div`
     font-size: 40px;
     margin: 3% 0;
     @media only screen and (max-width: 535px) {
-      font-size: 35px;
+      font-size: 30px;
     }
   }
   a {
@@ -38,6 +38,7 @@ export const StyledHomePage = styled.div`
 
 export const StyledDashboard = styled.div`
   width: 1110px;
+  max-width: 100vw;
   margin: 0 auto;
 `;
 

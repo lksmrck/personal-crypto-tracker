@@ -29,6 +29,10 @@ const App: React.FC = () => {
               <Route path="/" exact>
                 <Redirect to="/dashboard" />
               </Route>
+              {/* Route kvůli github pages */}
+              <Route path="/personal-crypto-tracker" exact>
+                <Redirect to="/dashboard" />
+              </Route>
               <Switch>
                 <FormContextProvider>
                   <Route path="/dashboard" exact component={HomeDashboard} />
