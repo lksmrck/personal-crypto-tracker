@@ -5,11 +5,11 @@ import {
   DELETE_HOLDING,
 } from "../../constants/actionTypes";
 import { HoldingItem } from "../../common/modelTypes";
-import { Actions } from "../../common/modelTypes";
+import { Actions } from "../../common/actionTypes";
 
 export default (holdings = [], action: Actions) => {
   switch (action.type) {
-    case FETCH_ALL_HOLDINGS: // bude useEffect v APP komponentu. Na začátku se načte do state holdings z mongodb
+    case FETCH_ALL_HOLDINGS:
       return action.payload;
     case ADD_HOLDING: // přidání holdingu, pokud se daný coin ještě nedrží
       return [...holdings, action.payload];

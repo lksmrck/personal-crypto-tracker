@@ -22,6 +22,8 @@ import { useAppDispatch, useAppSelector } from "../../state/hooks";
 import { registerUser, loginUser } from "../../state/actions/auth";
 import { CLEAR_AUTH_ERROR, AUTH_ERROR } from "../../constants/actionTypes";
 import MyButton from "../layout/MyButton";
+import LoadingSpinner from "../layout/LoadingSpinner";
+import { RootState } from "../..";
 
 const initialState = {
   firstName: "",
@@ -40,7 +42,10 @@ const Auth: React.FC = () => {
   const clientID =
     "1065422573478-630fs1ejaapidoaot95o16c8s0v2khnl.apps.googleusercontent.com";
   const dispatch = useAppDispatch();
-  const authState = useAppSelector((state) => state.auth);
+  const authState = useAppSelector((state: RootState) => state.auth);
+  const loadingState = useAppSelector(
+    (state: RootState) => state.errorAndLoading
+  );
 
   const history = useHistory();
 
@@ -117,108 +122,112 @@ const Auth: React.FC = () => {
 
   return (
     <StyledAuth>
-      <Container maxWidth="xs">
-        <Paper className="paper" elevation={3}>
-          <Avatar className="avatar">
-            <FiLock />
-          </Avatar>
-          <Typography variant="h5">
-            {isRegistration ? "Sign Up" : "Sign In"}
-          </Typography>
-          <form className="form" onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              {isRegistration && (
-                <>
-                  <AuthInput
-                    name="firstName"
-                    label="First Name"
-                    handleChange={handleChange}
-                    autoFocus
-                    half
-                  />
-                  <AuthInput
-                    name="lastName"
-                    label="Last Name"
-                    handleChange={handleChange}
-                    half
-                  />
-                </>
-              )}
-              <AuthInput
-                name="email"
-                label="E-mail Address"
-                handleChange={handleChange}
-                type="email"
-              />
-              <AuthInput
-                name="password"
-                label="Password"
-                handleChange={handleChange}
-                type={showPassword ? "text" : "password"}
-                handleShowPassword={() =>
-                  setShowPassword((prevState) => !prevState)
-                }
-              />
-              {isRegistration && (
+      {loadingState.loading ? (
+        <LoadingSpinner />
+      ) : (
+        <Container maxWidth="xs">
+          <Paper className="paper" elevation={3}>
+            <Avatar className="avatar">
+              <FiLock />
+            </Avatar>
+            <Typography variant="h5">
+              {isRegistration ? "Sign Up" : "Sign In"}
+            </Typography>
+            <form className="form" onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
+                {isRegistration && (
+                  <>
+                    <AuthInput
+                      name="firstName"
+                      label="First Name"
+                      handleChange={handleChange}
+                      autoFocus
+                      half
+                    />
+                    <AuthInput
+                      name="lastName"
+                      label="Last Name"
+                      handleChange={handleChange}
+                      half
+                    />
+                  </>
+                )}
                 <AuthInput
-                  name="confirmPassword"
-                  label="Confirm Password"
+                  name="email"
+                  label="E-mail Address"
                   handleChange={handleChange}
-                  type="password"
+                  type="email"
                 />
-              )}
-            </Grid>
-            {isRegistration && !passwordValid && (
-              <Typography sx={{ color: "red" }}>
-                Password must have at least 6 letters.
-              </Typography>
-            )}
-
-            {authState?.error && (
-              <Typography sx={{ color: "red" }}>
-                {authState.errorMessage}
-              </Typography>
-            )}
-            <MyButton
-              type="submit"
-              variant="contained"
-              purple
-              className="submit"
-              fullWidth
-              text={isRegistration ? "Sign Up" : "Sign In"}
-            />
-            <GoogleLogin
-              clientId={clientID}
-              render={(renderProps) => (
-                <MyButton
-                  text="Sign in with google"
-                  purple
-                  className="google-button"
-                  fullWidth
-                  onClick={renderProps.onClick}
-                  startIcon={<AiOutlineGoogle />}
-                  variant="contained"
+                <AuthInput
+                  name="password"
+                  label="Password"
+                  handleChange={handleChange}
+                  type={showPassword ? "text" : "password"}
+                  handleShowPassword={() =>
+                    setShowPassword((prevState) => !prevState)
+                  }
                 />
-              )}
-              cookiePolicy="single_host_origin"
-              onSuccess={googleSuccess}
-              onFailure={googleFailure}
-            />
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Button
-                  onClick={() => setIsRegistration((prevState) => !prevState)}
-                  sx={{ color: "purple" }}
-                >
-                  {isRegistration
-                    ? "Already have an account? Sign In"
-                    : "Don't have an account? Sign Up"}
-                </Button>
+                {isRegistration && (
+                  <AuthInput
+                    name="confirmPassword"
+                    label="Confirm Password"
+                    handleChange={handleChange}
+                    type="password"
+                  />
+                )}
               </Grid>
-            </Grid>
-          </form>
-        </Paper>
-      </Container>
+              {isRegistration && !passwordValid && (
+                <Typography sx={{ color: "red" }}>
+                  Password must have at least 6 letters.
+                </Typography>
+              )}
+
+              {authState?.error && (
+                <Typography sx={{ color: "red" }}>
+                  {authState.errorMessage}
+                </Typography>
+              )}
+              <MyButton
+                type="submit"
+                variant="contained"
+                purple
+                className="submit"
+                fullWidth
+                text={isRegistration ? "Sign Up" : "Sign In"}
+              />
+              <GoogleLogin
+                clientId={clientID}
+                render={(renderProps) => (
+                  <MyButton
+                    text="Sign in with google"
+                    purple
+                    className="google-button"
+                    fullWidth
+                    onClick={renderProps.onClick}
+                    startIcon={<AiOutlineGoogle />}
+                    variant="contained"
+                  />
+                )}
+                cookiePolicy="single_host_origin"
+                onSuccess={googleSuccess}
+                onFailure={googleFailure}
+              />
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Button
+                    onClick={() => setIsRegistration((prevState) => !prevState)}
+                    sx={{ color: "purple" }}
+                  >
+                    {isRegistration
+                      ? "Already have an account? Sign In"
+                      : "Don't have an account? Sign Up"}
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
+          </Paper>
+        </Container>
+      )}
     </StyledAuth>
   );
 };

@@ -2,7 +2,7 @@ import {
   FETCH_ALL_TRANSACTIONS,
   ADD_TRANSACTION,
 } from "../../constants/actionTypes";
-import { Actions } from "../../common/modelTypes";
+import { Actions } from "../../common/actionTypes";
 
 export default (transactions = [], action: Actions) => {
   switch (action.type) {

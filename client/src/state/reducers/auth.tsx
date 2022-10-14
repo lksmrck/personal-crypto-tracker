@@ -1,6 +1,6 @@
 import { CLEAR_AUTH_ERROR } from "../../constants/actionTypes";
 import { AUTH, AUTH_ERROR, LOGOUT } from "../../constants/actionTypes";
-import { AuthActions } from "../../common/modelTypes";
+import { AuthActions } from "../../common/actionTypes";
 
 const authState = {
   authData: null,

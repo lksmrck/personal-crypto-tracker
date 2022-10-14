@@ -118,8 +118,10 @@ const Form: React.FC = () => {
           existingItem,
           adjustedFormItem
         );
-        if (updatedHolding.amount != 0) {
-          dispatch(updateHolding(adjustedFormItem.name, updatedHolding));
+        if (updatedHolding!.amount != 0) {
+          updatedHolding
+            ? dispatch(updateHolding(adjustedFormItem.name, updatedHolding))
+            : console.log("null");
         } else {
           dispatch(
             deleteHolding({ userId: formData.userId, itemName: formData.name })

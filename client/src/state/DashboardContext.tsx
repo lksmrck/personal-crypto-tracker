@@ -33,7 +33,7 @@ export const DashboardContextProvider: React.FC<{
       .get(url)
       .then((res) => {
         const rawData = res.data;
-        //Uložím jen některá data z celého objektu.
+        //Uložím jen některé properties z celého objektu.
         const reducedData = rawData.map((item: any) => ({
           identifier: item.id,
           name: item.name,

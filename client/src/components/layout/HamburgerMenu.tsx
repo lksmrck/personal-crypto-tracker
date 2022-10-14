@@ -9,7 +9,7 @@ import { firstLetterCapitalized } from "../../utils/text-format";
 
 interface HamburgerMenuProps {
   isUserLogged: boolean;
-  setIsUserLogged: any;
+  setIsUserLogged: () => void;
 }
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
