@@ -1,9 +1,11 @@
 import axios from "axios";
 import { HoldingItem, Transaction } from "../common/modelTypes";
 
-const BASE_URL_LH = "http://localhost:8000"
+/* const BASE_URL_LH = "http://localhost:8000"
 
-const BASE_URL = "https://personalcryptotracker.herokuapp.com"
+const BASE_URL = "https://personalcryptotracker.herokuapp.com" */
+
+const BASE_URL = process.env.REACT_APP_API
 
 const holdingsURL = BASE_URL + "/holdings";
 const transactionsURL = BASE_URL + "/transactions";
