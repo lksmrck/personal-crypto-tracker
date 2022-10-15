@@ -9,11 +9,11 @@ Simple personal project, that allows user to:
 - User's profit or loss, actual holding amount and average purchase price are calculated and updated based on added transactions and transaction prices (Holdings page)
 - User's transactions (Transaction history page) and Holdings (Holdings page) are logged and saved into database
 
-![App demo](./readMe/cryptoTrackerGIF.gif)
-
 ## 🔸 Demo
 
 You can try the demo [HERE](https://lukasthevicious.github.io/personal-crypto-tracker/)
+
+![App demo](./readMe/cryptoTrackerGIF.gif)
 
 ## 🔸 Configuration and setup
 
