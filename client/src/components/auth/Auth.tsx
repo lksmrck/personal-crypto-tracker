@@ -40,7 +40,7 @@ const Auth: React.FC = () => {
   const [passwordValid, setPasswordValid] = useState(true);
 
   const clientID = process.env.REACT_APP_GOOGLE_CLIENT_ID as string;
-  /* "1065422573478-630fs1ejaapidoaot95o16c8s0v2khnl.apps.googleusercontent.com"; */
+
   const dispatch = useAppDispatch();
   const authState = useAppSelector((state: RootState) => state.auth);
   const loadingState = useAppSelector(
