@@ -1,4 +1,4 @@
-import { registerUser } from '../state/actions/auth';
+
 
 //Dashboard
 export interface DashboardCryptoItem {

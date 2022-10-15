@@ -20,9 +20,9 @@ const ErrorScreen: React.FC = () => {
   return (
     <StyledErrorScreen>
       <div className="container">
-        <img src={somethingWrong} width="350px" height="350px" />
-        <h1>Something went wrong</h1>
-        <h1>{error.errorMessage}</h1>
+        {/* <img src={somethingWrong} width="350px" height="350px" /> */}
+        <h1>Something went wrong...</h1>
+        <h2>{error.errorMessage}</h2>
         <MyButton
           variant="contained"
           onClick={clearErrorAndGoDashboard}

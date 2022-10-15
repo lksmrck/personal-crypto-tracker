@@ -36,6 +36,7 @@ const TransactionsHistory: React.FC = () => {
     history.push("/holdings");
     formContext?.setFormShown(true);
     formContext?.setSelectedCrypto("Bitcoin");
+    formContext?.setTransactionType("buy");
   };
 
   return (

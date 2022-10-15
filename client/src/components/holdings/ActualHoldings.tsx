@@ -24,6 +24,7 @@ const ActualHoldings: React.FC = () => {
   const onClickButton = () => {
     formContext?.setFormShown(true);
     formContext?.setSelectedCrypto("Bitcoin");
+    formContext?.setTransactionType("buy");
   };
 
   useEffect(() => {
@@ -33,27 +34,27 @@ const ActualHoldings: React.FC = () => {
 
   return (
     <div>
-      {loadingState.loading ? (
-        <LoadingSpinner />
-      ) : holdings.length > 0 ? (
-        <StyledHoldings>
+      <StyledHoldings>
+        {loadingState.loading ? (
+          <LoadingSpinner />
+        ) : holdings.length > 0 ? (
           <HoldingCard />
-        </StyledHoldings>
-      ) : (
-        !formContext?.formShown && (
-          <StyledWrapper>
-            <div className="no-holdings-found">
-              <h1>No holdings found. Please add one.</h1>
-              <MyButton
-                text="Add transaction"
-                onClick={onClickButton}
-                variant="contained"
-                purple
-              />
-            </div>
-          </StyledWrapper>
-        )
-      )}
+        ) : (
+          !formContext?.formShown && (
+            <StyledWrapper>
+              <div className="no-holdings-found">
+                <h1>No holdings found. Please add one.</h1>
+                <MyButton
+                  text="Add transaction"
+                  onClick={onClickButton}
+                  variant="contained"
+                  purple
+                />
+              </div>
+            </StyledWrapper>
+          )
+        )}
+      </StyledHoldings>
     </div>
   );
 };

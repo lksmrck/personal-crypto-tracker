@@ -12,14 +12,17 @@ export const StyledNeedToLogin = styled.div`
   .container > * {
     margin: 0.5rem;
   }
+  @media only screen and (max-width: 615px) {
+    h1 {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const StyledErrorScreen = styled.div`
   padding-top: 20%;
   height: 100%;
   ${centerItems}
-
-  background-color: white;
   .container {
     display: flex;
     flex-direction: column;

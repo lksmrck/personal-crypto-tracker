@@ -24,6 +24,11 @@ export const StyledTransactionHistory = styled.div`
     button {
       margin: 2%;
     }
+    @media only screen and (max-width: 615px) {
+      h1 {
+        font-size: 18px;
+      }
+    }
   }
 `;
 

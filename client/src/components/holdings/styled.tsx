@@ -76,9 +76,14 @@ export const StyledWrapper = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 12%;
+    margin-top: 10%;
     button {
       margin: 2%;
+    }
+    @media only screen and (max-width: 615px) {
+      h1 {
+        font-size: 18px;
+      }
     }
   }
 `;

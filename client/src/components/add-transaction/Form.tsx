@@ -35,7 +35,7 @@ const Form: React.FC = () => {
     userId,
     name: "",
     price: "",
-    amount: "",
+    amount: 0,
     date: "",
   };
 
@@ -63,6 +63,7 @@ const Form: React.FC = () => {
       name: formContext?.selectedCrypto!,
       transactionType: formContext?.transactionType!,
     });
+
     //Aby se pak zobrazilo v případě špatně zadaného množství - viz. DOM
     const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === formContext?.selectedCrypto!
@@ -71,7 +72,9 @@ const Form: React.FC = () => {
   }, [formContext?.selectedCrypto, formContext?.transactionType]);
 
   const selectedCryptoInput = (crypto: string) => {
-    setFormData({ ...formData, name: crypto });
+    setFormIsValid(true);
+    formContext?.setSelectedCrypto(crypto);
+    /* setFormData({ ...formData, name: crypto }); */
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -87,9 +90,10 @@ const Form: React.FC = () => {
     e.preventDefault();
 
     //Existing item - aby se pak níže poslal do update nebo delete.
-    const existingItem = holdings.find(
+    /* const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === formData.name
-    );
+    ); */
+    const existingItem = existingHolding as HoldingItem;
 
     //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings - pak se prirazuje formIsValid state.
     if (
@@ -102,7 +106,7 @@ const Form: React.FC = () => {
       const adjustedFormItem = {
         ...formData,
         price: parseInt(formData.price),
-        amount: parseInt(formData.amount),
+        amount: formData.amount,
       };
 
       //Clearing inputs
@@ -118,10 +122,12 @@ const Form: React.FC = () => {
           existingItem,
           adjustedFormItem
         );
-        if (updatedHolding!.amount != 0) {
-          updatedHolding
-            ? dispatch(updateHolding(adjustedFormItem.name, updatedHolding))
-            : console.log("null");
+        //Pokud amount updatovaného holdingu se nerovná 0, tak dispatchuju updateHolding. Pokud se rovná 0 tak dispatchuju deleteHolding a holding se smaže z dtbs.
+        if (updatedHolding!.amount !== 0) {
+          console.log(updatedHolding);
+          dispatch(
+            updateHolding(adjustedFormItem.name, updatedHolding as HoldingItem)
+          );
         } else {
           dispatch(
             deleteHolding({ userId: formData.userId, itemName: formData.name })
@@ -139,9 +145,7 @@ const Form: React.FC = () => {
     e: React.MouseEvent<HTMLElement>,
     newBuySell: "buy" | "sell"
   ) => {
-    if (newBuySell !== null) {
-      formContext?.setTransactionType(newBuySell);
-    }
+    formContext?.setTransactionType(newBuySell);
   };
 
   return (
@@ -181,7 +185,7 @@ const Form: React.FC = () => {
           </p>
           <FormInput
             input={{
-              id: "Date",
+              id: "Date of transaction",
               type: "date",
               onChange: handleChange,
             }}
