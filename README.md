@@ -1,6 +1,6 @@
 # 🔎 Personal Crypto Tracker
 
-## Key Features
+## 🔸 Key Features
 
 Simple personal project, that allows user to:
 
@@ -11,11 +11,11 @@ Simple personal project, that allows user to:
 
 ![App demo](./readMe/cryptoTrackerGIF.gif)
 
-## Demo
+## 🔸 Demo
 
 You can try the demo [HERE](https://lukasthevicious.github.io/personal-crypto-tracker/)
 
-## Configuration and setup
+## 🔸 Configuration and setup
 
 In order to run this project locally, simply fork and clone the repository or download as zip and unzip on your machine.
 
@@ -58,11 +58,11 @@ $ npm install (to install server-side dependencies)
 & nodemon index.js (to start the server)
 ```
 
-## Data
+## 🔸 Data
 
 Data from [CoinGecko](https://www.coingecko.com/) API is used in this project.
 
-## ⚒ Main technologies used
+## 🔸 Main technologies used
 
 - <b>Frontend:</b> React, Typescript
 - <b>Backend:</b> NodeJS, Express
@@ -70,11 +70,11 @@ Data from [CoinGecko](https://www.coingecko.com/) API is used in this project.
 
 - <b>Other:</b> Redux (for state management), Material UI, Styled components, React Icons, Axios, React-router-dom, JWT (for authentication), bcryptjs (for data encryption), …
 
-## Known issues
+## 🔸 Known issues
 
 - Google sign in vs. Form sign in with same gmail is not considered as same user
 
-## Future
+## 🔸 Future
 
 - Potential extension to use also stocks data
 - Implementation of charts for movements
