@@ -10,14 +10,12 @@ const PORT = process.env.PORT || 8000;
 
 import routes from "./routes/api.js";
 
-const MONGO_CLUSTER = process.env.MONGODB;
-
+const MONGO_CLUSTER = process.env.MONGODB; //Uloženo na Heroku. MONGO_CLUSTER = MONGODB_URL. Vytvořeno kvůli smooth fungování na Heroku hostingu.
 const MONGODB_URL = process.env.DB_URL;
-/* "mongodb+srv://lukasm10:christmas123@holdings.wugr4l2.mongodb.net/?retryWrites=true&w=majority"; */
 
 //Pripojeni na databazi
 mongoose
-  .connect(/* MONGODB_URL */ /* MONGO_CLUSTER */ process.env.DB_URL)
+  .connect(MONGO_CLUSTER || MONGODB_URL)
   .then(() => app.listen(PORT, console.log(`Server is starting at ${PORT}`)))
   .catch((error) => console.log(error.message));
 

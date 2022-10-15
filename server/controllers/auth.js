@@ -2,10 +2,12 @@ import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs"; //šifrování passwords v databazi
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
 import User from "../models/userSchema.js";
 
 const router = express.Router();
+dotenv.config();
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
@@ -21,14 +23,17 @@ export const loginUser = async (req, res) => {
       existingUser.password
     );
 
+    //"JWT_SECRET" je secret word, které bych měl vědět jen já. Mám ho v .env
+    const secretWord = process.env.JWT_SECRET;
+
     if (!isPasswordCorrect) {
       return res.status(400).json({ message: "Wrong password." });
     }
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
-      "secretWord",
+      secretWord,
       { expiresIn: "1h" }
-    ); //"secretWord" je secred word, které bych měl vědět jen já, mít někde uchované
+    ); //"JWT_SECRET" je secret word, které bych měl vědět jen já. Mám ho v .env
 
     res.status(200).json({ result: existingUser, token });
   } catch (error) {

@@ -181,11 +181,14 @@ export const StyledFooter = styled.footer`
   .col {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     margin-left: 2.5rem;
     font-family: monospace;
     font-size: 16px;
     cursor: pointer;
+    @media only screen and (max-width: 615px) {
+      margin-left: 1rem;
+    }
   }
   .text-left {
     font-size: 12px;

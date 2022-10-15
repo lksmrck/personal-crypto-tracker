@@ -5,7 +5,7 @@ import Holding from "../models/holdingSchema.js";
 
 const router = express.Router();
 
-//params z get requestu
+//Params z get requestu
 export const getHoldings = async (req, res) => {
   const userId = req.query.userId;
 
