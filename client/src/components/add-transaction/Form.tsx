@@ -35,7 +35,7 @@ const Form: React.FC = () => {
     userId,
     name: "",
     price: "",
-    amount: 0,
+    amount: "",
     date: "",
   };
 
@@ -98,7 +98,7 @@ const Form: React.FC = () => {
     //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings - pak se prirazuje formIsValid state.
     if (
       (formData.transactionType === "sell" &&
-        existingItem.amount >= formData.amount) ||
+        existingItem.amount >= parseInt(formData.amount)) ||
       formData.transactionType === "buy"
     ) {
       setFormIsValid(true);
@@ -106,7 +106,7 @@ const Form: React.FC = () => {
       const adjustedFormItem = {
         ...formData,
         price: parseInt(formData.price),
-        amount: formData.amount,
+        amount: parseInt(formData.amount),
       };
 
       //Clearing inputs
