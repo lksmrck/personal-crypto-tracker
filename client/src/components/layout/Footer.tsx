@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="col" onClick={() => history.push("/dashboard")}>
-            <img src={logo} height="50px" width="50px" />
+            <img alt="logo" src={logo} height="50px" width="50px" />
             <h4>CryptoTracker</h4>
           </div>
           <div className="row-icons">

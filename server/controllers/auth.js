@@ -33,7 +33,7 @@ export const loginUser = async (req, res) => {
       { email: existingUser.email, id: existingUser._id },
       secretWord,
       { expiresIn: "1h" }
-    ); //"JWT_SECRET" je secret word, které bych měl vědět jen já. Mám ho v .env
+    );
 
     res.status(200).json({ result: existingUser, token });
   } catch (error) {

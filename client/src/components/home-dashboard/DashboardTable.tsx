@@ -1,4 +1,4 @@
-import { DataGrid, GridColDef, GridRowsProp } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { useContext } from "react";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
@@ -49,7 +49,9 @@ const DashboardTable: React.FC = () => {
     {
       field: "icon",
       renderCell: (params) => {
-        return <img src={params.row.icon} width="25px" height="25px" />;
+        return (
+          <img alt="icon" src={params.row.icon} width="25px" height="25px" />
+        );
       },
       headerName: "",
       width: 30,
