@@ -49,7 +49,7 @@ $ cd server
 Create .env file in the root of your server directory. Add:
 
 ```
-DB_URL = *your mongoDB cluster URL*
+MONGODB = *your mongoDB cluster URL*
 JWT_SECRET = *your secret string for JWT*
 ```
 
@@ -67,6 +67,7 @@ Data from [CoinGecko](https://www.coingecko.com/) API is used in this project.
 - <b>Frontend:</b> React, Typescript
 - <b>Backend:</b> NodeJS, Express
 - <b>Database:</b> MongoDB (MongoDB Atlas)
+- <b>Hosting:</b> GH pages, Heroku
 
 - <b>Other:</b> Redux (for state management), Material UI, Styled components, React Icons, Axios, React-router-dom, JWT (for authentication), bcryptjs (for data encryption), …
 
