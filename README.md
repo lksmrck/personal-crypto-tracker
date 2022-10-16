@@ -64,12 +64,17 @@ Data from [CoinGecko](https://www.coingecko.com/) API is used in this project.
 
 ## 🔸 Main technologies used
 
-- <b>Frontend:</b> React, Typescript
-- <b>Backend:</b> NodeJS, Express
-- <b>Database:</b> MongoDB (MongoDB Atlas)
-- <b>Hosting:</b> GH pages, Heroku
+- <b>Frontend:</b>
+  [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/)
+- <b>Backend:</b>
+  [NodeJS](https://nodejs.org/en/), [Express](https://expressjs.com/)
+- <b>Database:</b>
+  [MongoDB](https://www.mongodb.com/)
+- <b>Hosting:</b>
+  [GH pages](https://pages.github.com/), [Heroku](https://dashboard.heroku.com/)
 
-- <b>Other:</b> Redux (for state management), Material UI, Styled components, React Icons, Axios, React-router-dom, JWT (for authentication), bcryptjs (for data encryption), …
+- <b>Other:</b>
+  [Redux](https://redux.js.org/) (for state management), Material UI, Styled components, React Icons, Axios, React-router-dom, JWT (for authentication), bcryptjs (for data encryption), …
 
 ## 🔸 Known issues
 
