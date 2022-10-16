@@ -8,12 +8,19 @@ import {
   STOP_LOADING,
 } from "../../constants/actionTypes";
 import { HoldingItem } from "../../common/modelTypes";
-import { AppDispatch } from "../..";
+import { Dispatch } from "@reduxjs/toolkit";
+import {
+  HoldingsTransactionsActions,
+  ErrorLoadingActions,
+} from "../../common/actionTypes";
 
 import * as api from "../../api/index";
 
 export const getHoldings =
-  (userId: string) => async (dispatch: AppDispatch) => {
+  (userId: string) =>
+  async (
+    dispatch: Dispatch<HoldingsTransactionsActions | ErrorLoadingActions>
+  ) => {
     try {
       dispatch({ type: START_LOADING });
       const { data } = await api.fetchHoldings(userId); //const response = await fetch(...)
@@ -30,7 +37,10 @@ export const getHoldings =
   };
 
 export const addHolding =
-  (holding: HoldingItem) => async (dispatch: AppDispatch) => {
+  (holding: HoldingItem) =>
+  async (
+    dispatch: Dispatch<HoldingsTransactionsActions | ErrorLoadingActions>
+  ) => {
     try {
       dispatch({ type: START_LOADING });
       const { data } = await api.addHolding(holding); // data se hned destructuruje response, která má v sobě vždycky data object.
@@ -48,7 +58,10 @@ export const addHolding =
   };
 
 export const updateHolding =
-  (name: string, holding: HoldingItem) => async (dispatch: AppDispatch) => {
+  (name: string, holding: HoldingItem) =>
+  async (
+    dispatch: Dispatch<HoldingsTransactionsActions | ErrorLoadingActions>
+  ) => {
     try {
       dispatch({ type: START_LOADING });
       const { data } = await api.updateHolding(name, holding);
@@ -67,7 +80,10 @@ export const updateHolding =
 
 //V případě, že držený amount klesne na 0, mažu z databaze.
 export const deleteHolding =
-  (formData: Object) => async (dispatch: AppDispatch) => {
+  (formData: Object) =>
+  async (
+    dispatch: Dispatch<HoldingsTransactionsActions | ErrorLoadingActions>
+  ) => {
     try {
       dispatch({ type: START_LOADING });
       const { data } = await api.deleteHolding(formData);

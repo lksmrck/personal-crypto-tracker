@@ -9,13 +9,9 @@ export interface HoldingActions {
     UPDATE_HOLDING: string;
     DELETE_HOLDING: string
   }
-//TEST
-  export enum HoldingAction {
-    FetchAllHoldings
-  }
-  
+
   export interface FetchAllHoldings {
-    type: HoldingAction.FetchAllHoldings
+    type: HoldingActions["FETCH_ALL_HOLDINGS"]
     payload: HoldingItem[]
   }
   
@@ -67,28 +63,55 @@ export interface HoldingActions {
   
   export interface Auth {
     type: AuthActionTypes["AUTH"];
-    data: AuthFormData
+    payload: AuthFormData
   }
   
   export interface Logout {
     type: AuthActionTypes["LOGOUT"];
-    data: string
+    payload: string
   }
   
   export interface AuthError {
     type: AuthActionTypes["AUTH_ERROR"];
-    data: string
+    payload: string
   }
   
   export interface ClearAuthError {
     type: AuthActionTypes["CLEAR_AUTH_ERROR"];
-    data: any
+payload: any
   }
   
+//Error, loading
+export interface ErrorLoadingActionTypes {
+  SET_ERROR: string;
+  CLEAR_ERROR: string;
+  START_LOADING: string;
+  STOP_LOADING: string;
+
+}
+
+  export interface SetError {
+    type: ErrorLoadingActionTypes["SET_ERROR"];
+    payload: string
+  }
+
+  export interface ClearError {
+    type: ErrorLoadingActionTypes["CLEAR_ERROR"];
+  }
+
+  export interface StartLoading {
+    type: ErrorLoadingActionTypes["START_LOADING"];
+
+  }
+
+  export interface StopLoading {
+    type: ErrorLoadingActionTypes["STOP_LOADING"];
+  }
+
 
   //Výstup
   //Actions => pro Holdings, Transactions, 
-  export type Actions =
+  export type HoldingsTransactionsActions =
     | FetchAllHoldings
     | AddHolding
     | UpdateHolding
@@ -102,4 +125,13 @@ export interface HoldingActions {
     | Logout
     | AuthError 
     | ClearAuthError
+
+    //Errors
+    export type ErrorLoadingActions =
+    | SetError
+    | ClearError
+    | StartLoading
+    | StopLoading
+
+
 

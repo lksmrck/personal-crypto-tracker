@@ -11,13 +11,13 @@ const authState = {
 export default (state = authState, action: AuthActions) => {
   switch (action.type) {
     case AUTH:
-      localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
-      return { ...state, authData: action?.data };
+      localStorage.setItem("profile", JSON.stringify({ ...action?.payload }));
+      return { ...state, authData: action?.payload };
     case LOGOUT:
       localStorage.clear();
       return { ...state, authData: null };
     case AUTH_ERROR:
-      return { ...state, error: true, errorMessage: action?.data };
+      return { ...state, error: true, errorMessage: action?.payload };
     case CLEAR_AUTH_ERROR:
       return { ...state, error: false, errorMessage: "" };
     default:

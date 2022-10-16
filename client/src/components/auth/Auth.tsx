@@ -104,7 +104,7 @@ const Auth: React.FC = () => {
           : error.message;
       dispatch({
         type: AUTH_ERROR,
-        data: errMsg,
+        payload: errMsg,
       });
     }
   };
@@ -116,7 +116,7 @@ const Auth: React.FC = () => {
         : error.message;
     dispatch({
       type: AUTH_ERROR,
-      data: errMsg,
+      payload: errMsg,
     });
   };
 

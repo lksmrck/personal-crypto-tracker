@@ -5,9 +5,9 @@ import {
   DELETE_HOLDING,
 } from "../../constants/actionTypes";
 import { HoldingItem } from "../../common/modelTypes";
-import { Actions } from "../../common/actionTypes";
+import { HoldingsTransactionsActions } from "../../common/actionTypes";
 
-export default (holdings = [], action: Actions) => {
+export default (holdings = [], action: HoldingsTransactionsActions) => {
   switch (action.type) {
     case FETCH_ALL_HOLDINGS:
       return action.payload;

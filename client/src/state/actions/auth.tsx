@@ -5,17 +5,18 @@ import {
   STOP_LOADING,
 } from "../../constants/actionTypes";
 import { AuthData } from "../../common/modelTypes";
-import { AppDispatch } from "../..";
-import axios from "axios";
+import { AuthActions, ErrorLoadingActions } from "../../common/actionTypes";
+import { Dispatch } from "@reduxjs/toolkit";
 
 import * as api from "../../api/index";
 
 export const loginUser =
-  (formData: AuthData, history: any) => async (dispatch: AppDispatch) => {
+  (formData: AuthData, history: any) =>
+  async (dispatch: Dispatch<AuthActions | ErrorLoadingActions>) => {
     try {
       dispatch({ type: START_LOADING });
       const { data } = await api.loginUser(formData);
-      dispatch({ type: AUTH, data });
+      dispatch({ type: AUTH, payload: data });
       history.push("/");
       if (data) {
         setTimeout(() => {
@@ -30,17 +31,18 @@ export const loginUser =
           : error.message;
       dispatch({
         type: AUTH_ERROR,
-        data: errMsg,
+        payload: errMsg,
       });
     }
   };
 
 export const registerUser =
-  (formData: AuthData, history: any) => async (dispatch: AppDispatch) => {
+  (formData: AuthData, history: any) =>
+  async (dispatch: Dispatch<AuthActions | ErrorLoadingActions>) => {
     try {
       dispatch({ type: START_LOADING });
       const { data } = await api.registerUser(formData);
-      dispatch({ type: AUTH, data });
+      dispatch({ type: AUTH, payload: data });
       history.push("/");
       if (data) {
         setTimeout(() => {
@@ -56,7 +58,7 @@ export const registerUser =
 
       dispatch({
         type: AUTH_ERROR,
-        data: errMsg,
+        payload: errMsg,
       });
     }
   };

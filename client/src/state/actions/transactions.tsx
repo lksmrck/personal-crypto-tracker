@@ -6,12 +6,19 @@ import {
   STOP_LOADING,
 } from "../../constants/actionTypes";
 import { Transaction } from "../../common/modelTypes";
-import { AppDispatch } from "../..";
+import { Dispatch } from "@reduxjs/toolkit";
+import {
+  HoldingsTransactionsActions,
+  ErrorLoadingActions,
+} from "../../common/actionTypes";
 
 import * as api from "../../api/index";
 
 export const getTransactions =
-  (userId: string) => async (dispatch: AppDispatch) => {
+  (userId: string) =>
+  async (
+    dispatch: Dispatch<HoldingsTransactionsActions | ErrorLoadingActions>
+  ) => {
     try {
       dispatch({ type: START_LOADING });
       const { data } = await api.fetchTransactions(userId);
@@ -21,7 +28,6 @@ export const getTransactions =
         setTimeout(() => {
           dispatch({ type: STOP_LOADING });
         }, 100);
-        /*  clearTimeout(loaded); */
       }
     } catch (error: any) {
       dispatch({ type: STOP_LOADING });
@@ -30,7 +36,10 @@ export const getTransactions =
   };
 
 export const addTransaction =
-  (transaction: Transaction) => async (dispatch: AppDispatch) => {
+  (transaction: Transaction) =>
+  async (
+    dispatch: Dispatch<HoldingsTransactionsActions | ErrorLoadingActions>
+  ) => {
     try {
       const { data } = await api.addTransaction(transaction);
 
