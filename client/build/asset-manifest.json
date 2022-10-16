@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/personal-crypto-tracker/static/css/main.4407966f.css",
-    "main.js": "/personal-crypto-tracker/static/js/main.a3e65361.js",
+    "main.js": "/personal-crypto-tracker/static/js/main.d21880dd.js",
     "static/media/LogoPic.png": "/personal-crypto-tracker/static/media/LogoPic.3ea82a5b076defc29a34.png",
     "index.html": "/personal-crypto-tracker/index.html",
     "main.4407966f.css.map": "/personal-crypto-tracker/static/css/main.4407966f.css.map",
-    "main.a3e65361.js.map": "/personal-crypto-tracker/static/js/main.a3e65361.js.map"
+    "main.d21880dd.js.map": "/personal-crypto-tracker/static/js/main.d21880dd.js.map"
   },
   "entrypoints": [
     "static/css/main.4407966f.css",
-    "static/js/main.a3e65361.js"
+    "static/js/main.d21880dd.js"
   ]
 }

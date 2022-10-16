@@ -90,10 +90,10 @@ const Form: React.FC = () => {
     e.preventDefault();
 
     //Existing item - aby se pak níže poslal do update nebo delete.
-    /* const existingItem = holdings.find(
+    const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === formData.name
-    ); */
-    const existingItem = existingHolding as HoldingItem;
+    );
+    /*    const existingItem = existingHolding as HoldingItem; */
 
     //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings - pak se prirazuje formIsValid state.
     if (
