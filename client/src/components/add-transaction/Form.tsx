@@ -145,7 +145,8 @@ const Form: React.FC = () => {
     e: React.MouseEvent<HTMLElement>,
     newBuySell: "buy" | "sell"
   ) => {
-    formContext?.setTransactionType(newBuySell);
+    console.log(newBuySell);
+    if (newBuySell !== null) formContext?.setTransactionType(newBuySell);
   };
 
   return (
