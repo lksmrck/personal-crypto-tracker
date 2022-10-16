@@ -1,36 +1,31 @@
 import axios from "axios";
 import { HoldingItem, Transaction } from "../common/modelTypes";
 
-const BASE_URL = process.env.REACT_APP_API
-
-const holdingsURL = BASE_URL + "/holdings";
-const transactionsURL = BASE_URL + "/transactions";
-const registerURL = BASE_URL + "/register";
-const loginURL = BASE_URL + "/login";
+const API = axios.create({baseURL: process.env.REACT_APP_API })
 
 //Holdings
 export const fetchHoldings = (userId: string) =>
-  axios.get(holdingsURL, { params: { userId: userId } });
+  API.get("/holdings", { params: { userId: userId } });
 
 export const addHolding = (newHolding: HoldingItem) =>
-  axios.post(holdingsURL, newHolding);
+  API.post("/holdings", newHolding);
 
 export const updateHolding = (name: string, updatedHolding: HoldingItem) =>
-  axios.patch(`${holdingsURL}/${name}`, updatedHolding);
+  API.patch(`${"/holdings"}/${name}`, updatedHolding);
 
 //Pokud se všechen Holding prodal (tzn. držený amount = 0), tak mažu z databáze. V případném opětovném nákupu se vytvoří znovu a od té doby se znovu počítá průměrná cena a P/L
 export const deleteHolding = (formData: Object) =>
-  axios.post(`${holdingsURL}/delete`, formData);
+  API.post(`${"/holdings"}/delete`, formData);
 
 //Transactions history
 export const fetchTransactions = (userId: string) =>
-  axios.get(transactionsURL, { params: { userId: userId } });
+  API.get("/transactions", { params: { userId: userId } });
 
 export const addTransaction = (newTransaction: Transaction) =>
-  axios.post(transactionsURL, newTransaction);
+  API.post("/transactions", newTransaction);
 
 //Auth
 export const registerUser = (userData: any) =>
-  axios.post(registerURL, userData);
+  API.post("/register", userData);
 
-export const loginUser = (userData: any) => axios.post(loginURL, userData);
+export const loginUser = (userData: any) => API.post("/login", userData);

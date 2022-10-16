@@ -6,6 +6,7 @@ import {
 } from "../../constants/actionTypes";
 import { AuthData } from "../../common/modelTypes";
 import { AppDispatch } from "../..";
+import axios from "axios";
 
 import * as api from "../../api/index";
 
