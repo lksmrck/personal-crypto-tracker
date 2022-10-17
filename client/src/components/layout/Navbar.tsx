@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-
+import decode from "jwt-decode";
 import { StyledNavContainer, StyledNavbar } from "./styled";
 import logo from "../../assets/LogoPic.png";
 import { useAppDispatch } from "../../state/hooks";
@@ -9,18 +9,33 @@ import { Avatar } from "@mui/material";
 import HamburgerMenu from "./HamburgerMenu";
 import MyButton from "./MyButton";
 
+interface DecodedToken {
+  email: string;
+  id: string;
+  iat: number;
+  exp: number;
+}
+
 const Navbar: React.FC = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const location = useLocation();
 
+  //v user se sleduje, jestli je user přihlášen (tj. jestli je uložen v localStorage)
   const lsUser = localStorage.getItem("profile");
   const [user, setUser] = useState(lsUser !== null ? JSON.parse(lsUser) : null);
 
   useEffect(() => {
     const token = user?.token;
 
-    //JWT - potom při manual auth
+    //Sleduje, jestli token neexpiroval. Pokud ano, provede onClickLogout a odhlásí usera.
+    if (token) {
+      const decodedToken: DecodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        onClickLogout();
+      }
+    }
+
     if (lsUser !== null) {
       setUser(JSON.parse(lsUser));
     }

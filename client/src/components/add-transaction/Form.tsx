@@ -18,15 +18,6 @@ import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
 import MyButton from "../layout/MyButton";
 
-const initialState = {
-  transactionType: "buy",
-  userId: "",
-  name: "",
-  price: "",
-  amount: "",
-  date: "",
-};
-
 const Form: React.FC = () => {
   const userId = lsUserId();
 
@@ -42,21 +33,21 @@ const Form: React.FC = () => {
   const [formData, setFormData] = useState(initialState);
   const formRef = useRef<HTMLFormElement | null>(null);
   const [existingHolding, setExistingHolding] = useState<HoldingItem>();
-
   const [formIsValid, setFormIsValid] = useState<boolean>(true);
 
   const dispatch = useAppDispatch();
   const holdings = useAppSelector((state: RootState) => state.holdings);
 
   const context = useContext(DashboardContext);
-
   const formContext = useContext(FormContext);
 
+  //Při prvním načtení stáhne dashboard data (přes context.getDashboardData) a nastaví userID do formData (zde se sledují údaje, které budou zadany do formu)
   useEffect(() => {
     context?.getDashboardData();
     setFormData({ ...formData, userId });
   }, []);
 
+  //Crypto name a Transaction type jdou přes context API, ukládám přes useEffect do formData objectu.
   useEffect(() => {
     setFormData({
       ...formData,
@@ -64,7 +55,7 @@ const Form: React.FC = () => {
       transactionType: formContext?.transactionType!,
     });
 
-    //Aby se pak zobrazilo v případě špatně zadaného množství - viz. DOM
+    //Při změně Crypto name a Transaction type ukládám již držené krypto podle názvu do setExistingHolding, aby se pak zobrazilo v případě špatně zadaného množství - viz. DOM
     const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === formContext?.selectedCrypto!
     );
@@ -74,11 +65,10 @@ const Form: React.FC = () => {
   const selectedCryptoInput = (crypto: string) => {
     setFormIsValid(true);
     formContext?.setSelectedCrypto(crypto);
-    /* setFormData({ ...formData, name: crypto }); */
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //Když vyskočí hláška s invalid state, po update inputů zmizí.
+    //Když vyskočí hláška s invalid amount, po update inputů zmizí.
     if (!formIsValid) {
       setFormIsValid(true);
     }
@@ -86,7 +76,7 @@ const Form: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmitHandler = (e: React.SyntheticEvent): void => {
+  const onSubmitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     //Existing item - aby se pak níže poslal do update nebo delete.
@@ -145,7 +135,7 @@ const Form: React.FC = () => {
     e: React.MouseEvent<HTMLElement>,
     newBuySell: "buy" | "sell"
   ) => {
-    console.log(newBuySell);
+    //Pokud se klikne na již zakliknutou možnost, tak to nic nezmění.
     if (newBuySell !== null) formContext?.setTransactionType(newBuySell);
   };
 
