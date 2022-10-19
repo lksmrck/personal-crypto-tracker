@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/personal-crypto-tracker/static/css/main.4407966f.css",
-    "main.js": "/personal-crypto-tracker/static/js/main.0ffc8ebc.js",
+    "main.js": "/personal-crypto-tracker/static/js/main.2f88a936.js",
     "static/media/logoDogHalf.png": "/personal-crypto-tracker/static/media/logoDogHalf.04a7d0c3c5e03ff23972.png",
     "static/media/logoDog.png": "/personal-crypto-tracker/static/media/logoDog.269bf610de7f44a46c62.png",
     "index.html": "/personal-crypto-tracker/index.html",
     "main.4407966f.css.map": "/personal-crypto-tracker/static/css/main.4407966f.css.map",
-    "main.0ffc8ebc.js.map": "/personal-crypto-tracker/static/js/main.0ffc8ebc.js.map"
+    "main.2f88a936.js.map": "/personal-crypto-tracker/static/js/main.2f88a936.js.map"
   },
   "entrypoints": [
     "static/css/main.4407966f.css",
-    "static/js/main.0ffc8ebc.js"
+    "static/js/main.2f88a936.js"
   ]
 }
