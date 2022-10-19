@@ -9,12 +9,20 @@ import {
 export const StyledHomePage = styled.div`
   display: flex;
   justify-content: center;
-
+  .home-container {
+    width: 1110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .header-container {
+    ${centerItems}
+  }
   h2 {
     font-size: 40px;
-    margin: 3% 0;
+    margin: 1% 0;
     @media only screen and (max-width: 535px) {
-      font-size: 30px;
+      font-size: 25px;
     }
   }
   a {
@@ -24,15 +32,11 @@ export const StyledHomePage = styled.div`
   .buttons-container {
     display: flex;
     ${centerItems};
-    margin-bottom: 2%;
+    margin-bottom: 1%;
   }
 
   .buttons-container > * {
     margin: 1%;
-  }
-  .home-dashboard {
-    display: flex;
-    width: 100%;
   }
 `;
 

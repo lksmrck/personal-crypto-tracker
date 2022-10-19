@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import decode from "jwt-decode";
 import { StyledNavContainer, StyledNavbar } from "./styled";
 import logo from "../../assets/LogoPic.png";
+import logoDogHalf from "../../assets/logoDogHalf.png";
 import { useAppDispatch } from "../../state/hooks";
 import { useHistory, useLocation } from "react-router-dom";
 import { Avatar } from "@mui/material";
@@ -53,7 +54,7 @@ const Navbar: React.FC = () => {
   return (
     <StyledNavContainer>
       <div className="nav-logo" onClick={() => history.push("/dashboard")}>
-        <img src={logo} height="70px" width="70px" />
+        <img src={logoDogHalf} height="70px" width="70px" />
         <div className="logo-text">Crypto Tracker</div>
       </div>
       <StyledNavbar>

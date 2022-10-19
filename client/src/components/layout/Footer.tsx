@@ -1,5 +1,5 @@
 import { StyledFooter } from "./styled";
-import logo from "../../assets/LogoPic.png";
+import logoDog from "../../assets/logoDog.png";
 import { FiTwitter } from "react-icons/fi";
 import { FiFacebook } from "react-icons/fi";
 import { FiInstagram } from "react-icons/fi";
@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="col" onClick={() => history.push("/dashboard")}>
-            <img alt="logo" src={logo} height="50px" width="50px" />
+            <img alt="logo" src={logoDog} height="60px" width="50px" />
             <h4>CryptoTracker</h4>
           </div>
           <div className="row-icons">

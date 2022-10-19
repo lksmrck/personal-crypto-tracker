@@ -47,13 +47,13 @@ export const StyledNavContainer = styled.header`
     color: white;
     font-family: monospace;
 
+    img {
+      margin-top: 8px;
+    }
+
     cursor: pointer;
     @media only screen and (max-width: 625px) {
       font-size: 1.2rem;
-      img {
-        height: 50px;
-        width: 50px;
-      }
     }
   }
   .logo-text {
