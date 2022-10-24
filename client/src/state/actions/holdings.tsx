@@ -32,7 +32,11 @@ export const getHoldings =
       }
     } catch (error: any) {
       dispatch({ type: STOP_LOADING });
-      dispatch({ type: SET_ERROR, payload: error.message });
+      const errMsg =
+        error.response && error.response.data?.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: SET_ERROR, payload: errMsg });
     }
   };
 
@@ -53,7 +57,11 @@ export const addHolding =
       }
     } catch (error: any) {
       dispatch({ type: STOP_LOADING });
-      dispatch({ type: SET_ERROR, payload: error.message });
+      const errMsg =
+        error.response && error.response.data?.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: SET_ERROR, payload: errMsg });
     }
   };
 
@@ -74,7 +82,11 @@ export const updateHolding =
       }
     } catch (error: any) {
       dispatch({ type: STOP_LOADING });
-      dispatch({ type: SET_ERROR, payload: error.message });
+      const errMsg =
+        error.response && error.response.data?.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: SET_ERROR, payload: errMsg });
     }
   };
 
@@ -95,8 +107,12 @@ export const deleteHolding =
           dispatch({ type: STOP_LOADING });
         }, 100);
       }
-    } catch (error) {
+    } catch (error: any) {
       dispatch({ type: STOP_LOADING });
-      dispatch({ type: SET_ERROR, payload: error });
+      const errMsg =
+        error.response && error.response.data?.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: SET_ERROR, payload: errMsg });
     }
   };

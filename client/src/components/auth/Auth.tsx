@@ -60,7 +60,7 @@ const Auth: React.FC = () => {
     dispatch({ type: CLEAR_AUTH_ERROR });
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (!passwordValid) {
       setPasswordValid(true);
     }
@@ -109,7 +109,7 @@ const Auth: React.FC = () => {
     }
   };
 
-  const googleFailure = (error: any) => {
+  const googleFailure = (error: any): void => {
     const errMsg =
       error.response && error.response.data.message
         ? error.response.data.message

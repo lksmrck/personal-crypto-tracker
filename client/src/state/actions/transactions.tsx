@@ -31,7 +31,11 @@ export const getTransactions =
       }
     } catch (error: any) {
       dispatch({ type: STOP_LOADING });
-      dispatch({ type: SET_ERROR, payload: error.message });
+      const errMsg =
+        error.response && error.response.data?.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: SET_ERROR, payload: errMsg });
     }
   };
 
@@ -45,6 +49,10 @@ export const addTransaction =
 
       dispatch({ type: ADD_TRANSACTION, payload: data });
     } catch (error: any) {
-      dispatch({ type: SET_ERROR, payload: error.message });
+      const errMsg =
+        error.response && error.response.data?.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: SET_ERROR, payload: errMsg });
     }
   };

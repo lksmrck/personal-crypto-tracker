@@ -23,14 +23,14 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
 
   const menuItemsLogged = ["holdings", "transactions"];
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleClose = (): void => {
     setAnchorEl(null);
   };
 
-  const onClickLogout = () => {
+  const onClickLogout = (): void => {
     handleClose();
     dispatch({ type: "LOGOUT" });
     history.push("/");
@@ -90,7 +90,7 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
           </div>
         ) : (
           <MenuItem
-            onClick={() => {
+            onClick={(): void => {
               handleClose();
               history.push("/auth");
             }}

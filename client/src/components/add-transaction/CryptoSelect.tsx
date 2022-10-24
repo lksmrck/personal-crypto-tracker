@@ -30,7 +30,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
     setTransactionType(formContext?.transactionType);
   }, [formContext?.transactionType]);
 
-  const selectCryptoHandler = (e: SelectChangeEvent<unknown>) => {
+  const selectCryptoHandler = (e: SelectChangeEvent<unknown>): void => {
     props.selected(e.target.value as string);
   };
 

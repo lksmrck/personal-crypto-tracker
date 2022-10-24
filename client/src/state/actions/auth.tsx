@@ -9,6 +9,8 @@ import { AuthActions, ErrorLoadingActions } from "../../common/actionTypes";
 import { Dispatch } from "@reduxjs/toolkit";
 
 import * as api from "../../api/index";
+import { AxiosError } from "axios";
+import axios from "axios";
 
 export const loginUser =
   (formData: AuthData, history: any) =>
@@ -25,8 +27,9 @@ export const loginUser =
       }
     } catch (error: any) {
       dispatch({ type: STOP_LOADING });
+
       const errMsg =
-        error.response && error.response.data?.message
+        error.response && error.response?.data?.message
           ? error.response.data.message
           : error.message;
       dispatch({

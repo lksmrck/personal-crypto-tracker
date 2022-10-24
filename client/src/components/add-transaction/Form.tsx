@@ -62,12 +62,12 @@ const Form: React.FC = () => {
     setExistingHolding(existingItem);
   }, [formContext?.selectedCrypto, formContext?.transactionType]);
 
-  const selectedCryptoInput = (crypto: string) => {
+  const selectedCryptoInput = (crypto: string): void => {
     setFormIsValid(true);
     formContext?.setSelectedCrypto(crypto);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     //Když vyskočí hláška s invalid amount, po update inputů zmizí.
     if (!formIsValid) {
       setFormIsValid(true);
@@ -76,7 +76,7 @@ const Form: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmitHandler = (e: React.SyntheticEvent) => {
+  const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
     //Existing item - aby se pak níže poslal do update nebo delete.
@@ -134,7 +134,7 @@ const Form: React.FC = () => {
   const handleBuySellChange = (
     e: React.MouseEvent<HTMLElement>,
     newBuySell: "buy" | "sell"
-  ) => {
+  ): void => {
     //Pokud se klikne na již zakliknutou možnost, tak to nic nezmění.
     if (newBuySell !== null) formContext?.setTransactionType(newBuySell);
   };

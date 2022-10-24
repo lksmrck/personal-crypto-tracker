@@ -2,7 +2,7 @@
 import { HoldingItem, Transaction } from "../../common/modelTypes";
 
 
-const updateHoldingStatistics = (holdingToBeUpdated: HoldingItem, formItem?: Transaction)   => {
+const updateHoldingStatistics = (holdingToBeUpdated: HoldingItem, formItem?: Transaction) => {
   const oldTotalPrice = holdingToBeUpdated.price * holdingToBeUpdated.amount;
 let updatedItem
 
@@ -15,7 +15,6 @@ let updatedItem
 
     //Vrátí upravený object (holding), který se pak nahraje do mongoDB
    return  {
-
       ...formItem,
       price: updatedAveragePrice,
       amount: holdingToBeUpdated.amount + formItem!.amount,

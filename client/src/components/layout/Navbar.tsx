@@ -42,10 +42,10 @@ const Navbar: React.FC = () => {
     }
   }, [location]); //==> when location changes (z /auth na / tak set user)
 
-  const onClickLogin = () => {
+  const onClickLogin = (): void => {
     history.push("/auth");
   };
-  const onClickLogout = () => {
+  const onClickLogout = (): void => {
     dispatch({ type: "LOGOUT" });
     history.push("/");
     setUser(null);

@@ -13,7 +13,7 @@ const NeedToLogin: React.FC = () => {
         <h1>You need to sign in to see this page.</h1>
         <MyButton
           variant="contained"
-          onClick={() => {
+          onClick={(): void => {
             history.push("/auth");
           }}
           text="Sign In"

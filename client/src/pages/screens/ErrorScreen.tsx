@@ -12,7 +12,7 @@ const ErrorScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
 
-  const clearErrorAndGoDashboard = () => {
+  const clearErrorAndGoDashboard = (): void => {
     dispatch({ type: CLEAR_ERROR });
     history.push("/dashboard");
   };

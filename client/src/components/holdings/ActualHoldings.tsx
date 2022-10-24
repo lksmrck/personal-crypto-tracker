@@ -21,7 +21,7 @@ const ActualHoldings: React.FC = () => {
   const dashboardContext = useContext(DashboardContext);
   const userId = lsUserId();
 
-  const onClickButton = () => {
+  const onClickButton = (): void => {
     formContext?.setFormShown(true);
     formContext?.setSelectedCrypto("Bitcoin");
     formContext?.setTransactionType("buy");

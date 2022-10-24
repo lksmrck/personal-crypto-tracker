@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { Dispatch } from "react";
 import { SetStateAction } from "react";
 
@@ -14,7 +14,7 @@ interface AppContextInterface {
 const FormContext = createContext<AppContextInterface | null>(null);
 
 export const FormContextProvider: React.FC<{
-  children: any;
+  children: ReactNode;
 }> = ({ children }) => {
   const [formShown, setFormShown] = useState(false);
   const [selectedCrypto, setSelectedCrypto] = useState<string>("");
