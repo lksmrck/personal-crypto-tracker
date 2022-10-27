@@ -25,7 +25,7 @@ const App: React.FC = () => {
       <Navbar />
       <PageContainer>
         <ContentWrapper>
-          {error.isError ? (
+          {error["isError"] ? (
             <ErrorScreen />
           ) : (
             <div>

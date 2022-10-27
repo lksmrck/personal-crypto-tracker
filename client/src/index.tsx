@@ -15,7 +15,7 @@ const store = createStore(reducers, compose(applyMiddleware(thunk)));
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch; //Tady problém s typem - přiřazeno ANY do hooks filu. Pak upravit !!!!
+export type AppDispatch = typeof store.dispatch;
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -41,7 +41,7 @@ const TransactionsHistory: React.FC = () => {
 
   return (
     <StyledTransactionHistory>
-      {loadingState.loading ? (
+      {loadingState["loading"] ? (
         <LoadingSpinner />
       ) : transactions.length > 0 ? (
         <div className="transactions-container">

@@ -97,15 +97,17 @@ export interface ErrorLoadingActionTypes {
 
   export interface ClearError {
     type: ErrorLoadingActionTypes["CLEAR_ERROR"];
+    payload?: null
   }
 
   export interface StartLoading {
     type: ErrorLoadingActionTypes["START_LOADING"];
-
+    payload?: null
   }
 
   export interface StopLoading {
     type: ErrorLoadingActionTypes["STOP_LOADING"];
+    payload?: null
   }
 
 
