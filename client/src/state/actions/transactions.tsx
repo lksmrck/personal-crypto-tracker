@@ -7,8 +7,7 @@ import {
 } from "../../constants/actionTypes";
 import { Transaction } from "../../common/modelTypes";
 import { Dispatch } from "@reduxjs/toolkit";
-import { AppDispatch } from "../..";
-import { ThunkDispatch } from "@reduxjs/toolkit";
+
 import {
   HoldingsTransactionsActions,
   ErrorLoadingActions,

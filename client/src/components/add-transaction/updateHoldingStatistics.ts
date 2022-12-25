@@ -4,7 +4,7 @@ import { HoldingItem, Transaction } from "../../common/modelTypes";
 
 const updateHoldingStatistics = (holdingToBeUpdated: HoldingItem, formItem?: Transaction) => {
   const oldTotalPrice = holdingToBeUpdated.price * holdingToBeUpdated.amount;
-let updatedItem
+
 
   if (formItem!.transactionType === "buy") {
     //Průměrná nákupní cena

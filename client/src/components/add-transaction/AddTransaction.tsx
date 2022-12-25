@@ -7,12 +7,13 @@ import { RootState } from "../..";
 import MyButton from "../layout/MyButton";
 
 const AddTransaction: React.FC = () => {
-  const formContext = useContext(FormContext);
+  const { formShown, setFormShown, setTransactionType } =
+    useContext(FormContext);
   const holdings = useAppSelector((state: RootState) => state.holdings);
 
   return (
     <StyledAddTransaction>
-      {formContext?.formShown ? (
+      {formShown ? (
         <Form />
       ) : (
         holdings.length > 0 && (
@@ -20,8 +21,8 @@ const AddTransaction: React.FC = () => {
             <MyButton
               variant="contained"
               onClick={() => {
-                formContext?.setFormShown(true);
-                formContext?.setTransactionType("buy");
+                setFormShown(true);
+                setTransactionType("buy");
               }}
               text="Add transaction"
               purple

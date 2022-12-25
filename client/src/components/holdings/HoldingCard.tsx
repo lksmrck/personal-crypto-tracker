@@ -14,7 +14,8 @@ import { StyledHoldingCard } from "./styled";
 
 const HoldingCard: React.FC = () => {
   const context = useContext(DashboardContext);
-  const formContext = useContext(FormContext);
+  const { setFormShown, setSelectedCrypto, setTransactionType } =
+    useContext(FormContext);
 
   const dashboardCryptoData = context?.dashboardData;
 
@@ -101,9 +102,9 @@ const HoldingCard: React.FC = () => {
                   <div className="card-buttons-container">
                     <IconButton
                       onClick={() => {
-                        formContext?.setFormShown(true);
-                        formContext?.setSelectedCrypto(holding.name);
-                        formContext?.setTransactionType("buy");
+                        setFormShown(true);
+                        setSelectedCrypto(holding.name);
+                        setTransactionType("buy");
                       }}
                     >
                       <BiPlusCircle
@@ -117,9 +118,9 @@ const HoldingCard: React.FC = () => {
 
                     <IconButton
                       onClick={() => {
-                        formContext?.setFormShown(true);
-                        formContext?.setSelectedCrypto(holding.name);
-                        formContext?.setTransactionType("sell");
+                        setFormShown(true);
+                        setSelectedCrypto(holding.name);
+                        setTransactionType("sell");
                       }}
                     >
                       <BiMinusCircle

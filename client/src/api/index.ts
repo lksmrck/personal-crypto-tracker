@@ -1,7 +1,7 @@
 import axios from "axios";
 import { HoldingItem, Transaction } from "../common/modelTypes";
 
-const API = axios.create({baseURL: process.env.REACT_APP_API })
+const API = axios.create({baseURL: process.env.REACT_APP_API /* "http://localhost:8000" */   })
 
 //Holdings
 export const fetchHoldings = (userId: string) =>

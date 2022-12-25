@@ -13,7 +13,7 @@ interface AppContextInterface {
   isLoading: boolean;
 }
 
-const DashboardContext = createContext<AppContextInterface | null>(null);
+const DashboardContext = createContext({} as AppContextInterface);
 
 export const DashboardContextProvider: React.FC<{
   children: React.ReactNode;

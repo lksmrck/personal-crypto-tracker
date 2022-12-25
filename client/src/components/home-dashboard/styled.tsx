@@ -44,6 +44,7 @@ export const StyledDashboard = styled.div`
   width: 1110px;
   max-width: 100vw;
   margin: 0 auto;
+  overflow: hidden;
 `;
 
 export const DashboardWrapper = styled.div`
@@ -51,6 +52,7 @@ export const DashboardWrapper = styled.div`
   background-color: white;
   ${theme.boxShadow}
   border-radius: ${theme.borderRadius};
+  overflow-x: scroll;
 
   .positive-change {
     ${positiveChange}
@@ -69,6 +71,7 @@ export const DashboardWrapper = styled.div`
     color: grey;
     cursor: default;
   }
+
   .default {
     cursor: default;
   }

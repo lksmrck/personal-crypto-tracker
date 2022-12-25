@@ -38,12 +38,18 @@ const Form: React.FC = () => {
   const dispatch = useAppDispatch();
   const holdings = useAppSelector((state: RootState) => state.holdings);
 
-  const context = useContext(DashboardContext);
-  const formContext = useContext(FormContext);
+  const { getDashboardData } = useContext(DashboardContext);
+  const {
+    selectedCrypto,
+    transactionType,
+    setSelectedCrypto,
+    setFormShown,
+    setTransactionType,
+  } = useContext(FormContext);
 
   //Při prvním načtení stáhne dashboard data (přes context.getDashboardData) a nastaví userID do formData (zde se sledují údaje, které budou zadany do formu)
   useEffect(() => {
-    context?.getDashboardData();
+    getDashboardData();
     setFormData({ ...formData, userId });
   }, []);
 
@@ -51,20 +57,20 @@ const Form: React.FC = () => {
   useEffect(() => {
     setFormData({
       ...formData,
-      name: formContext?.selectedCrypto!,
-      transactionType: formContext?.transactionType!,
+      name: selectedCrypto!,
+      transactionType: transactionType!,
     });
 
     //Při změně Crypto name a Transaction type ukládám již držené krypto podle názvu do setExistingHolding, aby se pak zobrazilo v případě špatně zadaného množství - viz. DOM
     const existingItem = holdings.find(
-      (holding: HoldingItem) => holding.name === formContext?.selectedCrypto!
+      (holding: HoldingItem) => holding.name === selectedCrypto!
     );
     setExistingHolding(existingItem);
-  }, [formContext?.selectedCrypto, formContext?.transactionType]);
+  }, [selectedCrypto, transactionType]);
 
   const selectedCryptoInput = (crypto: string): void => {
     setFormIsValid(true);
-    formContext?.setSelectedCrypto(crypto);
+    setSelectedCrypto(crypto);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -104,7 +110,7 @@ const Form: React.FC = () => {
         formRef.current.reset();
       }
 
-      formContext?.setFormShown(false);
+      setFormShown(false);
 
       //Pokud dané krypto už aktuálně držím, proženu transakci přes updateHoldingStatistics funkci, kde se vypočítá nový holding objects vč. průměrné nák. ceny. Ten se potom pošle do reduceru
       if (existingItem !== undefined) {
@@ -136,7 +142,7 @@ const Form: React.FC = () => {
     newBuySell: "buy" | "sell"
   ): void => {
     //Pokud se klikne na již zakliknutou možnost, tak to nic nezmění.
-    if (newBuySell !== null) formContext?.setTransactionType(newBuySell);
+    if (newBuySell !== null) setTransactionType(newBuySell);
   };
 
   return (
@@ -192,7 +198,7 @@ const Form: React.FC = () => {
             <MyButton
               variant="contained"
               text="Back"
-              onClick={() => formContext?.setFormShown(false)}
+              onClick={() => setFormShown(false)}
               red
             />
           </div>

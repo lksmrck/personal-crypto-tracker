@@ -8,10 +8,11 @@ import { DashboardWrapper } from "./styled";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 
 const DashboardTable: React.FC = () => {
-  const dashboardContext = useContext(DashboardContext);
-  const formContext = useContext(FormContext);
+  const { dashboardData } = useContext(DashboardContext);
 
-  const dashboardCryptoData = dashboardContext?.dashboardData;
+  const { setSelectedCrypto, setFormShown } = useContext(FormContext);
+
+  const dashboardCryptoData = dashboardData;
 
   const history = useHistory();
 
@@ -127,8 +128,8 @@ const DashboardTable: React.FC = () => {
   ];
 
   const handleRowClick = (params: any): any => {
-    formContext?.setSelectedCrypto(params.row.identifier);
-    formContext?.setFormShown(true);
+    setSelectedCrypto(params.row.identifier);
+    setFormShown(true);
     history.push("/holdings");
   };
 

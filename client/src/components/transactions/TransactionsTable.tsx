@@ -14,13 +14,11 @@ const TransactionsTable: React.FC = () => {
   );
   const transactions = tryTransactions ? tryTransactions : [];
 
-  const context = useContext(DashboardContext);
-
-  const dashboardCryptoData = context?.dashboardData;
+  const { dashboardData } = useContext(DashboardContext);
 
   const rows = transactions.map((transaction: Transaction, index: number) => {
     //Najdu crypto v contextu podle jména, aby se dosadila crypto ikona.
-    const dashboardCrypto = dashboardCryptoData?.find(
+    const dashboardCrypto = dashboardData?.find(
       (crypto: DashboardCryptoItem) => crypto.name === transaction.name
     );
 

@@ -12,31 +12,30 @@ import { lsUserId } from "../../utils/ls-userId";
 import LoadingSpinner from "../layout/LoadingSpinner";
 
 const TransactionsHistory: React.FC = () => {
-  const tryTransactions = useAppSelector(
-    (state: RootState) => state.transactions
-  );
-  const transactions = tryTransactions ? tryTransactions : [];
+  const transactions = useAppSelector((state: RootState) => state.transactions);
+  /*   const transactions = tryTransactions ? tryTransactions : []; */
 
   const loadingState = useAppSelector(
     (state: RootState) => state.errorAndLoading
   );
   const dispatch = useAppDispatch();
   const history = useHistory();
-  const formContext = useContext(FormContext);
-  const dashboardContext = useContext(DashboardContext);
+  const { setFormShown, setSelectedCrypto, setTransactionType } =
+    useContext(FormContext);
+  const { getDashboardData } = useContext(DashboardContext);
   const userId = lsUserId();
 
   //fetch z mongoDB + fetch dashboard data
   useEffect(() => {
     dispatch(getTransactions(userId));
-    dashboardContext?.getDashboardData();
+    getDashboardData();
   }, [dispatch]);
 
   const onClickButton = () => {
     history.push("/holdings");
-    formContext?.setFormShown(true);
-    formContext?.setSelectedCrypto("Bitcoin");
-    formContext?.setTransactionType("buy");
+    setFormShown(true);
+    setSelectedCrypto("Bitcoin");
+    setTransactionType("buy");
   };
 
   return (

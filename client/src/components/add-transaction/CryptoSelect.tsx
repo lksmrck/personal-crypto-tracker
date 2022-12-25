@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   FormControl,
   Select,
@@ -17,18 +17,13 @@ type CryptoSelectProps = {
   value: string;
 };
 const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
-  const dashboardContext = useContext(DashboardContext);
-  const formContext = useContext(FormContext);
+  const { dashboardData } = useContext(DashboardContext);
+  const { transactionType, setTransactionType } = useContext(FormContext);
   const holdings = useAppSelector((state) => state.holdings);
 
-  const dashboardCryptoData = dashboardContext?.dashboardData;
-  const [transactionType, setTransactionType] = useState(
-    formContext?.transactionType
-  );
-
   useEffect(() => {
-    setTransactionType(formContext?.transactionType);
-  }, [formContext?.transactionType]);
+    setTransactionType(transactionType);
+  }, [transactionType]);
 
   const selectCryptoHandler = (e: SelectChangeEvent<unknown>): void => {
     props.selected(e.target.value as string);
@@ -62,7 +57,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
         >
           {/* V případě "SELL" dá možnost pouze toho krypta, které držím (a mám tedy co prodávat). Při "BUY" dá možnost nákupu z celého crypta, jehož hodnoty se stáhly z API */}
           {transactionType == "buy"
-            ? dashboardCryptoData?.map((crypto: DashboardCryptoItem) => {
+            ? dashboardData?.map((crypto: DashboardCryptoItem) => {
                 return (
                   <MenuItem
                     key={crypto.name}
@@ -75,7 +70,7 @@ const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
                 );
               })
             : holdings.map((holding: any) => {
-                const matchedCrypto = dashboardCryptoData?.find(
+                const matchedCrypto = dashboardData?.find(
                   (crypto) => crypto.name === holding.name
                 );
                 return (

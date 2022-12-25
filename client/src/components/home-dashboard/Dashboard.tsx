@@ -7,17 +7,17 @@ import DashboardContext from "../../state/DashboardContext";
 import LoadingSpinner from "../layout/LoadingSpinner";
 
 const Dashboard: React.FC = () => {
-  const dashboardContext = useContext(DashboardContext);
+  const { isLoading, getDashboardData } = useContext(DashboardContext);
 
   useEffect(() => {
-    dashboardContext?.getDashboardData();
+    getDashboardData();
   }, []);
 
   return (
     <div>
       <HomePage />
       <StyledDashboard>
-        {dashboardContext?.isLoading ? <LoadingSpinner /> : <DashboardTable />}
+        {isLoading ? <LoadingSpinner /> : <DashboardTable />}
       </StyledDashboard>
     </div>
   );

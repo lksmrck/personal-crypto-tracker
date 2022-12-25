@@ -2,7 +2,7 @@ import { createContext, ReactNode, useState } from "react";
 import { Dispatch } from "react";
 import { SetStateAction } from "react";
 
-interface AppContextInterface {
+interface FormContextInterface {
   setSelectedCrypto: Dispatch<SetStateAction<string>>;
   selectedCrypto: string;
   transactionType: "buy" | "sell";
@@ -11,7 +11,7 @@ interface AppContextInterface {
   setFormShown: Dispatch<SetStateAction<boolean>>;
 }
 
-const FormContext = createContext<AppContextInterface | null>(null);
+const FormContext = createContext({} as FormContextInterface);
 
 export const FormContextProvider: React.FC<{
   children: ReactNode;

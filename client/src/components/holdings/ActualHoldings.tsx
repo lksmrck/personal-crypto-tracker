@@ -17,18 +17,19 @@ const ActualHoldings: React.FC = () => {
     (state: RootState) => state.errorAndLoading
   );
   const dispatch = useAppDispatch();
-  const formContext = useContext(FormContext);
-  const dashboardContext = useContext(DashboardContext);
+  const { setFormShown, setSelectedCrypto, setTransactionType, formShown } =
+    useContext(FormContext);
+  const { getDashboardData } = useContext(DashboardContext);
   const userId = lsUserId();
 
   const onClickButton = (): void => {
-    formContext?.setFormShown(true);
-    formContext?.setSelectedCrypto("Bitcoin");
-    formContext?.setTransactionType("buy");
+    setFormShown(true);
+    setSelectedCrypto("Bitcoin");
+    setTransactionType("buy");
   };
 
   useEffect(() => {
-    dashboardContext?.getDashboardData();
+    getDashboardData();
     dispatch(getHoldings(userId));
   }, []);
 
@@ -40,7 +41,7 @@ const ActualHoldings: React.FC = () => {
         ) : holdings.length > 0 ? (
           <HoldingCard />
         ) : (
-          !formContext?.formShown && (
+          formShown && (
             <StyledWrapper>
               <div className="no-holdings-found">
                 <h1>No holdings found. Please add one.</h1>

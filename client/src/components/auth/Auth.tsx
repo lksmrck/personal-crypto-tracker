@@ -95,7 +95,7 @@ const Auth: React.FC = () => {
     }
 
     try {
-      dispatch({ type: "AUTH", data: { result, token } });
+      dispatch({ type: "AUTH", payload: { result, token } });
       history.push("/");
     } catch (error: any) {
       const errMsg =

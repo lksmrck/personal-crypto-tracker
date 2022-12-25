@@ -23,6 +23,7 @@ export const getHoldings =
   ) => {
     try {
       dispatch({ type: START_LOADING });
+
       const { data } = await api.fetchHoldings(userId); //const response = await fetch(...)
       dispatch({ type: FETCH_ALL_HOLDINGS, payload: data });
       if (data) {
