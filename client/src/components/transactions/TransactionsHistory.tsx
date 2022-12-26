@@ -3,7 +3,7 @@ import TransactionsTable from "./TransactionsTable";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
 import MyButton from "../layout/MyButton";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, FC } from "react";
 import { useHistory } from "react-router-dom";
 import FormContext from "../../state/FormContext";
 import DashboardContext from "../../state/DashboardContext";
@@ -11,7 +11,7 @@ import { getTransactions } from "../../state/actions/transactions";
 import { lsUserId } from "../../utils/ls-userId";
 import LoadingSpinner from "../layout/LoadingSpinner";
 
-const TransactionsHistory: React.FC = () => {
+const TransactionsHistory: FC = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
   /*   const transactions = tryTransactions ? tryTransactions : []; */
 

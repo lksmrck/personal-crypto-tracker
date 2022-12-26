@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import {
   Avatar,
   Button,
@@ -33,7 +33,7 @@ const initialState = {
   confirmPassword: "",
 };
 
-const Auth: React.FC = () => {
+const Auth: FC = () => {
   const [formData, setFormData] = useState(initialState);
   const [isRegistration, setIsRegistration] = useState(false);
   const [showPassword, setShowPassword] = useState(false);

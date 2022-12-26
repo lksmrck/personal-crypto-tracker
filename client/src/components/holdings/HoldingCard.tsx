@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import { BiPlusCircle, BiMinusCircle } from "react-icons/bi";
 import { Grid, Paper, Container } from "@mui/material";
 import { RootState } from "../..";
@@ -12,12 +12,10 @@ import { DashboardCryptoItem } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 import { StyledHoldingCard } from "./styled";
 
-const HoldingCard: React.FC = () => {
-  const context = useContext(DashboardContext);
+const HoldingCard: FC = () => {
+  const { dashboardData } = useContext(DashboardContext);
   const { setFormShown, setSelectedCrypto, setTransactionType } =
     useContext(FormContext);
-
-  const dashboardCryptoData = context?.dashboardData;
 
   const holdings = useAppSelector((state: RootState) => state.holdings);
 
@@ -26,7 +24,7 @@ const HoldingCard: React.FC = () => {
       <StyledHoldingCard>
         <Grid container spacing={2.5}>
           {holdings.map((holding: HoldingItem) => {
-            const cryptoObject = dashboardCryptoData?.find(
+            const cryptoObject = dashboardData.find(
               (item: DashboardCryptoItem) =>
                 item.name.toLowerCase() === holding.name.toLowerCase()
             );

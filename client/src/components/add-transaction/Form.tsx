@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useEffect, useContext, FC } from "react";
 import FormInput from "./FormInput";
 import { StyledForm } from "./styled";
 import DashboardContext from "../../state/DashboardContext";
@@ -18,7 +18,7 @@ import updateHoldingStatistics from "./updateHoldingStatistics";
 import { HoldingItem } from "../../common/modelTypes";
 import MyButton from "../layout/MyButton";
 
-const Form: React.FC = () => {
+const Form: FC = () => {
   const userId = lsUserId();
 
   const initialState = {

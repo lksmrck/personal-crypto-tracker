@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect, FC } from "react";
 import {
   FormControl,
   Select,
@@ -16,7 +16,7 @@ type CryptoSelectProps = {
   selected: (crypto: string) => void;
   value: string;
 };
-const CryptoSelect: React.FC<CryptoSelectProps> = (props) => {
+const CryptoSelect: FC<CryptoSelectProps> = (props) => {
   const { dashboardData } = useContext(DashboardContext);
   const { transactionType, setTransactionType } = useContext(FormContext);
   const holdings = useAppSelector((state) => state.holdings);

@@ -1,10 +1,9 @@
-import React from "react";
-import { Button } from "@mui/material";
+import { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { StyledNeedToLogin } from "./styled";
 import MyButton from "../../components/layout/MyButton";
 
-const NeedToLogin: React.FC = () => {
+const NeedToLogin: FC = () => {
   const history = useHistory();
 
   return (

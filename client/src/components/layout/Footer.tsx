@@ -1,12 +1,11 @@
 import { StyledFooter } from "./styled";
 import logoDogFooter from "../../assets/logoDogFooter.png";
-import { FiTwitter } from "react-icons/fi";
-import { FiFacebook } from "react-icons/fi";
-import { FiInstagram } from "react-icons/fi";
+import { FiFacebook, FiInstagram, FiTwitter } from "react-icons/fi";
 import { IconButton } from "@mui/material";
 import { useHistory } from "react-router-dom";
+import { FC } from "react";
 
-const Footer = () => {
+const Footer: FC = () => {
   const history = useHistory();
 
   return (

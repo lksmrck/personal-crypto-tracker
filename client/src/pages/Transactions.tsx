@@ -1,9 +1,9 @@
 import TransactionsHistory from "../components/transactions/TransactionsHistory";
 import NeedToLogin from "./screens/NeedToLogin";
 import { lsUserId } from "../utils/ls-userId";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 
-const Transactions: React.FC = () => {
+const Transactions: FC = () => {
   const [user, setUser] = useState(lsUserId());
 
   useEffect(() => {

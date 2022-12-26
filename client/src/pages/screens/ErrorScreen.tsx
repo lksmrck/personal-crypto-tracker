@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
 import { CLEAR_ERROR } from "../../constants/actionTypes";
@@ -7,7 +7,7 @@ import { StyledErrorScreen } from "./styled";
 import MyButton from "../../components/layout/MyButton";
 import somethingWrong from "../../assets/somethingWrong.png";
 
-const ErrorScreen: React.FC = () => {
+const ErrorScreen: FC = () => {
   const error = useAppSelector((state: RootState) => state.errorAndLoading);
   const dispatch = useAppDispatch();
   const history = useHistory();

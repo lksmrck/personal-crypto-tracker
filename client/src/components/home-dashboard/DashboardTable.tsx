@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import DashboardContext from "../../state/DashboardContext";
 import FormContext from "../../state/FormContext";
 import { intlNumberFormat, numberFormat } from "../../utils/number-format";
@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { DashboardWrapper } from "./styled";
 import { DashboardCryptoItem } from "../../common/modelTypes";
 
-const DashboardTable: React.FC = () => {
+const DashboardTable: FC = () => {
   const { dashboardData } = useContext(DashboardContext);
 
   const { setSelectedCrypto, setFormShown } = useContext(FormContext);

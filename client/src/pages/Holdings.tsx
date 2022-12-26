@@ -1,11 +1,11 @@
 import ActualHoldings from "../components/holdings/ActualHoldings";
 import AddTransaction from "../components/add-transaction/AddTransaction";
-import { useEffect, useState } from "react";
+import { useEffect, useState, FC } from "react";
 import { lsUserId } from "../utils/ls-userId";
 
 import NeedToLogin from "./screens/NeedToLogin";
 
-const Holdings: React.FC = () => {
+const Holdings: FC = () => {
   const [user, setUser] = useState(lsUserId());
 
   useEffect(() => {

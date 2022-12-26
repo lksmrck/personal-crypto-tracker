@@ -1,8 +1,9 @@
 import { StyledHomePage } from "./styled";
 import { Link } from "react-router-dom";
 import MyButton from "../layout/MyButton";
+import { FC } from "react";
 
-const HomePage: React.FC = () => {
+const HomePage: FC = () => {
   return (
     <StyledHomePage>
       <div className="home-container">

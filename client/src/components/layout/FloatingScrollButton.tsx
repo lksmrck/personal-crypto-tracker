@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import { BsArrowUpCircle } from "react-icons/bs";
 import { Fab } from "@mui/material";
 import { scrollTop } from "../../utils/scrollTop";
 
-const FloatingScrollButton: React.FC = () => {
+const FloatingScrollButton: FC = () => {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {

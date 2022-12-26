@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { TextField, Grid, InputAdornment, IconButton } from "@mui/material";
 import { MdVisibility } from "react-icons/md";
 import { MdVisibilityOff } from "react-icons/md";
@@ -14,7 +14,7 @@ type InputPropss = {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const TestInput: React.FC<InputPropss> = ({
+const TestInput: FC<InputPropss> = ({
   half,
   name,
   label,

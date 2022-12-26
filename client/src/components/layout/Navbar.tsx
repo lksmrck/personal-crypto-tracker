@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { NavLink } from "react-router-dom";
 import decode from "jwt-decode";
 import { StyledNavContainer, StyledNavbar } from "./styled";
-import logo from "../../assets/LogoPic.png";
+/* import logo from "../../assets/LogoPic.png"; */
 import logoDogHalf from "../../assets/logoDogHalf.png";
 import { useAppDispatch } from "../../state/hooks";
 import { useHistory, useLocation } from "react-router-dom";
@@ -17,7 +17,7 @@ interface DecodedToken {
   exp: number;
 }
 
-const Navbar: React.FC = () => {
+const Navbar: FC = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
   const location = useLocation();

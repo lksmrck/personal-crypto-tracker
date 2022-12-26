@@ -1,12 +1,12 @@
 import { StyledAddTransaction } from "./styled";
 import Form from "./Form";
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import FormContext from "../../state/FormContext";
 import { useAppSelector } from "../../state/hooks";
 import { RootState } from "../..";
 import MyButton from "../layout/MyButton";
 
-const AddTransaction: React.FC = () => {
+const AddTransaction: FC = () => {
   const { formShown, setFormShown, setTransactionType } =
     useContext(FormContext);
   const holdings = useAppSelector((state: RootState) => state.holdings);

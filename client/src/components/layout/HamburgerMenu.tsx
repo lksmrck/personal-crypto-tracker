@@ -1,4 +1,5 @@
-import * as React from "react";
+/* import * as React from "react"; */
+import { FC, useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -12,11 +13,11 @@ interface HamburgerMenuProps {
   setIsUserLogged: () => void;
 }
 
-const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
+const HamburgerMenu: FC<HamburgerMenuProps> = ({
   isUserLogged,
   setIsUserLogged,
 }: HamburgerMenuProps) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const history = useHistory();
   const dispatch = useAppDispatch();

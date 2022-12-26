@@ -1,5 +1,5 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { useContext } from "react";
+import { useContext, FC } from "react";
 import DashboardContext from "../../state/DashboardContext";
 import { intlNumberFormat } from "../../utils/number-format";
 import { TransactionsWrapper } from "./styled";
@@ -8,7 +8,7 @@ import { RootState } from "../..";
 import { DashboardCryptoItem, Transaction } from "../../common/modelTypes";
 import { formatDate } from "../../utils/date-format";
 
-const TransactionsTable: React.FC = () => {
+const TransactionsTable: FC = () => {
   const tryTransactions = useAppSelector(
     (state: RootState) => state.transactions
   );

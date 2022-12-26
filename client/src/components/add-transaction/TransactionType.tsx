@@ -1,7 +1,6 @@
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-
-import React from "react";
+import { FC } from "react";
 import { StyledTransactionType } from "./styled";
 
 type TransactionTypeProps = {
@@ -12,7 +11,7 @@ type TransactionTypeProps = {
   ) => void;
 };
 
-const TransactionType: React.FC<TransactionTypeProps> = ({
+const TransactionType: FC<TransactionTypeProps> = ({
   buySell,
   handleBuySellChange,
 }) => {

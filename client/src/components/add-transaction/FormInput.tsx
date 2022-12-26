@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { TextField } from "@mui/material";
 import { InputAdornment } from "@mui/material";
 
@@ -11,12 +12,11 @@ type InputProps = {
     min?: number;
     step?: number;
   };
-
   startAdornment?: string;
   autoFocus?: boolean;
 };
 
-const FormInput: React.FC<InputProps> = ({
+const FormInput: FC<InputProps> = ({
   input,
   startAdornment,
   autoFocus,

@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { ReactNode } from "react";
@@ -17,7 +17,7 @@ interface MyButtonProps {
   fullWidth?: boolean;
   startIcon?: ReactNode;
 }
-const MyButton: React.FC<MyButtonProps> = ({
+const MyButton: FC<MyButtonProps> = ({
   text,
   blue,
   purple,
