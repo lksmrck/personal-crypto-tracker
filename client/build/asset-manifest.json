@@ -1,15 +1,33 @@
 {
   "files": {
     "main.css": "/personal-crypto-tracker/static/css/main.4407966f.css",
-    "main.js": "/personal-crypto-tracker/static/js/main.7227a9b9.js",
+    "main.js": "/personal-crypto-tracker/static/js/main.a1205cc4.js",
+    "static/js/14.1b122a4e.chunk.js": "/personal-crypto-tracker/static/js/14.1b122a4e.chunk.js",
+    "static/js/462.fbd9065e.chunk.js": "/personal-crypto-tracker/static/js/462.fbd9065e.chunk.js",
+    "static/js/299.f23b90f6.chunk.js": "/personal-crypto-tracker/static/js/299.f23b90f6.chunk.js",
+    "static/js/177.6df970b9.chunk.js": "/personal-crypto-tracker/static/js/177.6df970b9.chunk.js",
+    "static/js/288.57d4da4e.chunk.js": "/personal-crypto-tracker/static/js/288.57d4da4e.chunk.js",
+    "static/js/323.5499a92f.chunk.js": "/personal-crypto-tracker/static/js/323.5499a92f.chunk.js",
+    "static/js/372.15dcd861.chunk.js": "/personal-crypto-tracker/static/js/372.15dcd861.chunk.js",
+    "static/js/927.10af7f8a.chunk.js": "/personal-crypto-tracker/static/js/927.10af7f8a.chunk.js",
+    "static/js/269.8aca0924.chunk.js": "/personal-crypto-tracker/static/js/269.8aca0924.chunk.js",
     "static/media/logoDogHalf.png": "/personal-crypto-tracker/static/media/logoDogHalf.04a7d0c3c5e03ff23972.png",
     "static/media/logoDogFooter.png": "/personal-crypto-tracker/static/media/logoDogFooter.3080967a909c09859080.png",
     "index.html": "/personal-crypto-tracker/index.html",
     "main.4407966f.css.map": "/personal-crypto-tracker/static/css/main.4407966f.css.map",
-    "main.7227a9b9.js.map": "/personal-crypto-tracker/static/js/main.7227a9b9.js.map"
+    "main.a1205cc4.js.map": "/personal-crypto-tracker/static/js/main.a1205cc4.js.map",
+    "14.1b122a4e.chunk.js.map": "/personal-crypto-tracker/static/js/14.1b122a4e.chunk.js.map",
+    "462.fbd9065e.chunk.js.map": "/personal-crypto-tracker/static/js/462.fbd9065e.chunk.js.map",
+    "299.f23b90f6.chunk.js.map": "/personal-crypto-tracker/static/js/299.f23b90f6.chunk.js.map",
+    "177.6df970b9.chunk.js.map": "/personal-crypto-tracker/static/js/177.6df970b9.chunk.js.map",
+    "288.57d4da4e.chunk.js.map": "/personal-crypto-tracker/static/js/288.57d4da4e.chunk.js.map",
+    "323.5499a92f.chunk.js.map": "/personal-crypto-tracker/static/js/323.5499a92f.chunk.js.map",
+    "372.15dcd861.chunk.js.map": "/personal-crypto-tracker/static/js/372.15dcd861.chunk.js.map",
+    "927.10af7f8a.chunk.js.map": "/personal-crypto-tracker/static/js/927.10af7f8a.chunk.js.map",
+    "269.8aca0924.chunk.js.map": "/personal-crypto-tracker/static/js/269.8aca0924.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4407966f.css",
-    "static/js/main.7227a9b9.js"
+    "static/js/main.a1205cc4.js"
   ]
 }

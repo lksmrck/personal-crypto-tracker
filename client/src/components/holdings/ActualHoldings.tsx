@@ -1,7 +1,7 @@
 import { StyledHoldings } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../state/hooks";
 import { RootState } from "../..";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, FC } from "react";
 import FormContext from "../../state/FormContext";
 import { StyledWrapper } from "./styled";
 import { lsUserId } from "../../utils/ls-userId";
@@ -11,7 +11,7 @@ import HoldingCard from "./HoldingCard";
 import LoadingSpinner from "../layout/LoadingSpinner";
 import MyButton from "../layout/MyButton";
 
-const ActualHoldings: React.FC = () => {
+const ActualHoldings: FC = () => {
   const holdings = useAppSelector((state: RootState) => state.holdings);
   const loadingState = useAppSelector(
     (state: RootState) => state.errorAndLoading

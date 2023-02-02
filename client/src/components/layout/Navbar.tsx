@@ -2,7 +2,6 @@ import { useState, useEffect, FC } from "react";
 import { NavLink } from "react-router-dom";
 import decode from "jwt-decode";
 import { StyledNavContainer, StyledNavbar } from "./styled";
-/* import logo from "../../assets/LogoPic.png"; */
 import logoDogHalf from "../../assets/logoDogHalf.png";
 import { useAppDispatch } from "../../state/hooks";
 import { useHistory, useLocation } from "react-router-dom";
@@ -83,7 +82,7 @@ const Navbar: FC = () => {
         </div>
         <div className="right-side">
           {/* zacina prava cast Navbaru*/}
-          {user ? (
+          {user?.result ? (
             <>
               <div className="user">
                 <Avatar

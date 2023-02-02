@@ -1,5 +1,5 @@
 import axios from "axios";
-import { HoldingItem, Transaction } from "../common/modelTypes";
+import { HoldingItem, Transaction, AuthData } from "../common/modelTypes";
 
 const API = axios.create({baseURL: process.env.REACT_APP_API /* "http://localhost:8000" */   })
 
@@ -25,7 +25,7 @@ export const addTransaction = (newTransaction: Transaction) =>
   API.post("/transactions", newTransaction);
 
 //Auth
-export const registerUser = (userData: any) =>
+export const registerUser = (userData: AuthData) =>
   API.post("/register", userData);
 
-export const loginUser = (userData: any) => API.post("/login", userData);
+export const loginUser = (userData: AuthData) => API.post("/login", userData);
