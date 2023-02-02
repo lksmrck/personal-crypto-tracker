@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/personal-crypto-tracker/static/css/main.4407966f.css",
-    "main.js": "/personal-crypto-tracker/static/js/main.2bf1a59b.js",
+    "main.js": "/personal-crypto-tracker/static/js/main.a1205cc4.js",
     "static/js/14.1b122a4e.chunk.js": "/personal-crypto-tracker/static/js/14.1b122a4e.chunk.js",
     "static/js/462.fbd9065e.chunk.js": "/personal-crypto-tracker/static/js/462.fbd9065e.chunk.js",
     "static/js/299.f23b90f6.chunk.js": "/personal-crypto-tracker/static/js/299.f23b90f6.chunk.js",
@@ -15,7 +15,7 @@
     "static/media/logoDogFooter.png": "/personal-crypto-tracker/static/media/logoDogFooter.3080967a909c09859080.png",
     "index.html": "/personal-crypto-tracker/index.html",
     "main.4407966f.css.map": "/personal-crypto-tracker/static/css/main.4407966f.css.map",
-    "main.2bf1a59b.js.map": "/personal-crypto-tracker/static/js/main.2bf1a59b.js.map",
+    "main.a1205cc4.js.map": "/personal-crypto-tracker/static/js/main.a1205cc4.js.map",
     "14.1b122a4e.chunk.js.map": "/personal-crypto-tracker/static/js/14.1b122a4e.chunk.js.map",
     "462.fbd9065e.chunk.js.map": "/personal-crypto-tracker/static/js/462.fbd9065e.chunk.js.map",
     "299.f23b90f6.chunk.js.map": "/personal-crypto-tracker/static/js/299.f23b90f6.chunk.js.map",
@@ -28,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.4407966f.css",
-    "static/js/main.2bf1a59b.js"
+    "static/js/main.a1205cc4.js"
   ]
 }
