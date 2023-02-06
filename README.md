@@ -11,7 +11,7 @@ Simple personal project, that allows user to:
 
 ## 🔸 Demo
 
-You can try the demo [HERE](https://lukasthevicious.github.io/personal-crypto-tracker/)
+You can try the demo [HERE](https://lksmrck.github.io/personal-crypto-tracker/)
 
 ```diff
 - Actual info: If you want to try this app, you have to run it locally on your machine based on steps below, because of expired backend hosting on Heroku.
