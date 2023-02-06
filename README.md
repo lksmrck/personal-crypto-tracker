@@ -13,6 +13,11 @@ Simple personal project, that allows user to:
 
 You can try the demo [HERE](https://lukasthevicious.github.io/personal-crypto-tracker/)
 
+```diff
+- Actual info: If you want to try this app, you have to run it locally on your machine based on steps below, because of expired backend hosting on Heroku.
+- Based on that, users are currently not able to register and login using username and pw. Users are however still able to login via Google Auth, but don't see their holdings and transactions (as these are fetched from the currently unhosted BE).
+```
+
 ![App demo](./readMe/cryptoTrackerGIF.gif)
 
 ## 🔸 Configuration and setup
