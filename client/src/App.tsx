@@ -33,7 +33,7 @@ const App: React.FC = () => {
                 <Route path="/" exact>
                   <Redirect to="/dashboard" />
                 </Route>
-                {/* Route kvůli github pages */}
+                {/* Github pages hosting route */}
                 <Route path="/personal-crypto-tracker" exact>
                   <Redirect to="/dashboard" />
                 </Route>

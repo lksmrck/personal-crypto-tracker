@@ -1,4 +1,5 @@
-//Funkce pro výpočty při update holdingu (průměrná cena, držené množství atd)
+//Function used for calculations during the holding update (average price, holding amount etc.)
+
 import { HoldingItem, Transaction } from "../../common/modelTypes";
 
 
@@ -7,13 +8,12 @@ const updateHoldingStatistics = (holdingToBeUpdated: HoldingItem, formItem?: Tra
 
 
   if (formItem!.transactionType === "buy") {
-    //Průměrná nákupní cena
+    //Average buy price
     const newItemTotalPrice = formItem!.price * formItem!.amount;
     const updatedAveragePrice =
       (oldTotalPrice + newItemTotalPrice) /
       (holdingToBeUpdated.amount + formItem!.amount);
 
-    //Vrátí upravený object (holding), který se pak nahraje do mongoDB
    return  {
       ...formItem,
       price: updatedAveragePrice,

@@ -13,7 +13,6 @@ import LoadingSpinner from "../layout/LoadingSpinner";
 
 const TransactionsHistory: FC = () => {
   const transactions = useAppSelector((state: RootState) => state.transactions);
-  /*   const transactions = tryTransactions ? tryTransactions : []; */
 
   const loadingState = useAppSelector(
     (state: RootState) => state.errorAndLoading
@@ -25,7 +24,6 @@ const TransactionsHistory: FC = () => {
   const { getDashboardData } = useContext(DashboardContext);
   const userId = lsUserId();
 
-  //fetch z mongoDB + fetch dashboard data
   useEffect(() => {
     dispatch(getTransactions(userId));
     getDashboardData();

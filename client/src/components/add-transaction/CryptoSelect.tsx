@@ -55,7 +55,7 @@ const CryptoSelect: FC<CryptoSelectProps> = (props) => {
             },
           }}
         >
-          {/* V případě "SELL" dá možnost pouze toho krypta, které držím (a mám tedy co prodávat). Při "BUY" dá možnost nákupu z celého crypta, jehož hodnoty se stáhly z API */}
+          {/* In case of "SELL", only crypto, which is already held can be sold. In case of "BUY" - every crypto fetched from API can be bought. */}
           {transactionType == "buy"
             ? dashboardData?.map((crypto: DashboardCryptoItem) => {
                 return (

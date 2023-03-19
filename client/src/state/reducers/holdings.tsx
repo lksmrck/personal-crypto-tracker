@@ -11,7 +11,7 @@ export default (holdings = [], action: HoldingsTransactionsActions) => {
   switch (action.type) {
     case FETCH_ALL_HOLDINGS:
       return action.payload;
-    case ADD_HOLDING: // přidání holdingu, pokud se daný coin ještě nedrží
+    case ADD_HOLDING:
       return [...holdings, action.payload];
     case UPDATE_HOLDING:
       return holdings.map((holding: HoldingItem) =>

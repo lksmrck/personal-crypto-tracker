@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const transactionSchema = new Schema({
-  transactionType: /* "buy" | "sell"; */ String,
+  transactionType: String,
   userId: String,
   name: String,
   price: Number,

@@ -1,4 +1,4 @@
-//Funkce na vytáhnutí userId z localStorage, pokud je přihlášen mailem/googleId pokud je přihlášen přes google ID.
+//Function for getting userId/googleId from localStorage (based on type of login).
 export const lsUserId = () => {
     const lsUser = localStorage.getItem("profile")
     let lsUserParsed 

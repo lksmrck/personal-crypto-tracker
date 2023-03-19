@@ -1,6 +1,5 @@
 import express from "express";
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs"; //šifrování passwords v databazi
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
@@ -23,7 +22,6 @@ export const loginUser = async (req, res) => {
       existingUser.password
     );
 
-    //"JWT_SECRET" je secret word, které bych měl vědět jen já. Mám ho v .env
     const secretWord = process.env.JWT_SECRET;
 
     if (!isPasswordCorrect) {
@@ -46,7 +44,8 @@ export const registerUser = async (req, res) => {
   console.log(req.body);
 
   try {
-    const existingUser = await User.findOne({ email }); //Check, že user s daným e-mailem ještě neexistuje
+    //Verify if users email does not already exist
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(404).json({ message: "User already exists." });
     }
@@ -55,7 +54,7 @@ export const registerUser = async (req, res) => {
       return res.status(404).json({ message: "Passwords don't match" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12); //12 = level of difficulty to hash the password. Usually used 12
+    const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await User.create({
       email,

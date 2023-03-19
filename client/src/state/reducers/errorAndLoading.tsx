@@ -1,4 +1,3 @@
-import { ErrorLoadingActions } from "../../common/actionTypes";
 import {
   CLEAR_ERROR,
   SET_ERROR,

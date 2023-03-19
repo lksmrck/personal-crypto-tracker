@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -12,7 +11,7 @@ import routes from "./routes/api.js";
 
 const MONGO_URL = process.env.MONGODB;
 
-//Pripojeni na databazi
+//Database connection
 mongoose
   .connect(MONGO_URL)
   .then(() => app.listen(PORT, console.log(`Server is starting at ${PORT}`)))
@@ -29,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 //CORS policy handler
 app.use(cors());
 
-// /api jako starting route
+//Setting /api as a strating route
 app.use("/", routes);
 
 app.get("/", (req, res) => {

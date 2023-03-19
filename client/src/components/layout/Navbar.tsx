@@ -21,14 +21,14 @@ const Navbar: FC = () => {
   const history = useHistory();
   const location = useLocation();
 
-  //v user se sleduje, jestli je user přihlášen (tj. jestli je uložen v localStorage)
   const lsUser = localStorage.getItem("profile");
+  //If user is logged in (saved in LS)
   const [user, setUser] = useState(lsUser !== null ? JSON.parse(lsUser) : null);
 
   useEffect(() => {
     const token = user?.token;
 
-    //Sleduje, jestli token neexpiroval. Pokud ano, provede onClickLogout a odhlásí usera.
+    //If token expired, onClickLogout is called and user is logged out.
     if (token) {
       const decodedToken: DecodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
@@ -39,7 +39,7 @@ const Navbar: FC = () => {
     if (lsUser !== null) {
       setUser(JSON.parse(lsUser));
     }
-  }, [location]); //==> when location changes (z /auth na / tak set user)
+  }, [location]);
 
   const onClickLogin = (): void => {
     history.push("/auth");
@@ -81,7 +81,7 @@ const Navbar: FC = () => {
           </ul>
         </div>
         <div className="right-side">
-          {/* zacina prava cast Navbaru*/}
+          {/* Right side of Navbar*/}
           {user?.result ? (
             <>
               <div className="user">

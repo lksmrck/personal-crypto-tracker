@@ -17,7 +17,6 @@ const TransactionsTable: FC = () => {
   const { dashboardData } = useContext(DashboardContext);
 
   const rows = transactions.map((transaction: Transaction, index: number) => {
-    //Najdu crypto v contextu podle jména, aby se dosadila crypto ikona.
     const dashboardCrypto = dashboardData?.find(
       (crypto: DashboardCryptoItem) => crypto.name === transaction.name
     );

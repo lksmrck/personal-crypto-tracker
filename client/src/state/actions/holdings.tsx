@@ -24,7 +24,7 @@ export const getHoldings =
     try {
       dispatch({ type: START_LOADING });
 
-      const { data } = await api.fetchHoldings(userId); //const response = await fetch(...)
+      const { data } = await api.fetchHoldings(userId);
       dispatch({ type: FETCH_ALL_HOLDINGS, payload: data });
       if (data) {
         setTimeout(() => {
@@ -48,7 +48,7 @@ export const addHolding =
   ) => {
     try {
       dispatch({ type: START_LOADING });
-      const { data } = await api.addHolding(holding); // data se hned destructuruje response, která má v sobě vždycky data object.
+      const { data } = await api.addHolding(holding);
 
       dispatch({ type: ADD_HOLDING, payload: data });
       if (data) {
@@ -91,7 +91,6 @@ export const updateHolding =
     }
   };
 
-//V případě, že držený amount klesne na 0, mažu z databaze.
 export const deleteHolding =
   (formData: Object) =>
   async (

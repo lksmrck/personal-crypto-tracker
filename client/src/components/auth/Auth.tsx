@@ -67,7 +67,7 @@ const Auth: FC = () => {
     if (authState.error) {
       dispatch({ type: CLEAR_AUTH_ERROR });
     }
-    setFormData({ ...formData, [e.target.name]: e.target.value }); //narolluje všechny staré formData a změní pouze ty, které se rovanjí name (např firstName v objektu = firstName name inputu) a priradi tam current value. PŘEDPOKLAD: POLOŽKY V OBJEKTU = NAME INPUTŮ
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e: React.SyntheticEvent): void => {

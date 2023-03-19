@@ -13,7 +13,7 @@ export const addHolding = (newHolding: HoldingItem) =>
 export const updateHolding = (name: string, updatedHolding: HoldingItem) =>
   API.patch(`${"/holdings"}/${name}`, updatedHolding);
 
-//Pokud se všechen Holding prodal (tzn. držený amount = 0), tak mažu z databáze. V případném opětovném nákupu se vytvoří znovu a od té doby se znovu počítá průměrná cena a P/L
+
 export const deleteHolding = (formData: Object) =>
   API.post(`${"/holdings"}/delete`, formData);
 

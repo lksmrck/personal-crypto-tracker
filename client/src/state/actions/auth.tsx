@@ -9,8 +9,6 @@ import { AuthActions, ErrorLoadingActions } from "../../common/actionTypes";
 import { Dispatch } from "@reduxjs/toolkit";
 
 import * as api from "../../api/index";
-import { AxiosError } from "axios";
-import axios from "axios";
 
 export const loginUser =
   (formData: AuthData, history: any) =>

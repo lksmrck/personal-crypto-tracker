@@ -1,4 +1,4 @@
-//File potřebný pro typování Redux + Thunk actions - dle oficiální dokumentace Redux + TS
+//File needed for Redux + Thunk actions typeing - based on official Redux + TS docs.
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import type { RootState, AppDispatch } from "../index";
 

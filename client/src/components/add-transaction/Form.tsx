@@ -47,13 +47,11 @@ const Form: FC = () => {
     setTransactionType,
   } = useContext(FormContext);
 
-  //Při prvním načtení stáhne dashboard data (přes context.getDashboardData) a nastaví userID do formData (zde se sledují údaje, které budou zadany do formu)
   useEffect(() => {
     getDashboardData();
     setFormData({ ...formData, userId });
   }, []);
 
-  //Crypto name a Transaction type jdou přes context API, ukládám přes useEffect do formData objectu.
   useEffect(() => {
     setFormData({
       ...formData,
@@ -61,7 +59,6 @@ const Form: FC = () => {
       transactionType: transactionType!,
     });
 
-    //Při změně Crypto name a Transaction type ukládám již držené krypto podle názvu do setExistingHolding, aby se pak zobrazilo v případě špatně zadaného množství - viz. DOM
     const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === selectedCrypto!
     );
@@ -74,24 +71,21 @@ const Form: FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    //Když vyskočí hláška s invalid amount, po update inputů zmizí.
     if (!formIsValid) {
       setFormIsValid(true);
     }
-    //Input name = initial state object properties
+
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onSubmitHandler = (e: React.SyntheticEvent): void => {
     e.preventDefault();
 
-    //Existing item - aby se pak níže poslal do update nebo delete.
     const existingItem = holdings.find(
       (holding: HoldingItem) => holding.name === formData.name
     );
-    /*    const existingItem = existingHolding as HoldingItem; */
 
-    //Validace, že nedavam transakci, kdy prodam vic nez aktualne drzim v Holdings - pak se prirazuje formIsValid state.
+    //Validation that amount being sold is not higher than held amount.
     if (
       (formData.transactionType === "sell" &&
         existingItem.amount >= parseInt(formData.amount)) ||
@@ -112,13 +106,12 @@ const Form: FC = () => {
 
       setFormShown(false);
 
-      //Pokud dané krypto už aktuálně držím, proženu transakci přes updateHoldingStatistics funkci, kde se vypočítá nový holding objects vč. průměrné nák. ceny. Ten se potom pošle do reduceru
       if (existingItem !== undefined) {
         const updatedHolding = updateHoldingStatistics(
           existingItem,
           adjustedFormItem
         );
-        //Pokud amount updatovaného holdingu se nerovná 0, tak dispatchuju updateHolding. Pokud se rovná 0 tak dispatchuju deleteHolding a holding se smaže z dtbs.
+        //If amount of updated holding != 0, updateHolding is dispatched. If =0, deleteHolding is dispatched.
         if (updatedHolding!.amount !== 0) {
           console.log(updatedHolding);
           dispatch(
@@ -141,7 +134,6 @@ const Form: FC = () => {
     e: React.MouseEvent<HTMLElement>,
     newBuySell: "buy" | "sell"
   ): void => {
-    //Pokud se klikne na již zakliknutou možnost, tak to nic nezmění.
     if (newBuySell !== null) setTransactionType(newBuySell);
   };
 

@@ -111,7 +111,7 @@ export interface ErrorLoadingActionTypes {
   }
 
 
-  //Výstup
+ 
   //Actions => pro Holdings, Transactions, 
   export type HoldingsTransactionsActions =
     | FetchAllHoldings

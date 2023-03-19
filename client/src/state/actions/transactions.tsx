@@ -16,7 +16,7 @@ import {
 import * as api from "../../api/index";
 
 export const getTransactions =
-  (userId: string) /* : ThunkAction<void, RootState, never, AnyAction>  */ =>
+  (userId: string) =>
   async (
     dispatch: Dispatch<HoldingsTransactionsActions | ErrorLoadingActions>
   ) => {

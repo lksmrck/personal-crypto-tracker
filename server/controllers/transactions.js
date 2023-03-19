@@ -1,5 +1,4 @@
 import express from "express";
-import mongoose from "mongoose";
 
 import Transaction from "../models/transactionSchema.js";
 
@@ -10,7 +9,7 @@ export const getTransactions = async (req, res) => {
   try {
     const transactions = await Transaction.find({ userId });
 
-    res.status(200).json(transactions); //nastaví reponse status na 200
+    res.status(200).json(transactions);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
